@@ -10,13 +10,10 @@ import { CarAccordionItemComponent } from './car-accordion/car-accordion-item/ca
   declarations: [
     AppComponent,
     CarAccordionComponent,
-    CarAccordionItemComponent
+    CarAccordionItemComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

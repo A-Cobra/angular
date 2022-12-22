@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarGarageDisplay } from '../model/car-garage-display.interface';
 
 @Component({
   selector: 'app-car-accordion',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./car-accordion.component.scss'],
 })
 export class CarAccordionComponent {
-  carsListByCategory: Array<any>; //Change this to not any
+  carsListByCategory: Array<CarGarageDisplay>; //Change this to not any
   constructor() {
     this.carsListByCategory = [
       {
@@ -21,6 +22,7 @@ export class CarAccordionComponent {
             weight: 2150,
             price: 2100000,
             logo: '',
+            img: '',
           },
           {
             brand: 'DOK-ING',
@@ -30,6 +32,7 @@ export class CarAccordionComponent {
             weight: 1300,
             price: 35000,
             logo: '',
+            img: '',
           },
         ],
       },
@@ -45,6 +48,7 @@ export class CarAccordionComponent {
             weight: 1695,
             price: 2100000,
             logo: '',
+            img: '',
           },
           {
             brand: 'Porsche',
@@ -54,12 +58,13 @@ export class CarAccordionComponent {
             weight: 849,
             price: 100000,
             logo: '',
+            img: '',
           },
         ],
       },
     ];
   }
-  openAllCards() {
+  expandAllCards() {
     this.carsListByCategory.forEach(carCategory => {
       carCategory.collapsed = false;
     });
