@@ -31,7 +31,11 @@
     </h3>
     <h3>
       Price:
-      <span>{{ car.price | currency : 'EUR' : 'symbol' : '1.0-0' }}</span>
+      <span>{{
+        car.price
+          ? (car.price | currency : 'EUR' : 'symbol' : '1.0-0')
+          : 'Unknown - NOT FOR SALE'
+      }}</span>
     </h3>
   </div>
 </div>
