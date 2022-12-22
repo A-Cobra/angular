@@ -1,4 +1,6 @@
-<div class="category-title">{{ category }}</div>
+<div class="category-title" (click)="notifyCollapsedStatusChange()">
+  {{ category }}
+</div>
 <div class="car-cards-container" [hidden]="collapsed">
   {{ carsList.length }} cars in the category
 </div>

@@ -6,6 +6,7 @@
     *ngFor="let carCategory of carsListByCategory"
     [category]="carCategory.category"
     [carsList]="carCategory.content"
-    [collapsed]="carCategory.collapsed">
+    [collapsed]="carCategory.collapsed"
+    (headerClick)="handleCollapsedStatus($event)">
   </app-car-accordion-item>
 </div>

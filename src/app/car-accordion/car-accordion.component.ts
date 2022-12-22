@@ -11,7 +11,7 @@ export class CarAccordionComponent {
     this.carsListByCategory = [
       {
         category: 'Croatian',
-        collapsed: true,
+        collapsed: false,
         content: [
           {
             brand: 'Rimac',
@@ -68,5 +68,13 @@ export class CarAccordionComponent {
     this.carsListByCategory.forEach(carCategory => {
       carCategory.collapsed = true;
     });
+  }
+  handleCollapsedStatus(event: string) {
+    for (const carCategory of this.carsListByCategory) {
+      if (carCategory.category === event) {
+        carCategory.collapsed = !carCategory.collapsed;
+        break;
+      }
+    }
   }
 }
