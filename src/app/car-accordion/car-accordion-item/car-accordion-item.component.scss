@@ -1,0 +1,23 @@
+.car-cards-container.active{
+  display: flex;
+  flex-wrap: wrap;
+  .car-card{
+    flex: 1 1 250px;
+    img{
+      width: 100%;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      img{
+        object-fit: cover;
+        width: 30px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ export interface CarSpecs {
   releaseYear: number;
   engine: string;
   weight: number;
-  price: number;
+  price: number | null;
   logo: string;
   img: string;
 }

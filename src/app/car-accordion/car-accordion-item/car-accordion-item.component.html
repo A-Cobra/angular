@@ -1,6 +1,37 @@
 <div class="category-title" (click)="notifyCollapsedStatusChange()">
   {{ category }}
 </div>
-<div class="car-cards-container" [hidden]="collapsed">
-  {{ carsList.length }} cars in the category
+<div
+  class="car-cards-container"
+  [hidden]="collapsed"
+  [ngClass]="{
+    active: !collapsed
+  }">
+  <div class="car-card" *ngFor="let car of carsList">
+    <div class="img-container">
+      <img [src]="car.img" [alt]="car.brand + ' ' + car.model + '.png'" />
+    </div>
+    <div class="brand">
+      <h3>
+        Brand: <span>{{ car.brand }}</span>
+      </h3>
+      <img [src]="car.logo" [alt]="car.brand + '.png'" />
+    </div>
+    <h3>
+      Model: <span>{{ car.model }}</span>
+    </h3>
+    <h3>
+      Release Year: <span>{{ car.releaseYear }}</span>
+    </h3>
+    <h3>
+      Engine: <span>{{ car.engine }}</span>
+    </h3>
+    <h3>
+      Weight: <span>{{ car.weight }} Kg</span>
+    </h3>
+    <h3>
+      Price:
+      <span>{{ car.price | currency : 'EUR' : 'symbol' : '1.0-0' }}</span>
+    </h3>
+  </div>
 </div>
