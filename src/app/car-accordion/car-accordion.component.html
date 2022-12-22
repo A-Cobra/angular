@@ -1,0 +1,11 @@
+<h1>Cobra ng Car Accordion App</h1>
+<div class="car-accordion-item">
+  <button (click)="collapseAllCards()">Collapse all cards</button>
+  <button (click)="openAllCards()">Open all cards</button>
+  <app-car-accordion-item
+    *ngFor="let carCategory of carsListByCategory"
+    [category]="carCategory.category"
+    [carsList]="carCategory.content"
+    [collapsed]="carCategory.collapsed">
+  </app-car-accordion-item>
+</div>

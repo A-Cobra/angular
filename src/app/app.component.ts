@@ -6,14 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  accordionComponent!: Array<any>; //Change this to not any
+  carsListByCategory!: Array<any>; //Change this to not any
   title = 'AccordionApp';
-  constructor() {
-    this.accordionComponent = [
-      {
-        category: 'Croatian',
-        collapsed: true,
-      },
-    ];
-  }
+  constructor() {}
 }
