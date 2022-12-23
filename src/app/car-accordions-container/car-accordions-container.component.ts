@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CarGarageDisplay } from '../model/car-garage-display.interface';
 
 @Component({
-  selector: 'app-car-accordion',
-  templateUrl: './car-accordion.component.html',
-  styleUrls: ['./car-accordion.component.scss'],
+  selector: 'app-car-accordions-container',
+  templateUrl: './car-accordions-container.component.html',
+  styleUrls: ['./car-accordions-container.component.scss'],
 })
-export class CarAccordionComponent {
+export class CarAccordionsContainerComponent {
   carsListByCategory: Array<CarGarageDisplay>;
   constructor() {
     this.carsListByCategory = [
