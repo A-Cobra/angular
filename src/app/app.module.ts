@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HamburgerComponent } from './hamburger/hamburger.component';
+import { HamburgerIngredientComponent } from './hamburger/hamburger-ingredient/hamburger-ingredient.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HamburgerComponent,
+    HamburgerIngredientComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
