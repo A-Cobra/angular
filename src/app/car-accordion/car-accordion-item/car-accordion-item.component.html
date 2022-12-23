@@ -1,4 +1,9 @@
-<div class="category-title" (click)="notifyCollapsedStatusChange()">
+<div
+  [ngClass]="{
+    active: !collapsed
+  }"
+  class="category-title"
+  (click)="notifyCollapsedStatusChange()">
   {{ category }}
 </div>
 <div
@@ -7,7 +12,7 @@
   [ngClass]="{
     active: !collapsed
   }">
-  <div class="car-card" *ngFor="let car of carsList">
+  <mat-card class="car-card" *ngFor="let car of carsList">
     <div class="img-container">
       <img [src]="car.img" [alt]="car.brand + ' ' + car.model + '.png'" />
     </div>
@@ -37,5 +42,5 @@
           : 'Unknown - NOT FOR SALE'
       }}</span>
     </h3>
-  </div>
+  </mat-card>
 </div>

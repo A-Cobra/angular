@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarAccordionComponent } from './car-accordion/car-accordion.component';
 import { CarAccordionItemComponent } from './car-accordion/car-accordion-item/car-accordion-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,12 @@ import { CarAccordionItemComponent } from './car-accordion/car-accordion-item/ca
     CarAccordionComponent,
     CarAccordionItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

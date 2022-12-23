@@ -7,7 +7,7 @@ import { CarGarageDisplay } from '../model/car-garage-display.interface';
   styleUrls: ['./car-accordion.component.scss'],
 })
 export class CarAccordionComponent {
-  carsListByCategory: Array<CarGarageDisplay>; //Change this to not any
+  carsListByCategory: Array<CarGarageDisplay>;
   constructor() {
     this.carsListByCategory = [
       {
@@ -193,5 +193,11 @@ export class CarAccordionComponent {
         break;
       }
     }
+  }
+  scrollUp() {
+    scrollTo(0, 0);
+  }
+  scrollDown() {
+    scrollTo(0, document.body.scrollHeight);
   }
 }

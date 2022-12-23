@@ -10,9 +10,9 @@ export class CarAccordionItemComponent {
   @Input()
   category: string = '';
   @Input()
-  carsList: Array<CarSpecs> = []; //NOT ANY KEYWORD
+  carsList: Array<CarSpecs> = [];
   @Input()
-  collapsed: boolean = true; //NOT ANY KEYWORD
+  collapsed: boolean = true;
   @Output()
   headerClick: EventEmitter<string> = new EventEmitter<string>();
   constructor() {}

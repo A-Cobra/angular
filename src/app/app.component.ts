@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  carsListByCategory!: Array<any>; //Change this to not any
   title = 'AccordionApp';
   constructor() {}
 }

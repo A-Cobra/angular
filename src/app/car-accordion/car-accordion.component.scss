@@ -1,0 +1,113 @@
+$light-gray: #bebebe;
+$dark-gray: rgb(90, 86, 86);
+$light-pink: rgb(224, 91, 158);
+$strong-pink : rgb(233,30,99);
+h1{
+  padding: 20px 80px;
+  font-weight: 700;
+  font-size: 40px;
+}
+.main{
+  position: relative;
+  padding: 0 80px;
+  display: grid;
+  gap: 20px;
+  .btn-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  button{
+    font-weight: 700;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &.collapse{
+      background-color: $light-gray;
+      color: $strong-pink;
+      transition: 0.15s ease;
+      &:hover{
+        background-color: $dark-gray;
+        color: $light-pink;
+      }
+    }
+    &.expand{
+      color: $light-gray;
+      background-color: $strong-pink;
+      transition: 0.15s ease;
+      &:hover{
+        color: $dark-gray;
+        background-color: $light-pink;
+      }
+    }
+  }
+}
+.back-to-top, 
+.back-to-bottom{
+  z-index: 4;
+  position: fixed;
+  bottom: 50%;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: $light-gray;
+  color: $strong-pink;
+  transition: 0.15s ease;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover{
+    background-color: $dark-gray;
+    color: $light-pink;
+  }
+}
+.back-to-top {
+  transform: translate(0,-60%);
+}
+.back-to-bottom {
+  transform: translate(0, 60%);
+}
+@media screen and (max-width: 900px) {
+  h1{
+    padding: 20px 30px;
+    font-weight: 700;
+    font-size: 30px;
+  }
+  .main{
+    padding: 0 30px;
+  }
+  .back-to-top, 
+  .back-to-bottom{
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width: 720px){
+  h1{
+    padding: 20px 80px 30px 30px;
+    font-weight: 700;
+    font-size: 30px;
+  }
+  .main{
+    padding: 0 80px 0 30px;
+  }
+}
+@media screen and (max-width: 719.999px){
+  .back-to-top, 
+  .back-to-bottom{
+    bottom: 20px;
+    left: 50%;
+  }
+  .back-to-top{
+    transform: translate(-60%, -10%);
+  }
+  .back-to-bottom{
+    transform: translate(60%, -10%);
+  }
+}
