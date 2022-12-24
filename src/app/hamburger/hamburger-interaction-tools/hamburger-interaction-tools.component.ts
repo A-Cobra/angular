@@ -17,8 +17,6 @@ import {
   IngredientPricePair,
 } from 'src/app/models/ingredient-price.map';
 
-import { countElementsInList } from 'src/app/utils/count-elements-in-list.function';
-
 @Component({
   selector: 'app-hamburger-interaction-tools',
   templateUrl: './hamburger-interaction-tools.component.html',
@@ -41,6 +39,8 @@ export class HamburgerInteractionToolsComponent
   @Output()
   childEventEmitter: EventEmitter<HamburgerIngredientEvent> =
     new EventEmitter<HamburgerIngredientEvent>();
+  @Output()
+  otherEventEmitter: EventEmitter<string> = new EventEmitter<string>();
   basePrice = 1.0;
   constructor() {}
   ngAfterViewInit(): void {
@@ -79,5 +79,8 @@ export class HamburgerInteractionToolsComponent
       type: 'add',
       ingredient: ingredient,
     });
+  }
+  orderEventEmit() {
+    this.otherEventEmitter.emit('order');
   }
 }

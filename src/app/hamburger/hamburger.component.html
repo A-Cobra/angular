@@ -6,7 +6,6 @@
     [currentBurger]="currentBurger"
     [ingredientsController]="ingredientsControl"
     [totalIngredientsControl]="totalIngredientsControl"
-    (childEventEmitter)="
-      handleAdditionOrRemoval($event)
-    "></app-hamburger-interaction-tools>
+    (childEventEmitter)="handleAdditionOrRemoval($event)"
+    (otherEventEmitter)="handleOrder($event)"></app-hamburger-interaction-tools>
 </div>

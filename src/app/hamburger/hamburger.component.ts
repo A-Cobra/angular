@@ -3,6 +3,7 @@ import { HamburgerIngredientEvent } from '../models/hamburger-ingredient-event.t
 import { Hamburger } from '../models/hamburger.interface';
 import { IngredientController } from '../models/ingredient-controller.type';
 import { ingredientPrice } from '../models/ingredient-price.map';
+import { LocalStorageService } from '../services/local-storage.service';
 import { countElementsInList } from '../utils/count-elements-in-list.function';
 import { generateId } from '../utils/generate-id.function';
 
@@ -12,6 +13,10 @@ import { generateId } from '../utils/generate-id.function';
   styleUrls: ['./hamburger.component.scss'],
 })
 export class HamburgerComponent {
+  defaultBurger: Hamburger = {
+    ingredients: ['top-bread', 'bottom-bread'],
+    id: generateId(15),
+  };
   totalIngredientsControl!: { type: string; units: number; price: number };
   ingredientsControl: Array<IngredientController>;
   hamburgerList: Array<Hamburger> = [
@@ -32,28 +37,15 @@ export class HamburgerComponent {
       id: '123',
     },
   ];
+  hamburgerOrderHistory: Array<Hamburger> = [];
   currentBurger!: Hamburger;
   ingredientsPricing = ingredientPrice;
-  constructor() {
+  constructor(private lsService: LocalStorageService) {
     this.ingredientsControl = [];
-    this.currentBurger = {
-      ingredients: [
-        // 'top-bread',
-        // 'bottom-bread',
-        'top-bread',
-        'cheese',
-        'meat',
-        'tomato',
-        'lettuce',
-        'cheese',
-        'meat',
-        'bottom-bread',
-      ],
-      id: generateId(15),
-    };
+    this.fillHamburgerOrderHistory();
+    this.fillCurrentBurger();
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
-    console.log(this.ingredientsControl);
   }
   private fillIngredientsControl() {
     this.ingredientsControl = [];
@@ -95,6 +87,20 @@ export class HamburgerComponent {
       this.refillTotalIngredientsControl();
     }
   }
+  handleOrder(event: string) {
+    if (event === 'order') {
+      console.log('Processing Order');
+      this.currentBurger.id = generateId(15);
+      this.defaultBurger.id = generateId(15);
+      this.hamburgerOrderHistory.unshift(this.currentBurger);
+      this.lsService.put('currentBurger', JSON.stringify(this.defaultBurger));
+      this.lsService.put(
+        'hamburgerOrderHistory',
+        JSON.stringify(this.hamburgerOrderHistory)
+      );
+      this.fillAllObjectsAndArrays();
+    }
+  }
   resetTotalIngredientsControl() {
     this.totalIngredientsControl = {
       type: 'Total',
@@ -109,5 +115,28 @@ export class HamburgerComponent {
       this.totalIngredientsControl.price +=
         element.units * this.ingredientsPricing.get(element.type);
     });
+  }
+  fillCurrentBurger() {
+    const response = this.lsService.get('currentBurger');
+    if (response !== null) {
+      this.currentBurger = response;
+    } else {
+      this.currentBurger = Object.assign({}, this.defaultBurger);
+    }
+  }
+  fillHamburgerOrderHistory() {
+    const response = this.lsService.get('hamburgerOrderHistory');
+    if (response !== null) {
+      this.hamburgerOrderHistory = response;
+    } else {
+      this.hamburgerOrderHistory = [];
+    }
+    console.log('this.hamburgerOrderHistory');
+    console.log(this.hamburgerOrderHistory);
+  }
+  fillAllObjectsAndArrays() {
+    this.fillCurrentBurger();
+    this.fillIngredientsControl();
+    this.refillTotalIngredientsControl();
   }
 }
