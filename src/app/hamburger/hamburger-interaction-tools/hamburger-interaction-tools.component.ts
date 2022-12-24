@@ -27,6 +27,7 @@ import { countElementsInList } from 'src/app/utils/count-elements-in-list.functi
 export class HamburgerInteractionToolsComponent
   implements AfterViewInit, OnChanges
 {
+  @Input()
   totalIngredientsControl!: { type: string; units: number; price: number };
   currencyConversionRate: number = 1;
   currencyCode: string = 'USD';
@@ -41,27 +42,14 @@ export class HamburgerInteractionToolsComponent
   childEventEmitter: EventEmitter<HamburgerIngredientEvent> =
     new EventEmitter<HamburgerIngredientEvent>();
   basePrice = 1.0;
-  constructor() {
-    // console.log('this.ingredientsKeys');
-    // console.log(this.ingredientsKeys);
-    this.totalIngredientsControl = {
-      type: 'Total',
-      units: 0,
-      price: 0,
-    };
-  }
+  constructor() {}
   ngAfterViewInit(): void {
     console.log('this.ingredientsController');
     console.log(this.ingredientsController);
     console.log('this.currentBurger');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.resetTotalIngredientsControl();
-    this.ingredientsController.forEach(element => {
-      this.totalIngredientsControl.units += element.units;
-      this.totalIngredientsControl.price +=
-        element.units * this.ingredientsPricing.get(element.type);
-    });
+    console.log('OK');
   }
   updateCurrency(event: Event | { target: EventTarget | HTMLInputElement }) {
     const value = (event?.target as HTMLInputElement).value;
@@ -91,12 +79,5 @@ export class HamburgerInteractionToolsComponent
       type: 'add',
       ingredient: ingredient,
     });
-  }
-  resetTotalIngredientsControl() {
-    this.totalIngredientsControl = {
-      type: 'Total',
-      units: 0,
-      price: 0,
-    };
   }
 }

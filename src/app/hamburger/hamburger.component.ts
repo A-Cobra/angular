@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HamburgerIngredientEvent } from '../models/hamburger-ingredient-event.type';
 import { Hamburger } from '../models/hamburger.interface';
 import { IngredientController } from '../models/ingredient-controller.type';
+import { ingredientPrice } from '../models/ingredient-price.map';
 import { countElementsInList } from '../utils/count-elements-in-list.function';
 import { generateId } from '../utils/generate-id.function';
 
@@ -11,6 +12,7 @@ import { generateId } from '../utils/generate-id.function';
   styleUrls: ['./hamburger.component.scss'],
 })
 export class HamburgerComponent {
+  totalIngredientsControl!: { type: string; units: number; price: number };
   ingredientsControl: Array<IngredientController>;
   hamburgerList: Array<Hamburger> = [
     {
@@ -31,6 +33,7 @@ export class HamburgerComponent {
     },
   ];
   currentBurger!: Hamburger;
+  ingredientsPricing = ingredientPrice;
   constructor() {
     this.ingredientsControl = [];
     this.currentBurger = {
@@ -49,7 +52,7 @@ export class HamburgerComponent {
       id: generateId(15),
     };
     this.fillIngredientsControl();
-    this.fillTotalIngredientsControl();
+    this.refillTotalIngredientsControl();
     console.log(this.ingredientsControl);
   }
   private fillIngredientsControl() {
@@ -78,9 +81,6 @@ export class HamburgerComponent {
       }
     }
   }
-  private fillTotalIngredientsControl() {
-    this.ingredientsControl.forEach(element => {});
-  }
   handleAdditionOrRemoval(event: HamburgerIngredientEvent) {
     console.log(event);
     if (event.type === 'remove') {
@@ -88,9 +88,26 @@ export class HamburgerComponent {
       console.log(`Index: ${index}`);
       this.currentBurger.ingredients.splice(index, 1);
       this.fillIngredientsControl();
+      this.refillTotalIngredientsControl();
     } else {
       this.currentBurger.ingredients.splice(1, 0, event.ingredient);
       this.fillIngredientsControl();
+      this.refillTotalIngredientsControl();
     }
+  }
+  resetTotalIngredientsControl() {
+    this.totalIngredientsControl = {
+      type: 'Total',
+      units: 0,
+      price: 0,
+    };
+  }
+  refillTotalIngredientsControl() {
+    this.resetTotalIngredientsControl();
+    this.ingredientsControl.forEach(element => {
+      this.totalIngredientsControl.units += element.units;
+      this.totalIngredientsControl.price +=
+        element.units * this.ingredientsPricing.get(element.type);
+    });
   }
 }
