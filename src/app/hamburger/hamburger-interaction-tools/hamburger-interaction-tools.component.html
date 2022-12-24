@@ -2,6 +2,7 @@
 <select name="currency" id="currency" (change)="updateCurrency($event)">
   <option
     *ngFor="let currency of currencies | keyvalue"
+    [selected]="currency.key === 'us dollar'"
     [value]="currency.value.conversionRate">
     {{ currency.key }}
   </option>

@@ -21,7 +21,7 @@ import { countElementsInList } from 'src/app/utils/count-elements-in-list.functi
 export class HamburgerInteractionToolsComponent
   implements AfterViewInit, OnChanges
 {
-  conversionRate: number = 0.9;
+  conversionRate: number = 1;
   currencies = currencyMap;
   ingredientsPricing = ingredientPrice;
   meatUnits!: number;
