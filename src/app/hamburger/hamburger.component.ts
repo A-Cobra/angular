@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HamburgerIngredientEvent } from '../models/hamburger-ingredient-event.type';
 import { Hamburger } from '../models/hamburger.interface';
 import { IngredientController } from '../models/ingredient-controller.type';
 import { countElementsInList } from '../utils/count-elements-in-list.function';
@@ -78,5 +79,13 @@ export class HamburgerComponent {
   }
   private fillTotalIngredientsControl() {
     this.ingredientsControl.forEach(element => {});
+  }
+  handleAdditionOrRemoval(event: HamburgerIngredientEvent) {
+    console.log(event);
+    if (event.type === 'remove') {
+      const index = this.currentBurger.ingredients.indexOf(event.ingredient);
+      console.log(`Index: ${index}`);
+      this.currentBurger.ingredients.splice(index, 1);
+    }
   }
 }

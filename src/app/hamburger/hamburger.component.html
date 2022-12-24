@@ -4,7 +4,8 @@
     [type]="ingredient"></app-hamburger-ingredient>
   <app-hamburger-interaction-tools
     [currentBurger]="currentBurger"
-    [ingredientsController]="
-      ingredientsControl
+    [ingredientsController]="ingredientsControl"
+    (childEventEmitter)="
+      handleAdditionOrRemoval($event)
     "></app-hamburger-interaction-tools>
 </div>

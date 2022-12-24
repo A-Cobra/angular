@@ -1,11 +1,14 @@
 import {
   AfterViewInit,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { currencyMap } from 'src/app/models/currency.map';
+import { HamburgerIngredientEvent } from 'src/app/models/hamburger-ingredient-event.type';
 import { HamburgerIngredient } from 'src/app/models/hamburger-ingredient.type';
 import { Hamburger } from 'src/app/models/hamburger.interface';
 import { IngredientController } from 'src/app/models/ingredient-controller.type';
@@ -34,6 +37,9 @@ export class HamburgerInteractionToolsComponent
   ingredientsController!: Array<IngredientController>;
   @Input()
   currentBurger!: Hamburger;
+  @Output()
+  childEventEmitter: EventEmitter<HamburgerIngredientEvent> =
+    new EventEmitter<HamburgerIngredientEvent>();
   basePrice = 1.0;
   constructor() {
     // console.log('this.ingredientsKeys');
@@ -72,5 +78,11 @@ export class HamburgerInteractionToolsComponent
       }
     }
     return false;
+  }
+  removeEventEmit(ingredient: HamburgerIngredient) {
+    this.childEventEmitter.emit({
+      type: 'remove',
+      ingredient: ingredient,
+    });
   }
 }
