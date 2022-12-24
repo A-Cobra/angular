@@ -7,6 +7,11 @@
     {{ currency.key }}
   </option>
 </select>
+<!-- <app-hamburger-table-renderer
+  [ingredientsController]="ingredientsController"
+  [totalIngredientsControl]="
+    totalIngredientsControl
+  "></app-hamburger-table-renderer> -->
 <table>
   <tr>
     <th>Name</th>
@@ -20,7 +25,7 @@
       {{
         ingredientsPricing.get(ingredient.type) *
           ingredient.units *
-          currencyConversionRate | currency : currencyCode
+          currencyConversionRate | currency : currencyCode : 'symbol' : '1.2-2'
       }}
       <!-- Piping Missing -->
     </td>
@@ -31,7 +36,7 @@
     <td>
       {{
         (totalIngredientsControl.price + basePrice) * currencyConversionRate
-          | currency : currencyCode
+          | currency : currencyCode : 'symbol' : '1.2-2'
       }}
     </td>
   </tr>

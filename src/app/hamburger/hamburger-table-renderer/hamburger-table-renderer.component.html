@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Units</th>
+    <th>Total</th>
+  </tr>
+  <tr *ngFor="let ingredient of ingredientsController">
+    <td>{{ ingredient.type }}</td>
+    <td>{{ ingredient.units }}</td>
+    <td>
+      {{
+        ingredientsPricing.get(ingredient.type) *
+          ingredient.units *
+          currencyConversionRate | currency : currencyCode : 'symbol' : '1.2-2'
+      }}
+      <!-- Piping Missing -->
+    </td>
+  </tr>
+  <tr>
+    <td>{{ totalIngredientsControl.type }}</td>
+    <td>{{ totalIngredientsControl.units }}</td>
+    <td>
+      {{
+        (totalIngredientsControl.price + basePrice) * currencyConversionRate
+          | currency : currencyCode : 'symbol' : '1.2-2'
+      }}
+    </td>
+  </tr>
+</table>
