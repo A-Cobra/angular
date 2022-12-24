@@ -13,6 +13,7 @@ import { generateId } from '../utils/generate-id.function';
   styleUrls: ['./hamburger.component.scss'],
 })
 export class HamburgerComponent {
+  orderSuccess: boolean;
   defaultBurger: Hamburger = {
     ingredients: ['top-bread', 'bottom-bread'],
     id: generateId(15),
@@ -41,6 +42,7 @@ export class HamburgerComponent {
   currentBurger!: Hamburger;
   ingredientsPricing = ingredientPrice;
   constructor(private lsService: LocalStorageService) {
+    this.orderSuccess = false;
     this.ingredientsControl = [];
     this.fillHamburgerOrderHistory();
     this.fillCurrentBurger();
@@ -99,6 +101,10 @@ export class HamburgerComponent {
         'hamburgerOrderHistory',
         JSON.stringify(this.hamburgerOrderHistory)
       );
+      this.orderSuccess = true;
+      setTimeout(() => {
+        this.orderSuccess = false;
+      }, 2500);
       this.fillAllObjectsAndArrays();
     }
   }

@@ -1,11 +1,18 @@
 <div class="current-hamburger-container">
-  <app-hamburger-ingredient
-    *ngFor="let ingredient of currentBurger.ingredients"
-    [type]="ingredient"></app-hamburger-ingredient>
+  <div *ngIf="!orderSuccess" class="current-hamburger-container">
+    <!-- Change to NG Component -->
+    <app-hamburger-ingredient
+      *ngFor="let ingredient of currentBurger.ingredients"
+      [type]="ingredient"></app-hamburger-ingredient>
+  </div>
   <app-hamburger-interaction-tools
+    *ngIf="!orderSuccess"
     [currentBurger]="currentBurger"
     [ingredientsController]="ingredientsControl"
     [totalIngredientsControl]="totalIngredientsControl"
     (childEventEmitter)="handleAdditionOrRemoval($event)"
     (otherEventEmitter)="handleOrder($event)"></app-hamburger-interaction-tools>
+  <div *ngIf="orderSuccess">
+    <h1>Thanks for your order, it will be available to eat really soon!</h1>
+  </div>
 </div>
