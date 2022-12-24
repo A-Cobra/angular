@@ -44,6 +44,7 @@ export class HamburgerComponent {
       id: generateId(15),
     };
     this.fillIngredientsControl();
+    this.fillTotalIngredientsControl();
     console.log(this.ingredientsControl);
   }
   private fillIngredientsControl() {
@@ -70,5 +71,8 @@ export class HamburgerComponent {
         });
       }
     }
+  }
+  private fillTotalIngredientsControl() {
+    this.ingredientsControl.forEach(element => {});
   }
 }
