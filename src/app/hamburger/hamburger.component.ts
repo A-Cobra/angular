@@ -86,6 +86,7 @@ export class HamburgerComponent {
       this.fillIngredientsControl();
       this.refillTotalIngredientsControl();
     }
+    this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
   }
   handleOrder(event: string) {
     if (event === 'order') {
