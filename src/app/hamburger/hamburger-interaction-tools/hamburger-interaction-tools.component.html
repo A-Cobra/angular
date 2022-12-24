@@ -1,0 +1,18 @@
+<p>hamburger-interaction-tools works!</p>
+<select name="currency" id="currency">
+  <option value="">USD</option>
+  <option value="">AUD</option>
+  <option value="">MXN</option>
+</select>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Units</th>
+    <th>Total</th>
+  </tr>
+  <tr *ngFor="let ingredient of ingredientsController">
+    <td>{{ ingredient.type }}</td>
+    <td>{{ ingredient.units }}</td>
+    <td>{{ ingredientsPricing.get(ingredient.type) * ingredient.units }}</td>
+  </tr>
+</table>

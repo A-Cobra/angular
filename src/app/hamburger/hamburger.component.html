@@ -2,4 +2,9 @@
   <app-hamburger-ingredient
     *ngFor="let ingredient of currentBurger.ingredients"
     [type]="ingredient"></app-hamburger-ingredient>
+  <app-hamburger-interaction-tools
+    [currentBurger]="currentBurger"
+    [ingredientsController]="
+      ingredientsControl
+    "></app-hamburger-interaction-tools>
 </div>
