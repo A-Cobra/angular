@@ -36,3 +36,8 @@
     </td>
   </tr>
 </table>
+<div *ngFor="let ingredient of ingredientsKeys">
+  <button *ngIf="hasAtLeastOne(ingredient)">Remove 1 {{ ingredient }}</button>
+  <button>Add 1 {{ ingredient }}</button>
+  {{ ingredient }}
+</div>
