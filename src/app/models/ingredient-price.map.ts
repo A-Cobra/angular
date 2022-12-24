@@ -1,21 +1,13 @@
 import { HamburgerIngredient } from './hamburger-ingredient.type';
 
-const pricesList: Array<{ type: HamburgerIngredient; price: number }> = [
-  {
-    type: 'meat',
-    price: 1.5,
-  },
-  {
-    type: 'cheese',
-    price: 0.5,
-  },
-  {
-    type: 'salad',
-    price: 0.25,
-  },
-];
-
+export enum IngredientPricePair {
+  meat = 1.5,
+  cheese = 0.5,
+  salad = 0.25,
+}
+type Ingredient = keyof typeof IngredientPricePair;
 export const ingredientPrice = new Map();
-pricesList.forEach(element => {
-  ingredientPrice.set(element.type, element.price);
-});
+for (const key of Object.keys(IngredientPricePair)) {
+  key as string;
+  ingredientPrice.set(key as string, IngredientPricePair[key as Ingredient]);
+}

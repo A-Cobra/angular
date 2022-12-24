@@ -1,6 +1,6 @@
+import { IngredientPricePair } from './ingredient-price.map';
+
 export type HamburgerIngredient =
-  | 'top-bread'
+  | keyof typeof IngredientPricePair
   | 'bottom-bread'
-  | 'salad'
-  | 'meat'
-  | 'cheese';
+  | 'top-bread';

@@ -33,8 +33,10 @@ export class HamburgerComponent {
     this.ingredientsControl = [];
     this.currentBurger = {
       ingredients: [
-        // 'top-bread', 'bottom-bread'
+        // 'top-bread',
+        // 'bottom-bread',
         'top-bread',
+        'cheese',
         'meat',
         'salad',
         'cheese',

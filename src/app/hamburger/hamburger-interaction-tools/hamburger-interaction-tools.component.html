@@ -30,7 +30,7 @@
     <td>{{ totalIngredientsControl.units }}</td>
     <td>
       {{
-        totalIngredientsControl.price * currencyConversionRate
+        (totalIngredientsControl.price + basePrice) * currencyConversionRate
           | currency : currencyCode
       }}
     </td>
