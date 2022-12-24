@@ -42,6 +42,6 @@
     (click)="removeEventEmit(ingredient)">
     Remove 1 {{ ingredient }}
   </button>
-  <button>Add 1 {{ ingredient }}</button>
+  <button (click)="addEventEmit(ingredient)">Add 1 {{ ingredient }}</button>
   {{ ingredient }}
 </div>

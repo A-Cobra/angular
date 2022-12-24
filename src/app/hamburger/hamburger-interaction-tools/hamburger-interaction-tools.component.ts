@@ -56,6 +56,7 @@ export class HamburgerInteractionToolsComponent
     console.log('this.currentBurger');
   }
   ngOnChanges(changes: SimpleChanges): void {
+    this.resetTotalIngredientsControl();
     this.ingredientsController.forEach(element => {
       this.totalIngredientsControl.units += element.units;
       this.totalIngredientsControl.price +=
@@ -84,5 +85,18 @@ export class HamburgerInteractionToolsComponent
       type: 'remove',
       ingredient: ingredient,
     });
+  }
+  addEventEmit(ingredient: HamburgerIngredient) {
+    this.childEventEmitter.emit({
+      type: 'add',
+      ingredient: ingredient,
+    });
+  }
+  resetTotalIngredientsControl() {
+    this.totalIngredientsControl = {
+      type: 'Total',
+      units: 0,
+      price: 0,
+    };
   }
 }

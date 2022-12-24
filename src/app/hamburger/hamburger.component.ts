@@ -53,6 +53,7 @@ export class HamburgerComponent {
     console.log(this.ingredientsControl);
   }
   private fillIngredientsControl() {
+    this.ingredientsControl = [];
     for (const ingredient of this.currentBurger.ingredients.slice(
       1,
       this.currentBurger.ingredients.length - 1
@@ -86,6 +87,10 @@ export class HamburgerComponent {
       const index = this.currentBurger.ingredients.indexOf(event.ingredient);
       console.log(`Index: ${index}`);
       this.currentBurger.ingredients.splice(index, 1);
+      this.fillIngredientsControl();
+    } else {
+      this.currentBurger.ingredients.splice(1, 0, event.ingredient);
+      this.fillIngredientsControl();
     }
   }
 }
