@@ -1,8 +1,10 @@
 <p>hamburger-interaction-tools works!</p>
-<select name="currency" id="currency">
-  <option value="">USD</option>
-  <option value="">AUD</option>
-  <option value="">MXN</option>
+<select name="currency" id="currency" (change)="updateCurrency($event)">
+  <option
+    *ngFor="let currency of currencies | keyvalue"
+    [value]="currency.value.conversionRate">
+    {{ currency.key }}
+  </option>
 </select>
 <table>
   <tr>
@@ -13,6 +15,13 @@
   <tr *ngFor="let ingredient of ingredientsController">
     <td>{{ ingredient.type }}</td>
     <td>{{ ingredient.units }}</td>
-    <td>{{ ingredientsPricing.get(ingredient.type) * ingredient.units }}</td>
+    <td>
+      {{
+        ingredientsPricing.get(ingredient.type) *
+          ingredient.units *
+          conversionRate
+      }}
+      <!-- Piping Missing -->
+    </td>
   </tr>
 </table>

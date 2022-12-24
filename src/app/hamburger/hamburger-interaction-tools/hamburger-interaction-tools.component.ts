@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { currencyMap } from 'src/app/models/currency.map';
 import { HamburgerIngredient } from 'src/app/models/hamburger-ingredient.type';
 import { Hamburger } from 'src/app/models/hamburger.interface';
 import { IngredientController } from 'src/app/models/ingredient-controller.type';
@@ -20,6 +21,8 @@ import { countElementsInList } from 'src/app/utils/count-elements-in-list.functi
 export class HamburgerInteractionToolsComponent
   implements AfterViewInit, OnChanges
 {
+  conversionRate: number = 0.9;
+  currencies = currencyMap;
   ingredientsPricing = ingredientPrice;
   meatUnits!: number;
   cheeseUnits!: number;
@@ -32,9 +35,6 @@ export class HamburgerInteractionToolsComponent
   constructor() {}
   ngAfterViewInit(): void {
     console.log('this.currentBurger');
-    console.log(this.currentBurger);
-    console.log('this.ingredientsController');
-    console.log(this.ingredientsController);
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.meatUnits = countElementsInList(
@@ -50,14 +50,8 @@ export class HamburgerInteractionToolsComponent
       'salad'
     );
   }
-  getPrice(type: HamburgerIngredient, units: number) {
-    // return
-    // let price: number = 0;
-    // for (const ingredientPricePair of this.ingredientsPrice) {
-    //   if (type === ingredientPricePair.type) {
-    //     price = ingredientPricePair.price;
-    //   }
-    // }
-    // return price * units;
+  updateCurrency(event: Event | { target: EventTarget }) {
+    this.conversionRate = Number((event.target as HTMLInputElement).value);
+    console.log((event.target as HTMLInputElement).value);
   }
 }
