@@ -13,14 +13,15 @@ export class HamburgerComponent {
   ingredientsControl: Array<IngredientController>;
   hamburgerList: Array<Hamburger> = [
     {
-      ingredients: ['top-bread', 'meat', 'salad', 'bottom-bread'],
+      ingredients: ['top-bread', 'meat', 'lettuce', 'bottom-bread'],
       id: '123',
     },
     {
       ingredients: [
         'top-bread',
         'meat',
-        'salad',
+        'lettuce',
+        'tomato',
         'cheese',
         'meat',
         'bottom-bread',
@@ -38,7 +39,8 @@ export class HamburgerComponent {
         'top-bread',
         'cheese',
         'meat',
-        'salad',
+        'tomato',
+        'lettuce',
         'cheese',
         'meat',
         'bottom-bread',

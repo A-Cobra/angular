@@ -3,7 +3,8 @@ import { HamburgerIngredient } from './hamburger-ingredient.type';
 export enum IngredientPricePair {
   meat = 1.5,
   cheese = 0.5,
-  salad = 0.25,
+  lettuce = 0.25,
+  tomato = 0.23,
 }
 type Ingredient = keyof typeof IngredientPricePair;
 export const ingredientPrice = new Map();
