@@ -164,10 +164,7 @@ export class HamburgerComponent {
       if (!breakOuterLoop) {
         ingredientsControl.push({
           type: ingredient,
-          units: countElementsInList(
-            this.currentBurger.ingredients,
-            ingredient
-          ),
+          units: countElementsInList(burger.ingredients, ingredient),
         });
       }
     }
@@ -192,7 +189,17 @@ export class HamburgerComponent {
     });
     return totalIngredientsControl;
   }
-  loadCurrentHamburger(burger: Hamburger) {
+  loadCurrentHamburger(burgerId: string) {
     // this.currentBurger.ingredients = burger.ingredients;
+    // this.currentBurger.ingredients = Object.assign({}, burger).ingredients;
+    console.log(burgerId);
+    // this.currentBurger.ingredients = (
+    //   this.hamburgerOrderHistory as Hamburger[]
+    // ).find(hamburger => hamburger.id === burgerId)?.ingredients;
+    for (const hamburger of this.hamburgerOrderHistory) {
+      if (hamburger.id === burgerId) {
+        this.currentBurger.ingredients = hamburger.ingredients;
+      }
+    }
   }
 }

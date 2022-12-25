@@ -32,7 +32,7 @@
           [totalIngredientsControl]="
             getTotalIngredientsControl(getIngredientsController(burger))
           "></app-hamburger-table-renderer>
-        <button (click)="loadCurrentHamburger(burger)">
+        <button (click)="loadCurrentHamburger(burger.id)" [id]="burger.id">
           Load this Burger as Current Burger
         </button>
       </div>
