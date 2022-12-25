@@ -1,41 +1,50 @@
-<div class="current-hamburger-interaction">
-  <app-hamburger-renderer
-    *ngIf="!orderSuccess"
-    [currentBurger]="currentBurger"></app-hamburger-renderer>
-  <app-hamburger-interaction-tools
-    *ngIf="!orderSuccess"
-    [currentBurger]="currentBurger"
-    [ingredientsController]="ingredientsControl"
-    [totalIngredientsControl]="totalIngredientsControl"
-    (childEventEmitter)="handleAdditionOrRemoval($event)"
-    (otherEventEmitter)="handleOrder($event)"></app-hamburger-interaction-tools>
-  <button (click)="resetCurrentBurger()">Remove all Ingredients</button>
-  <div *ngIf="orderSuccess">
-    <h1>Thanks for your order, it will be available to eat really soon!</h1>
+<div class="grid-container">
+  <div class="current-hamburger-interaction">
+    <div class="burger-canvas">
+      <app-hamburger-renderer
+        *ngIf="!orderSuccess"
+        [currentBurger]="currentBurger"></app-hamburger-renderer>
+    </div>
+    <div class="burger-tools-container">
+      <app-hamburger-interaction-tools
+        *ngIf="!orderSuccess"
+        [currentBurger]="currentBurger"
+        [ingredientsController]="ingredientsControl"
+        [totalIngredientsControl]="totalIngredientsControl"
+        (childEventEmitter)="handleAdditionOrRemoval($event)"
+        (otherEventEmitter)="
+          handleOrder($event)
+        "></app-hamburger-interaction-tools>
+      <button (click)="resetCurrentBurger()">Remove all Ingredients</button>
+    </div>
+    <div *ngIf="orderSuccess">
+      <h1>Thanks for your order, it will be available to eat really soon!</h1>
+    </div>
   </div>
-</div>
-<div class="burger-history">
-  <h1>Hamburger Order History</h1>
-  <ng-template #noBurgers>
-    <h2>
-      Sorry, there are no previously ordered Burgers. Please build one and place
-      the order!
-    </h2>
-  </ng-template>
-  <div
-    *ngIf="hamburgerOrderHistory.length > 0; else noBurgers"
-    class="burger-history-cards-container">
-    <div *ngFor="let burger of hamburgerOrderHistory" class="burger-card">
-      <app-hamburger-renderer [currentBurger]="burger"></app-hamburger-renderer>
-      <div class="card-info-interaction">
-        <app-hamburger-table-renderer
-          [ingredientsController]="getIngredientsController(burger)"
-          [totalIngredientsControl]="
-            getTotalIngredientsControl(getIngredientsController(burger))
-          "></app-hamburger-table-renderer>
-        <button (click)="loadCurrentHamburger(burger)">
-          Load this Burger as Current Burger
-        </button>
+  <div class="burger-history">
+    <h1>Hamburger Order History</h1>
+    <ng-template #noBurgers>
+      <h2>
+        Sorry, there are no previously ordered Burgers. Please build one and
+        place the order!
+      </h2>
+    </ng-template>
+    <div
+      *ngIf="hamburgerOrderHistory.length > 0; else noBurgers"
+      class="burger-history-cards-container">
+      <div *ngFor="let burger of hamburgerOrderHistory" class="burger-card">
+        <app-hamburger-renderer
+          [currentBurger]="burger"></app-hamburger-renderer>
+        <div class="card-info-interaction">
+          <app-hamburger-table-renderer
+            [ingredientsController]="getIngredientsController(burger)"
+            [totalIngredientsControl]="
+              getTotalIngredientsControl(getIngredientsController(burger))
+            "></app-hamburger-table-renderer>
+          <button (click)="loadCurrentHamburger(burger)">
+            Set to current burger
+          </button>
+        </div>
       </div>
     </div>
   </div>

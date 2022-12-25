@@ -1,9 +1,7 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -22,16 +20,9 @@ import {
   templateUrl: './hamburger-interaction-tools.component.html',
   styleUrls: ['./hamburger-interaction-tools.component.scss'],
 })
-export class HamburgerInteractionToolsComponent
-  implements AfterViewInit, OnChanges
-{
+export class HamburgerInteractionToolsComponent {
   @Input()
   totalIngredientsControl!: { type: string; units: number; price: number };
-  currencyConversionRate: number = 1;
-  currencyCode: string = 'USD';
-  currencies = currencyMap;
-  ingredientsPricing = ingredientPrice;
-  ingredientsKeys = Array.from(ingredientPrice.keys());
   @Input()
   ingredientsController!: Array<IngredientController>;
   @Input()
@@ -41,16 +32,13 @@ export class HamburgerInteractionToolsComponent
     new EventEmitter<HamburgerIngredientEvent>();
   @Output()
   otherEventEmitter: EventEmitter<string> = new EventEmitter<string>();
+  currencyConversionRate: number = 1;
+  currencyCode: string = 'USD';
+  currencies = currencyMap;
+  ingredientsPricing = ingredientPrice;
+  ingredientsKeys = Array.from(ingredientPrice.keys());
   basePrice = 1.0;
   constructor() {}
-  ngAfterViewInit(): void {
-    console.log('this.ingredientsController');
-    console.log(this.ingredientsController);
-    console.log('this.currentBurger');
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('OK');
-  }
   updateCurrency(event: Event | { target: EventTarget | HTMLInputElement }) {
     const value = (event?.target as HTMLInputElement).value;
     this.currencyConversionRate = (

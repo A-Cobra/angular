@@ -1,24 +1,58 @@
-.current-hamburger-container{
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
+$light-sky-blue:rgba(238,243,255,1);
+$navy-blue:rgba(31,62,114,1);
+$bright-blue: rgba(40,72,198,1);
+$main-color-shadow: rgba(40,72,198,0.2);
+
+.grid-container{
+  display: grid;
+  gap: 25px;
+}
+.current-hamburger-interaction{
+  padding: 0 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  .burger-canvas{
+    flex: 1 1 450px;
+    max-width: 550px;
+  }
+}
+.burger-history{
+  display: grid;
+  gap: 25px;
+  h1{
+    text-align: center;
+    color: $bright-blue;
+  }
 }
 .burger-history-cards-container{
-  // display: flex;
-  // // display: grid;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // gap: 25px;
-  // background-color: red;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 20px;
+  .burger-card{
+    flex: 1 1 300px;
+    max-width: 550px;
+    background-color: $light-sky-blue;
+    padding: 30px;
+    border-radius: 5px;
+    &:hover{
+      box-shadow: 5px 5px 20px $main-color-shadow;
+      border: solid 2px $navy-blue;
+      background-color: white;
+    }
+  }
 }
-.burger-card{
-  // background-color: blue;
-  // flex: 0 1 250px;
-  // max-width: 550px;
-  // width: 250px;
-}
-
 .card-info-interaction{
   display: flex;
+}
+
+@media screen and (max-width: 720px) {
+  .burger-history-cards-container,
+  .current-hamburger-interaction{
+    padding: 0 30px;
+  }
 }

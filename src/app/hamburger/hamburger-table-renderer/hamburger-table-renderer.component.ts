@@ -10,11 +10,11 @@ import { ingredientPrice } from 'src/app/models/ingredient-price.map';
 export class HamburgerTableRendererComponent {
   @Input()
   ingredientsController!: Array<IngredientController>;
+  @Input()
+  totalIngredientsControl!: { type: string; units: number; price: number };
   ingredientsPricing = ingredientPrice;
   currencyConversionRate: number = 1;
   currencyCode: string = 'USD';
-  @Input()
-  totalIngredientsControl!: { type: string; units: number; price: number };
   basePrice = 1.0;
   constructor() {}
 }
