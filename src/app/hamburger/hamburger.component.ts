@@ -3,7 +3,7 @@ import { HamburgerIngredientEvent } from '../models/hamburger-ingredient-event.t
 import { Hamburger } from '../models/hamburger.interface';
 import { IngredientController } from '../models/ingredient-controller.type';
 import { ingredientPrice } from '../models/ingredient-price.map';
-import { LocalStorageService } from '../services/local-storage.service';
+import { LocalStorageService } from '../services/local-storage-service/local-storage.service';
 import { countElementsInList } from '../utils/count-elements-in-list.function';
 import { generateId } from '../utils/generate-id.function';
 

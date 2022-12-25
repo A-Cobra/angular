@@ -9,11 +9,11 @@
     <td>{{ ingredient.units }}</td>
     <td>
       {{
-        ingredientsPricing.get(ingredient.type) *
-          ingredient.units *
-          currencyConversionRate | currency : currencyCode : 'symbol' : '1.2-2'
+        ingredientsPricing.get(ingredient.type)
+          | conversionRate : currencyConversionRate
+          | units : ingredient.units
+          | currency : currencyCode : 'symbol' : '1.2-2'
       }}
-      <!-- Piping Missing -->
     </td>
   </tr>
   <tr>
@@ -21,7 +21,8 @@
     <td>{{ totalIngredientsControl.units }}</td>
     <td>
       {{
-        (totalIngredientsControl.price + basePrice) * currencyConversionRate
+        totalIngredientsControl.price + basePrice
+          | conversionRate : currencyConversionRate
           | currency : currencyCode : 'symbol' : '1.2-2'
       }}
     </td>

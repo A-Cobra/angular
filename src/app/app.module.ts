@@ -8,6 +8,8 @@ import { HamburgerIngredientComponent } from './hamburger/hamburger-ingredient/h
 import { HamburgerInteractionToolsComponent } from './hamburger/hamburger-interaction-tools/hamburger-interaction-tools.component';
 import { HamburgerTableRendererComponent } from './hamburger/hamburger-table-renderer/hamburger-table-renderer.component';
 import { HamburgerRendererComponent } from './hamburger/hamburger-renderer/hamburger-renderer.component';
+import { UnitsPipe } from './pipes/units/units.pipe';
+import { ConversionRatePipe } from './pipes/conversion/conversion-rate.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HamburgerRendererComponent } from './hamburger/hamburger-renderer/hambu
     HamburgerInteractionToolsComponent,
     HamburgerTableRendererComponent,
     HamburgerRendererComponent,
+    UnitsPipe,
+    ConversionRatePipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
