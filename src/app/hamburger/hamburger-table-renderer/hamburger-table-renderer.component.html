@@ -5,7 +5,7 @@
     <th>Total</th>
   </tr>
   <tr *ngFor="let ingredient of ingredientsController">
-    <td>{{ ingredient.type }}</td>
+    <td>{{ ingredient.type | titlecase }}</td>
     <td>{{ ingredient.units }}</td>
     <td>
       {{
