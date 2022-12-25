@@ -146,4 +146,53 @@ export class HamburgerComponent {
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
   }
+  getIngredientsController(burger: Hamburger) {
+    const ingredientsControl: Array<IngredientController> = [];
+    for (const ingredient of burger.ingredients.slice(
+      1,
+      burger.ingredients.length - 1
+    )) {
+      let breakOuterLoop = false;
+      if (ingredientsControl.length > 1) {
+        for (const ingredientControl of ingredientsControl) {
+          if (ingredientControl.type === ingredient) {
+            breakOuterLoop = true;
+            continue;
+          }
+        }
+      }
+      if (!breakOuterLoop) {
+        ingredientsControl.push({
+          type: ingredient,
+          units: countElementsInList(
+            this.currentBurger.ingredients,
+            ingredient
+          ),
+        });
+      }
+    }
+    console.log('ingredientsControl');
+    console.log(ingredientsControl);
+    return ingredientsControl;
+  }
+  getTotalIngredientsControl(ingredientsControl: Array<IngredientController>) {
+    const totalIngredientsControl: {
+      type: string;
+      units: number;
+      price: number;
+    } = {
+      type: 'Total',
+      units: 0,
+      price: 0,
+    };
+    ingredientsControl.forEach(element => {
+      totalIngredientsControl.units += element.units;
+      totalIngredientsControl.price +=
+        element.units * this.ingredientsPricing.get(element.type);
+    });
+    return totalIngredientsControl;
+  }
+  loadCurrentHamburger(burger: Hamburger) {
+    // this.currentBurger.ingredients = burger.ingredients;
+  }
 }

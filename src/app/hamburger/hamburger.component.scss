@@ -1,0 +1,24 @@
+.current-hamburger-container{
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+}
+.burger-history-cards-container{
+  // display: flex;
+  // // display: grid;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // gap: 25px;
+  // background-color: red;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.burger-card{
+  // background-color: blue;
+  // flex: 0 1 250px;
+  // max-width: 550px;
+  // width: 250px;
+}
+
+.card-info-interaction{
+  display: flex;
+}

@@ -4,7 +4,7 @@
     *ngFor="let currency of currencies | keyvalue"
     [selected]="currency.key === 'us dollar'"
     [value]="currency.key">
-    {{ currency.key }}
+    {{ currency.key | titlecase }}
   </option>
 </select>
 <!-- <app-hamburger-table-renderer
@@ -19,7 +19,7 @@
     <th>Total</th>
   </tr>
   <tr *ngFor="let ingredient of ingredientsController">
-    <td>{{ ingredient.type }}</td>
+    <td>{{ ingredient.type | titlecase }}</td>
     <td>{{ ingredient.units }}</td>
     <td>
       {{
@@ -31,7 +31,7 @@
     </td>
   </tr>
   <tr>
-    <td>{{ totalIngredientsControl.type }}</td>
+    <td>{{ totalIngredientsControl.type | titlecase }}</td>
     <td>{{ totalIngredientsControl.units }}</td>
     <td>
       {{

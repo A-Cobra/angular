@@ -7,6 +7,7 @@ import { HamburgerComponent } from './hamburger/hamburger.component';
 import { HamburgerIngredientComponent } from './hamburger/hamburger-ingredient/hamburger-ingredient.component';
 import { HamburgerInteractionToolsComponent } from './hamburger/hamburger-interaction-tools/hamburger-interaction-tools.component';
 import { HamburgerTableRendererComponent } from './hamburger/hamburger-table-renderer/hamburger-table-renderer.component';
+import { HamburgerRendererComponent } from './hamburger/hamburger-renderer/hamburger-renderer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HamburgerTableRendererComponent } from './hamburger/hamburger-table-ren
     HamburgerIngredientComponent,
     HamburgerInteractionToolsComponent,
     HamburgerTableRendererComponent,
+    HamburgerRendererComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
