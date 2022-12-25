@@ -20,7 +20,13 @@ const currencies: Array<{
   },
 ];
 
-export const currencyMap = new Map();
+export const currencyMap = new Map<
+  string,
+  {
+    code: string;
+    conversionRate: number;
+  }
+>();
 currencies.forEach(element => {
   currencyMap.set(element.name, {
     code: element.code,

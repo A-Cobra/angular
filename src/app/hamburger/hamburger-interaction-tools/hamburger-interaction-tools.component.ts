@@ -53,8 +53,18 @@ export class HamburgerInteractionToolsComponent
   }
   updateCurrency(event: Event | { target: EventTarget | HTMLInputElement }) {
     const value = (event?.target as HTMLInputElement).value;
-    this.currencyConversionRate = this.currencies.get(value).conversionRate;
-    this.currencyCode = this.currencies.get(value).code;
+    this.currencyConversionRate = (
+      this.currencies.get(value) as {
+        code: string;
+        conversionRate: number;
+      }
+    ).conversionRate;
+    this.currencyCode = (
+      this.currencies.get(value) as {
+        code: string;
+        conversionRate: number;
+      }
+    ).code;
   }
   hasAtLeastOne(ingredient: HamburgerIngredient) {
     for (const ingredientControl of this.ingredientsController) {
