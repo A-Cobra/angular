@@ -76,7 +76,7 @@ export class HamburgerComponent {
     this.ingredientsControl.forEach(element => {
       this.totalIngredientsControl.units += element.units;
       this.totalIngredientsControl.price +=
-        element.units * this.ingredientsPricing.get(element.type);
+        element.units * (this.ingredientsPricing.get(element.type) as number);
     });
   }
   fillCurrentBurger() {
@@ -137,7 +137,7 @@ export class HamburgerComponent {
     ingredientsControl.forEach(element => {
       totalIngredientsControl.units += element.units;
       totalIngredientsControl.price +=
-        element.units * this.ingredientsPricing.get(element.type);
+        element.units * (this.ingredientsPricing.get(element?.type) as number);
     });
     return totalIngredientsControl;
   }

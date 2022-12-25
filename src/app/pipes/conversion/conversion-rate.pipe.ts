@@ -4,10 +4,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'conversionRate',
 })
 export class ConversionRatePipe implements PipeTransform {
-  transform(value: number, args: number): number {
+  transform(value: number | undefined, args: number): number {
     if (value && args) {
       return value * args;
     }
-    return value;
+    if (typeof value === undefined) {
+      return 0;
+    }
+    return value as number;
   }
 }

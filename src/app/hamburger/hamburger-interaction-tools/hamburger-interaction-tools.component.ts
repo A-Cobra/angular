@@ -66,7 +66,7 @@ export class HamburgerInteractionToolsComponent
       }
     ).code;
   }
-  hasAtLeastOne(ingredient: HamburgerIngredient) {
+  hasAtLeastOne(ingredient: HamburgerIngredient | string) {
     for (const ingredientControl of this.ingredientsController) {
       if (ingredientControl.type === ingredient) {
         if (ingredientControl.units >= 1) {
@@ -78,16 +78,16 @@ export class HamburgerInteractionToolsComponent
     }
     return false;
   }
-  removeEventEmit(ingredient: HamburgerIngredient) {
+  removeEventEmit(ingredient: HamburgerIngredient | string) {
     this.childEventEmitter.emit({
       type: 'remove',
-      ingredient: ingredient,
+      ingredient: ingredient as HamburgerIngredient,
     });
   }
-  addEventEmit(ingredient: HamburgerIngredient) {
+  addEventEmit(ingredient: HamburgerIngredient | string) {
     this.childEventEmitter.emit({
       type: 'add',
-      ingredient: ingredient,
+      ingredient: ingredient as HamburgerIngredient,
     });
   }
   orderEventEmit() {

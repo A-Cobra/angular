@@ -5,7 +5,7 @@ export enum IngredientPricePair {
   tomato = 0.23,
 }
 type Ingredient = keyof typeof IngredientPricePair;
-export const ingredientPrice = new Map();
+export const ingredientPrice = new Map<string, number>();
 const ingredientKeys = Object.keys(IngredientPricePair).filter(x =>
   isNaN(parseFloat(x))
 );
