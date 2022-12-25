@@ -9,6 +9,7 @@
     [totalIngredientsControl]="totalIngredientsControl"
     (childEventEmitter)="handleAdditionOrRemoval($event)"
     (otherEventEmitter)="handleOrder($event)"></app-hamburger-interaction-tools>
+  <button (click)="resetCurrentBurger()">Remove all Ingredients</button>
   <div *ngIf="orderSuccess">
     <h1>Thanks for your order, it will be available to eat really soon!</h1>
   </div>

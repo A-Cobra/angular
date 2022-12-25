@@ -199,11 +199,25 @@ export class HamburgerComponent {
     return totalIngredientsControl;
   }
   loadCurrentHamburger(burger: Hamburger) {
-    this.currentBurger.ingredients = burger.ingredients.slice();
+    if (
+      confirm(
+        'Are you sure that you want to set this burger to the current one? It can not be reversed'
+      )
+    ) {
+      this.currentBurger.ingredients = burger.ingredients.slice();
+      this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+      this.ingredientsControl = this.getIngredientsController(
+        this.currentBurger
+      );
+      this.totalIngredientsControl = this.getTotalIngredientsControl(
+        this.ingredientsControl
+      );
+    }
+  }
+  resetCurrentBurger() {
+    this.currentBurger.ingredients = this.defaultBurger.ingredients.slice();
+    this.fillIngredientsControl();
+    this.refillTotalIngredientsControl();
     this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
-    this.ingredientsControl = this.getIngredientsController(this.currentBurger);
-    this.totalIngredientsControl = this.getTotalIngredientsControl(
-      this.ingredientsControl
-    );
   }
 }
