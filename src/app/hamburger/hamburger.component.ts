@@ -103,6 +103,9 @@ export class HamburgerComponent {
     if (event === 'order') {
       console.log('Processing Order');
       this.currentBurger.id = generateId(15);
+      while (this.checkExistingId(this.currentBurger.id)) {
+        this.currentBurger.id = generateId(15);
+      }
       this.defaultBurger.id = generateId(15);
       this.hamburgerOrderHistory.unshift(this.currentBurger);
       this.lsService.put('currentBurger', JSON.stringify(this.defaultBurger));
@@ -219,5 +222,12 @@ export class HamburgerComponent {
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
     this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+  }
+  checkExistingId(id: string): boolean {
+    return this.hamburgerOrderHistory.filter(burger => {
+      return burger.id === id;
+    }).length === 0
+      ? false
+      : true;
   }
 }
