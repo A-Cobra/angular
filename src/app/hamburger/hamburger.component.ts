@@ -189,17 +189,12 @@ export class HamburgerComponent {
     });
     return totalIngredientsControl;
   }
-  loadCurrentHamburger(burgerId: string) {
-    // this.currentBurger.ingredients = burger.ingredients;
-    // this.currentBurger.ingredients = Object.assign({}, burger).ingredients;
-    console.log(burgerId);
-    // this.currentBurger.ingredients = (
-    //   this.hamburgerOrderHistory as Hamburger[]
-    // ).find(hamburger => hamburger.id === burgerId)?.ingredients;
-    for (const hamburger of this.hamburgerOrderHistory) {
-      if (hamburger.id === burgerId) {
-        this.currentBurger.ingredients = hamburger.ingredients;
-      }
-    }
+  loadCurrentHamburger(burger: Hamburger) {
+    this.currentBurger.ingredients = burger.ingredients;
+    this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+    this.ingredientsControl = this.getIngredientsController(this.currentBurger);
+    this.totalIngredientsControl = this.getTotalIngredientsControl(
+      this.ingredientsControl
+    );
   }
 }
