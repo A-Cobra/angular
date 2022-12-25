@@ -20,24 +20,6 @@ export class HamburgerComponent {
   };
   totalIngredientsControl!: { type: string; units: number; price: number };
   ingredientsControl: Array<IngredientController>;
-  hamburgerList: Array<Hamburger> = [
-    {
-      ingredients: ['top-bread', 'meat', 'lettuce', 'bottom-bread'],
-      id: '123',
-    },
-    {
-      ingredients: [
-        'top-bread',
-        'meat',
-        'lettuce',
-        'tomato',
-        'cheese',
-        'meat',
-        'bottom-bread',
-      ],
-      id: '123',
-    },
-  ];
   hamburgerOrderHistory: Array<Hamburger> = [];
   currentBurger!: Hamburger;
   ingredientsPricing = ingredientPrice;
@@ -48,67 +30,29 @@ export class HamburgerComponent {
     this.fillCurrentBurger();
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
-    // this.lsService.put(
-    //   'hamburgerOrderHistory',
-    //   JSON.stringify(this.hamburgerOrderHistory.slice(1))
-    // );
   }
   private fillIngredientsControl() {
-    this.ingredientsControl = [];
-    for (const ingredient of this.currentBurger.ingredients.slice(
-      1,
-      this.currentBurger.ingredients.length - 1
-    )) {
-      let breakOuterLoop = false;
-      if (this.ingredientsControl.length >= 1) {
-        /*CAN BE THE PROBLEM*/
-        for (const ingredientControl of this.ingredientsControl) {
-          if (ingredientControl.type === ingredient) {
-            breakOuterLoop = true;
-            continue;
-          }
-        }
-      }
-      if (!breakOuterLoop) {
-        this.ingredientsControl.unshift({
-          type: ingredient,
-          units: countElementsInList(
-            this.currentBurger.ingredients,
-            ingredient
-          ),
-        });
-      }
-    }
-    console.log('this.ingredientsControl inside filling ingredients');
-    console.log(this.ingredientsControl);
+    this.ingredientsControl = this.getIngredientsController(this.currentBurger);
   }
   handleAdditionOrRemoval(event: HamburgerIngredientEvent) {
-    console.log(event);
     if (event.type === 'remove') {
       const index = this.currentBurger.ingredients.indexOf(event.ingredient);
-      console.log(`Index: ${index}`);
       this.currentBurger.ingredients.splice(index, 1);
-      this.fillIngredientsControl();
-      this.refillTotalIngredientsControl();
     } else {
       this.currentBurger.ingredients.splice(1, 0, event.ingredient);
-      console.log('this.currentBurger.ingredients after adding');
-      console.log(this.currentBurger.ingredients);
-      this.fillIngredientsControl();
-      this.refillTotalIngredientsControl();
     }
-    this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+    this.fillIngredientsControl();
+    this.refillTotalIngredientsControl();
+    this.updateCurrentBurgerInLocalStorage(this.currentBurger);
   }
   handleOrder(event: string) {
     if (event === 'order') {
-      console.log('Processing Order');
       this.currentBurger.id = generateId(15);
       while (this.checkExistingId(this.currentBurger.id)) {
         this.currentBurger.id = generateId(15);
       }
-      this.defaultBurger.id = generateId(15);
       this.hamburgerOrderHistory.unshift(this.currentBurger);
-      this.lsService.put('currentBurger', JSON.stringify(this.defaultBurger));
+      this.updateCurrentBurgerInLocalStorage(this.defaultBurger);
       this.lsService.put(
         'hamburgerOrderHistory',
         JSON.stringify(this.hamburgerOrderHistory)
@@ -150,8 +94,6 @@ export class HamburgerComponent {
     } else {
       this.hamburgerOrderHistory = [];
     }
-    console.log('this.hamburgerOrderHistory');
-    console.log(this.hamburgerOrderHistory);
   }
   fillAllObjectsAndArrays() {
     this.fillCurrentBurger();
@@ -164,24 +106,22 @@ export class HamburgerComponent {
       1,
       burger.ingredients.length - 1
     )) {
-      let breakOuterLoop = false;
+      let continueOuterLoop = false;
       if (ingredientsControl.length >= 1) {
         for (const ingredientControl of ingredientsControl) {
           if (ingredientControl.type === ingredient) {
-            breakOuterLoop = true;
+            continueOuterLoop = true;
             continue;
           }
         }
       }
-      if (!breakOuterLoop) {
+      if (!continueOuterLoop) {
         ingredientsControl.push({
           type: ingredient,
           units: countElementsInList(burger.ingredients, ingredient),
         });
       }
     }
-    console.log('ingredientsControl');
-    console.log(ingredientsControl);
     return ingredientsControl;
   }
   getTotalIngredientsControl(ingredientsControl: Array<IngredientController>) {
@@ -208,7 +148,7 @@ export class HamburgerComponent {
       )
     ) {
       this.currentBurger.ingredients = burger.ingredients.slice();
-      this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+      this.updateCurrentBurgerInLocalStorage(this.currentBurger);
       this.ingredientsControl = this.getIngredientsController(
         this.currentBurger
       );
@@ -221,7 +161,7 @@ export class HamburgerComponent {
     this.currentBurger.ingredients = this.defaultBurger.ingredients.slice();
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
-    this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
+    this.updateCurrentBurgerInLocalStorage(this.currentBurger);
   }
   checkExistingId(id: string): boolean {
     return this.hamburgerOrderHistory.filter(burger => {
@@ -229,5 +169,8 @@ export class HamburgerComponent {
     }).length === 0
       ? false
       : true;
+  }
+  updateCurrentBurgerInLocalStorage(burger: Hamburger) {
+    this.lsService.put('currentBurger', JSON.stringify(burger));
   }
 }
