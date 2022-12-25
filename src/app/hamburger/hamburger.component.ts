@@ -48,6 +48,10 @@ export class HamburgerComponent {
     this.fillCurrentBurger();
     this.fillIngredientsControl();
     this.refillTotalIngredientsControl();
+    // this.lsService.put(
+    //   'hamburgerOrderHistory',
+    //   JSON.stringify(this.hamburgerOrderHistory.slice(1))
+    // );
   }
   private fillIngredientsControl() {
     this.ingredientsControl = [];
@@ -56,7 +60,8 @@ export class HamburgerComponent {
       this.currentBurger.ingredients.length - 1
     )) {
       let breakOuterLoop = false;
-      if (this.ingredientsControl.length > 1) {
+      if (this.ingredientsControl.length >= 1) {
+        /*CAN BE THE PROBLEM*/
         for (const ingredientControl of this.ingredientsControl) {
           if (ingredientControl.type === ingredient) {
             breakOuterLoop = true;
@@ -65,7 +70,7 @@ export class HamburgerComponent {
         }
       }
       if (!breakOuterLoop) {
-        this.ingredientsControl.push({
+        this.ingredientsControl.unshift({
           type: ingredient,
           units: countElementsInList(
             this.currentBurger.ingredients,
@@ -74,6 +79,8 @@ export class HamburgerComponent {
         });
       }
     }
+    console.log('this.ingredientsControl inside filling ingredients');
+    console.log(this.ingredientsControl);
   }
   handleAdditionOrRemoval(event: HamburgerIngredientEvent) {
     console.log(event);
@@ -85,6 +92,8 @@ export class HamburgerComponent {
       this.refillTotalIngredientsControl();
     } else {
       this.currentBurger.ingredients.splice(1, 0, event.ingredient);
+      console.log('this.currentBurger.ingredients after adding');
+      console.log(this.currentBurger.ingredients);
       this.fillIngredientsControl();
       this.refillTotalIngredientsControl();
     }
@@ -153,7 +162,7 @@ export class HamburgerComponent {
       burger.ingredients.length - 1
     )) {
       let breakOuterLoop = false;
-      if (ingredientsControl.length > 1) {
+      if (ingredientsControl.length >= 1) {
         for (const ingredientControl of ingredientsControl) {
           if (ingredientControl.type === ingredient) {
             breakOuterLoop = true;
@@ -190,7 +199,7 @@ export class HamburgerComponent {
     return totalIngredientsControl;
   }
   loadCurrentHamburger(burger: Hamburger) {
-    this.currentBurger.ingredients = burger.ingredients;
+    this.currentBurger.ingredients = burger.ingredients.slice();
     this.lsService.put('currentBurger', JSON.stringify(this.currentBurger));
     this.ingredientsControl = this.getIngredientsController(this.currentBurger);
     this.totalIngredientsControl = this.getTotalIngredientsControl(
