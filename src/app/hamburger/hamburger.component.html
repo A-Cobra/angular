@@ -15,7 +15,9 @@
         (otherEventEmitter)="
           handleOrder($event)
         "></app-hamburger-interaction-tools>
-      <button (click)="resetCurrentBurger()">Remove all Ingredients</button>
+      <button (click)="resetCurrentBurger()" *ngIf="!orderSuccess">
+        Remove all Ingredients
+      </button>
     </div>
     <div *ngIf="orderSuccess">
       <h1>Thanks for your order, it will be available to eat really soon!</h1>

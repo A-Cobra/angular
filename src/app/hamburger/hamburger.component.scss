@@ -17,6 +17,9 @@ $main-color-shadow: rgba(40,72,198,0.2);
     flex: 1 1 450px;
     max-width: 550px;
   }
+  h1{
+    text-align: center;
+  }
 }
 .burger-history{
   display: grid;
@@ -24,6 +27,9 @@ $main-color-shadow: rgba(40,72,198,0.2);
   h1{
     text-align: center;
     color: $bright-blue;
+  }
+  h2{
+    text-align: center;
   }
 }
 .burger-history-cards-container{
