@@ -1,16 +1,9 @@
-$main-color: rgba(40,72,198,1);
 $main-color-shadow: rgba(40,72,198,0.2);
 $navy-blue:rgba(31,62,114,1);
-$text-color: rgba(112,126,149,1);
-$separator:rgba(238,238,238,1);
-$main-perk: rgba(255,208,18,1);
-$main-perk-background: rgba(255,208,18,0.15);
-
 .main{
   display: grid;
   gap: 20px;
 }
-
 header{
   text-align: center;
   color: $navy-blue;

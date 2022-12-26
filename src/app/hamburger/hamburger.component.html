@@ -1,13 +1,11 @@
 <div class="grid-container">
   <div class="current-hamburger-interaction">
-    <div class="burger-canvas">
+    <div *ngIf="!orderSuccess" class="burger-canvas">
       <app-hamburger-renderer
-        *ngIf="!orderSuccess"
         [currentBurger]="currentBurger"></app-hamburger-renderer>
     </div>
-    <div class="burger-tools-container">
+    <div *ngIf="!orderSuccess" class="burger-tools-container">
       <app-hamburger-interaction-tools
-        *ngIf="!orderSuccess"
         [currentBurger]="currentBurger"
         [ingredientsController]="ingredientsControl"
         [totalIngredientsControl]="totalIngredientsControl"
@@ -15,9 +13,9 @@
         (otherEventEmitter)="
           handleOrder($event)
         "></app-hamburger-interaction-tools>
-      <button (click)="resetCurrentBurger()" *ngIf="!orderSuccess">
-        Remove all Ingredients
-      </button>
+      <div class="reset-btn-container">
+        <button (click)="resetCurrentBurger()">Remove all Ingredients</button>
+      </div>
     </div>
     <div *ngIf="orderSuccess">
       <h1>Thanks for your order, it will be available to eat really soon!</h1>
