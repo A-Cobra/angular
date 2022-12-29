@@ -6,6 +6,9 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserCreationFormComponent } from './components/user-creation-form/user-creation-form.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+//Formulary
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     UserManagementComponent,
@@ -13,7 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     UserCreationFormComponent,
     NotFoundComponent,
   ],
-  imports: [CommonModule, UserManagementRoutingModule],
+  imports: [CommonModule, UserManagementRoutingModule, FormsModule],
   exports: [UserManagementComponent, UserCreationFormComponent],
 })
 export class UserManagementModule {}
