@@ -6,7 +6,7 @@ export interface Employee {
   email: string;
   password: string;
   profileImage: string;
-  birthDate?: Date;
+  birthDate: '';
   phone: number;
   personalSiteUrl: string;
   about: string;

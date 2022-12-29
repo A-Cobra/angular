@@ -6,6 +6,7 @@ export const defaultEmployee: Employee = {
   email: '',
   password: '',
   profileImage: '',
+  birthDate: '',
   phone: 0,
   personalSiteUrl: '',
   about: '',

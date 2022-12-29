@@ -15,6 +15,7 @@
       type="text"
       id="firstName"
       name="firstName"
+      required=""
       min="10"
       placeholder="Introduce your first name"
       [(ngModel)]="currentEmployee.firstName" />
@@ -33,6 +34,7 @@
       type="text"
       id="lastName"
       name="lastName"
+      required=""
       placeholder="Introduce your last name"
       [(ngModel)]="currentEmployee.lastName" />
     <div class="lastName-errors"></div>
@@ -45,6 +47,7 @@
       type="email"
       id="email"
       name="email"
+      required=""
       placeholder="name@domain.com"
       [(ngModel)]="currentEmployee.email" />
     <div class="email-errors"></div>
@@ -58,6 +61,7 @@
       id="password"
       name="password"
       placeholder="Password"
+      required=""
       [(ngModel)]="currentEmployee.password" />
     <div class="password-errors"></div>
   </div>
@@ -71,14 +75,121 @@
       id="passwordConfirmation"
       name="passwordConfirmation"
       placeholder="Confirm your Password"
+      required=""
       [(ngModel)]="passwordConfirmation" />
+
     <div class="password-confirmation-errors"></div>
+  </div>
+  <div class="form-group">
+    <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
+      >Profile Image Link</label
+    >
+    <input
+      type="text"
+      id="profileImage"
+      name="profileImage"
+      placeholder="Profile Image Url"
+      [(ngModel)]="currentEmployee.profileImage" />
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
+      >Birth Date</label
+    >
+    <input
+      (click)="clg($event)"
+      #birthDate="ngModel"
+      type="date"
+      id="birthDate"
+      name="birthDate"
+      [(ngModel)]="currentEmployee.birthDate" />
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
+      >Phone number</label
+    >
+    <input
+      #phone="ngModel"
+      type="number"
+      id="phone"
+      name="phone"
+      [(ngModel)]="currentEmployee.phone" />
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <label
+      [hidden]="currentEmployee.personalSiteUrl.length > 0"
+      for="personalSiteUrl"
+      >Personal Site Url</label
+    >
+    <input
+      type="text"
+      id="personalSiteUrl"
+      name="personalSiteUrl"
+      placeholder="Personal Site Url"
+      [(ngModel)]="currentEmployee.personalSiteUrl" />
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <label [hidden]="currentEmployee.about.length > 0" for="about">About</label>
+    <input
+      type="text"
+      id="about"
+      name="about"
+      placeholder="About"
+      [(ngModel)]="currentEmployee.about" />
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <label
+      ><input
+        type="radio"
+        value="male"
+        checked=""
+        name="gender"
+        [(ngModel)]="currentEmployee.gender" />Male
+    </label>
+    <label
+      ><input
+        type="radio"
+        value="female"
+        name="gender"
+        [(ngModel)]="currentEmployee.gender" />Female
+    </label>
+  </div>
+  <div>
+    <select
+      (change)="resetState()"
+      #country="ngModel"
+      name="country"
+      id="country"
+      [(ngModel)]="currentEmployee.address.country">
+      <option value="none" selected="true">Select a Country</option>
+      <option [value]="country" *ngFor="let country of countryList">
+        {{ country | titlecase }}
+      </option>
+    </select>
+    <select
+      *ngIf="country.value !== 'none' && stateList.length > 0"
+      #state="ngModel"
+      name="state"
+      id="state"
+      [(ngModel)]="currentEmployee.address.state">
+      <option value="none" [selected]="true && country.value === 'none'">
+        Select a State
+      </option>
+      <option [value]="state" *ngFor="let state of stateList">
+        {{ state | titlecase }}
+      </option>
+    </select>
   </div>
   <div class="btn-container">
     <ng-template #createEmployeeButton>
-      <button>Create User</button>
+      <button [disabled]="employeeCreationForm.invalid">Create User</button>
     </ng-template>
     <button
+      [disabled]="employeeCreationForm.invalid"
       *ngIf="editing; else createEmployeeButton"
       (click)="emitUpdateNotification()">
       Update User
