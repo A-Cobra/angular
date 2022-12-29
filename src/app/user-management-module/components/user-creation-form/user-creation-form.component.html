@@ -19,10 +19,11 @@
       placeholder="Introduce your first name"
       [(ngModel)]="currentEmployee.firstName" />
     <div
-      class="firstName-errors"
-      *ngIf="!firstName.pristine && firstName.errors?.['min']">
+      class="error"
+      *ngIf="!firstName.pristine && firstName.value.length < 10">
       Please type at least 10 characters
     </div>
+    <div class="error" *ngIf="firstName.pristine">Pristine</div>
   </div>
   <div class="form-group">
     <label [hidden]="currentEmployee.lastName.length > 0" for="lastName"
@@ -72,5 +73,15 @@
       placeholder="Confirm your Password"
       [(ngModel)]="passwordConfirmation" />
     <div class="password-confirmation-errors"></div>
+  </div>
+  <div class="btn-container">
+    <ng-template #createEmployeeButton>
+      <button>Create User</button>
+    </ng-template>
+    <button
+      *ngIf="editing; else createEmployeeButton"
+      (click)="emitUpdateNotification()">
+      Update User
+    </button>
   </div>
 </form>
