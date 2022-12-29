@@ -1,6 +1,7 @@
 import { Employee } from '../models/employee.interface';
 
 export const defaultEmployee: Employee = {
+  id: 0,
   firstName: '',
   lastName: '',
   email: '',

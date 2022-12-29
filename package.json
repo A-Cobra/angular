@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint-f": "ng lint --fix",
-    "sto": "ng serve -o"
+    "sto": "ng serve -o",
+    "fakeApi": "json-server --watch src/shared/db.json"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "json-server": "^0.17.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

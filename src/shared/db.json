@@ -1,0 +1,21 @@
+{
+  "employees":[
+    {
+      "id": 1,
+      "firstName": "Schneizel",
+      "lastName": "Kayser",
+      "email": "Schneizel@applaudo.com",
+      "password": "anypass",
+      "profileImage": "",
+      "birthDate": "",
+      "phone": 4342141451,
+      "personalSiteUrl": "fafsafasf",
+      "about": "fsaafasf",
+      "gender": "male",
+      "address": {
+        "country": "germany",
+        "state": "munich"
+      }
+    }
+  ]
+}
