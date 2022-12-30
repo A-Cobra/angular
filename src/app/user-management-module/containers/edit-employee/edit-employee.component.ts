@@ -13,7 +13,7 @@ import { defaultEmployee } from '../../utils/default-employee';
 export class EditEmployeeComponent implements OnInit, OnDestroy {
   queryError = false;
   endAllSubscriptions$: Subject<string> = new Subject<string>();
-  employee: Employee = defaultEmployee;
+  employee: Employee = Object.assign({}, defaultEmployee);
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -42,5 +42,6 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.endAllSubscriptions$.next('');
+    this.endAllSubscriptions$.unsubscribe();
   }
 }

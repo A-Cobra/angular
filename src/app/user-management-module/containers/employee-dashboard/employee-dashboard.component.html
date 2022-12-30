@@ -2,5 +2,6 @@
 <div class="employees-container">
   <app-employee-viewer
     [shortenedContent]="true"
+    [currentEmployee]="employee"
     *ngFor="let employee of employeeList"></app-employee-viewer>
 </div>

@@ -1,1 +1,28 @@
 <p>employee-viewer works!</p>
+<div>
+  <img
+    [src]="
+      currentEmployee.profileImage !== ''
+        ? currentEmployee.profileImage
+        : currentEmployee.gender === 'male'
+        ? defaultManPicture
+        : defaultWomanPicture
+    "
+    [alt]="currentEmployee + '.png'" />
+  <div>
+    <h3>First Name</h3>
+    <p>{{ currentEmployee.firstName }}</p>
+  </div>
+  <div>
+    <h3>Last Name</h3>
+    <p>{{ currentEmployee.lastName }}</p>
+  </div>
+  <div>
+    <h3>Email</h3>
+    <p>{{ currentEmployee.email }}</p>
+  </div>
+  <div>
+    <h3>Gender</h3>
+    <p>{{ currentEmployee.gender }}</p>
+  </div>
+</div>
