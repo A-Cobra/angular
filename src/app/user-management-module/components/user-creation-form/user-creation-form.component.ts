@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Employee } from '../../models/employee.interface';
 import { defaultEmployee } from '../../utils/default-employee';
 
@@ -10,10 +10,12 @@ import { defaultEmployee } from '../../utils/default-employee';
 export class UserCreationFormComponent {
   @Output()
   formEvent: EventEmitter<Employee> = new EventEmitter<Employee>();
+  @Input()
   editing: boolean = false;
   passwordConfirmation: string = '';
   countryList: string[] = ['spain'];
   stateList: string[] = ['Comunidad de Madrid'];
+  @Input()
   currentEmployee: Employee = Object.assign({}, defaultEmployee);
   constructor() {}
   emitUpdateNotification() {

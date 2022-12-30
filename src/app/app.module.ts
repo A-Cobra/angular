@@ -9,7 +9,7 @@ import { UserManagementModule } from './user-management-module/user-management.m
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, UserManagementModule],
+  imports: [BrowserModule, UserManagementModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

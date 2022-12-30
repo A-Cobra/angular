@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 //Formulary
 import { FormsModule } from '@angular/forms';
+import { EditEmployeeComponent } from './containers/edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     NavigationBarComponent,
     UserCreationFormComponent,
     NotFoundComponent,
+    EditEmployeeComponent,
   ],
   imports: [CommonModule, UserManagementRoutingModule, FormsModule],
   exports: [UserManagementComponent, UserCreationFormComponent],
