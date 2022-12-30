@@ -100,6 +100,7 @@
       type="date"
       id="birthDate"
       name="birthDate"
+      required=""
       [(ngModel)]="currentEmployee.birthDate" />
 
     <div class="error"></div>
@@ -113,6 +114,7 @@
       type="number"
       id="phone"
       name="phone"
+      required=""
       [(ngModel)]="currentEmployee.phone" />
     <div class="error"></div>
   </div>
@@ -163,6 +165,7 @@
       #country="ngModel"
       name="country"
       id="country"
+      required=""
       [(ngModel)]="currentEmployee.address.country">
       <option value="none" selected="true">Select a Country</option>
       <option [value]="country" *ngFor="let country of countryList">
@@ -174,6 +177,7 @@
       #state="ngModel"
       name="state"
       id="state"
+      required=""
       [(ngModel)]="currentEmployee.address.state">
       <option value="none" [selected]="true && country.value === 'none'">
         Select a State
@@ -183,12 +187,32 @@
       </option>
     </select>
   </div>
+  <div class="form-group">
+    <input
+      (change)="clg($event)"
+      #agree
+      id="terms"
+      name="terms"
+      type="checkbox" />
+    <label for="terms">Agree Terms and Conditions</label>
+  </div>
   <div class="btn-container">
     <ng-template #createEmployeeButton>
-      <button [disabled]="employeeCreationForm.invalid">Create User</button>
+      <button
+        [disabled]="
+          employeeCreationForm.invalid ||
+          currentEmployee.password !== passwordConfirmation ||
+          !agree.checked
+        ">
+        Create User
+      </button>
     </ng-template>
     <button
-      [disabled]="employeeCreationForm.invalid"
+      [disabled]="
+        employeeCreationForm.invalid ||
+        currentEmployee.password !== passwordConfirmation ||
+        !agree.checked
+      "
       *ngIf="editing; else createEmployeeButton"
       (click)="emitUpdateNotification()">
       Update User
