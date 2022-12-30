@@ -2,7 +2,7 @@
 <ng-template #createEmployee>
   <h1>Create a new Employee</h1>
 </ng-template>
-<h1 *ngIf="editing; else createEmployee">Create a new Employee</h1>
+<h1 *ngIf="editing; else createEmployee">Edit a Employee</h1>
 <div>CurrentEmployee: {{ currentEmployee | json }}</div>
 <div>Form: {{ employeeCreationForm.value | json }}</div>
 <form #employeeCreationForm="ngForm">

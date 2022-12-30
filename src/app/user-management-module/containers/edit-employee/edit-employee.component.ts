@@ -87,6 +87,8 @@ export class EditEmployeeComponent implements OnInit {
       console.log(data);
       if (data?.['id'] < this.employeesList.length) {
         this.employee = this.employeesList[data?.['id']];
+      } else {
+        this.router.navigate(['/']);
       }
     });
   }
