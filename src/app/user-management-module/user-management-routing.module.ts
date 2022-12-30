@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserCreationFormComponent } from './components/user-creation-form/user-creation-form.component';
 import { EditEmployeeComponent } from './containers/edit-employee/edit-employee.component';
+import { EmployeeDashboardComponent } from './containers/employee-dashboard/employee-dashboard.component';
 
 const routes: Routes = [
+  { path: 'employees', component: EmployeeDashboardComponent },
   {
     path: 'edit',
     children: [

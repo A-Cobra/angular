@@ -13,7 +13,14 @@ export class EmployeeService {
   baseUrl = 'employees';
   constructor(private http: HttpClient) {}
   getEmployees() {
+    console.log('Getting Employees');
+    console.log(`${this.localDatabase}/${this.baseUrl}`);
     return this.http.get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`);
+    // return this.http
+    //   .get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`)
+    //   .subscribe(data => {
+    //     console.log(data);
+    //   });
   }
   getSingleEmployee(id: string) {
     return this.http.get<Employee>(

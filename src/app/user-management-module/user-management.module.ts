@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './containers/edit-employee/edit-employee.component';
 import { EmployeeService } from './services/employee/employee.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EmployeeDashboardComponent } from './containers/employee-dashboard/employee-dashboard.component';
+import { EmployeeViewerComponent } from './components/employee-viewer/employee-viewer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserCreationFormComponent,
     NotFoundComponent,
     EditEmployeeComponent,
+    EmployeeDashboardComponent,
+    EmployeeViewerComponent,
   ],
   imports: [
     CommonModule,
