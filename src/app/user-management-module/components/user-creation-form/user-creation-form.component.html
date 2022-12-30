@@ -97,12 +97,11 @@
       >Birth Date</label
     >
     <input
-      (click)="clg($event)"
-      #birthDate="ngModel"
       type="date"
       id="birthDate"
       name="birthDate"
       [(ngModel)]="currentEmployee.birthDate" />
+
     <div class="error"></div>
   </div>
   <div class="form-group">

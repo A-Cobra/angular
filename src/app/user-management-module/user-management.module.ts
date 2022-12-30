@@ -9,6 +9,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 //Formulary
 import { FormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './containers/edit-employee/edit-employee.component';
+import { EmployeeService } from './services/employee/employee.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,13 @@ import { EditEmployeeComponent } from './containers/edit-employee/edit-employee.
     NotFoundComponent,
     EditEmployeeComponent,
   ],
-  imports: [CommonModule, UserManagementRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    UserManagementRoutingModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   exports: [UserManagementComponent, UserCreationFormComponent],
+  providers: [EmployeeService],
 })
 export class UserManagementModule {}

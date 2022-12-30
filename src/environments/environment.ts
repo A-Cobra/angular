@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  localDatabase: 'http://localhost:3000',
 };
 
 /*

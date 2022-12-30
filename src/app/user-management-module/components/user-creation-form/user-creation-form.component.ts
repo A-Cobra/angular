@@ -26,6 +26,7 @@ export class UserCreationFormComponent {
     this.currentEmployee.address.state = 'none';
   }
   clg(event: any) {
+    console.log('event');
     console.log(event);
     console.log(this.currentEmployee?.birthDate);
   }

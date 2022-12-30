@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Observable, Subject, take, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.interface';
+import { EmployeeService } from '../../services/employee/employee.service';
 import { defaultEmployee } from '../../utils/default-employee';
 
 @Component({
@@ -8,88 +10,37 @@ import { defaultEmployee } from '../../utils/default-employee';
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.scss'],
 })
-export class EditEmployeeComponent implements OnInit {
+export class EditEmployeeComponent implements OnInit, OnDestroy {
+  queryError = false;
+  endAllSubscriptions$: Subject<string> = new Subject<string>();
   employee: Employee = defaultEmployee;
-  employeesList: Employee[] = [
-    {
-      id: 0,
-      firstName: 'Schneizel',
-      lastName: 'Ramperouge',
-      email: 'schneizel@applaudo.com',
-      password: 'anypass',
-      profileImage: '',
-      birthDate: '1984-02-31',
-      phone: 0,
-      personalSiteUrl: '',
-      about: '',
-      gender: 'male',
-      address: {
-        country: 'none',
-        state: 'none',
-      },
-    },
-    {
-      id: 1,
-      firstName: 'Schneizel1',
-      lastName: 'Ramperouge1',
-      email: 'schneizel@applaudo.com',
-      password: 'anypass',
-      profileImage: '',
-      birthDate: '1984-02-31',
-      phone: 0,
-      personalSiteUrl: '',
-      about: '',
-      gender: 'male',
-      address: {
-        country: 'none',
-        state: 'none',
-      },
-    },
-    {
-      id: 2,
-      firstName: 'Schneizel2',
-      lastName: 'Ramperouge2',
-      email: 'schneizel@applaudo.com',
-      password: 'anypass',
-      profileImage: '',
-      birthDate: '1984-02-31',
-      phone: 0,
-      personalSiteUrl: '',
-      about: '',
-      gender: 'male',
-      address: {
-        country: 'none',
-        state: 'none',
-      },
-    },
-    {
-      id: 3,
-      firstName: 'Schneizel3',
-      lastName: 'Ramperouge3',
-      email: 'schneizel@applaudo.com',
-      password: 'anypass',
-      profileImage: '',
-      birthDate: '1984-02-31',
-      phone: 0,
-      personalSiteUrl: '',
-      about: '',
-      gender: 'male',
-      address: {
-        country: 'none',
-        state: 'none',
-      },
-    },
-  ];
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private employeeService: EmployeeService
+  ) {}
   ngOnInit() {
-    console.log('OK');
-    this.route.params.subscribe((data: Params) => {
-      console.log(data);
-      if (data?.['id'] < this.employeesList.length) {
-        this.employee = this.employeesList[data?.['id']];
-      } else {
-        this.router.navigate(['/']);
-      }
-    });
+    this.route.params
+      .pipe(takeUntil(this.endAllSubscriptions$))
+      .subscribe((data: Params) => {
+        this.employeeService
+          .getSingleEmployee(data?.['id'])
+          .pipe(take(1))
+          .subscribe({
+            next: (employee: Employee) => {
+              this.employee = employee;
+            },
+            error: err => {
+              console.log(err);
+              this.queryError = true;
+              setTimeout(() => {
+                this.router.navigate(['/']);
+              }, 3000);
+            },
+          });
+      });
+  }
+  ngOnDestroy(): void {
+    this.endAllSubscriptions$.next('');
   }
 }
