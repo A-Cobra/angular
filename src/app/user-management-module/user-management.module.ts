@@ -13,6 +13,7 @@ import { EmployeeService } from './services/employee/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeDashboardComponent } from './containers/employee-dashboard/employee-dashboard.component';
 import { EmployeeViewerComponent } from './components/employee-viewer/employee-viewer.component';
+import { CreateEmployeeComponent } from './containers/create-employee/create-employee.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EmployeeViewerComponent } from './components/employee-viewer/employee-v
     EditEmployeeComponent,
     EmployeeDashboardComponent,
     EmployeeViewerComponent,
+    CreateEmployeeComponent,
   ],
   imports: [
     CommonModule,

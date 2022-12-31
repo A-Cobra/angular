@@ -11,7 +11,11 @@ import { Employee } from '../../models/employee.interface';
 export class EmployeeService {
   localDatabase = environment.localDatabase;
   baseUrl = 'employees';
+  numberOfEmployees: number = 0;
   constructor(private http: HttpClient) {}
+  getNumberOfEmployees() {
+    // fetch()
+  }
   getEmployees() {
     console.log('Getting Employees');
     console.log(`${this.localDatabase}/${this.baseUrl}`);
@@ -22,9 +26,20 @@ export class EmployeeService {
     //     console.log(data);
     //   });
   }
-  getSingleEmployee(id: string) {
+  getSingleEmployee(id: string): Observable<Employee> {
     return this.http.get<Employee>(
       `${this.localDatabase}/${this.baseUrl}/${id}`
     );
+  }
+  validateEmployee(employee: Employee): boolean {
+    if (
+      employee.firstName === '' ||
+      employee.lastName === '' ||
+      employee.lastName === '' ||
+      employee.lastName === ''
+    ) {
+      return false;
+    }
+    return true;
   }
 }

@@ -12,11 +12,11 @@ export class UserCreationFormComponent {
   formEvent: EventEmitter<Employee> = new EventEmitter<Employee>();
   @Input()
   editing: boolean = false;
+  @Input()
+  currentEmployee: Employee = Object.assign({}, defaultEmployee);
   passwordConfirmation: string = '';
   countryList: string[] = ['spain'];
   stateList: string[] = ['Comunidad de Madrid'];
-  @Input()
-  currentEmployee: Employee = Object.assign({}, defaultEmployee);
   constructor() {}
   emitUpdateNotification() {
     console.log('Sending Edit Notification');
