@@ -40,7 +40,7 @@ export class CreateEmployeeComponent implements OnInit {
               setTimeout(() => {
                 this.redirectTo('create-employee');
               }, 2500);
-              // this.setCreationId();
+              this.setCreationId();
             },
             error: err => {
               console.log('Failure');

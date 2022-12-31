@@ -53,7 +53,7 @@
     },
     {
       "id": 4,
-      "firstName": "Pedro",
+      "firstName": "Pedrasho",
       "lastName": "Palomares",
       "email": "pedro@enterprise.com",
       "password": "pedro_123",
@@ -61,23 +61,6 @@
       "birthDate": "2003-02-06",
       "phone": 1231244,
       "personalSiteUrl": "https://github.com/antfu",
-      "about": "",
-      "gender": "male",
-      "address": {
-        "country": "spain",
-        "state": "Comunidad de Madrid"
-      }
-    },
-    {
-      "id": 5,
-      "firstName": "Pedrito",
-      "lastName": "Gallardo",
-      "email": "pedro@gmail.com",
-      "password": "pedro1234",
-      "profileImage": "",
-      "birthDate": "2022-11-28",
-      "phone": 12355,
-      "personalSiteUrl": "",
       "about": "",
       "gender": "male",
       "address": {

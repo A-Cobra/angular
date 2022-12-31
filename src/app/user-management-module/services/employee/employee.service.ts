@@ -46,6 +46,11 @@ export class EmployeeService {
       employee
     );
   }
+  deleteEmployee(employee: Employee) {
+    return this.http.delete<Employee>(
+      `${this.localDatabase}/${this.baseUrl}/${employee.id}`
+    );
+  }
   validateEmployee(employee: Employee): boolean {
     if (
       employee.firstName.length < 5 ||
