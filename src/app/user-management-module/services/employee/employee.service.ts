@@ -40,6 +40,12 @@ export class EmployeeService {
       employee
     );
   }
+  updateEmployee(employee: Employee) {
+    return this.http.put<Employee>(
+      `${this.localDatabase}/${this.baseUrl}/${employee.id}`,
+      employee
+    );
+  }
   validateEmployee(employee: Employee): boolean {
     if (
       employee.firstName.length < 5 ||

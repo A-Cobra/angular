@@ -12,6 +12,7 @@ import { defaultEmployee } from '../../utils/default-employee';
   styleUrls: ['./edit-employee.component.scss'],
 })
 export class EditEmployeeComponent implements OnInit, OnDestroy {
+  successfulUpdate: boolean = false;
   queryError = false;
   endAllSubscriptions$: Subject<string> = new Subject<string>();
   employee: Employee = Object.assign({}, defaultEmployee);
@@ -54,6 +55,32 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
       );
       console.log('validation');
       console.log(validation);
+      if (validation) {
+        console.log('Correct Navigation');
+        this.employeeService
+          .updateEmployee(formEvent.employee)
+          .pipe(take(1))
+          .subscribe({
+            next: (employee: Employee) => {
+              console.log('Success');
+              this.successfulUpdate = true;
+              setTimeout(() => {
+                this.router.navigate(['']);
+              }, 2500);
+            },
+            error: err => {
+              console.log('Failure');
+            },
+          });
+      }
     }
+  }
+  resetEmployeeData() {
+    this.employee = Object.assign({}, defaultEmployee);
+  }
+  redirectTo(url: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([url]);
+    });
   }
 }

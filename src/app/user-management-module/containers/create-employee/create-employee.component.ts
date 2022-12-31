@@ -36,13 +36,16 @@ export class CreateEmployeeComponent implements OnInit {
             next: (employee: Employee) => {
               console.log('Success');
               this.resetEmployeeData();
+              this.successfulCreation = true;
+              setTimeout(() => {
+                this.redirectTo('create-employee');
+              }, 2500);
               // this.setCreationId();
             },
             error: err => {
               console.log('Failure');
             },
           });
-        this.redirectTo('create-employee');
       }
       // console.log('validation');
       // console.log(validation);
