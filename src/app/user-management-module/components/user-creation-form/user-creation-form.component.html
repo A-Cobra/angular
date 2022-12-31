@@ -19,31 +19,36 @@
       min="10"
       placeholder="Introduce your first name"
       [(ngModel)]="currentEmployee.firstName" />
-    <div
-      class="error"
-      *ngIf="!firstName.pristine && firstName.value.length < 10">
-      Please type at least 10 characters
+    <div class="error">
+      <div *ngIf="!firstName.pristine && firstName.value.length < 5">
+        Please type at least 5 characters
+      </div>
     </div>
-    <div class="error" *ngIf="firstName.pristine">Pristine</div>
   </div>
   <div class="form-group">
     <label [hidden]="currentEmployee.lastName.length > 0" for="lastName"
       >Introduce last name</label
     >
     <input
+      #lastName="ngModel"
       type="text"
       id="lastName"
       name="lastName"
       required=""
       placeholder="Introduce your last name"
       [(ngModel)]="currentEmployee.lastName" />
-    <div class="lastName-errors"></div>
+    <div class="error">
+      <div *ngIf="!lastName.pristine && lastName.value.length < 5">
+        Please type at least 5 characters
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label [hidden]="currentEmployee.email.length > 0" for="email"
       >Introduce your email</label
     >
     <input
+      #email="ngModel"
       email
       type="email"
       id="email"
@@ -51,7 +56,12 @@
       required=""
       placeholder="name@domain.com"
       [(ngModel)]="currentEmployee.email" />
-    <div class="email-errors"></div>
+    <div class="error">
+      <div
+        *ngIf="email.dirty && !containsCertainChar(currentEmployee.email, '.')">
+        The email needs at least one dot
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label [hidden]="currentEmployee.password.length > 0" for="password"
@@ -98,13 +108,15 @@
       >Birth Date</label
     >
     <input
+      #date="ngModel"
       type="date"
       id="birthDate"
       name="birthDate"
       required=""
       [(ngModel)]="currentEmployee.birthDate" />
-
-    <div class="error"></div>
+    <div class="error">
+      <div *ngIf="currentEmployee.birthDate === ''">Please select a date</div>
+    </div>
   </div>
   <div class="form-group">
     <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
@@ -116,8 +128,17 @@
       id="phone"
       name="phone"
       required=""
+      min="0"
       [(ngModel)]="currentEmployee.phone" />
-    <div class="error"></div>
+    <div class="error">
+      <div *ngIf="currentEmployee.phone === null">
+        Please enter at least a number and don't enter letters
+      </div>
+      <div *ngIf="currentEmployee.phone < 0">Don't enter negative numbers</div>
+      <div *ngIf="getNumberOfDigits(currentEmployee.phone) < 5 && phone.dirty">
+        Please enter at least 5 digits
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label
@@ -203,8 +224,13 @@
         [disabled]="
           employeeCreationForm.invalid ||
           currentEmployee.password !== passwordConfirmation ||
-          !agree.checked
-        ">
+          !agree.checked ||
+          getNumberOfDigits(currentEmployee.phone) < 5 ||
+          firstName.value.length < 5 ||
+          lastName.value.length < 5 ||
+          !containsCertainChar(currentEmployee.email, '.')
+        "
+        (click)="emitCreationNotification()">
         Create User
       </button>
     </ng-template>
@@ -212,7 +238,11 @@
       [disabled]="
         employeeCreationForm.invalid ||
         currentEmployee.password !== passwordConfirmation ||
-        !agree.checked
+        !agree.checked ||
+        getNumberOfDigits(currentEmployee.phone) < 5 ||
+        firstName.value.length < 5 ||
+        lastName.value.length < 5 ||
+        !containsCertainChar(currentEmployee.email, '.')
       "
       *ngIf="editing; else createEmployeeButton"
       (click)="emitUpdateNotification()">
