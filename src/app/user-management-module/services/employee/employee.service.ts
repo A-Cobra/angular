@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Employee } from '../../models/employee.interface';
 
@@ -14,7 +14,17 @@ export class EmployeeService {
   numberOfEmployees: number = 0;
   constructor(private http: HttpClient) {}
   getNumberOfEmployees() {
-    // fetch()
+    console.log('Getting number of Employees');
+    return this.http
+      .get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`)
+      .pipe(
+        map(data => {
+          if (data.length > 0) {
+            return data[data.length - 1].id + 1;
+          }
+          return 1;
+        })
+      );
   }
   getEmployees() {
     console.log('Getting Employees');
