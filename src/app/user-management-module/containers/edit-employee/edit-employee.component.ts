@@ -49,6 +49,11 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
     console.log('On handle Event');
     if (formEvent.type === 'update') {
       console.log('Updating');
+      const validation = this.employeeService.validateEmployee(
+        formEvent.employee
+      );
+      console.log('validation');
+      console.log(validation);
     }
   }
 }

@@ -27,25 +27,24 @@ export class EmployeeService {
       );
   }
   getEmployees() {
-    console.log('Getting Employees');
-    console.log(`${this.localDatabase}/${this.baseUrl}`);
     return this.http.get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`);
-    // return this.http
-    //   .get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`)
-    //   .subscribe(data => {
-    //     console.log(data);
-    //   });
   }
   getSingleEmployee(id: string): Observable<Employee> {
     return this.http.get<Employee>(
       `${this.localDatabase}/${this.baseUrl}/${id}`
     );
   }
+  createEmployee(employee: Employee) {
+    return this.http.post<Employee>(
+      `${this.localDatabase}/${this.baseUrl}`,
+      employee
+    );
+  }
   validateEmployee(employee: Employee): boolean {
     if (
-      employee.firstName === '' ||
-      employee.lastName === '' ||
-      employee.email === '' ||
+      employee.firstName.length < 5 ||
+      employee.lastName.length < 5 ||
+      (!employee.email.includes('@') && !employee.email.includes('.')) ||
       employee.password === '' ||
       employee.birthDate === '' ||
       employee.phone < 0 ||

@@ -1,5 +1,5 @@
 {
-  "employees":[
+  "employees": [
     {
       "id": 1,
       "firstName": "Schneizel",
@@ -15,6 +15,57 @@
       "address": {
         "country": "germany",
         "state": "munich"
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Pedro",
+      "lastName": "Caceres",
+      "email": "email@gmail.com",
+      "password": "mypass",
+      "profileImage": "https://media.istockphoto.com/id/1300512215/photo/headshot-portrait-of-smiling-ethnic-businessman-in-office.jpg?b=1&s=170667a&w=0&k=20&c=TXCiY7rYEvIBd6ibj2bE-VbJu0rRGy3MlHwxt2LHt9w=",
+      "birthDate": "2022-12-05",
+      "phone": 12345,
+      "personalSiteUrl": "https://github.com/typicode/json-server",
+      "about": "",
+      "gender": "male",
+      "address": {
+        "country": "spain",
+        "state": "Comunidad de Madrid"
+      }
+    },
+    {
+      "id": 3,
+      "firstName": "Alicia",
+      "lastName": "Veramendi",
+      "email": "alicia@veramendi.com",
+      "password": "alicia123",
+      "profileImage": "https://i.pinimg.com/564x/ac/58/e1/ac58e17f43518e57b452f49cce9dad0a.jpg",
+      "birthDate": "2022-12-06",
+      "phone": 12345,
+      "personalSiteUrl": "https://github.com/alicia",
+      "about": "",
+      "gender": "female",
+      "address": {
+        "country": "spain",
+        "state": "Comunidad de Madrid"
+      }
+    },
+    {
+      "id": 4,
+      "firstName": "Pedro",
+      "lastName": "Palomares",
+      "email": "pedor@enterprise.com",
+      "password": "pedro_123",
+      "profileImage": "https://upload.wikimedia.org/wikipedia/commons/4/48/Outdoors-man-portrait_%28cropped%29.jpg",
+      "birthDate": "2003-02-06",
+      "phone": 1231244,
+      "personalSiteUrl": "https://github.com/antfu",
+      "about": "",
+      "gender": "male",
+      "address": {
+        "country": "spain",
+        "state": "Comunidad de Madrid"
       }
     }
   ]

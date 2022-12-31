@@ -1,4 +1,9 @@
 <p>create-employee works!</p>
-<app-user-creation-form
-  [currentEmployee]="employee"
-  (formEvent)="onHandleEvent($event)"></app-user-creation-form>
+<ng-template #creationForm>
+  <app-user-creation-form
+    [currentEmployee]="employee"
+    (formEvent)="onHandleEvent($event)"></app-user-creation-form>
+</ng-template>
+<div *ngIf="successfulCreation; else creationForm">
+  Employee created Correctly
+</div>
