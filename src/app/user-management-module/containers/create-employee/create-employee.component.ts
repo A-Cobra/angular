@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { Employee } from '../../models/employee.interface';
+import { FormEvent } from '../../models/form-event.type';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { defaultEmployee } from '../../utils/default-employee';
 
@@ -17,5 +18,10 @@ export class CreateEmployeeComponent implements OnInit {
       .getNumberOfEmployees()
       .pipe(take(1))
       .subscribe(newId => (this.employee.id = newId));
+  }
+  onHandleEvent(formEvent: FormEvent) {
+    if (formEvent.type === 'create') {
+      console.log('Creating');
+    }
   }
 }

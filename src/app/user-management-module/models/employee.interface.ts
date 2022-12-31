@@ -11,6 +11,6 @@ export interface Employee {
   phone: number;
   personalSiteUrl: string;
   about: string;
-  gender: 'male' | 'female';
+  gender: 'male' | 'female' | 'none';
   address: Address;
 }

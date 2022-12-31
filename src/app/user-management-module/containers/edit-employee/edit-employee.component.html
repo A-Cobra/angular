@@ -2,7 +2,8 @@
 <app-user-creation-form
   *ngIf="!queryError"
   [currentEmployee]="employee"
-  [editing]="true"></app-user-creation-form>
+  [editing]="true"
+  (formEvent)="onHandleEvent($event)"></app-user-creation-form>
 <div *ngIf="queryError">
   <h1>Sorry, the Employee you were looking for, doesn't exist</h1>
   <h2>Redirecting to home page...</h2>

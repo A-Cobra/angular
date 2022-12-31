@@ -93,13 +93,13 @@
   </div>
   <div class="form-group">
     <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
-      >Profile Image Link</label
+      >Profile Image Link (Optional)</label
     >
     <input
       type="text"
       id="profileImage"
       name="profileImage"
-      placeholder="Profile Image Url"
+      placeholder="Profile Image Url(Optional)"
       [(ngModel)]="currentEmployee.profileImage" />
     <div class="error"></div>
   </div>
@@ -115,7 +115,9 @@
       required=""
       [(ngModel)]="currentEmployee.birthDate" />
     <div class="error">
-      <div *ngIf="currentEmployee.birthDate === ''">Please select a date</div>
+      <div *ngIf="currentEmployee.birthDate === '' && date.touched">
+        Please select a date
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -144,23 +146,25 @@
     <label
       [hidden]="currentEmployee.personalSiteUrl.length > 0"
       for="personalSiteUrl"
-      >Personal Site Url</label
+      >Personal Site Url (Optional)</label
     >
     <input
       type="text"
       id="personalSiteUrl"
       name="personalSiteUrl"
-      placeholder="Personal Site Url"
+      placeholder="Personal Site Url (Optional)"
       [(ngModel)]="currentEmployee.personalSiteUrl" />
     <div class="error"></div>
   </div>
   <div class="form-group">
-    <label [hidden]="currentEmployee.about.length > 0" for="about">About</label>
+    <label [hidden]="currentEmployee.about.length > 0" for="about"
+      >About (Optional)</label
+    >
     <input
       type="text"
       id="about"
       name="about"
-      placeholder="About"
+      placeholder="About (Optional)"
       [(ngModel)]="currentEmployee.about" />
     <div class="error"></div>
   </div>

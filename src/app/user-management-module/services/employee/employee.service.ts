@@ -45,8 +45,13 @@ export class EmployeeService {
     if (
       employee.firstName === '' ||
       employee.lastName === '' ||
-      employee.lastName === '' ||
-      employee.lastName === ''
+      employee.email === '' ||
+      employee.password === '' ||
+      employee.birthDate === '' ||
+      employee.phone < 0 ||
+      employee.gender === 'none' ||
+      employee.address.country === 'none' ||
+      employee.address.state === 'none'
     ) {
       return false;
     }

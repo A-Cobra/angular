@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable, Subject, take, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.interface';
+import { FormEvent } from '../../models/form-event.type';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { defaultEmployee } from '../../utils/default-employee';
 
@@ -43,5 +44,11 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.endAllSubscriptions$.next('');
     this.endAllSubscriptions$.unsubscribe();
+  }
+  onHandleEvent(formEvent: FormEvent) {
+    console.log('On handle Event');
+    if (formEvent.type === 'update') {
+      console.log('Updating');
+    }
   }
 }

@@ -20,18 +20,21 @@ export class UserCreationFormComponent {
   stateList: string[] = ['Comunidad de Madrid'];
   constructor() {}
   emitUpdateNotification() {
-    // console.log('Sending Edit Notification');
-    this.formEvent.emit({
-      employee: this.currentEmployee,
-      type: 'update',
-    });
+    if (this.passwordConfirmation === this.currentEmployee.password) {
+      this.formEvent.emit({
+        employee: this.currentEmployee,
+        type: 'update',
+      });
+    }
   }
   emitCreationNotification() {
     // console.log('Sending Edit Notification');
-    this.formEvent.emit({
-      employee: this.currentEmployee,
-      type: 'create',
-    });
+    if (this.passwordConfirmation === this.currentEmployee.password) {
+      this.formEvent.emit({
+        employee: this.currentEmployee,
+        type: 'create',
+      });
+    }
   }
   resetState() {
     this.currentEmployee.address.state = 'none';
