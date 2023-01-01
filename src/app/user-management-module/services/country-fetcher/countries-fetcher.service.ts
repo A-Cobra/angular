@@ -33,10 +33,36 @@ export class CountriesFetcherService {
   getCountries() {
     console.log('environment.bearerToken');
     console.log(environment.authToken);
-    return this.http.get(this.baseUrl + 'countries/', {
-      headers: this.headers,
-    });
-    // .pipe(map((dataObj: any) => dataObj.country_name));
+    return this.http
+      .get(this.baseUrl + 'countries/', {
+        headers: this.headers,
+      })
+      .pipe(
+        map(data => {
+          console.log(data);
+          return (data as Array<any>).map(
+            responseObj => responseObj.country_name
+          );
+        })
+      );
+    // .pipe(map(responseObj => responseObj.country_name));
+  }
+  getStates(country: string) {
+    console.log('environment.bearerToken');
+    console.log(environment.authToken);
+    return this.http
+      .get(this.baseUrl + 'states/' + country, {
+        headers: this.headers,
+      })
+      .pipe(
+        map(data => {
+          console.log(data);
+          // return data;
+          return (data as Array<any>).map(
+            responseObj => responseObj.state_name
+          );
+        })
+      );
     // .pipe(map(responseObj => responseObj.country_name));
   }
 }

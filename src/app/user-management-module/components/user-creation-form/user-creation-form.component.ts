@@ -27,14 +27,18 @@ export class UserCreationFormComponent implements OnInit {
     //   .getToken()
     //   .pipe(take(1))
     //   .subscribe(data => console.log(data));
-    this.countryService.getCountries().subscribe({
-      next: (data: any) => {
-        console.log(data);
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-    });
+    this.countryService
+      .getCountries()
+      .pipe(take(1))
+      .subscribe({
+        next: (countriesArray: any) => {
+          console.log(countriesArray);
+          this.countryList = countriesArray;
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
     console.log('OK');
   }
   emitUpdateNotification() {
@@ -54,8 +58,28 @@ export class UserCreationFormComponent implements OnInit {
       });
     }
   }
-  resetState() {
-    this.currentEmployee.address.state = 'none';
+  changeStateList(country: string) {
+    console.log('Changing states');
+    console.log(country);
+    if (country !== 'none') {
+      console.log('Fetching States');
+      this.countryService
+        .getStates(country)
+        .pipe(take(1))
+        .subscribe({
+          next: (statesArray: any) => {
+            console.log(statesArray);
+            // this.countryList = countriesArray;
+            this.stateList = statesArray;
+          },
+          error: (error: any) => {
+            console.log(error);
+          },
+        });
+    } else {
+      this.currentEmployee.address.state = 'none';
+      this.stateList = [];
+    }
   }
 
   getNumberOfDigits(originalNumber: number): number {
