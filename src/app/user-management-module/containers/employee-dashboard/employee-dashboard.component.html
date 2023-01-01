@@ -3,5 +3,6 @@
   <app-employee-viewer
     [shortenedContent]="true"
     [currentEmployee]="employee"
-    *ngFor="let employee of employeeList"></app-employee-viewer>
+    *ngFor="let employee of employeeList"
+    (click)="onClickHandle(employee)"></app-employee-viewer>
 </div>
