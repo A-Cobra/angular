@@ -1,6 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { VariableBinding } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { take } from 'rxjs';
 import { Employee } from '../../models/employee.interface';
 import { FormEvent } from '../../models/form-event.type';
+import { CountriesFetcherService } from '../../services/country-fetcher/countries-fetcher.service';
 import { defaultEmployee } from '../../utils/default-employee';
 
 @Component({
@@ -8,7 +11,7 @@ import { defaultEmployee } from '../../utils/default-employee';
   templateUrl: './user-creation-form.component.html',
   styleUrls: ['./user-creation-form.component.scss'],
 })
-export class UserCreationFormComponent {
+export class UserCreationFormComponent implements OnInit {
   @Output()
   formEvent: EventEmitter<FormEvent> = new EventEmitter<FormEvent>();
   @Input()
@@ -18,7 +21,22 @@ export class UserCreationFormComponent {
   passwordConfirmation: string = '';
   countryList: string[] = ['spain'];
   stateList: string[] = ['Comunidad de Madrid'];
-  constructor() {}
+  constructor(private countryService: CountriesFetcherService) {}
+  ngOnInit(): void {
+    // this.countryService
+    //   .getToken()
+    //   .pipe(take(1))
+    //   .subscribe(data => console.log(data));
+    this.countryService.getCountries().subscribe({
+      next: (data: any) => {
+        console.log(data);
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+    console.log('OK');
+  }
   emitUpdateNotification() {
     if (this.passwordConfirmation === this.currentEmployee.password) {
       this.formEvent.emit({
@@ -39,11 +57,7 @@ export class UserCreationFormComponent {
   resetState() {
     this.currentEmployee.address.state = 'none';
   }
-  clg(event: any) {
-    console.log('event');
-    console.log(event);
-    console.log(this.currentEmployee?.birthDate);
-  }
+
   getNumberOfDigits(originalNumber: number): number {
     let numberOfDigits: number;
     if (originalNumber === 0) {

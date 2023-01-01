@@ -1,8 +1,42 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountriesFetcherService {
-  constructor() {}
+  baseUrl = environment.countriesStatesUrl;
+  headers: HttpHeaders = new HttpHeaders({
+    Authorization: environment.authToken,
+    Accept: 'application/json',
+  });
+  // header: HttpHeaders = {};
+  constructor(private http: HttpClient) {}
+  // getCountries(): Observable<string[]> {
+  //   return this.http.get<string[]>(this.baseUrl, {
+  //     headers: this.headers,
+  //   });
+  //   // .pipe(map(responseObj => responseObj.country_name));
+  // }
+  getToken() {
+    // const header2 = new HttpHeaders({
+    //   Accept: 'application/json',
+    //   'api-token': environment.apiToken,
+    //   'user-email': 'conradbravina@gmail.com',
+    // });
+    // return this.http.get(this.baseUrl + 'getaccesstoken', {
+    //   headers: header2,
+    // });
+  }
+  getCountries() {
+    console.log('environment.bearerToken');
+    console.log(environment.authToken);
+    return this.http.get(this.baseUrl + 'countries/', {
+      headers: this.headers,
+    });
+    // .pipe(map((dataObj: any) => dataObj.country_name));
+    // .pipe(map(responseObj => responseObj.country_name));
+  }
 }
