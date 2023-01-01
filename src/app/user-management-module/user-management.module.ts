@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeDashboardComponent } from './containers/employee-dashboard/employee-dashboard.component';
 import { EmployeeViewerComponent } from './components/employee-viewer/employee-viewer.component';
 import { CreateEmployeeComponent } from './containers/create-employee/create-employee.component';
+import { SingleEmployeeComponent } from './containers/single-employee/single-employee.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CreateEmployeeComponent } from './containers/create-employee/create-emp
     EmployeeDashboardComponent,
     EmployeeViewerComponent,
     CreateEmployeeComponent,
+    SingleEmployeeComponent,
   ],
   imports: [
     CommonModule,

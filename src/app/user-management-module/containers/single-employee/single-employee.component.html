@@ -1,0 +1,7 @@
+<ng-template #singleEmployee>
+  <app-employee-viewer [currentEmployee]="employee"></app-employee-viewer>
+</ng-template>
+<div *ngIf="queryError; else singleEmployee">
+  <h1>Sorry, the Employee you were looking for, doesn't exist</h1>
+  <h2>Redirecting to home page...</h2>
+</div>
