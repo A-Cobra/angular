@@ -68,13 +68,14 @@
       >Introduce your password</label
     >
     <input
+      #password="ngModel"
       type="password"
       id="password"
       name="password"
       placeholder="Password"
       required=""
       [(ngModel)]="currentEmployee.password" />
-    <div class="password-errors"></div>
+    <div class="error">{{ password.errors | json }}</div>
   </div>
   <div class="form-group">
     <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
@@ -88,7 +89,6 @@
       placeholder="Confirm your Password"
       required=""
       [(ngModel)]="passwordConfirmation" />
-
     <div class="password-confirmation-errors"></div>
   </div>
   <div class="form-group">

@@ -8,9 +8,8 @@ describe('SingleEmployeeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleEmployeeComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleEmployeeComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SingleEmployeeComponent);
     component = fixture.componentInstance;
