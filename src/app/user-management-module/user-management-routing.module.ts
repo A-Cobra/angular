@@ -23,8 +23,6 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'employee', component: EditEmployeeComponent },
-  { path: 'edit', component: EditEmployeeComponent },
 ];
 
 @NgModule({
