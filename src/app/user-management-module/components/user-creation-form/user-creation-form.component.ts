@@ -1,6 +1,7 @@
 import { VariableBinding } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { take } from 'rxjs';
+import { MyValidations } from '../../directives/form-validations.directive';
 import { Employee } from '../../models/employee.interface';
 import { FormEvent } from '../../models/form-event.type';
 import { CountriesFetcherService } from '../../services/country-fetcher/countries-fetcher.service';
@@ -46,6 +47,9 @@ export class UserCreationFormComponent implements OnInit {
     }
   }
   emitCreationNotification() {
+    console.log('Passworfd Strength checking');
+    console.log(this.currentEmployee.password);
+    console.log(MyValidations.passwordStrength(this.currentEmployee.password));
     if (this.passwordConfirmation === this.currentEmployee.password) {
       this.formEvent.emit({
         employee: this.currentEmployee,
@@ -88,5 +92,8 @@ export class UserCreationFormComponent implements OnInit {
   getCurrentDate() {
     console.log(new Date().toISOString().split('T')[0]);
     return new Date().toISOString().split('T')[0];
+  }
+  lastCharIsADot(string: string) {
+    return string.slice(-1) === '.';
   }
 }

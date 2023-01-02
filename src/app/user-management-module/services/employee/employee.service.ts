@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { MyValidations } from '../../directives/form-validations.directive';
 import { Employee } from '../../models/employee.interface';
 import { defaultEmployee } from '../../utils/default-employee';
 
@@ -61,7 +62,8 @@ export class EmployeeService {
       employee.lastName.length < 4 ||
       employee.lastName.length > 15 ||
       (!employee.email.includes('@') && !employee.email.includes('.')) ||
-      employee.password.length < 12 ||
+      employee.email.slice(-1) === '.' ||
+      !MyValidations.passwordStrength(employee.password) ||
       employee.birthDate === '' ||
       employee.birthDate > new Date().toISOString().split('T')[0] ||
       (employee.phone < 0 && employee.phone.toString().length < 4) ||
