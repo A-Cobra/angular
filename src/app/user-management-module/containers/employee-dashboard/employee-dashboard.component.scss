@@ -22,6 +22,10 @@ $twilight: rgb(95,0,160);
     max-width: 400px;
     background-color: $light-sky-blue;
     border-radius: 5px;
+    &:hover{
+      border: 3px white solid;
+      box-shadow: 5px 6px 10px $main-color-shadow;
+    }
   }
 }
 @media screen and (max-width:720px) {
