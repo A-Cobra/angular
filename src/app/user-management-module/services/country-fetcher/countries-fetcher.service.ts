@@ -21,14 +21,14 @@ export class CountriesFetcherService {
   //   // .pipe(map(responseObj => responseObj.country_name));
   // }
   getToken() {
-    // const header2 = new HttpHeaders({
-    //   Accept: 'application/json',
-    //   'api-token': environment.apiToken,
-    //   'user-email': 'conradbravina@gmail.com',
-    // });
-    // return this.http.get(this.baseUrl + 'getaccesstoken', {
-    //   headers: header2,
-    // });
+    const header2 = new HttpHeaders({
+      Accept: 'application/json',
+      'api-token': environment.apiToken,
+      'user-email': 'conradbravina@gmail.com',
+    });
+    return this.http.get(this.baseUrl + 'getaccesstoken', {
+      headers: header2,
+    });
   }
   getCountries() {
     return this.http

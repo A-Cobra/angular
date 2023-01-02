@@ -24,6 +24,19 @@ export class UserCreationFormComponent implements OnInit {
   stateList: string[] = [];
   constructor(private countryService: CountriesFetcherService) {}
   ngOnInit(): void {
+    // this.countryService
+    //   .getToken()
+    //   .pipe(take(1))
+    //   .subscribe({
+    //     next: (response: any) => {
+    //       console.log(response);
+    //       // this.countryList = countriesArray;
+    //     },
+    //     error: (error: any) => {
+    //       console.log('error');
+    //       console.log(error);
+    //     },
+    //   });
     this.countryService
       .getCountries()
       .pipe(take(1))
@@ -47,9 +60,6 @@ export class UserCreationFormComponent implements OnInit {
     }
   }
   emitCreationNotification() {
-    console.log('Passworfd Strength checking');
-    console.log(this.currentEmployee.password);
-    console.log(MyValidations.passwordStrength(this.currentEmployee.password));
     if (this.passwordConfirmation === this.currentEmployee.password) {
       this.formEvent.emit({
         employee: this.currentEmployee,
