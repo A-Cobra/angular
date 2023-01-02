@@ -67,6 +67,23 @@
         "country": "spain",
         "state": "Comunidad de Madrid"
       }
+    },
+    {
+      "id": 5,
+      "firstName": "Juanes",
+      "lastName": "Velez",
+      "email": "email@gmail.com",
+      "password": "password1234",
+      "profileImage": "",
+      "birthDate": "2022-05-30",
+      "phone": 12345,
+      "personalSiteUrl": "",
+      "about": "",
+      "gender": "male",
+      "address": {
+        "country": "Antigua And Barbuda",
+        "state": "Saint Mary"
+      }
     }
   ]
 }

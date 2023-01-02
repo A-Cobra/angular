@@ -96,4 +96,8 @@ export class UserCreationFormComponent implements OnInit {
   containsCertainChar(string: string, char: string) {
     return string.includes(char);
   }
+  getCurrentDate() {
+    console.log(new Date().toISOString().split('T')[0]);
+    return new Date().toISOString().split('T')[0];
+  }
 }

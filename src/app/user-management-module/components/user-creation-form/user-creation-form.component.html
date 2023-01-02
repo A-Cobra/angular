@@ -16,12 +16,16 @@
       id="firstName"
       name="firstName"
       required=""
-      min="10"
+      minlength="4"
+      maxlength="15"
       placeholder="Introduce your first name"
       [(ngModel)]="currentEmployee.firstName" />
     <div class="error">
-      <div *ngIf="!firstName.pristine && firstName.value.length < 5">
-        Please type at least 5 characters
+      <div *ngIf="!firstName.pristine && firstName.value.length < 4">
+        Please type at least 4 characters
+      </div>
+      <div *ngIf="!firstName.pristine && firstName.value.length > 15">
+        Please type at most 15 characters
       </div>
     </div>
   </div>
@@ -35,11 +39,16 @@
       id="lastName"
       name="lastName"
       required=""
+      minlength="4"
+      maxlength="15"
       placeholder="Introduce your last name"
       [(ngModel)]="currentEmployee.lastName" />
     <div class="error">
-      <div *ngIf="!lastName.pristine && lastName.value.length < 5">
-        Please type at least 5 characters
+      <div *ngIf="!lastName.pristine && lastName.value.length < 4">
+        Please type at least 4 characters
+      </div>
+      <div *ngIf="!lastName.pristine && lastName.value.length > 15">
+        Please type at most 15 characters
       </div>
     </div>
   </div>
@@ -61,6 +70,10 @@
         *ngIf="email.dirty && !containsCertainChar(currentEmployee.email, '.')">
         The email needs at least one dot
       </div>
+      <div
+        *ngIf="email.dirty && !containsCertainChar(currentEmployee.email, '@')">
+        The email needs at least one '@' symbol
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -75,7 +88,11 @@
       placeholder="Password"
       required=""
       [(ngModel)]="currentEmployee.password" />
-    <div class="error">{{ password.errors | json }}</div>
+    <div class="error">
+      <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
+        The password must contain at least 12 characters
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label [hidden]="passwordConfirmation.length > 0" for="passwordConfirmation"
@@ -89,7 +106,15 @@
       placeholder="Confirm your Password"
       required=""
       [(ngModel)]="passwordConfirmation" />
-    <div class="password-confirmation-errors"></div>
+    <div class="error">
+      <div
+        *ngIf="
+          passwordConfirmation !== currentEmployee.password &&
+          passwordConfirmationInput.dirty
+        ">
+        Passwords don't match
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label [hidden]="currentEmployee.profileImage.length > 0" for="profileImage"
@@ -117,6 +142,9 @@
     <div class="error">
       <div *ngIf="currentEmployee.birthDate === '' && date.touched">
         Please select a date
+      </div>
+      <div *ngIf="currentEmployee.birthDate > getCurrentDate()">
+        Please select a date previous to today
       </div>
     </div>
   </div>
@@ -212,10 +240,26 @@
         {{ state | titlecase }}
       </option>
     </select>
+    <div class="error">
+      <div *ngIf="country.value === 'none' && country.touched">
+        Please select a Country
+      </div>
+    </div>
+    <div class="error">
+      <div
+        *ngIf="
+          currentEmployee.address.state === 'none' && country.value !== 'none'
+        ">
+        Please select a state
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <input #agree id="terms" name="terms" type="checkbox" />
     <label for="terms">Agree Terms and Conditions</label>
+    <div class="error">
+      <!-- <div *ngIf="!agree.checked">Please agree the terms and conditions</div> -->
+    </div>
   </div>
   <div class="btn-container">
     <ng-template #createEmployeeButton>
@@ -225,9 +269,19 @@
           currentEmployee.password !== passwordConfirmation ||
           !agree.checked ||
           getNumberOfDigits(currentEmployee.phone) < 5 ||
-          firstName.value.length < 5 ||
-          lastName.value.length < 5 ||
-          !containsCertainChar(currentEmployee.email, '.')
+          firstName.value.length < 4 ||
+          firstName.value.length > 15 ||
+          lastName.value.length < 4 ||
+          lastName.value.length > 15 ||
+          !containsCertainChar(currentEmployee.email, '.') ||
+          currentEmployee.password.length < 12 ||
+          currentEmployee.birthDate > getCurrentDate() ||
+          (email.dirty && !containsCertainChar(currentEmployee.email, '.')) ||
+          (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
+          (passwordConfirmation !== currentEmployee.password &&
+            passwordConfirmationInput.dirty) ||
+          (country.value === 'none' && country.touched) ||
+          (currentEmployee.address.state === 'none' && country.value !== 'none')
         "
         (click)="emitCreationNotification()">
         Create User
@@ -239,9 +293,19 @@
         currentEmployee.password !== passwordConfirmation ||
         !agree.checked ||
         getNumberOfDigits(currentEmployee.phone) < 5 ||
-        firstName.value.length < 5 ||
-        lastName.value.length < 5 ||
-        !containsCertainChar(currentEmployee.email, '.')
+        firstName.value.length < 4 ||
+        firstName.value.length > 15 ||
+        lastName.value.length < 4 ||
+        lastName.value.length > 15 ||
+        !containsCertainChar(currentEmployee.email, '.') ||
+        currentEmployee.password.length < 12 ||
+        currentEmployee.birthDate > getCurrentDate() ||
+        (email.dirty && !containsCertainChar(currentEmployee.email, '.')) ||
+        (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
+        (passwordConfirmation !== currentEmployee.password &&
+          passwordConfirmationInput.dirty) ||
+        (country.value === 'none' && country.touched) ||
+        (currentEmployee.address.state === 'none' && country.value !== 'none')
       "
       *ngIf="editing; else createEmployeeButton"
       (click)="emitUpdateNotification()">

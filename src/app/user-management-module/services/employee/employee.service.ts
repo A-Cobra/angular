@@ -53,12 +53,15 @@ export class EmployeeService {
   }
   validateEmployee(employee: Employee): boolean {
     if (
-      employee.firstName.length < 5 ||
-      employee.lastName.length < 5 ||
+      employee.firstName.length < 4 ||
+      employee.firstName.length > 15 ||
+      employee.lastName.length < 4 ||
+      employee.lastName.length > 15 ||
       (!employee.email.includes('@') && !employee.email.includes('.')) ||
-      employee.password === '' ||
+      employee.password.length < 12 ||
       employee.birthDate === '' ||
-      employee.phone < 0 ||
+      employee.birthDate > new Date().toISOString().split('T')[0] ||
+      (employee.phone < 0 && employee.phone.toString().length < 4) ||
       employee.gender === 'none' ||
       employee.address.country === 'none' ||
       employee.address.state === 'none'

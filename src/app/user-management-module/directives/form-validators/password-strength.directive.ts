@@ -21,12 +21,12 @@ function createPasswordStrengthValidator(): ValidatorFn {
 })
 export class PasswordStrengthDirective implements Validator {
   constructor() {}
-  // static validate(inputControl: AbstractControl): ValidationErrors | null {
-  //   if (inputControl.value.length < 5) {
-  //     return { notLongEnough: true };
-  //   }
-  //   return null;
-  // }
+  static validate(inputControl: AbstractControl): ValidationErrors | null {
+    if (inputControl.value.length < 5) {
+      return { notLongEnough: true };
+    }
+    return null;
+  }
   validate(inputControl: AbstractControl): ValidationErrors | null {
     return createPasswordStrengthValidator()(inputControl);
     // return (function (control: AbstractControl): ValidationErrors | null {
