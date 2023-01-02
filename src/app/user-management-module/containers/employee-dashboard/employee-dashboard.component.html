@@ -1,8 +1,8 @@
-<p>employee-dashboard works!</p>
 <div class="employees-container">
-  <app-employee-viewer
-    [shortenedContent]="true"
-    [currentEmployee]="employee"
-    *ngFor="let employee of employeeList"
-    (click)="onClickHandle(employee)"></app-employee-viewer>
+  <div *ngFor="let employee of employeeList" class="employee-card">
+    <app-employee-viewer
+      [shortenedContent]="true"
+      [currentEmployee]="employee"
+      (click)="onClickHandle(employee)"></app-employee-viewer>
+  </div>
 </div>

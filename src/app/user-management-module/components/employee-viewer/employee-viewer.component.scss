@@ -1,0 +1,62 @@
+$navy-blue:rgba(31,62,114,1);
+$secondary-blue: #4f517d;
+$light-sky-blue:rgba(238,243,255,1);
+$twilight: rgb(95,0,160);
+$twilight-background: rgb(95,0,160, 0.5);
+$burgundy: rgb(128,0,32);
+$burgundy-background: rgb(128,0,32,0.5);
+h3{
+
+  color: $navy-blue;
+}
+p{
+  color: $secondary-blue;
+}
+.employee-information{
+  display: grid;
+  gap: 14px;
+  div.bottom-margin{
+    margin-bottom: 14px;
+  }
+}
+img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background-color: white;
+  border-radius: 4px;
+}
+.btn-container{
+  display: flex;
+  column-gap: 20px;
+  row-gap: 15px;
+  button{
+    cursor: pointer;
+    text-align: center;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-size: 14px;
+    color: $secondary-blue;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    transition: 0.15s ease;
+    &.edit-btn{
+      &.different-background-color{
+        background-color: $light-sky-blue;
+      }
+      &:hover{
+      color: white;
+      background-color: $twilight;
+      box-shadow: 3px 6px 10px $twilight-background;}
+    }
+    &.delete-btn{
+      color: white;
+      background-color: red;
+      &:hover{
+        background-color: $burgundy;
+        box-shadow: 3px 6px 10px $burgundy-background;
+      }
+    }
+  }
+}

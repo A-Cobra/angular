@@ -1,14 +1,15 @@
-<p>employee-viewer works!</p>
-<div>
-  <img
-    [src]="
-      currentEmployee.profileImage !== ''
-        ? currentEmployee.profileImage
-        : currentEmployee.gender === 'male'
-        ? defaultManPicture
-        : defaultWomanPicture
-    "
-    [alt]="currentEmployee + '.png'" />
+<div class="employee-information">
+  <div class="img-container">
+    <img
+      [src]="
+        currentEmployee.profileImage !== ''
+          ? currentEmployee.profileImage
+          : currentEmployee.gender === 'male'
+          ? defaultManPicture
+          : defaultWomanPicture
+      "
+      [alt]="currentEmployee + '.png'" />
+  </div>
   <div>
     <h3>First Name</h3>
     <p>{{ currentEmployee.firstName | titlecase }}</p>
@@ -21,12 +22,26 @@
     <h3>Email</h3>
     <p>{{ currentEmployee.email }}</p>
   </div>
-  <div>
+  <div [ngClass]="{ 'bottom-margin': !shortenedContent }">
     <h3>Gender</h3>
     <p>{{ currentEmployee.gender | titlecase }}</p>
   </div>
+  <div class="btn-container" *ngIf="shortenedContent">
+    <div>
+      <button class="edit-btn" (click)="redirectToUserEdition()">
+        Edit this user
+      </button>
+    </div>
+    <div>
+      <button
+        class="delete-btn"
+        (click)="deleteAndRedirectToEmployeeDashboard()">
+        Delete this user
+      </button>
+    </div>
+  </div>
 </div>
-<div *ngIf="!shortenedContent">
+<div class="employee-information" *ngIf="!shortenedContent">
   <div>
     <h3>Birth Date</h3>
     <p>{{ currentEmployee.birthDate | date : 'longDate' }}</p>
@@ -78,12 +93,20 @@
       }}
     </p>
   </div>
-</div>
-<div>
-  <button (click)="redirectToUserEdition()">Edit this user</button>
-</div>
-<div>
-  <button (click)="deleteAndRedirectToEmployeeDashboard()">
-    Delete this user
-  </button>
+  <div class="btn-container">
+    <div>
+      <button
+        class="edit-btn different-background-color"
+        (click)="redirectToUserEdition()">
+        Edit this user
+      </button>
+    </div>
+    <div>
+      <button
+        class="delete-btn"
+        (click)="deleteAndRedirectToEmployeeDashboard()">
+        Delete this user
+      </button>
+    </div>
+  </div>
 </div>
