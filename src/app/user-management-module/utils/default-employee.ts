@@ -8,7 +8,7 @@ export const defaultEmployee: Employee = {
   password: '',
   profileImage: '',
   birthDate: '',
-  phone: 0,
+  phone: 123,
   personalSiteUrl: '',
   about: '',
   gender: 'male',

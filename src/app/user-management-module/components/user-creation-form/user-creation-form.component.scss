@@ -5,7 +5,14 @@ $secondary-blue: #4f517d;
 $light-purple: #dccfec;
 $light-sky-blue:rgba(238,243,255,1);
 $twilight: rgb(95,0,160);
-
+.title {
+  padding-top: 22px;
+}
+#employee-form{
+  padding: 20px 0;
+  display: grid;
+  gap: 24px;
+}
 .error{
   color: red;
   text-align: center;
@@ -15,8 +22,12 @@ $twilight: rgb(95,0,160);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 10px;
   position: relative;
+  label.description{
+    flex: 0 1 220px;
+  }
   input:not([type=checkbox]){
     position: relative;
     border-radius: 5px;
