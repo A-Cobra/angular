@@ -1,3 +1,94 @@
+$navy-blue:rgba(31,62,114,1);
+$bright-blue: rgba(40,72,198,1);
+$main-color-shadow: rgba(40,72,198,0.2);
+$secondary-blue: #4f517d;
+$light-purple: #dccfec;
+$light-sky-blue:rgba(238,243,255,1);
+$twilight: rgb(95,0,160);
+
 .error{
   color: red;
+  text-align: center;
+  display: block;
+}
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  input:not([type=checkbox]){
+    position: relative;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1 1 200px;
+    height: 35px;
+    margin-right: 15px;
+  }
+  &.required::after{
+    content: "*";
+    color: red;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translate(0,-50%);
+  }
+  &.gender-selector{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    label{
+      input{
+        margin: 0;
+      }
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+  &.agree-terms{
+    gap: 10px;
+    justify-content: center;
+  }
+}
+.select-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  select{
+    height: 35px;
+    padding: 4px 10px;
+    color: $light-purple;
+    background-color: $navy-blue;
+    border-radius: 5px;
+    border: none;
+    &:focus{
+      background-color: white;
+      color: $twilight;
+      box-shadow: 3px 5px 10px $main-color-shadow;
+      border: none;
+    }
+  }
+}
+.btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button{
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    color: $navy-blue;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: $light-purple;
+    &:hover{
+      color: $twilight;
+      background-color: $light-sky-blue;
+      box-shadow: 3px 6px 6px $main-color-shadow;
+    }
+  }
 }
