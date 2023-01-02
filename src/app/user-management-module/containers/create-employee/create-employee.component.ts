@@ -12,6 +12,7 @@ import { defaultEmployee } from '../../utils/default-employee';
   styleUrls: ['./create-employee.component.scss'],
 })
 export class CreateEmployeeComponent implements OnInit {
+  creationError = false;
   successfulCreation = false;
   employee: Employee = Object.assign({}, defaultEmployee);
   constructor(
@@ -46,9 +47,13 @@ export class CreateEmployeeComponent implements OnInit {
               console.log('Failure');
             },
           });
+      } else {
+        scrollTo(0, 0);
+        this.creationError = true;
+        setTimeout(() => {
+          this.creationError = false;
+        }, 2500);
       }
-      // console.log('validation');
-      // console.log(validation);
     }
   }
   setCreationId() {

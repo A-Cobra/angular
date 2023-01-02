@@ -1,4 +1,7 @@
 <div class="form-wrapper">
+  <div class="error" *ngIf="updateError">
+    <h1>Sorry, something went wrong with the update, please try it again</h1>
+  </div>
   <ng-template #editForm>
     <app-user-creation-form
       *ngIf="!queryError"

@@ -39,7 +39,6 @@ export class UserCreationFormComponent implements OnInit {
           console.log(error);
         },
       });
-    console.log('OK');
   }
   emitUpdateNotification() {
     if (this.passwordConfirmation === this.currentEmployee.password) {
@@ -59,8 +58,6 @@ export class UserCreationFormComponent implements OnInit {
     }
   }
   changeStateList(country: string) {
-    console.log('Changing states');
-    console.log(country);
     if (country !== 'none') {
       console.log('Fetching States');
       this.countryService

@@ -95,12 +95,18 @@ $twilight: rgb(95,0,160);
     color: $navy-blue;
     font-weight: 700;
     font-size: 15px;
-    cursor: pointer;
-    background-color: $light-purple;
-    &:hover{
-      color: $twilight;
-      background-color: $light-sky-blue;
-      box-shadow: 3px 6px 6px $main-color-shadow;
+    &:disabled{
+      cursor: not-allowed;
+    }
+    &:not(:disabled){
+      cursor: pointer;
+      background-color: $light-purple;
+      &:hover{
+        color: $twilight;
+        background-color: $light-sky-blue;
+        box-shadow: 3px 6px 6px $main-color-shadow;
+      }
+
     }
   }
 }

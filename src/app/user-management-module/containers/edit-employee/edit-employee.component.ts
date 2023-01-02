@@ -12,6 +12,7 @@ import { defaultEmployee } from '../../utils/default-employee';
   styleUrls: ['./edit-employee.component.scss'],
 })
 export class EditEmployeeComponent implements OnInit, OnDestroy {
+  updateError: boolean = false;
   successfulUpdate: boolean = false;
   queryError = false;
   endAllSubscriptions$: Subject<string> = new Subject<string>();
@@ -72,6 +73,12 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
               console.log('Failure');
             },
           });
+      } else {
+        scrollTo(0, 0);
+        this.updateError = true;
+        setTimeout(() => {
+          this.updateError = false;
+        }, 2500);
       }
     }
   }

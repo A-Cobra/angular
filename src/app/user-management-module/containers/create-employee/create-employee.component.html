@@ -1,4 +1,7 @@
 <div class="form-wrapper">
+  <div class="error" *ngIf="creationError">
+    <h1>Sorry, something went wrong with the creation, please try it again</h1>
+  </div>
   <ng-template #creationForm>
     <app-user-creation-form
       [currentEmployee]="employee"
