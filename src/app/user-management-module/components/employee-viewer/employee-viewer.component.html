@@ -1,4 +1,6 @@
-<div class="employee-information">
+<div
+  class="content-container"
+  [ngClass]="{ 'flex-container': !shortenedContent }">
   <div class="img-container">
     <img
       [src]="
@@ -10,103 +12,106 @@
       "
       [alt]="currentEmployee + '.png'" />
   </div>
-  <div>
-    <h3>First Name</h3>
-    <p>{{ currentEmployee.firstName | titlecase }}</p>
-  </div>
-  <div>
-    <h3>Last Name</h3>
-    <p>{{ currentEmployee.lastName | titlecase }}</p>
-  </div>
-  <div>
-    <h3>Email</h3>
-    <p>{{ currentEmployee.email }}</p>
-  </div>
-  <div [ngClass]="{ 'bottom-margin': !shortenedContent }">
-    <h3>Gender</h3>
-    <p>{{ currentEmployee.gender | titlecase }}</p>
-  </div>
-  <div class="btn-container" *ngIf="shortenedContent">
+  <div class="employee-information">
     <div>
-      <button class="edit-btn" (click)="redirectToUserEdition()">
-        Edit this user
-      </button>
+      <h3>First Name</h3>
+      <p>{{ currentEmployee.firstName | titlecase }}</p>
     </div>
     <div>
-      <button
-        class="delete-btn"
-        (click)="deleteAndRedirectToEmployeeDashboard()">
-        Delete this user
-      </button>
-    </div>
-  </div>
-</div>
-<div class="employee-information" *ngIf="!shortenedContent">
-  <div>
-    <h3>Birth Date</h3>
-    <p>{{ currentEmployee.birthDate | date : 'longDate' }}</p>
-  </div>
-  <div>
-    <h3>Phone Number</h3>
-    <p>{{ currentEmployee.phone }}</p>
-  </div>
-  <div>
-    <h3>Personal Site Url</h3>
-    <a
-      [href]="
-        currentEmployee.personalSiteUrl === ''
-          ? '#'
-          : currentEmployee.personalSiteUrl
-      "
-      >{{ currentEmployee.personalSiteUrl }}</a
-    >
-  </div>
-  <div>
-    <h3>About</h3>
-    <p>
-      {{
-        currentEmployee.about !== ''
-          ? currentEmployee.about
-          : 'No information provided'
-      }}
-    </p>
-  </div>
-  <div>
-    <h3>Country:</h3>
-    <p>
-      {{
-        (currentEmployee.address.country === 'none'
-          ? 'Unknown'
-          : currentEmployee.address.country
-        ) | titlecase
-      }}
-    </p>
-  </div>
-  <div>
-    <h3>State:</h3>
-    <p>
-      {{
-        (currentEmployee.address.state === 'none'
-          ? 'Unknown'
-          : currentEmployee.address.state
-        ) | titlecase
-      }}
-    </p>
-  </div>
-  <div class="btn-container">
-    <div>
-      <button
-        class="edit-btn different-background-color"
-        (click)="redirectToUserEdition()">
-        Edit this user
-      </button>
+      <h3>Last Name</h3>
+      <p>{{ currentEmployee.lastName | titlecase }}</p>
     </div>
     <div>
-      <button
-        class="delete-btn"
-        (click)="deleteAndRedirectToEmployeeDashboard()">
-        Delete this user
-      </button>
+      <h3>Email</h3>
+      <p>{{ currentEmployee.email }}</p>
+    </div>
+    <div [ngClass]="{ 'bottom-margin': !shortenedContent }">
+      <h3>Gender</h3>
+      <p>{{ currentEmployee.gender | titlecase }}</p>
+    </div>
+    <div class="btn-container" *ngIf="shortenedContent">
+      <div>
+        <button class="edit-btn" (click)="redirectToUserEdition()">
+          Edit this user
+        </button>
+      </div>
+      <div>
+        <button
+          class="delete-btn"
+          (click)="deleteAndRedirectToEmployeeDashboard()">
+          Delete this user
+        </button>
+      </div>
+    </div>
+    <div class="hiddenContentWhenShortDisplay" *ngIf="!shortenedContent">
+      <div>
+        <h3>Birth Date</h3>
+        <p>{{ currentEmployee.birthDate | date : 'longDate' }}</p>
+      </div>
+      <div>
+        <h3>Phone Number</h3>
+        <p>{{ currentEmployee.phone }}</p>
+      </div>
+      <div>
+        <h3>Personal Site Url</h3>
+        <a
+          [href]="
+            currentEmployee.personalSiteUrl === ''
+              ? '#'
+              : currentEmployee.personalSiteUrl
+          "
+          >{{ currentEmployee.personalSiteUrl }}</a
+        >
+      </div>
+      <div>
+        <h3>About</h3>
+        <p>
+          {{
+            currentEmployee.about !== ''
+              ? currentEmployee.about
+              : 'No information provided'
+          }}
+        </p>
+      </div>
+      <div>
+        <h3>Country:</h3>
+        <p>
+          {{
+            (currentEmployee.address.country === 'none'
+              ? 'Unknown'
+              : currentEmployee.address.country
+            ) | titlecase
+          }}
+        </p>
+      </div>
+      <div>
+        <h3>State:</h3>
+        <p>
+          {{
+            (currentEmployee.address.state === 'none'
+              ? 'Unknown'
+              : currentEmployee.address.state
+            ) | titlecase
+          }}
+        </p>
+      </div>
+      <div class="btn-container">
+        <div>
+          <button
+            class="edit-btn different-background-color"
+            (click)="redirectToUserEdition()">
+            Edit this user
+          </button>
+        </div>
+        <div>
+          <button
+            class="delete-btn"
+            (click)="deleteAndRedirectToEmployeeDashboard()">
+            Delete this user
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="employee-information"></div>
 </div>

@@ -12,12 +12,9 @@ h3{
 p{
   color: $secondary-blue;
 }
-.employee-information{
+.employee-information, .hiddenContentWhenShortDisplay{
   display: grid;
   gap: 14px;
-  div.bottom-margin{
-    margin-bottom: 14px;
-  }
 }
 img{
   width: 100%;
@@ -60,3 +57,4 @@ img{
     }
   }
 }
+

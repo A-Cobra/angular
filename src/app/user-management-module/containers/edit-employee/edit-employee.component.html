@@ -1,14 +1,16 @@
-<ng-template #editForm>
-  <app-user-creation-form
-    *ngIf="!queryError"
-    [currentEmployee]="employee"
-    [editing]="true"
-    (formEvent)="onHandleEvent($event)"></app-user-creation-form>
-</ng-template>
-<div *ngIf="successfulUpdate; else editForm">
-  <h1>User updated successfully, redirecting to the dashboard...</h1>
-</div>
-<div *ngIf="queryError">
-  <h1>Sorry, the Employee you were looking for, doesn't exist</h1>
-  <h2>Redirecting to home page...</h2>
+<div class="form-wrapper">
+  <ng-template #editForm>
+    <app-user-creation-form
+      *ngIf="!queryError"
+      [currentEmployee]="employee"
+      [editing]="true"
+      (formEvent)="onHandleEvent($event)"></app-user-creation-form>
+  </ng-template>
+  <div *ngIf="successfulUpdate; else editForm">
+    <h1>User updated successfully, redirecting to the dashboard...</h1>
+  </div>
+  <div *ngIf="queryError">
+    <h1>Sorry, the Employee you were looking for, doesn't exist</h1>
+    <h2>Redirecting to home page...</h2>
+  </div>
 </div>
