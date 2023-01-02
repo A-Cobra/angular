@@ -19,14 +19,10 @@ export class UserCreationFormComponent implements OnInit {
   @Input()
   currentEmployee: Employee = Object.assign({}, defaultEmployee);
   passwordConfirmation: string = '';
-  countryList: string[] = ['spain'];
-  stateList: string[] = ['madrid'];
+  countryList: string[] = [];
+  stateList: string[] = [];
   constructor(private countryService: CountriesFetcherService) {}
   ngOnInit(): void {
-    // this.countryService
-    //   .getToken()
-    //   .pipe(take(1))
-    //   .subscribe(data => console.log(data));
     this.countryService
       .getCountries()
       .pipe(take(1))
@@ -36,6 +32,7 @@ export class UserCreationFormComponent implements OnInit {
           this.countryList = countriesArray;
         },
         error: (error: any) => {
+          console.log('error');
           console.log(error);
         },
       });
@@ -49,7 +46,6 @@ export class UserCreationFormComponent implements OnInit {
     }
   }
   emitCreationNotification() {
-    // console.log('Sending Edit Notification');
     if (this.passwordConfirmation === this.currentEmployee.password) {
       this.formEvent.emit({
         employee: this.currentEmployee,
@@ -59,14 +55,11 @@ export class UserCreationFormComponent implements OnInit {
   }
   changeStateList(country: string) {
     if (country !== 'none') {
-      console.log('Fetching States');
       this.countryService
         .getStates(country)
         .pipe(take(1))
         .subscribe({
           next: (statesArray: any) => {
-            console.log(statesArray);
-            // this.countryList = countriesArray;
             this.stateList = statesArray;
           },
           error: (error: any) => {
@@ -78,7 +71,6 @@ export class UserCreationFormComponent implements OnInit {
       this.stateList = [];
     }
   }
-
   getNumberOfDigits(originalNumber: number): number {
     let numberOfDigits: number;
     if (originalNumber === 0) {

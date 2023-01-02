@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Employee } from '../../models/employee.interface';
+import { defaultEmployee } from '../../utils/default-employee';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class EmployeeService {
     return this.http
       .get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`)
       .pipe(
+        catchError(error => of([])),
         map(data => {
           if (data.length > 0) {
             return data[data.length - 1].id + 1;
@@ -33,6 +35,7 @@ export class EmployeeService {
     return this.http.get<Employee>(
       `${this.localDatabase}/${this.baseUrl}/${id}`
     );
+    // .pipe(catchError(error => of(defaultEmployee)));
   }
   createEmployee(employee: Employee) {
     return this.http.post<Employee>(

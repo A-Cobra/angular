@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -31,13 +31,12 @@ export class CountriesFetcherService {
     // });
   }
   getCountries() {
-    console.log('environment.bearerToken');
-    console.log(environment.authToken);
     return this.http
       .get(this.baseUrl + 'countries/', {
         headers: this.headers,
       })
       .pipe(
+        catchError(error => of([])),
         map(data => {
           console.log(data);
           return (data as Array<any>).map(
@@ -45,7 +44,6 @@ export class CountriesFetcherService {
           );
         })
       );
-    // .pipe(map(responseObj => responseObj.country_name));
   }
   getStates(country: string) {
     console.log('environment.bearerToken');
@@ -55,14 +53,12 @@ export class CountriesFetcherService {
         headers: this.headers,
       })
       .pipe(
+        catchError(error => of([])),
         map(data => {
-          console.log(data);
-          // return data;
           return (data as Array<any>).map(
             responseObj => responseObj.state_name
           );
         })
       );
-    // .pipe(map(responseObj => responseObj.country_name));
   }
 }
