@@ -28,6 +28,15 @@ $twilight: rgb(95,0,160);
   position: relative;
   label.description{
     flex: 0 1 220px;
+    position: relative;
+    &.required::after{
+      content: "*";
+      color: red;
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translate(0,-50%);
+    }
   }
   input:not([type=checkbox]){
     position: relative;
@@ -66,21 +75,34 @@ $twilight: rgb(95,0,160);
 }
 .select-container{
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  select{
-    height: 35px;
-    padding: 4px 10px;
-    color: $light-purple;
-    background-color: $navy-blue;
-    border-radius: 5px;
-    border: none;
-    &:focus{
-      background-color: white;
-      color: $twilight;
-      box-shadow: 3px 5px 10px $main-color-shadow;
+  .select-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    &::after{
+      content: "*";
+      color: red;
+      position: absolute;
+      top: 50%;
+      right: -15px;
+      transform: translate(0,-50%);
+    }
+    select{
+      height: 35px;
+      padding: 4px 10px;
+      color: $light-purple;
+      background-color: $navy-blue;
+      border-radius: 5px;
       border: none;
+      &:focus{
+        background-color: white;
+        color: $twilight;
+        box-shadow: 3px 5px 10px $main-color-shadow;
+        border: none;
+      }
     }
   }
 }
@@ -106,7 +128,18 @@ $twilight: rgb(95,0,160);
         background-color: $light-sky-blue;
         box-shadow: 3px 6px 6px $main-color-shadow;
       }
-
     }
+  }
+}
+label.required,
+select.required{
+  position: relative;
+  &::after{
+    content: "*";
+    color: red;
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translate(0,-50%);
   }
 }

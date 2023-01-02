@@ -3,9 +3,9 @@
 </ng-template>
 <h1 class="title" *ngIf="editing; else createEmployee">Edit a Employee</h1>
 <form id="employee-form" #employeeCreationForm="ngForm">
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="firstName"
+      <label class="description required" for="firstName"
         >Introduce your first name</label
       >
       <input
@@ -28,9 +28,11 @@
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="lastName">Introduce your last name</label>
+      <label class="description required" for="lastName"
+        >Introduce your last name</label
+      >
       <input
         #lastName="ngModel"
         type="text"
@@ -51,9 +53,11 @@
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="email">Introduce your email</label>
+      <label class="description required" for="email"
+        >Introduce your email</label
+      >
       <input
         #email="ngModel"
         email
@@ -75,9 +79,11 @@
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="password">Introduce your password</label>
+      <label class="description required" for="password"
+        >Introduce your password</label
+      >
       <input
         #password="ngModel"
         type="password"
@@ -93,9 +99,9 @@
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="passwordConfirmation"
+      <label class="description required" for="passwordConfirmation"
         >Confirm your password</label
       >
       <input
@@ -131,9 +137,9 @@
     </div>
     <div class="error"></div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="birthDate">Birth Date</label>
+      <label class="description required" for="birthDate">Birth Date</label>
       <input
         #date="ngModel"
         type="date"
@@ -151,9 +157,9 @@
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container">
-      <label class="description" for="phone"
+      <label class="description required" for="phone"
         >Phone number (5 digits as minimum)</label
       >
       <input
@@ -201,7 +207,7 @@
     </div>
     <div class="error"></div>
   </div>
-  <div class="form-group required">
+  <div class="form-group">
     <div class="flex-container gender-selector">
       <label
         ><input
@@ -211,7 +217,7 @@
           name="gender"
           [(ngModel)]="currentEmployee.gender" />Male
       </label>
-      <label
+      <label class="required"
         ><input
           type="radio"
           value="female"
@@ -221,52 +227,54 @@
     </div>
   </div>
   <div>
-    <div class="select-container required">
-      <select
-        (change)="changeStateList(currentEmployee.address.country)"
-        #country="ngModel"
-        name="country"
-        id="country"
-        required=""
-        [(ngModel)]="currentEmployee.address.country">
-        <option value="none" selected="true">Select a Country</option>
-        <option [value]="country" *ngFor="let country of countryList">
-          {{ country | titlecase }}
-        </option>
-      </select>
-      <select
-        *ngIf="country.value !== 'none' && stateList.length > 0"
-        #state="ngModel"
-        name="state"
-        id="state"
-        required=""
-        [(ngModel)]="currentEmployee.address.state">
-        <option value="none" [selected]="true && country.value === 'none'">
-          Select a State
-        </option>
-        <option [value]="state" *ngFor="let state of stateList">
-          {{ state | titlecase }}
-        </option>
-      </select>
-    </div>
-    <div class="error">
-      <div *ngIf="country.value === 'none' && country.touched">
-        Please select a Country
-      </div>
-    </div>
-    <div class="error">
-      <div
-        *ngIf="
-          currentEmployee.address.state === 'none' && country.value !== 'none'
-        ">
-        Please select a state
+    <div class="select-container">
+      <div class="select-wrapper">
+        <select
+          (change)="changeStateList(currentEmployee.address.country)"
+          #country="ngModel"
+          name="country"
+          id="country"
+          required=""
+          [(ngModel)]="currentEmployee.address.country">
+          <option value="none" selected="true">Select a Country</option>
+          <option [value]="country" *ngFor="let country of countryList">
+            {{ country | titlecase }}
+          </option>
+        </select>
+        <select
+          *ngIf="country.value !== 'none' && stateList.length > 0"
+          #state="ngModel"
+          name="state"
+          id="state"
+          required=""
+          [(ngModel)]="currentEmployee.address.state">
+          <option value="none" [selected]="true && country.value === 'none'">
+            Select a State
+          </option>
+          <option [value]="state" *ngFor="let state of stateList">
+            {{ state | titlecase }}
+          </option>
+        </select>
       </div>
     </div>
   </div>
-  <div class="form-group required">
+  <div class="error">
+    <div *ngIf="country.value === 'none' && country.touched">
+      Please select a Country
+    </div>
+  </div>
+  <div class="error">
+    <div
+      *ngIf="
+        currentEmployee.address.state === 'none' && country.value !== 'none'
+      ">
+      Please select a state
+    </div>
+  </div>
+  <div class="form-group">
     <div class="flex-container agree-terms">
       <input required #agree id="terms" name="terms" type="checkbox" />
-      <label for="terms">Agree Terms and Conditions</label>
+      <label class="required" for="terms">Agree Terms and Conditions</label>
     </div>
     <div class="error">
       <!-- <div *ngIf="!agree.checked">Please agree the terms and conditions</div> -->

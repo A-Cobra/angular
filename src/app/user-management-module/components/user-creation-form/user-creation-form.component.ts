@@ -19,8 +19,8 @@ export class UserCreationFormComponent implements OnInit {
   @Input()
   currentEmployee: Employee = Object.assign({}, defaultEmployee);
   passwordConfirmation: string = '';
-  countryList: string[] = [];
-  stateList: string[] = [];
+  countryList: string[] = ['spain'];
+  stateList: string[] = ['madrid'];
   constructor(private countryService: CountriesFetcherService) {}
   ngOnInit(): void {
     // this.countryService
