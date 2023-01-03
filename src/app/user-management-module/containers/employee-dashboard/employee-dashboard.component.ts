@@ -17,7 +17,6 @@ export class EmployeeDashboardComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
   ngOnInit(): void {
-    console.log('Inside oninit');
     this.employeeService
       .getEmployees()
       .pipe(takeUntil(this.endAllSubscriptions$))
@@ -26,8 +25,6 @@ export class EmployeeDashboardComponent implements OnInit, OnDestroy {
           this.employeeList = employees;
         },
         error: err => {
-          console.log('error');
-          console.log(err);
           this.employeeList = [];
         },
       });

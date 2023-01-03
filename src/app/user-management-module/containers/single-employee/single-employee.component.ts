@@ -11,7 +11,7 @@ import { defaultEmployee } from '../../utils/default-employee';
   styleUrls: ['./single-employee.component.scss'],
 })
 export class SingleEmployeeComponent implements OnInit, OnDestroy {
-  uccessfulUpdate: boolean = false;
+  successfulUpdate: boolean = false;
   queryError = false;
   endAllSubscriptions$: Subject<string> = new Subject<string>();
   employee: Employee = Object.assign({}, defaultEmployee);
@@ -32,7 +32,6 @@ export class SingleEmployeeComponent implements OnInit, OnDestroy {
               this.employee = employee;
             },
             error: err => {
-              console.log(err);
               this.queryError = true;
               setTimeout(() => {
                 this.router.navigate(['/']);

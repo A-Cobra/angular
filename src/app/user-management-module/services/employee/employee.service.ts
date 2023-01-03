@@ -5,7 +5,6 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { MyValidations } from '../../directives/form-validations.directive';
 import { Employee } from '../../models/employee.interface';
-import { defaultEmployee } from '../../utils/default-employee';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,6 @@ export class EmployeeService {
   numberOfEmployees: number = 0;
   constructor(private http: HttpClient) {}
   getNumberOfEmployees() {
-    console.log('Getting number of Employees');
     return this.http
       .get<Employee[]>(`${this.localDatabase}/${this.baseUrl}`)
       .pipe(

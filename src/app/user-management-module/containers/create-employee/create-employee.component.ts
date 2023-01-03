@@ -24,18 +24,15 @@ export class CreateEmployeeComponent implements OnInit {
   }
   onHandleEvent(formEvent: FormEvent) {
     if (formEvent.type === 'create') {
-      console.log('Creating');
       const validation = this.employeeService.validateEmployee(
         formEvent.employee
       );
       if (validation) {
-        console.log('Correct Navigation');
         this.employeeService
           .createEmployee(formEvent.employee)
           .pipe(take(1))
           .subscribe({
             next: (employee: Employee) => {
-              console.log('Success');
               this.resetEmployeeData();
               this.successfulCreation = true;
               setTimeout(() => {
@@ -44,7 +41,7 @@ export class CreateEmployeeComponent implements OnInit {
               this.setCreationId();
             },
             error: err => {
-              console.log('Failure');
+              console.log('Failure in the creation process at the API');
             },
           });
       } else {

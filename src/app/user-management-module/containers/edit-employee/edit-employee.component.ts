@@ -34,7 +34,6 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
               this.employee = employee;
             },
             error: err => {
-              console.log(err);
               this.queryError = true;
               setTimeout(() => {
                 this.router.navigate(['/']);
@@ -48,29 +47,23 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
     this.endAllSubscriptions$.unsubscribe();
   }
   onHandleEvent(formEvent: FormEvent) {
-    console.log('On handle Event');
     if (formEvent.type === 'update') {
-      console.log('Updating');
       const validation = this.employeeService.validateEmployee(
         formEvent.employee
       );
-      console.log('validation');
-      console.log(validation);
       if (validation) {
-        console.log('Correct Navigation');
         this.employeeService
           .updateEmployee(formEvent.employee)
           .pipe(take(1))
           .subscribe({
             next: (employee: Employee) => {
-              console.log('Success');
               this.successfulUpdate = true;
               setTimeout(() => {
                 this.router.navigate(['']);
               }, 2500);
             },
             error: err => {
-              console.log('Failure');
+              console.log('Error updating the Employee');
             },
           });
       } else {

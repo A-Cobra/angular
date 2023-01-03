@@ -16,7 +16,6 @@ import { EmployeeViewerComponent } from './components/employee-viewer/employee-v
 import { CreateEmployeeComponent } from './containers/create-employee/create-employee.component';
 import { SingleEmployeeComponent } from './containers/single-employee/single-employee.component';
 import { PasswordStrengthDirective } from './directives/form-validators/password-strength.directive';
-import { MyValidations } from './directives/form-validations.directive';
 
 @NgModule({
   declarations: [

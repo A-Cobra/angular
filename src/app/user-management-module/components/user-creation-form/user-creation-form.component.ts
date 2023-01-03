@@ -1,7 +1,5 @@
-import { VariableBinding } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { take } from 'rxjs';
-import { MyValidations } from '../../directives/form-validations.directive';
 import { Employee } from '../../models/employee.interface';
 import { FormEvent } from '../../models/form-event.type';
 import { CountriesFetcherService } from '../../services/country-fetcher/countries-fetcher.service';
@@ -29,12 +27,9 @@ export class UserCreationFormComponent implements OnInit {
     //   .pipe(take(1))
     //   .subscribe({
     //     next: (response: any) => {
-    //       console.log(response);
     //       // this.countryList = countriesArray;
     //     },
     //     error: (error: any) => {
-    //       console.log('error');
-    //       console.log(error);
     //     },
     //   });
     this.countryService
@@ -42,11 +37,9 @@ export class UserCreationFormComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (countriesArray: any) => {
-          console.log(countriesArray);
           this.countryList = countriesArray;
         },
         error: (error: any) => {
-          console.log('error');
           console.log(error);
         },
       });
@@ -100,7 +93,6 @@ export class UserCreationFormComponent implements OnInit {
     return string.includes(char);
   }
   getCurrentDate() {
-    console.log(new Date().toISOString().split('T')[0]);
     return new Date().toISOString().split('T')[0];
   }
   lastCharIsADot(string: string) {

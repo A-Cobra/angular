@@ -24,17 +24,14 @@ export class EmployeeViewerComponent {
     private employeeService: EmployeeService
   ) {}
   redirectToUserEdition() {
-    console.log(this.currentEmployee.id);
     this.router.navigate(['/edit', `${this.currentEmployee.id}`]);
   }
   deleteAndRedirectToEmployeeDashboard() {
-    console.log('deleting');
     this.employeeService
       .deleteEmployee(this.currentEmployee)
       .pipe(take(1))
       .subscribe({
         next: (employee: Employee) => {
-          console.log('Success');
           setTimeout(() => {
             this.redirectTo('');
           }, 2500);

@@ -12,14 +12,7 @@ export class CountriesFetcherService {
     Authorization: environment.authToken,
     Accept: 'application/json',
   });
-  // header: HttpHeaders = {};
   constructor(private http: HttpClient) {}
-  // getCountries(): Observable<string[]> {
-  //   return this.http.get<string[]>(this.baseUrl, {
-  //     headers: this.headers,
-  //   });
-  //   // .pipe(map(responseObj => responseObj.country_name));
-  // }
   getToken() {
     const header2 = new HttpHeaders({
       Accept: 'application/json',
@@ -38,7 +31,6 @@ export class CountriesFetcherService {
       .pipe(
         catchError(error => of([])),
         map(data => {
-          console.log(data);
           return (data as Array<any>).map(
             responseObj => responseObj.country_name
           );
@@ -46,8 +38,6 @@ export class CountriesFetcherService {
       );
   }
   getStates(country: string) {
-    console.log('environment.bearerToken');
-    console.log(environment.authToken);
     return this.http
       .get(this.baseUrl + 'states/' + country, {
         headers: this.headers,
