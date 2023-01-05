@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormEvent } from './models/form-event.type';
+import { GithubUser } from './models/github-user.type';
 import { GithubProfileFetcherService } from './services/github-profile-fetcher/github-profile-fetcher.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { GithubProfileFetcherService } from './services/github-profile-fetcher/g
   styleUrls: ['./github-app.component.scss'],
 })
 export class GithubAppComponent {
-  petition!: any;
+  petition!: GithubUser;
 
   constructor(private githubService: GithubProfileFetcherService) {}
 
@@ -20,7 +21,8 @@ export class GithubAppComponent {
 
   searchUser(username: string) {
     this.githubService.getUser(username).subscribe({
-      next: (response: any) => {
+      next: (response: GithubUser) => {
+        console.log(response);
         this.petition = response;
       },
       error: (error: any) => {

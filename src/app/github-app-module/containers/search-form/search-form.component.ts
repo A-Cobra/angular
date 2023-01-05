@@ -18,7 +18,14 @@ import { FormEvent } from '../../models/form-event.type';
           formControlName="input"
           type="text"
           placeholder="Enter Github user name" />
-        <button (click)="onSearch()">Search</button>
+        <button [disabled]="fetchForm.invalid" (click)="onSearch()">
+          Search
+        </button>
+        <div class="error">
+          <div *ngIf="isRequired('input')">
+            The input has to have at least a character
+          </div>
+        </div>
       </form>
     </div>
     <pre>{{ fetchForm.value | json }}</pre>
@@ -32,7 +39,7 @@ export class SearchFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     this.fetchForm = this.formBuilder.group({
-      input: new FormControl<string>('123', {
+      input: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required],
         asyncValidators: [],
@@ -47,5 +54,11 @@ export class SearchFormComponent implements OnInit {
         inputValue,
       });
     }
+  }
+  isRequired(controlName: string) {
+    return (
+      this.fetchForm.get(controlName)?.hasError('required') &&
+      this.fetchForm.get(controlName)?.touched
+    );
   }
 }
