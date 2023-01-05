@@ -40,9 +40,12 @@ export class SearchFormComponent implements OnInit {
     });
   }
   onSearch() {
-    this.formEvent.emit({
-      type: 'search',
-      inputValue: this.fetchForm.get('input')?.value,
-    });
+    const inputValue = this.fetchForm.get('input')?.value;
+    if (inputValue) {
+      this.formEvent.emit({
+        type: 'search',
+        inputValue,
+      });
+    }
   }
 }

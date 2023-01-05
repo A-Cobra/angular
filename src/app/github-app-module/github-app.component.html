@@ -1,2 +1,3 @@
 <h1>Github App V2 ngEdition</h1>
-<app-search-form></app-search-form>
+<app-search-form (formEvent)="onEventEmitted($event)"></app-search-form>
+<div>{{ petition | json }}</div>
