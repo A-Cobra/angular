@@ -8,9 +8,16 @@ import { SearchFormComponent } from './containers/search-form/search-form.compon
 
 // For services
 import { HttpClientModule } from '@angular/common/http';
+import { UserInfoDisplayComponent } from './components/user-info-display/user-info-display.component';
+import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
 
 @NgModule({
-  declarations: [GithubAppComponent, SearchFormComponent],
+  declarations: [
+    GithubAppComponent,
+    SearchFormComponent,
+    UserInfoDisplayComponent,
+    TimeAgoPipe,
+  ],
   imports: [
     CommonModule,
     GithubAppRoutingModule,
