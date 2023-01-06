@@ -1,0 +1,7 @@
+<div class="img-container">
+  <img [src]="currentUser.avatar_url" [alt]="currentUser.login + '.png'" />
+</div>
+<div>
+  <h3>{{ currentUser.login }}</h3>
+</div>
+<a [href]="currentUser.html_url">Watch this profile at Github</a>

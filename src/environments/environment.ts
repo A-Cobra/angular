@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   githubEndpoint: 'https://api.github.com/users',
+  followersUrlParams: '?page=1&per_page=10',
+  repositoriesUrlParams: '?page=1&per_page=20',
 };
 
 /*

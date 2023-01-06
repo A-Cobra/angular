@@ -10,6 +10,8 @@ import { SearchFormComponent } from './containers/search-form/search-form.compon
 import { HttpClientModule } from '@angular/common/http';
 import { UserInfoDisplayComponent } from './components/user-info-display/user-info-display.component';
 import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
+import { UserMainInfoComponent } from './components/user-main-info/user-main-info.component';
+import { RepositoryDisplayComponent } from './components/repository-display/repository-display.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
     SearchFormComponent,
     UserInfoDisplayComponent,
     TimeAgoPipe,
+    UserMainInfoComponent,
+    RepositoryDisplayComponent,
   ],
   imports: [
     CommonModule,

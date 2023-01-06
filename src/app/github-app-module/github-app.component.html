@@ -1,4 +1,20 @@
 <h1>Github App V2 ngEdition</h1>
 <app-search-form (formEvent)="onEventEmitted($event)"></app-search-form>
-<app-user-info-display></app-user-info-display>
-<div>{{ petition | json }}</div>
+<div *ngIf="dataReady">
+  <app-user-info-display [currentUser]="currentUser"></app-user-info-display>
+  <h2>Repositories</h2>
+  <h2 *ngIf="repositories.length === 0">
+    User {{ currentUser.login }} doesn't have any Repositories
+  </h2>
+  <app-repository-display
+    [currentRepository]="repository"
+    *ngFor="let repository of repositories"></app-repository-display>
+  <h2>Followers</h2>
+  <h2 *ngIf="followers.length === 0">
+    User {{ currentUser.login }} doesn't have any followers
+  </h2>
+  <app-user-main-info
+    [currentUser]="follower"
+    *ngFor="let follower of followers"></app-user-main-info>
+  <div>{{ currentUser | json }}</div>
+</div>

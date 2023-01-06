@@ -3,14 +3,12 @@ import { GithubUser } from '../../models/github-user.type';
 import { defaultGithubUser } from '../../utils/default-github-user';
 
 @Component({
-  selector: 'app-user-info-display',
-  templateUrl: './user-info-display.component.html',
-  styleUrls: ['./user-info-display.component.scss'],
+  selector: 'app-user-main-info',
+  templateUrl: './user-main-info.component.html',
+  styleUrls: ['./user-main-info.component.scss'],
 })
-export class UserInfoDisplayComponent {
+export class UserMainInfoComponent {
   @Input()
   currentUser: GithubUser = { ...defaultGithubUser };
-  @Input()
-  CurrentUserRepositories: GithubUser[] = [];
   constructor() {}
 }

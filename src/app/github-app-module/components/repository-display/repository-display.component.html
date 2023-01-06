@@ -1,0 +1,23 @@
+<div>
+  <h3>
+    Repository name: <span>{{ currentRepository.name | titlecase }}</span>
+  </h3>
+</div>
+<div>
+  <h3>
+    Number of Stars: <span>{{ currentRepository.stargazers_count }}</span>
+  </h3>
+</div>
+<div>
+  <h3>
+    Number of Forks: <span>{{ currentRepository.forks_count }}</span>
+  </h3>
+</div>
+<div>
+  <h3>
+    Number of Watchers: <span>{{ currentRepository.watchers }}</span>
+  </h3>
+</div>
+<div>
+  <a [href]="currentRepository.html_url">Go to repo</a>
+</div>
