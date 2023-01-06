@@ -16,17 +16,15 @@ export class GithubProfileFetcherService {
     return this.http.get<GithubUser>(`${this.githubEndpointBase}/${username}`);
   }
   getFollowers(username: string) {
-    return this.http
-      .get<GithubUser[]>(
-        `${this.githubEndpointBase}/${username}/followers${environment.followersUrlParams}`
-      )
-      .pipe(catchError(error => of([])));
+    return this.http.get<GithubUser[]>(
+      `${this.githubEndpointBase}/${username}/followers${environment.followersUrlParams}`
+    );
+    // .pipe(catchError(error => of([])));
   }
   getRepositories(username: string) {
-    return this.http
-      .get<Repository[]>(
-        `${this.githubEndpointBase}/${username}/repos${environment.repositoriesUrlParams}`
-      )
-      .pipe(catchError(error => of([])));
+    return this.http.get<Repository[]>(
+      `${this.githubEndpointBase}/${username}/repos${environment.repositoriesUrlParams}`
+    );
+    // .pipe(catchError(error => of([])));
   }
 }

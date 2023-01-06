@@ -38,7 +38,7 @@ export class GithubAppComponent {
         this.currentUser = response;
         this.getAdditionalUserInfo(username);
       },
-      error: (error: any) => {
+      error: (error: Response) => {
         if (error.status === 404) {
           this.notFound = true;
         } else if (error.status === 403) {
@@ -60,8 +60,7 @@ export class GithubAppComponent {
         this.followers = followers;
         this.dataReady = true;
       },
-      error: (error: any) => {
-        console.log(error);
+      error: (error: Response) => {
         this.repositoriesQueryFailure = true;
         this.followersQueryFailure = true;
         this.dataReady = true;
