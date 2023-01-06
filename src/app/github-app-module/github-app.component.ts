@@ -13,7 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './github-app.component.html',
   styleUrls: ['./github-app.component.scss'],
 })
-export class GithubAppComponent implements OnInit {
+export class GithubAppComponent {
   currentUser: GithubUser = { ...defaultGithubUser };
   followers: GithubUser[] = [];
   repositories: Repository[] = [];
@@ -28,15 +28,10 @@ export class GithubAppComponent implements OnInit {
     private githubService: GithubProfileFetcherService,
     private spinner: NgxSpinnerService
   ) {}
-  ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 5000);
-  }
 
   onEventEmitted(formEvent: FormEvent) {
     this.resetParams();
+    this.spinner.show();
     if (formEvent.type === 'search') {
       this.getUser(formEvent.inputValue);
     }
@@ -70,11 +65,13 @@ export class GithubAppComponent implements OnInit {
         this.repositories = repositories;
         this.followers = followers;
         this.dataReady = true;
+        this.spinner.hide();
       },
       error: (error: Response) => {
         this.repositoriesQueryFailure = true;
         this.followersQueryFailure = true;
         this.dataReady = true;
+        this.spinner.hide();
       },
     });
   }
