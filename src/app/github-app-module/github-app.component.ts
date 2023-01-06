@@ -11,18 +11,24 @@ import { defaultGithubUser } from './utils/default-github-user';
   styleUrls: ['./github-app.component.scss'],
 })
 export class GithubAppComponent {
-  dataReady = false;
-  followers: GithubUser[] = [];
   currentUser: GithubUser = { ...defaultGithubUser };
+  followers: GithubUser[] = [];
   repositories: Repository[] = [];
+  userQueryFailure = false;
+  accessDenied = false;
+  followersQueryFailure = false;
+  repositoriesQueryFailure = false;
+  dataReady = false;
+  notFound = false;
 
   constructor(private githubService: GithubProfileFetcherService) {}
 
   onEventEmitted(formEvent: FormEvent) {
+    this.resetParams();
     if (formEvent.type === 'search') {
       this.getUser(formEvent.inputValue);
-      this.getUserFollowers(formEvent.inputValue);
-      this.getRepositories(formEvent.inputValue);
+      // this.getUserFollowers(formEvent.inputValue);
+      // this.getRepositories(formEvent.inputValue);
     }
   }
 
@@ -31,9 +37,16 @@ export class GithubAppComponent {
       next: (response: GithubUser) => {
         console.log(response);
         this.currentUser = response;
+        this.getUserFollowers(username);
+        this.getRepositories(username);
       },
       error: (error: any) => {
-        console.log(error);
+        if (error.status === 404) {
+          this.notFound = true;
+        } else if (error.status === 403) {
+          this.accessDenied = true;
+        }
+        this.userQueryFailure = true;
       },
     });
   }
@@ -46,6 +59,7 @@ export class GithubAppComponent {
       },
       error: (error: any) => {
         console.log(error);
+        this.followersQueryFailure = true;
       },
     });
   }
@@ -55,12 +69,25 @@ export class GithubAppComponent {
       next: (response: Repository[]) => {
         console.log(response);
         this.repositories = response;
+        this.dataReady = true;
       },
       error: (error: any) => {
         console.log(error);
+        this.repositoriesQueryFailure = true;
+        this.dataReady = true;
       },
     });
   }
 
-  queryUserData(username: string) {}
+  resetParams() {
+    this.currentUser = { ...defaultGithubUser };
+    this.followers = [];
+    this.repositories = [];
+    this.userQueryFailure = false;
+    this.accessDenied = false;
+    this.followersQueryFailure = false;
+    this.repositoriesQueryFailure = false;
+    this.dataReady = false;
+    this.notFound = false;
+  }
 }

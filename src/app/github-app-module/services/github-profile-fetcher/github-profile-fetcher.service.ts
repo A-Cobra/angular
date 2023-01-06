@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { GithubUser } from '../../models/github-user.type';
 import { Repository } from '../../models/repository.type';
+import { catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,17 @@ export class GithubProfileFetcherService {
     return this.http.get<GithubUser>(`${this.githubEndpointBase}/${username}`);
   }
   getFollowers(username: string) {
-    return this.http.get<GithubUser[]>(
-      `${this.githubEndpointBase}/${username}/followers${environment.followersUrlParams}`
-    );
+    return this.http
+      .get<GithubUser[]>(
+        `${this.githubEndpointBase}/${username}/followers${environment.followersUrlParams}`
+      )
+      .pipe(catchError(error => of([])));
   }
   getRepositories(username: string) {
-    return this.http.get<Repository[]>(
-      `${this.githubEndpointBase}/${username}/repos${environment.repositoriesUrlParams}`
-    );
+    return this.http
+      .get<Repository[]>(
+        `${this.githubEndpointBase}/${username}/repos${environment.repositoriesUrlParams}`
+      )
+      .pipe(catchError(error => of([])));
   }
 }
