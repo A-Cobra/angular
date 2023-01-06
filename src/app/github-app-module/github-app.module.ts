@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GithubAppRoutingModule } from './github-app-routing.module';
@@ -12,6 +12,10 @@ import { UserInfoDisplayComponent } from './components/user-info-display/user-in
 import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
 import { UserMainInfoComponent } from './components/user-main-info/user-main-info.component';
 import { RepositoryDisplayComponent } from './components/repository-display/repository-display.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Import library module
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { RepositoryDisplayComponent } from './components/repository-display/repo
     GithubAppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   exports: [GithubAppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GithubAppModule {}

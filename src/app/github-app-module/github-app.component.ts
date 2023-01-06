@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { zip } from 'rxjs';
 import { FormEvent } from './models/form-event.type';
 import { GithubUser } from './models/github-user.type';
@@ -6,12 +6,14 @@ import { Repository } from './models/repository.type';
 import { GithubProfileFetcherService } from './services/github-profile-fetcher/github-profile-fetcher.service';
 import { defaultGithubUser } from './utils/default-github-user';
 
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-github-app',
   templateUrl: './github-app.component.html',
   styleUrls: ['./github-app.component.scss'],
 })
-export class GithubAppComponent {
+export class GithubAppComponent implements OnInit {
   currentUser: GithubUser = { ...defaultGithubUser };
   followers: GithubUser[] = [];
   repositories: Repository[] = [];
@@ -22,7 +24,16 @@ export class GithubAppComponent {
   dataReady = false;
   notFound = false;
 
-  constructor(private githubService: GithubProfileFetcherService) {}
+  constructor(
+    private githubService: GithubProfileFetcherService,
+    private spinner: NgxSpinnerService
+  ) {}
+  ngOnInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000);
+  }
 
   onEventEmitted(formEvent: FormEvent) {
     this.resetParams();
