@@ -1,0 +1,37 @@
+
+@import "../../../../colors";
+h3 {
+  span{
+    font-weight: 200;
+  }
+}
+
+a{
+  padding: 8px 15px;
+  border: solid 1px $light-gray;
+  border-radius: 7px;
+  color: $sky-blue;
+  background-color: $mid-gray;
+}
+.repository-info{
+  padding-bottom: 15px;
+  position: relative;
+  display: grid;
+  gap: 20px;  
+  &::after{
+    content: "Public";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid 1px $light-gray;
+    border-radius: 100px;
+    background-color: $dark-gray;
+    color: $light-gray;
+    font-weight: 700;
+    padding: 2px 8px;
+    font-size: 14px;
+  }
+  span.repository-name {
+    color: $sky-blue;
+  }
+}

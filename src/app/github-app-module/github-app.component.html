@@ -1,56 +1,67 @@
-<ngx-spinner
-  bdColor="rgba(0, 0, 0, 0.8)"
-  size="medium"
-  color="#fff"
-  type="pacman"
-  [fullScreen]="true"
-  ><p style="color: white">Fetching User...</p></ngx-spinner
->
-<h1>Github App V2 ngEdition</h1>
-<app-search-form (formEvent)="onEventEmitted($event)"></app-search-form>
+<div class="github-app-container">
+  <ngx-spinner
+    bdColor="rgba(0, 0, 0, 0.8)"
+    size="medium"
+    color="#fff"
+    type="pacman"
+    [fullScreen]="true"
+    ><p style="color: white">Fetching User...</p></ngx-spinner
+  >
+  <header>
+    <h1>Github App V2 ngEdition</h1>
+    <app-search-form (formEvent)="onEventEmitted($event)"></app-search-form>
+  </header>
 
-<div *ngIf="dataReady">
-  <div class="error">
-    <div *ngIf="userQueryFailure && !notFound && !accessDenied">
-      <h1>Sorry, Something went wrong</h1>
-    </div>
-    <div *ngIf="notFound">
-      <h1>Sorry, the User you are looking for, doesn't exist</h1>
-    </div>
-    <div *ngIf="accessDenied">
-      <h1>Sorry, you don't have access to the resource</h1>
-    </div>
-  </div>
-  <div *ngIf="!userQueryFailure">
-    <div class="user-main-info-container">
-      <app-user-info-display
-        [currentUser]="currentUser"
-        [currentUserRepositories]="repositories"></app-user-info-display>
-    </div>
-    <h2>Repositories</h2>
+  <main *ngIf="dataReady">
     <div class="error">
-      <h2 *ngIf="repositories.length === 0 && !repositoriesQueryFailure">
-        User {{ currentUser.login }} doesn't have any Repositories
-      </h2>
-      <h2 *ngIf="repositoriesQueryFailure">
-        Something went wrong with the repositories query
-      </h2>
+      <div *ngIf="userQueryFailure && !notFound && !accessDenied">
+        <h1>Sorry, Something went wrong</h1>
+      </div>
+      <div *ngIf="notFound">
+        <h1>Sorry, the User you are looking for, doesn't exist</h1>
+      </div>
+      <div *ngIf="accessDenied">
+        <h1>Sorry, you don't have access to the resource</h1>
+      </div>
     </div>
-    <app-repository-display
-      [currentRepository]="repository"
-      *ngFor="let repository of repositories"></app-repository-display>
-    <h2>Followers</h2>
-    <div class="error">
-      <h2 *ngIf="followers.length === 0 && !followersQueryFailure">
-        User {{ currentUser.login }} doesn't have any followers
-      </h2>
-      <h2 *ngIf="followersQueryFailure">
-        Something went wrong with the followers query
-      </h2>
+    <div *ngIf="!userQueryFailure">
+      <div class="user-info-container">
+        <app-user-info-display
+          [currentUser]="currentUser"
+          [currentUserRepositories]="repositories"></app-user-info-display>
+      </div>
+      <div class="repositories-container">
+        <h2>Repositories</h2>
+        <div class="error">
+          <h2 *ngIf="repositories.length === 0 && !repositoriesQueryFailure">
+            User {{ currentUser.login }} doesn't have any Repositories
+          </h2>
+          <h2 *ngIf="repositoriesQueryFailure">
+            Something went wrong with the repositories query
+          </h2>
+        </div>
+        <div class="repositories-flex">
+          <div class="repository-card" *ngFor="let repository of repositories">
+            <app-repository-display
+              [currentRepository]="repository"></app-repository-display>
+          </div>
+        </div>
+      </div>
+      <div class="followers-container">
+        <h2>Followers</h2>
+        <div class="error">
+          <h2 *ngIf="followers.length === 0 && !followersQueryFailure">
+            User {{ currentUser.login }} doesn't have any followers
+          </h2>
+          <h2 *ngIf="followersQueryFailure">
+            Something went wrong with the followers query
+          </h2>
+        </div>
+        <app-user-main-info
+          [currentUser]="follower"
+          *ngFor="let follower of followers"></app-user-main-info>
+        <div>{{ currentUser | json }}</div>
+      </div>
     </div>
-    <app-user-main-info
-      [currentUser]="follower"
-      *ngFor="let follower of followers"></app-user-main-info>
-    <div>{{ currentUser | json }}</div>
-  </div>
+  </main>
 </div>

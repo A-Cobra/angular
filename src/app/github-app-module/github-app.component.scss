@@ -1,3 +1,50 @@
+@import "../../colors";
+$dark-gray: rgb(1,4,9);
+$bluish-gray: rgb(22,27,34);
 .error {
   color: red;
+}
+header{
+  background-color: $bluish-gray;
+  color: white;
+  padding: 30px 110px;
+  display: grid;
+  gap: 30px;
+  h1{
+    text-align: center;
+  }
+}
+.github-app-container{
+  color: white;
+}
+main{
+  .user-info-container, 
+  .repositories-container{
+    padding: 30px 110px;
+    border-bottom: 1px solid $light-gray;
+  }
+}
+.repositories-container{
+  display: grid;
+  gap: 20px;
+}
+.repositories-flex{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  .repository-card{
+    flex: 1 1 320px;
+    max-width: 450px;
+    background-color: $not-so-dark-gray;
+    padding: 20px;
+    border: 1px $light-gray solid;
+    border-radius: 7px;
+  }
+}
+@media screen and (max-width: 720px) {
+  main .user-info-container, 
+  .repositories-container{
+    padding: 30px;
+  }
 }
