@@ -47,10 +47,15 @@ export class GithubAppComponent {
       error: (error: Response) => {
         if (error.status === 404) {
           this.notFound = true;
+          console.log('User not found');
         } else if (error.status === 403) {
           this.accessDenied = true;
+          console.log('Access denied');
         }
+        console.log('Query Error');
         this.userQueryFailure = true;
+        this.spinner.hide();
+        this.dataReady = true;
       },
     });
   }

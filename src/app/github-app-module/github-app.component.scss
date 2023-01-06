@@ -25,6 +25,9 @@ main{
     border-bottom: 1px solid $light-gray;
   }
 }
+.query-error{
+  padding: 30px 110px;
+}
 .repositories-container,
 .followers-container{
   display: grid;
@@ -61,7 +64,8 @@ main{
 @media screen and (max-width: 720px) {
   main .user-info-container, 
   .repositories-container,
-  .followers-container{
+  .followers-container,
+  .query-error{
     padding: 30px;
   }
 }
