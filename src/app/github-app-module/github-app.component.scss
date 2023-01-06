@@ -19,12 +19,14 @@ header{
 }
 main{
   .user-info-container, 
-  .repositories-container{
+  .repositories-container,
+  .followers-container{
     padding: 30px 110px;
     border-bottom: 1px solid $light-gray;
   }
 }
-.repositories-container{
+.repositories-container,
+.followers-container{
   display: grid;
   gap: 20px;
 }
@@ -42,9 +44,24 @@ main{
     border-radius: 7px;
   }
 }
+.followers-flex{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  .follower-card{
+    flex: 1 1 300px;
+    max-width: 400px;
+    background-color: $not-so-dark-gray;
+    padding: 20px;
+    border: 1px $light-gray solid;
+    border-radius: 7px;
+  }
+}
 @media screen and (max-width: 720px) {
   main .user-info-container, 
-  .repositories-container{
+  .repositories-container,
+  .followers-container{
     padding: 30px;
   }
 }

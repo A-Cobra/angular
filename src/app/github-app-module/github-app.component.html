@@ -57,10 +57,11 @@
             Something went wrong with the followers query
           </h2>
         </div>
-        <app-user-main-info
-          [currentUser]="follower"
-          *ngFor="let follower of followers"></app-user-main-info>
-        <div>{{ currentUser | json }}</div>
+        <div class="followers-flex">
+          <div class="follower-card" *ngFor="let follower of followers">
+            <app-user-main-info [currentUser]="follower"></app-user-main-info>
+          </div>
+        </div>
       </div>
     </div>
   </main>
