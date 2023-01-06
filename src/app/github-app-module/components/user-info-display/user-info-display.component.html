@@ -3,11 +3,12 @@
     <app-user-main-info [currentUser]="currentUser"></app-user-main-info>
   </section>
   <section class="information">
-    <!-- <div class="stars">
+    <div class="stars">
       <h3>
-        Number of Stars: <span>{{ currentUser.numer }}</span>
+        Number of Stars (20 or less repos total):
+        <span>{{ getTotalNumberOfStars() }}</span>
       </h3>
-    </div> -->
+    </div>
     <div class="repositories-number">
       <h3>
         Number of Repositories: <span>{{ currentUser.public_repos }}</span>
@@ -23,11 +24,14 @@
         Company: <span>{{ currentUser.company ?? 'Unknown' }}</span>
       </h3>
     </div>
-    <!-- <div class="website">
+    <div class="website">
       <h3>
-        Website: <span>{{ currentUser.company ?? 'Unknown' }}</span>
+        Website:
+        <span>{{
+          currentUser.blog === '' ? 'Unknown' : currentUser.blog
+        }}</span>
       </h3>
-    </div> -->
+    </div>
     <div class="location">
       <h3>
         Location: <span>{{ currentUser.location ?? 'Unknown' }}</span>

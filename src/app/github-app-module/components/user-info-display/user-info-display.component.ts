@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GithubUser } from '../../models/github-user.type';
+import { Repository } from '../../models/repository.type';
 import { defaultGithubUser } from '../../utils/default-github-user';
 
 @Component({
@@ -11,6 +12,13 @@ export class UserInfoDisplayComponent {
   @Input()
   currentUser: GithubUser = { ...defaultGithubUser };
   @Input()
-  CurrentUserRepositories: GithubUser[] = [];
+  currentUserRepositories: Repository[] = [];
   constructor() {}
+  getTotalNumberOfStars() {
+    let counter = 0;
+    this.currentUserRepositories.forEach((repository: Repository) => {
+      counter += repository.stargazers_count;
+    });
+    return counter;
+  }
 }

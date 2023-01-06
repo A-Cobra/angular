@@ -10,37 +10,44 @@
 <app-search-form (formEvent)="onEventEmitted($event)"></app-search-form>
 
 <div *ngIf="dataReady">
-  <div *ngIf="userQueryFailure && !notFound && !accessDenied">
-    <h1>Sorry, Something went wrong</h1>
-  </div>
-  <div *ngIf="notFound">
-    <h1>Sorry, the User you are looking for, doesn't exist</h1>
-  </div>
-  <div *ngIf="accessDenied">
-    <h1>Sorry, you don't have access to the resource</h1>
+  <div class="error">
+    <div *ngIf="userQueryFailure && !notFound && !accessDenied">
+      <h1>Sorry, Something went wrong</h1>
+    </div>
+    <div *ngIf="notFound">
+      <h1>Sorry, the User you are looking for, doesn't exist</h1>
+    </div>
+    <div *ngIf="accessDenied">
+      <h1>Sorry, you don't have access to the resource</h1>
+    </div>
   </div>
   <div *ngIf="!userQueryFailure">
     <div class="user-main-info-container">
       <app-user-info-display
-        [currentUser]="currentUser"></app-user-info-display>
+        [currentUser]="currentUser"
+        [currentUserRepositories]="repositories"></app-user-info-display>
     </div>
     <h2>Repositories</h2>
-    <h2 *ngIf="repositories.length === 0 && !repositoriesQueryFailure">
-      User {{ currentUser.login }} doesn't have any Repositories
-    </h2>
-    <h2 *ngIf="repositoriesQueryFailure">
-      Something went wrong with the repositories query
-    </h2>
+    <div class="error">
+      <h2 *ngIf="repositories.length === 0 && !repositoriesQueryFailure">
+        User {{ currentUser.login }} doesn't have any Repositories
+      </h2>
+      <h2 *ngIf="repositoriesQueryFailure">
+        Something went wrong with the repositories query
+      </h2>
+    </div>
     <app-repository-display
       [currentRepository]="repository"
       *ngFor="let repository of repositories"></app-repository-display>
     <h2>Followers</h2>
-    <h2 *ngIf="followers.length === 0 && !followersQueryFailure">
-      User {{ currentUser.login }} doesn't have any followers
-    </h2>
-    <h2 *ngIf="followersQueryFailure">
-      Something went wrong with the followers query
-    </h2>
+    <div class="error">
+      <h2 *ngIf="followers.length === 0 && !followersQueryFailure">
+        User {{ currentUser.login }} doesn't have any followers
+      </h2>
+      <h2 *ngIf="followersQueryFailure">
+        Something went wrong with the followers query
+      </h2>
+    </div>
     <app-user-main-info
       [currentUser]="follower"
       *ngFor="let follower of followers"></app-user-main-info>

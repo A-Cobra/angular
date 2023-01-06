@@ -65,12 +65,15 @@ export class GithubAppComponent {
         this.repositories = repositories;
         this.followers = followers;
         this.dataReady = true;
-        this.spinner.hide();
+        // this.spinner.hide();
       },
       error: (error: Response) => {
         this.repositoriesQueryFailure = true;
         this.followersQueryFailure = true;
         this.dataReady = true;
+        // this.spinner.hide();
+      },
+      complete: () => {
         this.spinner.hide();
       },
     });
