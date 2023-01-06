@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { zip } from 'rxjs';
 import { FormEvent } from './models/form-event.type';
 import { GithubUser } from './models/github-user.type';
 import { Repository } from './models/repository.type';
@@ -27,8 +28,6 @@ export class GithubAppComponent {
     this.resetParams();
     if (formEvent.type === 'search') {
       this.getUser(formEvent.inputValue);
-      // this.getUserFollowers(formEvent.inputValue);
-      // this.getRepositories(formEvent.inputValue);
     }
   }
 
@@ -37,8 +36,7 @@ export class GithubAppComponent {
       next: (response: GithubUser) => {
         console.log(response);
         this.currentUser = response;
-        this.getUserFollowers(username);
-        this.getRepositories(username);
+        this.getAdditionalUserInfo(username);
       },
       error: (error: any) => {
         if (error.status === 404) {
@@ -51,29 +49,21 @@ export class GithubAppComponent {
     });
   }
 
-  getUserFollowers(username: string) {
-    this.githubService.getFollowers(username).subscribe({
-      next: (response: GithubUser[]) => {
-        console.log(response);
-        this.followers = response;
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.followersQueryFailure = true;
-      },
-    });
-  }
-
-  getRepositories(username: string) {
-    this.githubService.getRepositories(username).subscribe({
-      next: (response: Repository[]) => {
-        console.log(response);
-        this.repositories = response;
+  getAdditionalUserInfo(username: string) {
+    const observableZip$ = zip(
+      this.githubService.getFollowers(username),
+      this.githubService.getRepositories(username)
+    );
+    observableZip$.subscribe({
+      next: ([followers, repositories]: [GithubUser[], Repository[]]) => {
+        this.repositories = repositories;
+        this.followers = followers;
         this.dataReady = true;
       },
       error: (error: any) => {
         console.log(error);
         this.repositoriesQueryFailure = true;
+        this.followersQueryFailure = true;
         this.dataReady = true;
       },
     });
