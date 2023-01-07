@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../models/user.interface';
 import { CountryFetcherService } from '../../services/country-fetcher/country-fetcher.service';
 import { defaultUser } from '../../utils/default-user';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +17,13 @@ export class FormComponent implements OnInit {
   passwordConfirmation: string = '';
   countryList: string[] = [];
   stateList: string[] = [];
+
+  userForm = new FormGroup({
+    firstName: new FormControl<string>('', { nonNullable: true }),
+  });
+
   constructor(private countryService: CountryFetcherService) {}
+
   ngOnInit(): void {
     // this.countryService
     //   .getToken()
