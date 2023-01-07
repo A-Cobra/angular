@@ -137,3 +137,7 @@ select.required{
     transform: translate(0,-50%);
   }
 }
+.password-group{
+  display: grid;
+  gap: 24px;
+}

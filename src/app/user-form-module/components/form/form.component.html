@@ -1,11 +1,13 @@
 <h1 class="title">Create a new User</h1>
-<form id="user-form">
+<pre>{{ userForm.value | json }}</pre>
+<form id="user-form" [formGroup]="userForm">
   <div class="form-group">
     <div class="flex-container">
       <label class="description required" for="firstName"
         >Introduce your first name</label
       >
       <input
+        formControlName="firstName"
         type="text"
         id="firstName"
         name="firstName"
@@ -29,6 +31,7 @@
         >Introduce your last name</label
       >
       <input
+        formControlName="lastName"
         type="text"
         id="lastName"
         name="lastName"
@@ -52,6 +55,7 @@
         >Introduce your email</label
       >
       <input
+        formControlName="email"
         email
         type="email"
         id="email"
@@ -73,45 +77,49 @@
       </div> -->
     </div>
   </div>
-  <div class="form-group">
-    <div class="flex-container">
-      <label class="description required" for="password"
-        >Introduce your password</label
-      >
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Password"
-        required="" />
+  <div class="password-group" formGroupName="password">
+    <div class="form-group">
+      <div class="flex-container">
+        <label class="description required" for="password"
+          >Introduce your password</label
+        >
+        <input
+          formControlName="value"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required="" />
+      </div>
+      <div class="error">
+        <!-- <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
+          The password must contain at least 12 characters, have a special
+          character and a number
+        </div> -->
+      </div>
     </div>
-    <div class="error">
-      <!-- <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
-        The password must contain at least 12 characters, have a special
-        character and a number
-      </div> -->
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="flex-container">
-      <label class="description required" for="passwordConfirmation"
-        >Confirm your password</label
-      >
-      <input
-        type="password"
-        id="passwordConfirmation"
-        name="passwordConfirmation"
-        placeholder="Confirm your Password"
-        required="" />
-    </div>
-    <div class="error">
-      <!-- <div
-        *ngIf="
-          passwordConfirmation !== currentEmployee.password &&
-          passwordConfirmationInput.dirty
-        ">
-        Passwords don't match
-      </div> -->
+    <div class="form-group">
+      <div class="flex-container">
+        <label class="description required" for="passwordConfirmation"
+          >Confirm your password</label
+        >
+        <input
+          formControlName="confirmation"
+          type="password"
+          id="passwordConfirmation"
+          name="passwordConfirmation"
+          placeholder="Confirm your Password"
+          required="" />
+      </div>
+      <div class="error">
+        <!-- <div
+          *ngIf="
+            passwordConfirmation !== currentEmployee.password &&
+            passwordConfirmationInput.dirty
+          ">
+          Passwords don't match
+        </div> -->
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -120,6 +128,7 @@
         >Profile Image Link (Optional)</label
       >
       <input
+        formControlName="profileImage"
         type="text"
         id="profileImage"
         name="profileImage"
@@ -130,7 +139,12 @@
   <div class="form-group">
     <div class="flex-container">
       <label class="description required" for="birthDate">Birth Date</label>
-      <input type="date" id="birthDate" name="birthDate" required="" />
+      <input
+        formControlName="birthDate"
+        type="date"
+        id="birthDate"
+        name="birthDate"
+        required="" />
     </div>
     <div class="error">
       <!-- <div *ngIf="currentEmployee.birthDate === '' && date.touched">
@@ -146,7 +160,13 @@
       <label class="description required" for="phone"
         >Phone number (5 digits as minimum)</label
       >
-      <input type="number" id="phone" name="phone" required="" min="0" />
+      <input
+        formControlName="phone"
+        type="number"
+        id="phone"
+        name="phone"
+        required=""
+        min="0" />
     </div>
     <div class="error">
       <!-- <div *ngIf="currentEmployee.phone === null">
@@ -164,6 +184,7 @@
         >Personal Site Url (Optional)</label
       >
       <input
+        formControlName="personalSiteUrl"
         type="url"
         id="personalSiteUrl"
         name="personalSiteUrl"
@@ -175,6 +196,7 @@
     <div class="flex-container">
       <label class="description" for="about">About (Optional)</label>
       <input
+        formControlName="about"
         type="text"
         id="about"
         name="about"
@@ -185,23 +207,41 @@
   <div class="form-group">
     <div class="flex-container gender-selector">
       <label
-        ><input type="radio" value="male" checked="" name="gender" />Male
+        ><input
+          formControlName="gender"
+          type="radio"
+          value="male"
+          checked=""
+          name="gender" />Male
       </label>
       <label class="required"
-        ><input type="radio" value="female" name="gender" />Female
+        ><input
+          formControlName="gender"
+          type="radio"
+          value="female"
+          name="gender" />Female
       </label>
     </div>
   </div>
   <div>
     <div class="select-container">
-      <div class="select-wrapper">
-        <select name="country" id="country" required="">
+      <div class="select-wrapper" formGroupName="address">
+        <select
+          name="country"
+          id="country"
+          required=""
+          formControlName="country">
           <option value="none" selected="true">Select a Country</option>
           <option [value]="country" *ngFor="let country of countryList">
             {{ country | titlecase }}
           </option>
         </select>
-        <select name="state" id="state" required="">
+        <select
+          *ngIf="userForm.get('address')?.get('country')?.value !== 'none'"
+          name="state"
+          id="state"
+          required=""
+          formControlName="state">
           <option value="none" [selected]="true">Select a State</option>
           <option [value]="state" *ngFor="let state of stateList">
             {{ state | titlecase }}
@@ -225,7 +265,13 @@
   </div>
   <div class="form-group">
     <div class="flex-container agree-terms">
-      <input required #agree id="terms" name="terms" type="checkbox" />
+      <input
+        formControlName="agreement"
+        required
+        #agree
+        id="terms"
+        name="terms"
+        type="checkbox" />
       <label class="required" for="terms">Agree Terms and Conditions</label>
     </div>
     <div class="error">
@@ -233,7 +279,10 @@
     </div>
   </div>
   <div class="btn-container">
-    <button class="create-btn" (click)="emitCreationNotification()">
+    <button
+      [disabled]="userForm.invalid"
+      class="create-btn"
+      (click)="emitCreationNotification()">
       Create User
     </button>
   </div>

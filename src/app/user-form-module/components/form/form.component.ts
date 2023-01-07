@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../models/user.interface';
 import { CountryFetcherService } from '../../services/country-fetcher/country-fetcher.service';
 import { defaultUser } from '../../utils/default-user';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -19,7 +19,75 @@ export class FormComponent implements OnInit {
   stateList: string[] = [];
 
   userForm = new FormGroup({
-    firstName: new FormControl<string>('', { nonNullable: true }),
+    firstName: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(15),
+      ],
+    }),
+    lastName: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(15),
+      ],
+    }),
+    email: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email],
+    }),
+    password: new FormGroup({
+      value: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      confirmation: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    }),
+    profileImage: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [],
+    }),
+    birthDate: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required /*MyValidations.beforeToday*/],
+    }),
+    phone: new FormControl<number>(12345, {
+      nonNullable: true,
+      validators: [Validators.minLength(5)],
+    }),
+    personalSiteUrl: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [
+        /*MyValidations.Url*/
+      ],
+    }),
+    about: new FormControl<string>('', {
+      nonNullable: true,
+    }),
+    gender: new FormControl('male', {
+      nonNullable: true,
+      validators: [],
+    }),
+    address: new FormGroup({
+      country: new FormControl<string>('none', {
+        nonNullable: true,
+        validators: [Validators.required /*MyValidators.nonNoneValue*/],
+      }),
+      state: new FormControl<string>('none', {
+        nonNullable: true,
+        validators: [Validators.required /*MyValidators.nonNoneValue*/],
+      }),
+    }),
+    agreement: new FormControl<boolean>(false, {
+      nonNullable: true,
+      validators: [Validators.requiredTrue, Validators.required],
+    }),
   });
 
   constructor(private countryService: CountryFetcherService) {}
