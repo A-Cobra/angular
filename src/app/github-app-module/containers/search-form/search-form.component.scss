@@ -1,3 +1,30 @@
+@import "../../../../colors";
 .error{
   color: red;
+}
+form{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 25px;
+  row-gap: 15px;
+  input{
+    height: 25px;
+    border: 1px solid $light-gray;
+    background-color: $dark-gray;
+    color: white;
+    border-radius: 5px;
+    padding: 3px 10px;
+    &:focus{
+      outline: none;
+    }
+  }
+  button{
+    border: 1px solid $light-gray;
+    background-color: $mid-gray;
+    color: $sky-blue;
+    border-radius: 5px;
+    padding: 3px 10px;
+    cursor: pointer;
+  }
 }

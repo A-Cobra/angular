@@ -63,9 +63,10 @@ main{
 }
 @media screen and (max-width: 720px) {
   main .user-info-container, 
-  .repositories-container,
-  .followers-container,
-  .query-error{
+  main .repositories-container,
+  main .followers-container,
+  .query-error,
+  header{
     padding: 30px;
   }
 }

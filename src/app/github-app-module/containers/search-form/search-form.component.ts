@@ -11,8 +11,7 @@ import { FormEvent } from '../../models/form-event.type';
 @Component({
   selector: 'app-search-form',
   template: `
-    <div>OK</div>
-    <div>
+    <div class="form-container">
       <form [formGroup]="fetchForm">
         <input
           formControlName="input"
@@ -21,14 +20,13 @@ import { FormEvent } from '../../models/form-event.type';
         <button [disabled]="fetchForm.invalid" (click)="onSearch()">
           Search
         </button>
-        <div class="error">
-          <div *ngIf="isRequired('input')">
-            The input has to have at least a character
-          </div>
-        </div>
       </form>
+      <div class="error">
+        <div *ngIf="isRequired('input')">
+          The input has to have at least a character
+        </div>
+      </div>
     </div>
-    <pre>{{ fetchForm.value | json }}</pre>
   `,
   styleUrls: ['./search-form.component.scss'],
 })

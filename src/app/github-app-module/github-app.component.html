@@ -13,7 +13,9 @@
   </header>
 
   <main *ngIf="dataReady">
-    <div class="error query-error">
+    <div
+      class="error query-error"
+      *ngIf="userQueryFailure || notFound || accessDenied">
       <div *ngIf="userQueryFailure && !notFound && !accessDenied">
         <h1>Sorry, Something went wrong</h1>
       </div>
