@@ -7,5 +7,52 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CountryFetcherService {
-  constructor() {}
+  baseUrl = environment.countriesStatesUrl;
+  headers: HttpHeaders = new HttpHeaders({
+    Authorization: environment.authToken,
+    Accept: 'application/json',
+  });
+
+  constructor(private http: HttpClient) {}
+
+  getToken() {
+    const header2 = new HttpHeaders({
+      Accept: 'application/json',
+      'api-token': environment.apiToken,
+      'user-email': 'conradbravina@gmail.com',
+    });
+    return this.http.get(this.baseUrl + 'getaccesstoken', {
+      headers: header2,
+    });
+  }
+
+  getCountries() {
+    return this.http
+      .get(this.baseUrl + 'countries/', {
+        headers: this.headers,
+      })
+      .pipe(
+        catchError(error => of([])),
+        map(data => {
+          return (data as Array<any>).map(
+            responseObj => responseObj.country_name
+          );
+        })
+      );
+  }
+
+  getStates(country: string) {
+    return this.http
+      .get(this.baseUrl + 'states/' + country, {
+        headers: this.headers,
+      })
+      .pipe(
+        catchError(error => of([])),
+        map(data => {
+          return (data as Array<any>).map(
+            responseObj => responseObj.state_name
+          );
+        })
+      );
+  }
 }
