@@ -10,5 +10,6 @@ import { defaultGithubUser } from '../../utils/default-github-user';
 export class UserMainInfoComponent {
   @Input()
   currentUser: GithubUser = { ...defaultGithubUser };
+
   constructor() {}
 }

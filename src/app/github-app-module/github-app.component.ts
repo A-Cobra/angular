@@ -23,6 +23,7 @@ export class GithubAppComponent {
   repositoriesQueryFailure = false;
   dataReady = false;
   notFound = false;
+  title = 'Github profile Fetcher App V2 ngEdition';
 
   constructor(
     private githubService: GithubProfileFetcherService,
@@ -40,19 +41,15 @@ export class GithubAppComponent {
   getUser(username: string) {
     this.githubService.getUser(username).subscribe({
       next: (response: GithubUser) => {
-        console.log(response);
         this.currentUser = response;
         this.getAdditionalUserInfo(username);
       },
       error: (error: Response) => {
         if (error.status === 404) {
           this.notFound = true;
-          console.log('User not found');
         } else if (error.status === 403) {
           this.accessDenied = true;
-          console.log('Access denied');
         }
-        console.log('Query Error');
         this.userQueryFailure = true;
         this.spinner.hide();
         this.dataReady = true;
@@ -69,16 +66,13 @@ export class GithubAppComponent {
       next: ([followers, repositories]: [GithubUser[], Repository[]]) => {
         this.repositories = repositories;
         this.followers = followers;
-        this.dataReady = true;
-        // this.spinner.hide();
       },
       error: (error: Response) => {
         this.repositoriesQueryFailure = true;
         this.followersQueryFailure = true;
-        this.dataReady = true;
-        // this.spinner.hide();
       },
       complete: () => {
+        this.dataReady = true;
         this.spinner.hide();
       },
     });

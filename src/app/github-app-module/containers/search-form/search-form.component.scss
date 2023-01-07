@@ -1,6 +1,12 @@
 @import "../../../../colors";
 .error{
   color: red;
+  text-align: center;
+  font-size: 14px;
+}
+.form-container{
+  display: grid;
+  gap: 12px;
 }
 form{
   display: flex;
@@ -24,7 +30,7 @@ form{
     background-color: $mid-gray;
     color: $sky-blue;
     border-radius: 5px;
-    padding: 3px 10px;
+    padding: 3px 14px;
     cursor: pointer;
   }
 }

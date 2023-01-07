@@ -34,7 +34,9 @@ export class SearchFormComponent implements OnInit {
   @Output()
   formEvent = new EventEmitter<FormEvent>();
   fetchForm!: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {}
+
   ngOnInit(): void {
     this.fetchForm = this.formBuilder.group({
       input: new FormControl<string>('', {
@@ -44,6 +46,7 @@ export class SearchFormComponent implements OnInit {
       }),
     });
   }
+
   onSearch() {
     const inputValue = this.fetchForm.get('input')?.value;
     if (inputValue) {
@@ -53,6 +56,7 @@ export class SearchFormComponent implements OnInit {
       });
     }
   }
+
   isRequired(controlName: string) {
     return (
       this.fetchForm.get(controlName)?.hasError('required') &&

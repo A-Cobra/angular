@@ -10,5 +10,6 @@ import { defaultRepository } from '../../utils/default-repository';
 export class RepositoryDisplayComponent {
   @Input()
   currentRepository: Repository = defaultRepository;
+
   constructor() {}
 }

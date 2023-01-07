@@ -13,7 +13,9 @@ export class UserInfoDisplayComponent {
   currentUser: GithubUser = { ...defaultGithubUser };
   @Input()
   currentUserRepositories: Repository[] = [];
+
   constructor() {}
+
   getTotalNumberOfStars() {
     let counter = 0;
     this.currentUserRepositories.forEach((repository: Repository) => {

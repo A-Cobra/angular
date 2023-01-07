@@ -6,7 +6,6 @@ import { TimeMeasure } from '../../models/time-measure.type';
 })
 export class TimeAgoPipe implements PipeTransform {
   transform(timeStamp: string, timeMeasure?: TimeMeasure): string {
-    console.log(timeStamp);
     const date = new Date(timeStamp);
     const currentDate = new Date();
     let currentDay = String(currentDate.getDate());
@@ -16,6 +15,7 @@ export class TimeAgoPipe implements PipeTransform {
     let year = String(date.getFullYear());
     let month = String(date.getMonth() + 1);
     let day = String(date.getDate());
+
     if (differenceOfSeconds < 0) {
       return `${year}/${month}/${day}`;
     }
@@ -25,6 +25,7 @@ export class TimeAgoPipe implements PipeTransform {
     if (day.length == 1) {
       day = '0' + day;
     }
+
     if (timeMeasure) {
       if (timeMeasure === 'year') {
         return `${year}/${month}/${day} (${Math.floor(
