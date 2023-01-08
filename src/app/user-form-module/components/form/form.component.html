@@ -131,7 +131,6 @@
         formControlName="profileImage"
         type="text"
         id="profileImage"
-        name="profileImage"
         placeholder="Profile Image Url(Optional)" />
     </div>
     <div class="error"></div>
@@ -143,16 +142,16 @@
         formControlName="birthDate"
         type="date"
         id="birthDate"
-        name="birthDate"
         required="" />
     </div>
     <div class="error">
-      <!-- <div *ngIf="currentEmployee.birthDate === '' && date.touched">
+      <div
+        *ngIf="getControl('birthDate')?.errors?.['required'] && getControl('birthDate')?.touched">
         Please select a date
       </div>
-      <div *ngIf="currentEmployee.birthDate > getCurrentDate()">
-        Please select a date previous to today
-      </div> -->
+      <div *ngIf="getControl('birthDate')?.errors?.['afterToday']">
+        Please select a date equal or previous to today
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -160,22 +159,17 @@
       <label class="description required" for="phone"
         >Phone number (5 digits as minimum)</label
       >
-      <input
-        formControlName="phone"
-        type="number"
-        id="phone"
-        name="phone"
-        required=""
-        min="0" />
+      <input formControlName="phone" type="number" id="phone" />
     </div>
     <div class="error">
-      <!-- <div *ngIf="currentEmployee.phone === null">
-        Please enter at least a number and don't enter letters
+      <div *ngIf="getControl('phone')?.errors?.['required']">
+        This field can not be empty or contain letters
       </div>
-      <div *ngIf="currentEmployee.phone < 0">Don't enter negative numbers</div>
-      <div *ngIf="getNumberOfDigits(currentEmployee.phone) < 5 && phone.dirty">
-        Please enter at least 5 digits
-      </div> -->
+      <div
+        *ngIf="getControl('phone')?.errors?.['minDigits'] && 
+        !getControl('phone')?.errors?.['required']">
+        The phone number has to have at least 5 characters
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -187,10 +181,11 @@
         formControlName="personalSiteUrl"
         type="url"
         id="personalSiteUrl"
-        name="personalSiteUrl"
         placeholder="Personal Site Url (Optional)" />
     </div>
-    <div class="error"></div>
+    <div class="error">
+      {{ getControl('personalSiteUrl')?.errors | json }}
+    </div>
   </div>
   <div class="form-group">
     <div class="flex-container">
@@ -199,10 +194,8 @@
         formControlName="about"
         type="text"
         id="about"
-        name="about"
         placeholder="About (Optional)" />
     </div>
-    <div class="error"></div>
   </div>
   <div class="form-group">
     <div class="flex-container gender-selector">
@@ -226,12 +219,7 @@
   <div>
     <div class="select-container">
       <div class="select-wrapper" formGroupName="address">
-        <select
-          (change)="changeStateList()"
-          name="country"
-          id="country"
-          required=""
-          formControlName="country">
+        <select (change)="changeStateList()" formControlName="country">
           <option value="none" selected="true">Select a Country</option>
           <option [value]="country" *ngFor="let country of countryList">
             {{ country | titlecase }}
@@ -239,9 +227,6 @@
         </select>
         <select
           *ngIf="userForm.get('address')?.get('country')?.value !== 'none'"
-          name="state"
-          id="state"
-          required=""
           formControlName="state">
           <option value="none" [selected]="true">Select a State</option>
           <option [value]="state" *ngFor="let state of stateList">
@@ -265,17 +250,16 @@
   </div>
   <div class="form-group">
     <div class="flex-container agree-terms">
-      <input
-        formControlName="agreement"
-        required
-        #agree
-        id="terms"
-        name="terms"
-        type="checkbox" />
+      <input formControlName="agreement" id="terms" type="checkbox" />
       <label class="required" for="terms">Agree Terms and Conditions</label>
     </div>
     <div class="error">
-      <!-- <div *ngIf="!agree.checked">Please agree the terms and conditions</div> -->
+      <div
+        *ngIf="
+          getControl('agreement')?.errors && getControl('agreement')?.touched
+        ">
+        Please agree the terms and conditions
+      </div>
     </div>
   </div>
   <div class="btn-container">

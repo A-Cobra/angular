@@ -56,11 +56,11 @@ export class FormComponent implements OnInit {
     }),
     birthDate: new FormControl<string>('', {
       nonNullable: true,
-      validators: [Validators.required /*MyValidations.beforeToday*/],
+      validators: [Validators.required, MyValidations.beforeToday],
     }),
     phone: new FormControl<number>(12345, {
       nonNullable: true,
-      validators: [Validators.required, Validators.minLength(5)],
+      validators: [Validators.required, MyValidations.minDigits(5)],
     }),
     personalSiteUrl: new FormControl<string>('', {
       nonNullable: true,
@@ -73,10 +73,7 @@ export class FormComponent implements OnInit {
     }),
     gender: new FormControl('male', {
       nonNullable: true,
-      validators: [
-        Validators.required,
-        /*MyValidators.notNoneValue */
-      ],
+      validators: [Validators.required, MyValidations.notNoneValue],
     }),
     address: new FormGroup({
       country: new FormControl<string>('none', {
@@ -97,13 +94,6 @@ export class FormComponent implements OnInit {
   constructor(private countryService: CountryFetcherService) {}
 
   ngOnInit(): void {
-    // this.countryService.getToken().subscribe({
-    //   next: (response: any) => {
-    //     // this.countryList = countriesArray;
-    //     console.log(response);
-    //   },
-    //   error: (error: any) => {},
-    // });
     this.countryService.getCountries().subscribe({
       next: (countriesArray: any) => {
         this.countryList = countriesArray;
@@ -120,7 +110,7 @@ export class FormComponent implements OnInit {
     }
   }
   changeStateList() {
-    const country = this.userForm.get('address')?.get('country')?.value;
+    const country = this.getControl('address.country')?.value;
     if (country !== 'none' && country !== undefined) {
       this.countryService.getStates(country).subscribe({
         next: (statesArray: any) => {
