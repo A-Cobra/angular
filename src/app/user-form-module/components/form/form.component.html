@@ -91,11 +91,23 @@
           placeholder="Password"
           required="" />
       </div>
-      <div class="error">
-        <!-- <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
-          The password must contain at least 12 characters, have a special
-          character and a number
-        </div> -->
+      <div
+        *ngIf="
+          getControl('password.value')?.touched ||
+          getControl('password.value')?.dirty
+        "
+        class="error">
+        <div *ngIf="getControl('password.value')?.errors?.['noNumbers']">
+          The field requires at least one number
+        </div>
+        <div
+          *ngIf="getControl('password.value')?.errors?.['noSpecialCharacters']">
+          The field requires at least one special character
+        </div>
+        <div *ngIf="getControl('password.value')?.errors?.['notLongEnough']">
+          The field requires at least {{ minNumberOfPasswordChars }} of
+          characters
+        </div>
       </div>
     </div>
     <div class="form-group">
@@ -119,6 +131,12 @@
           ">
           Passwords don't match
         </div> -->
+        <div
+          *ngIf="getControl('password.confirmation')?.errors?.['differentPasswords']">
+          Passwords don't match
+        </div>
+        <div>{{ getControl('password.confirmation')?.errors | json }}</div>
+        <div>{{ getControl('password.confirmation')?.value | json }}</div>
       </div>
     </div>
   </div>

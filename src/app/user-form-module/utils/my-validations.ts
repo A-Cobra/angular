@@ -12,10 +12,6 @@ export class MyValidations {
   ): ValidationErrors | null {
     const today = new Date().getTime();
     const inputDate = new Date(control.value ?? '2000-01-01').getTime();
-    console.log('inputDate');
-    console.log(inputDate);
-    console.log('today');
-    console.log(today);
     if (inputDate + 86400000 > today) {
       return { afterToday: true };
     }
@@ -35,29 +31,34 @@ export class MyValidations {
       if (numberOfDigits < minimumDigits) {
         return { minDigits: true };
       }
-      console.log('originalNumber');
-      console.log(originalNumber);
-      console.log('numberOfDigits');
-      console.log(numberOfDigits);
       return null;
     };
-    // return (
-    //   control: AbstractControl,
-    //   minimumDigits: number
-    // ): ValidationErrors | null => {
-    //   let originalNumber = control.value;
-    //   let numberOfDigits: number;
-    //   if (originalNumber === 0) {
-    //     numberOfDigits = 1;
-    //   } else if (originalNumber < 0) {
-    //     numberOfDigits = 0;
-    //   } else {
-    //     numberOfDigits = Math.round(Math.log10(originalNumber)) + 2;
-    //   }
-    //   if (numberOfDigits < minimumDigits) {
-    //     return { minDigits: true };
-    //   }
-    //   return null;
-    // };
+  }
+  static passwordsMatch(form: AbstractControl): ValidatorFn {
+    return () => {
+      return form.get('password')?.get('value')?.value !==
+        form.get('password')?.get('confirmation')?.value
+        ? { differentPasswords: true }
+        : null;
+    };
+  }
+  static passwordStrength(min: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const password = control.value;
+      const containsNumbers = password.match(/[0-9]+/);
+      const containsSpecialChars = password.match(/[^0-9A-Za-z]+/);
+      const longerThanNChars = password.length >= min;
+      if (!containsNumbers) {
+        return { noNumbers: true };
+      }
+      if (!containsSpecialChars) {
+        return { noSpecialCharacters: true };
+      }
+      if (!longerThanNChars) {
+        return { notLongEnough: true };
+      }
+      return null;
+      // return containsNumbers && containsSpecialChars && longerThan11Chars
+    };
   }
 }
