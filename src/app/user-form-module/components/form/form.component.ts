@@ -3,6 +3,7 @@ import { User } from '../../models/user.interface';
 import { CountryFetcherService } from '../../services/country-fetcher/country-fetcher.service';
 import { defaultUser } from '../../utils/default-user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MyValidations } from '../../utils/my-validations';
 
 @Component({
   selector: 'app-form',
@@ -42,11 +43,11 @@ export class FormComponent implements OnInit {
     password: new FormGroup({
       value: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required /*MyValidations.passStrength*/],
       }),
       confirmation: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required /*MyValidations.match(password)*/],
       }),
     }),
     profileImage: new FormControl<string>('', {
@@ -59,7 +60,7 @@ export class FormComponent implements OnInit {
     }),
     phone: new FormControl<number>(12345, {
       nonNullable: true,
-      validators: [Validators.minLength(5)],
+      validators: [Validators.required, Validators.minLength(5)],
     }),
     personalSiteUrl: new FormControl<string>('', {
       nonNullable: true,
@@ -72,37 +73,37 @@ export class FormComponent implements OnInit {
     }),
     gender: new FormControl('male', {
       nonNullable: true,
-      validators: [],
+      validators: [
+        Validators.required,
+        /*MyValidators.notNoneValue */
+      ],
     }),
     address: new FormGroup({
       country: new FormControl<string>('none', {
         nonNullable: true,
-        validators: [Validators.required /*MyValidators.nonNoneValue*/],
+        validators: [Validators.required, MyValidations.notNoneValue],
       }),
       state: new FormControl<string>('none', {
         nonNullable: true,
-        validators: [Validators.required /*MyValidators.nonNoneValue*/],
+        validators: [Validators.required, MyValidations.notNoneValue],
       }),
     }),
     agreement: new FormControl<boolean>(false, {
       nonNullable: true,
-      validators: [Validators.requiredTrue, Validators.required],
+      validators: [Validators.required, Validators.requiredTrue],
     }),
   });
 
   constructor(private countryService: CountryFetcherService) {}
 
   ngOnInit(): void {
-    // this.countryService
-    //   .getToken()
-    //   .pipe(take(1))
-    //   .subscribe({
-    //     next: (response: any) => {
-    //       // this.countryList = countriesArray;
-    //     },
-    //     error: (error: any) => {
-    //     },
-    //   });
+    // this.countryService.getToken().subscribe({
+    //   next: (response: any) => {
+    //     // this.countryList = countriesArray;
+    //     console.log(response);
+    //   },
+    //   error: (error: any) => {},
+    // });
     this.countryService.getCountries().subscribe({
       next: (countriesArray: any) => {
         this.countryList = countriesArray;
@@ -113,13 +114,14 @@ export class FormComponent implements OnInit {
     });
   }
   emitCreationNotification() {
-    console.log('Creating User');
-    this.createUser.emit(this.currentUser);
-    // if (this.passwordConfirmation === this.currentEmployee.password) {
-    // }
+    if (this.passwordConfirmationMatches()) {
+      console.log('Creating User');
+      this.createUser.emit(this.currentUser);
+    }
   }
-  changeStateList(country: string) {
-    if (country !== 'none') {
+  changeStateList() {
+    const country = this.userForm.get('address')?.get('country')?.value;
+    if (country !== 'none' && country !== undefined) {
       this.countryService.getStates(country).subscribe({
         next: (statesArray: any) => {
           this.stateList = statesArray;
@@ -131,6 +133,16 @@ export class FormComponent implements OnInit {
     } else {
       this.currentUser.address.state = 'none';
       this.stateList = [];
+      this.getControl('address.state')?.reset();
     }
+  }
+  getControl(controlName: string) {
+    return this.userForm.get(controlName);
+  }
+  passwordConfirmationMatches() {
+    return (
+      this.userForm.get('password')?.get('value')?.value ===
+      this.userForm.get('password')?.get('confirmation')?.value
+    );
   }
 }
