@@ -18,21 +18,13 @@ import { MyValidations } from '../../utils/my-validations';
 export class FormComponent implements OnInit {
   @Output()
   createUser: EventEmitter<User> = new EventEmitter<User>();
-  // @Input()
-  // currentUser: User = Object.assign({}, defaultUser);
   passwordConfirmation: string = '';
   countryList: string[] = [];
   stateList: string[] = [];
   minNumberOfPasswordChars: number = 12;
-
   userForm!: FormGroup;
 
-  constructor(private countryService: CountryFetcherService) {
-    // document.getElementById('phone')?.addEventListener('input', event => {
-    //   console.log('EVENT');
-    //   console.log(event);
-    // });
-  }
+  constructor(private countryService: CountryFetcherService) {}
 
   ngOnInit(): void {
     this.userForm = new FormGroup(
@@ -112,6 +104,7 @@ export class FormComponent implements OnInit {
       },
       { validators: [MyValidations.passwordsMatch] }
     );
+
     this.countryService.getCountries().subscribe({
       next: (countriesArray: any) => {
         this.countryList = countriesArray;
@@ -120,19 +113,18 @@ export class FormComponent implements OnInit {
         console.log(error);
       },
     });
-    // this.userForm.patchValue({
-    //   phone: '12 34 5576',
-    // });
   }
+
   emitCreationNotification(): void {
     if (!this.userForm.errors?.['differentPasswords']) {
-      if (!this.userForm.invalid) {
+      if (this.userForm.valid) {
         console.log(this.userForm.value);
       }
     } else {
       alert("Passwords don't match");
     }
   }
+
   changeStateList(): void {
     const country = this.getControl('address.country')?.value;
     if (country !== 'none' && country !== undefined) {
@@ -145,11 +137,11 @@ export class FormComponent implements OnInit {
         },
       });
     } else {
-      // this.currentUser.address.state = 'none';
       this.stateList = [];
       this.getControl('address.state')?.reset();
     }
   }
+
   getControl(controlName: string): AbstractControl | null {
     return this.userForm.get(controlName);
   }

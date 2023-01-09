@@ -56,7 +56,6 @@ export class MyValidations {
         return { notLongEnough: true };
       }
       return null;
-      // return containsNumbers && containsSpecialChars && longerThan11Chars
     };
   }
 }

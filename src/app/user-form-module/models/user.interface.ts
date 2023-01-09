@@ -8,7 +8,7 @@ export interface User {
   password: string;
   profileImage: string;
   birthDate: string;
-  phone: number;
+  phone: string;
   personalSiteUrl: string;
   about: string;
   gender: 'male' | 'female' | 'none';

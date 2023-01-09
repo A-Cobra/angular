@@ -8,7 +8,7 @@ export const defaultUser: User = {
   password: '',
   profileImage: '',
   birthDate: '',
-  phone: 12345,
+  phone: '12345',
   personalSiteUrl: '',
   about: '',
   gender: 'male',
