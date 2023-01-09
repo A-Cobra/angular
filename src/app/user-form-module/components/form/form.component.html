@@ -1,5 +1,6 @@
 <h1 class="title">Create a new User</h1>
 <pre>{{ userForm.value | json }}</pre>
+<pre>{{ userForm.errors | json }}</pre>
 <form id="user-form" [formGroup]="userForm">
   <div class="form-group">
     <div class="flex-container">
@@ -132,11 +133,9 @@
           Passwords don't match
         </div> -->
         <div
-          *ngIf="getControl('password.confirmation')?.errors?.['differentPasswords']">
+          *ngIf="getControl('password.confirmation')?.dirty && userForm.errors?.['differentPasswords']">
           Passwords don't match
         </div>
-        <div>{{ getControl('password.confirmation')?.errors | json }}</div>
-        <div>{{ getControl('password.confirmation')?.value | json }}</div>
       </div>
     </div>
   </div>

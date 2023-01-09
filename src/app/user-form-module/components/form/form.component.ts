@@ -30,89 +30,83 @@ export class FormComponent implements OnInit {
   constructor(private countryService: CountryFetcherService) {}
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      firstName: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(15),
-        ],
-      }),
-      lastName: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(15),
-        ],
-      }),
-      email: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.email],
-      }),
-      password: new FormGroup({
-        value: new FormControl<string>('', {
+    this.userForm = new FormGroup(
+      {
+        firstName: new FormControl<string>('', {
           nonNullable: true,
           validators: [
             Validators.required,
-            MyValidations.passwordStrength(
-              this.minNumberOfPasswordChars
-            ) /*MyValidations.passStrength*/,
+            Validators.minLength(4),
+            Validators.maxLength(15),
           ],
         }),
-        confirmation: new FormControl<string>('', {
+        lastName: new FormControl<string>('', {
           nonNullable: true,
           validators: [
             Validators.required,
-            // MyValidations.passwordsMatch(
-            //   this.getPassword()
-            // ) /*MyValidations.match(password)*/,
-            // MyValidations.passwordsMatch(this.userForm),
-            // MyValidations.passwordsMatch('ok'),
+            Validators.minLength(4),
+            Validators.maxLength(15),
           ],
         }),
-      }),
-      profileImage: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [],
-      }),
-      birthDate: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required, MyValidations.beforeToday],
-      }),
-      phone: new FormControl<number>(12345, {
-        nonNullable: true,
-        validators: [Validators.required, MyValidations.minDigits(5)],
-      }),
-      personalSiteUrl: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [
-          /*MyValidations.Url*/
-        ],
-      }),
-      about: new FormControl<string>('', {
-        nonNullable: true,
-      }),
-      gender: new FormControl('male', {
-        nonNullable: true,
-        validators: [Validators.required, MyValidations.notNoneValue],
-      }),
-      address: new FormGroup({
-        country: new FormControl<string>('none', {
+        email: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [Validators.required, Validators.email],
+        }),
+        password: new FormGroup({
+          value: new FormControl<string>('', {
+            nonNullable: true,
+            validators: [
+              Validators.required,
+              MyValidations.passwordStrength(this.minNumberOfPasswordChars),
+            ],
+          }),
+          confirmation: new FormControl<string>('', {
+            nonNullable: true,
+            validators: [Validators.required],
+          }),
+        }),
+        profileImage: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [],
+        }),
+        birthDate: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [Validators.required, MyValidations.beforeToday],
+        }),
+        phone: new FormControl<number>(12345, {
+          nonNullable: true,
+          validators: [Validators.required, MyValidations.minDigits(5)],
+        }),
+        personalSiteUrl: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [
+            /*MyValidations.Url*/
+          ],
+        }),
+        about: new FormControl<string>('', {
+          nonNullable: true,
+        }),
+        gender: new FormControl('male', {
           nonNullable: true,
           validators: [Validators.required, MyValidations.notNoneValue],
         }),
-        state: new FormControl<string>('none', {
-          nonNullable: true,
-          validators: [Validators.required, MyValidations.notNoneValue],
+        address: new FormGroup({
+          country: new FormControl<string>('none', {
+            nonNullable: true,
+            validators: [Validators.required, MyValidations.notNoneValue],
+          }),
+          state: new FormControl<string>('none', {
+            nonNullable: true,
+            validators: [Validators.required, MyValidations.notNoneValue],
+          }),
         }),
-      }),
-      agreement: new FormControl<boolean>(false, {
-        nonNullable: true,
-        validators: [Validators.required, Validators.requiredTrue],
-      }),
-    });
+        agreement: new FormControl<boolean>(false, {
+          nonNullable: true,
+          validators: [Validators.required, Validators.requiredTrue],
+        }),
+      },
+      { validators: [MyValidations.passwordsMatch] }
+    );
     this.countryService.getCountries().subscribe({
       next: (countriesArray: any) => {
         this.countryList = countriesArray;
@@ -123,11 +117,13 @@ export class FormComponent implements OnInit {
     });
   }
   emitCreationNotification() {
-    console.log(this, this.userForm.value);
-    // if (this.passwordConfirmationMatches()) {
-    //   console.log('Creating User');
-    //   this.createUser.emit(this.currentUser);
-    // }
+    if (!this.userForm.errors?.['differentPasswords']) {
+      if (!this.userForm.invalid) {
+        console.log(this.userForm.value);
+      }
+    } else {
+      alert("Passwords don't match");
+    }
   }
   changeStateList() {
     const country = this.getControl('address.country')?.value;
@@ -157,11 +153,5 @@ export class FormComponent implements OnInit {
         : this.userForm.get(controlName)?.value;
     }
     return '';
-  }
-  passwordConfirmationMatches() {
-    return (
-      this.userForm.get('password')?.get('value')?.value ===
-      this.userForm.get('password')?.get('confirmation')?.value
-    );
   }
 }

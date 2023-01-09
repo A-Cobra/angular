@@ -34,13 +34,11 @@ export class MyValidations {
       return null;
     };
   }
-  static passwordsMatch(form: AbstractControl): ValidatorFn {
-    return () => {
-      return form.get('password')?.get('value')?.value !==
-        form.get('password')?.get('confirmation')?.value
-        ? { differentPasswords: true }
-        : null;
-    };
+  static passwordsMatch(form: AbstractControl): ValidationErrors | null {
+    return form.get('password')?.get('value')?.value !==
+      form.get('password')?.get('confirmation')?.value
+      ? { differentPasswords: true }
+      : null;
   }
   static passwordStrength(min: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
