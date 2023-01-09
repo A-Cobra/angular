@@ -6,9 +6,10 @@ import { UserFormAppComponent } from './containers/user-form-app/user-form-app.c
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './components/form/form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NumberFormatDirective } from './directives/number-format/number-format.directive';
 
 @NgModule({
-  declarations: [UserFormAppComponent, FormComponent],
+  declarations: [UserFormAppComponent, FormComponent, NumberFormatDirective],
   imports: [
     CommonModule,
     UserFormRoutingModule,

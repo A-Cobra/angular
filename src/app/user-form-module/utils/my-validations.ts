@@ -19,7 +19,7 @@ export class MyValidations {
   }
   static minDigits(minimumDigits: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      let originalNumber = control.value;
+      let originalNumber = parseInt(control.value.replace(/\s+/g, ''));
       let numberOfDigits: number;
       if (originalNumber === 0) {
         numberOfDigits = 1;

@@ -162,7 +162,11 @@
       <label class="description required" for="phone"
         >Phone number (5 digits as minimum)</label
       >
-      <input formControlName="phone" type="number" id="phone" />
+      <input
+        [appNumberFormat]="3"
+        formControlName="phone"
+        type="text"
+        id="phone" />
     </div>
     <div class="error">
       <div *ngIf="getControl('phone')?.errors?.['required']">

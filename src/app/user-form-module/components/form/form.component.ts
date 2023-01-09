@@ -18,8 +18,8 @@ import { MyValidations } from '../../utils/my-validations';
 export class FormComponent implements OnInit {
   @Output()
   createUser: EventEmitter<User> = new EventEmitter<User>();
-  @Input()
-  currentUser: User = Object.assign({}, defaultUser);
+  // @Input()
+  // currentUser: User = Object.assign({}, defaultUser);
   passwordConfirmation: string = '';
   countryList: string[] = [];
   stateList: string[] = [];
@@ -27,7 +27,12 @@ export class FormComponent implements OnInit {
 
   userForm!: FormGroup;
 
-  constructor(private countryService: CountryFetcherService) {}
+  constructor(private countryService: CountryFetcherService) {
+    // document.getElementById('phone')?.addEventListener('input', event => {
+    //   console.log('EVENT');
+    //   console.log(event);
+    // });
+  }
 
   ngOnInit(): void {
     this.userForm = new FormGroup(
@@ -73,7 +78,7 @@ export class FormComponent implements OnInit {
           nonNullable: true,
           validators: [Validators.required, MyValidations.beforeToday],
         }),
-        phone: new FormControl<number>(12345, {
+        phone: new FormControl<string>('12345', {
           nonNullable: true,
           validators: [Validators.required, MyValidations.minDigits(5)],
         }),
@@ -137,7 +142,7 @@ export class FormComponent implements OnInit {
         },
       });
     } else {
-      this.currentUser.address.state = 'none';
+      // this.currentUser.address.state = 'none';
       this.stateList = [];
       this.getControl('address.state')?.reset();
     }
