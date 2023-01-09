@@ -116,7 +116,7 @@ export class FormComponent implements OnInit {
       },
     });
   }
-  emitCreationNotification() {
+  emitCreationNotification(): void {
     if (!this.userForm.errors?.['differentPasswords']) {
       if (!this.userForm.invalid) {
         console.log(this.userForm.value);
@@ -125,7 +125,7 @@ export class FormComponent implements OnInit {
       alert("Passwords don't match");
     }
   }
-  changeStateList() {
+  changeStateList(): void {
     const country = this.getControl('address.country')?.value;
     if (country !== 'none' && country !== undefined) {
       this.countryService.getStates(country).subscribe({
@@ -144,14 +144,5 @@ export class FormComponent implements OnInit {
   }
   getControl(controlName: string): AbstractControl | null {
     return this.userForm.get(controlName);
-  }
-  getControlValue(controlName: string): string {
-    if (this.userForm) {
-      console.log('Getting value');
-      return this.userForm.get(controlName)?.value === undefined
-        ? ''
-        : this.userForm.get(controlName)?.value;
-    }
-    return '';
   }
 }
