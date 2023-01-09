@@ -120,6 +120,9 @@ export class FormComponent implements OnInit {
         console.log(error);
       },
     });
+    // this.userForm.patchValue({
+    //   phone: '12 34 5576',
+    // });
   }
   emitCreationNotification(): void {
     if (!this.userForm.errors?.['differentPasswords']) {

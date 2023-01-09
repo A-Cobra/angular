@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appNumberFormat]',
@@ -6,14 +7,17 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 export class NumberFormatDirective {
   @Input()
   appNumberFormat!: number;
+  @Input()
+  originalFormControl!: AbstractControl;
+
   spaceRegex = /\s+/g;
   nonNumericalRegex = /[^0-9]+/g;
 
   constructor(baseElement: ElementRef) {
-    console.log(baseElement.nativeElement.value);
-    baseElement.nativeElement.value = this.formatNumber(
-      baseElement.nativeElement.value
-    );
+    console.log(baseElement);
+    // baseElement.nativeElement.value = this.originalFormControl.patchValue({
+    //   phone: this.formatNumber(baseElement.nativeElement.value),
+    // });
   }
 
   @HostListener('input', ['$event'])
@@ -34,6 +38,10 @@ export class NumberFormatDirective {
     input.value = this.nonInitialZero(input.value);
     input.value = this.removeNonNumericalCharacters(input.value);
     input.value = this.formatNumber(input.value);
+    // this.formElement.nativeElement.value = input.value;
+    this.originalFormControl.patchValue({
+      phone: input.value,
+    });
   }
 
   formatNumber(originalNumberString: string): string {
