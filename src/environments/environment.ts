@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   authToken:
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJjb25yYWRicmF2aW5hQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6Im12Z0VDa1ZwQXNVOGRTQS1YR1VYdEhYME53VmZqcUtNb3BKNVVFV1gySlZMYV95RWNuc3h4eUN0bk0zTmtkWlJvMGsifSwiZXhwIjoxNjczMjI2MTE1fQ.fff0fKbGqJC9RI3IAlB1FpOe-6f7oPH9LQB3oxncp8c',
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJjb25yYWRicmF2aW5hQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6Im12Z0VDa1ZwQXNVOGRTQS1YR1VYdEhYME53VmZqcUtNb3BKNVVFV1gySlZMYV95RWNuc3h4eUN0bk0zTmtkWlJvMGsifSwiZXhwIjoxNjczNDA0NjcyfQ.naIIicen-fl2ZKOOqdiEgHRzY-GN7PIwGWI8V1OPp-s',
   apiToken:
     'mvgECkVpAsU8dSA-XGUXtHX0NwVfjqKMopJ5UEWX2JVLa_yEcnsxxyCtnM3NkdZRo0k',
   countriesStatesUrl: 'https://www.universal-tutorial.com/api/',
