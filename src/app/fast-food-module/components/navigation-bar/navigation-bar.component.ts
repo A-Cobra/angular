@@ -13,13 +13,24 @@ import { Router } from '@angular/router';
             'menu-selection': ['/selection'],
           }]"
             >Hamburger Combos</a -->
-          <a
+          <!-- <a
             [routerLink]="[
               'hamburger-combos',
               {
                 outlets: {
                   'menu-selection': ['/selection'],
                   'details-selection': ['/details']
+                }
+              }
+            ]"
+            >Hamburger Combos</a
+          > -->
+          <a
+            [routerLink]="[
+              '',
+              {
+                outlets: {
+                  'menu-selection': ['hamburger-combos']
                 }
               }
             ]"
