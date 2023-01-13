@@ -8,6 +8,7 @@ import { FastFoodAppComponent } from './containers/fast-food-app/fast-food-app.c
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { MyCardDetailsComponent } from './components/my-card-details/my-card-details.component';
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
+import { HamburgerDetailsComponent } from './containers/hamburger-details/hamburger-details.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-me
     NavigationBarComponent,
     MyCardDetailsComponent,
     HamburgerMenuComponent,
+    HamburgerDetailsComponent,
   ],
   imports: [CommonModule, FastFoodRoutingModule, HttpClientModule],
   exports: [FastFoodAppComponent],

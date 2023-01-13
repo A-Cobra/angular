@@ -15,4 +15,9 @@ export class MenuService {
       `${environment.dataBaseBaseUrl}/${this.menuPath}`
     );
   }
+  getMenuItem(id: string): Observable<MenuItem> {
+    return this.http.get<MenuItem>(
+      `${environment.dataBaseBaseUrl}/${this.menuPath}/${id}`
+    );
+  }
 }
