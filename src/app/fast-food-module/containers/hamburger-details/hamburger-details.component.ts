@@ -4,7 +4,7 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
-  AfterViewInit,
+  AfterViewChecked,
   ElementRef,
 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -19,9 +19,8 @@ import { OrderFormComponent } from '../order-form/order-form.component';
   templateUrl: './hamburger-details.component.html',
   styleUrls: ['./hamburger-details.component.scss'],
 })
-export class HamburgerDetailsComponent
-  implements OnInit, OnDestroy, AfterViewInit
-{
+// implements OnInit, OnDestroy, AfterViewInit
+export class HamburgerDetailsComponent implements OnInit, AfterViewChecked {
   selectedId!: number;
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
   endAllSubscriptions$: Subject<string> = new Subject<string>();
@@ -33,16 +32,16 @@ export class HamburgerDetailsComponent
     private route: ActivatedRoute,
     private menuService: MenuService
   ) {}
-  ngAfterViewInit(): void {
-    const component = this.detailsDiv.createComponent(OrderFormComponent);
-    component.instance.id = this.selectedId;
+  ngAfterViewChecked(): void {
+    // const component = this.detailsDiv.createComponent(OrderFormComponent);
+    // component.instance.id = this.selectedId;
     console.log('this.detailsDiv');
-    console.log(this.detailsDiv);
+    // console.log(this.detailsDiv);
   }
-  ngOnDestroy(): void {
-    this.endAllSubscriptions$.next('');
-    this.endAllSubscriptions$.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.endAllSubscriptions$.next('');
+  //   this.endAllSubscriptions$.unsubscribe();
+  // }
 
   ngOnInit(): void {
     this.route.params
@@ -57,6 +56,14 @@ export class HamburgerDetailsComponent
           },
           error: err => {
             console.log(err);
+          },
+          complete: () => {
+            // PUT IT HERE
+            const component =
+              this.detailsDiv.createComponent(OrderFormComponent);
+            component.instance.id = this.selectedId;
+            console.log('this.detailsDiv');
+            console.log(this.detailsDiv);
           },
         });
       });

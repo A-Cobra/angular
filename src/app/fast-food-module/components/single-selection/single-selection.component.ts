@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'app-single-selection',
   styleUrls: ['./single-selection.component.scss'],
-  template: ``,
+  template: `<div>Single Selection Component</div>`,
 })
 export class SingleSelectionComponent {
   @Input()

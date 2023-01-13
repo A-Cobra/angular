@@ -27,7 +27,7 @@ import { Router } from '@angular/router';
           > -->
           <a
             [routerLink]="[
-              '',
+              '/fast-food',
               {
                 outlets: {
                   'menu-selection': ['hamburger-combos']
