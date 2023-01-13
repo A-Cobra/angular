@@ -38,18 +38,25 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   @ViewChild('formControlsDisplay', { read: ViewContainerRef })
   formControlsDisplay!: ViewContainerRef;
 
-  form = new FormArray([
-    new FormControl('1', { nonNullable: true }),
-    new FormControl('2', { nonNullable: true }),
-    new FormControl('3', { nonNullable: true }),
-  ]);
+  // form = new FormArray([
+  //   new FormControl('1', { nonNullable: true }),
+  //   new FormControl('2', { nonNullable: true }),
+  //   new FormControl('3', { nonNullable: true }),
+  // ]);
+
+  form = new FormGroup({
+    dynamicComponents: new FormArray([
+      new FormControl('1', { nonNullable: true }),
+      new FormControl('2', { nonNullable: true }),
+    ]),
+  });
 
   constructor(private formBuilder: NonNullableFormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.form.value);
+    console.log('this.form.value');
     // this.addDynamicControl('single-select');
-    this.form.push(new FormControl('4', { nonNullable: true }));
+    // this.form.push(new FormControl('4', { nonNullable: true }));
   }
 
   // ngAfterContentInit(): void {
@@ -59,35 +66,54 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   // }
 
   ngAfterViewInit(): void {
+    // setTimeout(() => {
+
+    // }, timeout);
     // this.form.push(new FormControl('4', { nonNullable: true }));
     // this.formControlsDisplay.createComponent(SingleSelectionComponent);
     // this.addDynamicControl('single-select');
 
     // this.addDynamicControl('single-select');
     // this.addDynamicControl('single-select');
+    // this.fillFormControls();
     this.fillFormControls();
+    console.log('object');
   }
 
   // get controls(): AbstractControl<string[]> {
   //   // return this.form.get('dynamicControls');
   //   return this.form.get('dynamicControls') as AbstractControl<string[]>;
   // }
-  addDynamicControl(customizableOption: CustomizableOption): void {
-    if (customizableOption.type === 'single-select') {
-      this.formControlsDisplay.createComponent(SingleSelectionComponent);
-    } else if (customizableOption.type === 'multi-select') {
-      this.formControlsDisplay.createComponent(MultipleSelectionComponent);
-    } else if (customizableOption.type === 'text') {
-      this.formControlsDisplay.createComponent(FormTextComponent);
-    }
-  }
 
   fillFormControls(): void {
     console.log('Creating components');
     this.currentMenuSelection.customizableOptions.forEach(
-      (customizableOption: CustomizableOption) => {
-        this.addDynamicControl(customizableOption);
+      (customizableOption: CustomizableOption, index: number) => {
+        this.addDynamicControl(customizableOption, index);
       }
     );
   }
+
+  addDynamicControl(customizableOption: CustomizableOption, id: number): void {
+    if (customizableOption.type === 'single-select') {
+      const singleSelectionComponent = this.formControlsDisplay.createComponent(
+        SingleSelectionComponent
+      );
+      // DOESN'T WORK
+      singleSelectionComponent.instance.customizableOption = customizableOption;
+      // DOESN'T WORK
+      singleSelectionComponent.instance.id = id;
+      singleSelectionComponent.instance.parentForm = this.form;
+    }
+    // WORKS
+    else if (customizableOption.type === 'multi-select') {
+      this.formControlsDisplay.createComponent(MultipleSelectionComponent);
+      // Attributes not set yet
+    } else if (customizableOption.type === 'text') {
+      // Attributes not set yet
+      this.formControlsDisplay.createComponent(FormTextComponent);
+    }
+  }
+
+  generateFormControls() {}
 }

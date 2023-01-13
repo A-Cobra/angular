@@ -9,12 +9,19 @@ import { MenuService } from '../../services/menu/menu.service';
 })
 export class HamburgerMenuComponent implements OnInit {
   burgerMenu: MenuItem[] = [];
+  category = 1;
   // constructor() {}
   constructor(private menuService: MenuService) {}
   ngOnInit(): void {
-    this.menuService.getMenu().subscribe((menu: MenuItem[]) => {
-      this.burgerMenu = menu;
-    });
+    // this.menuService.getMenu().subscribe((menu: MenuItem[]) => {
+    //   this.burgerMenu = menu;
+    // });
+    this.menuService
+      .getMenuByCategory(this.category)
+      .subscribe((menu: MenuItem[]) => {
+        this.burgerMenu = menu;
+        console.log(this.burgerMenu);
+      });
     console.log('object');
     console.log(this.menuService.menuPath);
   }
