@@ -12,6 +12,8 @@ import { HamburgerDetailsComponent } from './containers/hamburger-details/hambur
 import { OrderFormComponent } from './containers/order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleSelectionComponent } from './components/single-selection/single-selection.component';
+import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
+import { FormTextComponent } from './components/form-text/form-text.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { SingleSelectionComponent } from './components/single-selection/single-s
     HamburgerDetailsComponent,
     OrderFormComponent,
     SingleSelectionComponent,
+    MultipleSelectionComponent,
+    FormTextComponent,
   ],
   imports: [
     CommonModule,

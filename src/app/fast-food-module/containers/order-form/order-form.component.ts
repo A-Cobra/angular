@@ -20,6 +20,9 @@ import {
 } from '@angular/forms';
 import { formatWithCursor } from 'prettier';
 import { SingleSelectionComponent } from '../../components/single-selection/single-selection.component';
+import { CustomizableOption } from '../../models/customizable-option.interface';
+import { MultipleSelectionComponent } from '../../components/multiple-selection/multiple-selection.component';
+import { FormTextComponent } from '../../components/form-text/form-text.component';
 
 @Component({
   selector: 'app-order-form',
@@ -58,19 +61,33 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // this.form.push(new FormControl('4', { nonNullable: true }));
     // this.formControlsDisplay.createComponent(SingleSelectionComponent);
-    this.addDynamicControl('single-select');
+    // this.addDynamicControl('single-select');
 
-    this.addDynamicControl('single-select');
-    this.addDynamicControl('single-select');
+    // this.addDynamicControl('single-select');
+    // this.addDynamicControl('single-select');
+    this.fillFormControls();
   }
 
   // get controls(): AbstractControl<string[]> {
   //   // return this.form.get('dynamicControls');
   //   return this.form.get('dynamicControls') as AbstractControl<string[]>;
   // }
-  addDynamicControl(type: string): void {
-    if (type === 'single-select') {
+  addDynamicControl(customizableOption: CustomizableOption): void {
+    if (customizableOption.type === 'single-select') {
       this.formControlsDisplay.createComponent(SingleSelectionComponent);
+    } else if (customizableOption.type === 'multi-select') {
+      this.formControlsDisplay.createComponent(MultipleSelectionComponent);
+    } else if (customizableOption.type === 'text') {
+      this.formControlsDisplay.createComponent(FormTextComponent);
     }
+  }
+
+  fillFormControls(): void {
+    console.log('Creating components');
+    this.currentMenuSelection.customizableOptions.forEach(
+      (customizableOption: CustomizableOption) => {
+        this.addDynamicControl(customizableOption);
+      }
+    );
   }
 }

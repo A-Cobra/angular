@@ -14,34 +14,12 @@ const routes: Routes = [
         path: 'hamburger-combos',
         outlet: 'menu-selection',
         component: HamburgerMenuComponent,
-        // children: [
-        //   {
-        //     path: 'burger',
-        //     outlet: 'menu-details',
-        //     component: MyCardDetailsComponent,
-        //   },
-        // ],
       },
       {
         path: 'burger-combo/:id',
         outlet: 'menu-details',
         component: HamburgerDetailsComponent,
       },
-      // {
-      //   path: 'hamburger-combos',
-      //   children: [
-      //     {
-      //       path: 'selection',
-      //       outlet: 'menu-selection',
-      //       component: HamburgerMenuComponent,
-      //     },
-      //     {
-      //       path: 'details',
-      //       outlet: 'menu-details',
-      //       component: MyCardDetailsComponent,
-      //     },
-      //   ],
-      // },
     ],
   },
 ];

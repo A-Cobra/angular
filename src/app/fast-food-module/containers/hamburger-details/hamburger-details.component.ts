@@ -59,9 +59,11 @@ export class HamburgerDetailsComponent implements OnInit, AfterViewChecked {
           },
           complete: () => {
             // PUT IT HERE
-            const component =
+            const formComponent =
               this.detailsDiv.createComponent(OrderFormComponent);
-            component.instance.id = this.selectedId;
+            formComponent.instance.id = this.selectedId;
+            formComponent.instance.currentMenuSelection =
+              this.currentMenuSelection;
             console.log('this.detailsDiv');
             console.log(this.detailsDiv);
           },

@@ -8,23 +8,6 @@ import { Router } from '@angular/router';
     <nav>
       <ul>
         <li>
-          <!-- <a
-            [routerLink]="['/hamburger-combos', outlets:{
-            'menu-selection': ['/selection'],
-          }]"
-            >Hamburger Combos</a -->
-          <!-- <a
-            [routerLink]="[
-              'hamburger-combos',
-              {
-                outlets: {
-                  'menu-selection': ['/selection'],
-                  'details-selection': ['/details']
-                }
-              }
-            ]"
-            >Hamburger Combos</a
-          > -->
           <a
             [routerLink]="[
               '/fast-food',
@@ -36,7 +19,6 @@ import { Router } from '@angular/router';
             ]"
             >Hamburger Combos</a
           >
-          <!-- <a [routerLink]="['hamburger-combos']">Hamburger Combos</a> -->
         </li>
       </ul>
     </nav>
