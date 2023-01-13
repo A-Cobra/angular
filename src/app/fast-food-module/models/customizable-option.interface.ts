@@ -3,6 +3,6 @@ import { OptionDetails } from './option-details.interface';
 export interface CustomizableOption {
   name: string;
   type: string;
-  options: OptionDetails[];
+  options?: OptionDetails[];
   required: boolean;
 }

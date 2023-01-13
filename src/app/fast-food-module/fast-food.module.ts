@@ -9,6 +9,9 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { MyCardDetailsComponent } from './components/my-card-details/my-card-details.component';
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
 import { HamburgerDetailsComponent } from './containers/hamburger-details/hamburger-details.component';
+import { OrderFormComponent } from './containers/order-form/order-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SingleSelectionComponent } from './components/single-selection/single-selection.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,15 @@ import { HamburgerDetailsComponent } from './containers/hamburger-details/hambur
     MyCardDetailsComponent,
     HamburgerMenuComponent,
     HamburgerDetailsComponent,
+    OrderFormComponent,
+    SingleSelectionComponent,
   ],
-  imports: [CommonModule, FastFoodRoutingModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    FastFoodRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   exports: [FastFoodAppComponent],
 })
 export class FastFoodModule {}
