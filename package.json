@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint-f": "ng lint --fix",   
-    "sto": "ng serve -o"
+    "sto": "ng serve -o",
+    "db": "json-server --watch ./src/shared/db.json"
 
   },
   "private": true,
