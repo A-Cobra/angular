@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-my-card-details',
@@ -18,6 +18,7 @@ import { Component, OnInit } from '@angular/core';
   `,
 })
 export class MyCardDetailsComponent {
+  @Input()
   collapsed: boolean = true;
   constructor() {}
   onChangeCollapsedStatus() {

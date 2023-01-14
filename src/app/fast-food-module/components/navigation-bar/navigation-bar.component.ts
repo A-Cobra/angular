@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
       <ul>
         <li>
           <a
+            routerLinkActive="active"
             [routerLink]="[
               '/fast-food',
               {
@@ -21,6 +22,7 @@ import { Router } from '@angular/router';
             >Hamburger Combos</a
           >
           <a
+            routerLinkActive="active"
             [routerLink]="[
               '/fast-food',
               {
@@ -33,6 +35,7 @@ import { Router } from '@angular/router';
             >Pizza Combos</a
           >
           <a
+            routerLinkActive="active"
             [routerLink]="[
               '/fast-food',
               {
