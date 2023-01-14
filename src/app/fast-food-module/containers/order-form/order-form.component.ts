@@ -23,6 +23,7 @@ import { SingleSelectionComponent } from '../../components/single-selection/sing
 import { CustomizableOption } from '../../models/customizable-option.interface';
 import { MultipleSelectionComponent } from '../../components/multiple-selection/multiple-selection.component';
 import { FormTextComponent } from '../../components/form-text/form-text.component';
+import { TextareaEvent } from '../../models/textarea-event.type';
 
 @Component({
   selector: 'app-order-form',
@@ -111,9 +112,27 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
       // Attributes not set yet
     } else if (customizableOption.type === 'text') {
       // Attributes not set yet
-      this.formControlsDisplay.createComponent(FormTextComponent);
+      const textComponent =
+        this.formControlsDisplay.createComponent(FormTextComponent);
+      textComponent.instance.customizableOption = customizableOption;
+      // DOESN'T WORK
+      textComponent.instance.id = id;
+      textComponent.instance.textareaChange.subscribe({
+        next: (textareaEvent: TextareaEvent) => {
+          this.onTextareaChanges(textareaEvent);
+        },
+      });
     }
   }
 
-  generateFormControls() {}
+  onTextareaChanges(textareaEvent: TextareaEvent): void {
+    // console.log('on text area changes');
+    // console.log('textareaEvent.id');
+    // console.log(textareaEvent.id);
+    // console.log('textareaEvent.value');
+    // console.log(textareaEvent.value);
+    console.log(this.currentMenuSelection);
+    this.currentMenuSelection.customizableOptions[textareaEvent.id].value =
+      textareaEvent.value;
+  }
 }

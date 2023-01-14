@@ -5,4 +5,5 @@ export interface CustomizableOption {
   type: string;
   options?: OptionDetails[];
   required: boolean;
+  value?: string;
 }
