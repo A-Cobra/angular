@@ -1,7 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { defaultMultipleSelection } from 'src/app/utils/default-multiple-selection';
 import { CustomizableOption } from '../../models/customizable-option.interface';
+import { MultipleSelectionEvent } from '../../models/multiple-selection-event.interface';
+import { OptionDetails } from '../../models/option-details.interface';
 
 @Component({
   selector: 'app-multiple-selection',
@@ -34,6 +41,9 @@ export class MultipleSelectionComponent implements OnInit {
   id: number = 0;
   @Input()
   customizableOption: CustomizableOption = { ...defaultMultipleSelection };
+  @Output()
+  multipleSelectionChange: EventEmitter<MultipleSelectionEvent> =
+    new EventEmitter<MultipleSelectionEvent>();
   form!: FormGroup;
   // = new FormGroup({
   //   selectedOptionsFormArray!: FormArray,
@@ -49,10 +59,11 @@ export class MultipleSelectionComponent implements OnInit {
     console.log(this.form.value);
   }
 
-  onCheckboxChange() {
+  onCheckboxChange(): void {
     console.log('Checkbox changed');
+    this.alterParentComponentsSelections();
   }
-  generateControls() {
+  generateControls(): void {
     const options = this.customizableOption.options?.map(
       option => new FormControl<boolean>(false, { nonNullable: true })
     );
@@ -62,5 +73,33 @@ export class MultipleSelectionComponent implements OnInit {
     this.form = new FormGroup({
       selectedOptionsArray: selectedOptionsFormArray,
     });
+    console.log('After GENERATING');
+    console.log('this.getFormArray().value');
+    console.log(this.getFormArrayValue());
+  }
+
+  getFormArrayControl(): AbstractControl {
+    return this.form.controls['selectedOptionsArray'];
+  }
+
+  getFormArrayValue(): boolean[] {
+    return this.form.controls['selectedOptionsArray'].value;
+  }
+
+  alterParentComponentsSelections() {
+    const selectedOptions: { selected: boolean }[] =
+      this.getFormArrayValue().map((controlSelection: boolean) => {
+        return { selected: controlSelection };
+      });
+    console.log('selectedOptions');
+    console.log(selectedOptions);
+    selectedOptions.forEach((option, index) => {
+      Object.assign(
+        this.customizableOption?.options?.[index] as OptionDetails,
+        option
+      );
+    });
+    console.log('this.customizableOption.options after generating options');
+    console.log(this.customizableOption.options);
   }
 }
