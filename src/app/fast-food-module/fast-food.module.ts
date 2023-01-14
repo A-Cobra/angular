@@ -18,6 +18,7 @@ import { MenuSelectionHeaderComponent } from './components/menu-selection-header
 import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
 import { DessertsComponent } from './containers/desserts/desserts.component';
 import { MenuDetailsPlaceholderComponent } from './components/menu-details-placeholder/menu-details-placeholder.component';
+import { MenuSelectionContentComponent } from './components/menu-selection-content/menu-selection-content.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MenuDetailsPlaceholderComponent } from './components/menu-details-place
     PizzaMenuComponent,
     DessertsComponent,
     MenuDetailsPlaceholderComponent,
+    MenuSelectionContentComponent,
   ],
   imports: [
     CommonModule,

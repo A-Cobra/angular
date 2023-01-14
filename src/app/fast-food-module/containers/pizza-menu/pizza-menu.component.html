@@ -4,5 +4,9 @@
   <app-my-card-details>
     <app-menu-selection-header
       [menuItem]="pizzaMenuItem"></app-menu-selection-header>
+    <app-menu-selection-content
+      [customizableOptions]="
+        pizzaMenuItem.customizableOptions
+      "></app-menu-selection-content>
   </app-my-card-details>
 </div>

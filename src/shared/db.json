@@ -100,6 +100,85 @@
             }
           ],
           "required": true
+        },
+        {
+          "name": "Select the type of bread for the Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Bun",
+              "selected": true
+            },
+            {
+              "name": "Whole Wheat Bun",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select type of meat for the Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": true
+            },
+            {
+              "name": "Began Meat",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger #2",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Double meat",
+              "selected": false,
+              "extraPrice": 3
+            },
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": false,
+              "extraPrice": 2
+            },
+            {
+              "name": "Extra sauce",
+              "selected": false,
+              "extraPrice": 0.5
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Enter special indications for Burger #2",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "Select beverage for Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
         }
       ]
     },
