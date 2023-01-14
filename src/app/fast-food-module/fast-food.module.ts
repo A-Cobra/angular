@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SingleSelectionComponent } from './components/single-selection/single-selection.component';
 import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
 import { FormTextComponent } from './components/form-text/form-text.component';
+import { MenuSelectionHeaderComponent } from './components/menu-selection-header/menu-selection-header.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormTextComponent } from './components/form-text/form-text.component';
     SingleSelectionComponent,
     MultipleSelectionComponent,
     FormTextComponent,
+    MenuSelectionHeaderComponent,
   ],
   imports: [
     CommonModule,

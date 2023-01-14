@@ -1,2 +1,6 @@
 <p>hamburger-menu works!</p>
 <p>{{ burgerMenu.length }}</p>
+<div *ngFor="let burgerMenuItem of burgerMenu">
+  <app-menu-selection-header
+    [menuItem]="burgerMenuItem"></app-menu-selection-header>
+</div>
