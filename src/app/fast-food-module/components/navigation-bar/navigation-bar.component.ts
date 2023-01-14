@@ -19,6 +19,28 @@ import { Router } from '@angular/router';
             ]"
             >Hamburger Combos</a
           >
+          <a
+            [routerLink]="[
+              '/fast-food',
+              {
+                outlets: {
+                  'menu-selection': ['pizza-combos']
+                }
+              }
+            ]"
+            >Pizza Combos</a
+          >
+          <a
+            [routerLink]="[
+              '/fast-food',
+              {
+                outlets: {
+                  'menu-selection': ['desserts']
+                }
+              }
+            ]"
+            >Desserts</a
+          >
         </li>
       </ul>
     </nav>

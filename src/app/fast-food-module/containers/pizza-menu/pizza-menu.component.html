@@ -1,0 +1,8 @@
+<p>pizza-menu works!</p>
+<p>{{ pizzaMenu.length }}</p>
+<div *ngFor="let pizzaMenuItem of pizzaMenu">
+  <app-my-card-details>
+    <app-menu-selection-header
+      [menuItem]="pizzaMenuItem"></app-menu-selection-header>
+  </app-my-card-details>
+</div>

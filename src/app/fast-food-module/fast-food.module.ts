@@ -15,6 +15,8 @@ import { SingleSelectionComponent } from './components/single-selection/single-s
 import { MultipleSelectionComponent } from './components/multiple-selection/multiple-selection.component';
 import { FormTextComponent } from './components/form-text/form-text.component';
 import { MenuSelectionHeaderComponent } from './components/menu-selection-header/menu-selection-header.component';
+import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
+import { DessertsComponent } from './containers/desserts/desserts.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MenuSelectionHeaderComponent } from './components/menu-selection-header
     MultipleSelectionComponent,
     FormTextComponent,
     MenuSelectionHeaderComponent,
+    PizzaMenuComponent,
+    DessertsComponent,
   ],
   imports: [
     CommonModule,

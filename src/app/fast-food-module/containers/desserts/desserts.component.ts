@@ -3,22 +3,20 @@ import { MenuItem } from '../../models/menu-item.interface';
 import { MenuService } from '../../services/menu/menu.service';
 
 @Component({
-  selector: 'app-hamburger-menu',
-  templateUrl: './hamburger-menu.component.html',
-  styleUrls: ['./hamburger-menu.component.scss'],
+  selector: 'app-desserts',
+  templateUrl: './desserts.component.html',
+  styleUrls: ['./desserts.component.scss'],
 })
-export class HamburgerMenuComponent implements OnInit {
-  burgerMenu: MenuItem[] = [];
-  category = 1;
+export class DessertsComponent implements OnInit {
+  dessertsMenu: MenuItem[] = [];
+  category = 3;
   constructor(private menuService: MenuService) {}
+
   ngOnInit(): void {
     this.menuService
       .getMenuByCategory(this.category)
       .subscribe((menu: MenuItem[]) => {
-        this.burgerMenu = menu;
-        console.log(this.burgerMenu);
+        this.dessertsMenu = menu;
       });
-    console.log('object');
-    console.log(this.menuService.menuPath);
   }
 }
