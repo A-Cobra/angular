@@ -7,6 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { defaultFormText } from 'src/app/utils/default-form-text';
 import { CustomizableOption } from '../../models/customizable-option.interface';
 import { TextareaEvent } from '../../models/textarea-event.type';
 
@@ -34,11 +35,7 @@ export class FormTextComponent {
   @Input()
   id: number = 0;
   @Input()
-  customizableOption: CustomizableOption = {
-    name: 'Enter special indications for Burger #1',
-    type: 'text',
-    required: false,
-  };
+  customizableOption: CustomizableOption = { ...defaultFormText };
   @ViewChild('textArea') textArea!: ElementRef;
   @Output()
   textareaChange: EventEmitter<TextareaEvent> =
@@ -46,8 +43,6 @@ export class FormTextComponent {
 
   constructor() {}
   onInputChange() {
-    console.log('Input changed');
-    console.log(this.textArea.nativeElement.value);
     this.textareaChange.emit({
       value: this.textArea.nativeElement.value,
       id: this.id,

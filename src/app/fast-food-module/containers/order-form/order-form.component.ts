@@ -108,14 +108,16 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
     }
     // WORKS
     else if (customizableOption.type === 'multi-select') {
-      this.formControlsDisplay.createComponent(MultipleSelectionComponent);
+      const multipleSelectionComponent =
+        this.formControlsDisplay.createComponent(MultipleSelectionComponent);
+      multipleSelectionComponent.instance.id = id;
+      multipleSelectionComponent.instance.customizableOption =
+        customizableOption;
       // Attributes not set yet
     } else if (customizableOption.type === 'text') {
-      // Attributes not set yet
       const textComponent =
         this.formControlsDisplay.createComponent(FormTextComponent);
       textComponent.instance.customizableOption = customizableOption;
-      // DOESN'T WORK
       textComponent.instance.id = id;
       textComponent.instance.textareaChange.subscribe({
         next: (textareaEvent: TextareaEvent) => {
@@ -126,12 +128,6 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   }
 
   onTextareaChanges(textareaEvent: TextareaEvent): void {
-    // console.log('on text area changes');
-    // console.log('textareaEvent.id');
-    // console.log(textareaEvent.id);
-    // console.log('textareaEvent.value');
-    // console.log(textareaEvent.value);
-    console.log(this.currentMenuSelection);
     this.currentMenuSelection.customizableOptions[textareaEvent.id].value =
       textareaEvent.value;
   }

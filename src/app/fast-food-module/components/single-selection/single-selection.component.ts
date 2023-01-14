@@ -7,6 +7,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { defaultSingleSelection } from 'src/app/utils/default-single-selection';
 import { CustomizableOption } from '../../models/customizable-option.interface';
 
 @Component({
@@ -47,7 +48,7 @@ import { CustomizableOption } from '../../models/customizable-option.interface';
 })
 export class SingleSelectionComponent {
   id!: number;
-  customizableOption!: CustomizableOption;
+  customizableOption: CustomizableOption = { ...defaultSingleSelection };
   @Input()
   parentForm!: FormGroup;
   constructor() {}
