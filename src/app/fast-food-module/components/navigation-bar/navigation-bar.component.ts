@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
               '/fast-food',
               {
                 outlets: {
-                  'menu-selection': ['hamburger-combos']
+                  'menu-selection': ['hamburger-combos'],
+                  'menu-details': ['selection']
                 }
               }
             ]"
@@ -24,7 +25,8 @@ import { Router } from '@angular/router';
               '/fast-food',
               {
                 outlets: {
-                  'menu-selection': ['pizza-combos']
+                  'menu-selection': ['pizza-combos'],
+                  'menu-details': ['selection']
                 }
               }
             ]"
@@ -35,7 +37,8 @@ import { Router } from '@angular/router';
               '/fast-food',
               {
                 outlets: {
-                  'menu-selection': ['desserts']
+                  'menu-selection': ['desserts'],
+                  'menu-details': ['selection']
                 }
               }
             ]"

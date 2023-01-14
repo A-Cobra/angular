@@ -17,6 +17,7 @@ import { FormTextComponent } from './components/form-text/form-text.component';
 import { MenuSelectionHeaderComponent } from './components/menu-selection-header/menu-selection-header.component';
 import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
 import { DessertsComponent } from './containers/desserts/desserts.component';
+import { MenuDetailsPlaceholderComponent } from './components/menu-details-placeholder/menu-details-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DessertsComponent } from './containers/desserts/desserts.component';
     MenuSelectionHeaderComponent,
     PizzaMenuComponent,
     DessertsComponent,
+    MenuDetailsPlaceholderComponent,
   ],
   imports: [
     CommonModule,

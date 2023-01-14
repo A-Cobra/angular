@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MenuDetailsPlaceholderComponent } from './components/menu-details-placeholder/menu-details-placeholder.component';
 import { MyCardDetailsComponent } from './components/my-card-details/my-card-details.component';
 import { DessertsComponent } from './containers/desserts/desserts.component';
 import { FastFoodAppComponent } from './containers/fast-food-app/fast-food-app.component';
@@ -33,6 +34,11 @@ const routes: Routes = [
         path: 'burger-combo/:id',
         outlet: 'menu-details',
         component: HamburgerDetailsComponent,
+      },
+      {
+        path: 'selection',
+        outlet: 'menu-details',
+        component: MenuDetailsPlaceholderComponent,
       },
     ],
   },
