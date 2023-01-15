@@ -26,6 +26,7 @@ import { MultipleSelectionComponent } from '../../components/multiple-selection/
 import { FormTextComponent } from '../../components/form-text/form-text.component';
 import { TextareaEvent } from '../../models/textarea-event.type';
 import { SingleSelectionEvent } from '../../models/sigle-selection-event.type';
+import { MultipleSelectionEvent } from '../../models/multiple-selection-event.type';
 
 @Component({
   selector: 'app-order-form',
@@ -88,6 +89,7 @@ export class OrderFormComponent implements AfterViewInit {
       multipleSelectionComponent.instance.id = id;
       multipleSelectionComponent.instance.customizableOption =
         customizableOption;
+      multipleSelectionComponent.instance.multipleSelectionChange.subscribe();
       // Attributes not set yet
     } else if (customizableOption.type === 'text') {
       const textComponent =
@@ -110,5 +112,11 @@ export class OrderFormComponent implements AfterViewInit {
   onSingleSelectionChange(singleSelectionChange: SingleSelectionEvent): void {
     this.currentMenuSelection.customizableOptions[singleSelectionChange.id] =
       singleSelectionChange.customizableOption;
+  }
+
+  onMultipleSelectionChanges(multipleSelectionChange: MultipleSelectionEvent) {
+    this.currentMenuSelection.customizableOptions[
+      multipleSelectionChange.id
+    ].options = multipleSelectionChange.options;
   }
 }

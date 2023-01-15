@@ -83,13 +83,16 @@ export class MultipleSelectionComponent implements OnInit {
       });
     console.log('selectedOptions');
     console.log(selectedOptions);
+    const optionsCopy: OptionDetails[] =
+      this.customizableOption.options?.slice() ?? [];
+    console.log('optionsCopy');
+    console.log(optionsCopy);
     selectedOptions.forEach((option, index) => {
-      Object.assign(
-        this.customizableOption?.options?.[index] as OptionDetails,
-        option
-      );
+      Object.assign(optionsCopy[index], option);
     });
-    console.log('this.customizableOption.options after generating options');
-    console.log(this.customizableOption.options);
+    this.multipleSelectionChange.emit({
+      options: optionsCopy,
+      id: this.id,
+    });
   }
 }
