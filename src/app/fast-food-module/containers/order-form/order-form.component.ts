@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { defaultMenuSelection } from 'src/app/utils/default-menu-selection';
 import { MenuItem } from '../../models/menu-item.interface';
@@ -24,6 +25,7 @@ import { CustomizableOption } from '../../models/customizable-option.interface';
 import { MultipleSelectionComponent } from '../../components/multiple-selection/multiple-selection.component';
 import { FormTextComponent } from '../../components/form-text/form-text.component';
 import { TextareaEvent } from '../../models/textarea-event.type';
+import { SingleSelectionEvent } from '../../models/sigle-selection-event.type';
 
 @Component({
   selector: 'app-order-form',
@@ -31,20 +33,12 @@ import { TextareaEvent } from '../../models/textarea-event.type';
   styleUrls: ['./order-form.component.scss'],
 })
 // implements OnInit, AfterContentInit, AfterViewInit
-export class OrderFormComponent implements OnInit, AfterViewInit {
+export class OrderFormComponent implements AfterViewInit {
   id: number = 0;
   @Input()
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
-
   @ViewChild('formControlsDisplay', { read: ViewContainerRef })
   formControlsDisplay!: ViewContainerRef;
-
-  // form = new FormArray([
-  //   new FormControl('1', { nonNullable: true }),
-  //   new FormControl('2', { nonNullable: true }),
-  //   new FormControl('3', { nonNullable: true }),
-  // ]);
-
   form = new FormGroup({
     dynamicComponents: new FormArray([
       new FormControl('1', { nonNullable: true }),
@@ -52,39 +46,15 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
     ]),
   });
 
-  constructor(private formBuilder: NonNullableFormBuilder) {}
-
-  ngOnInit(): void {
-    console.log('this.form.value');
-    // this.addDynamicControl('single-select');
-    // this.form.push(new FormControl('4', { nonNullable: true }));
-  }
-
-  // ngAfterContentInit(): void {
-  //   // this.form.push(new FormControl('4', { nonNullable: true }));
-  //   // this.formControlsDisplay.createComponent(SingleSelectionComponent);
-  //   console.log('object');
-  // }
+  constructor(
+    private formBuilder: NonNullableFormBuilder,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit(): void {
-    // setTimeout(() => {
-
-    // }, timeout);
-    // this.form.push(new FormControl('4', { nonNullable: true }));
-    // this.formControlsDisplay.createComponent(SingleSelectionComponent);
-    // this.addDynamicControl('single-select');
-
-    // this.addDynamicControl('single-select');
-    // this.addDynamicControl('single-select');
-    // this.fillFormControls();
     this.fillFormControls();
-    console.log('object');
+    this.changeDetector.detectChanges();
   }
-
-  // get controls(): AbstractControl<string[]> {
-  //   // return this.form.get('dynamicControls');
-  //   return this.form.get('dynamicControls') as AbstractControl<string[]>;
-  // }
 
   fillFormControls(): void {
     console.log('Creating components');
@@ -105,6 +75,11 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
       // DOESN'T WORK
       singleSelectionComponent.instance.id = id;
       singleSelectionComponent.instance.parentForm = this.form;
+      singleSelectionComponent.instance.singleSelectionChange.subscribe({
+        next: (singleSelectionEvent: SingleSelectionEvent) => {
+          // this.onTextareaChanges(textareaEvent);
+        },
+      });
     }
     // WORKS
     else if (customizableOption.type === 'multi-select') {
@@ -130,5 +105,10 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   onTextareaChanges(textareaEvent: TextareaEvent): void {
     this.currentMenuSelection.customizableOptions[textareaEvent.id].value =
       textareaEvent.value;
+  }
+
+  onSingleSelectionChange(singleSelectionChange: SingleSelectionEvent): void {
+    this.currentMenuSelection.customizableOptions[singleSelectionChange.id] =
+      singleSelectionChange.customizableOption;
   }
 }

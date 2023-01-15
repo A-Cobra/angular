@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { defaultMultipleSelection } from 'src/app/utils/default-multiple-selection';
 import { CustomizableOption } from '../../models/customizable-option.interface';
-import { MultipleSelectionEvent } from '../../models/multiple-selection-event.interface';
+import { MultipleSelectionEvent } from '../../models/multiple-selection-event.type';
 import { OptionDetails } from '../../models/option-details.interface';
 
 @Component({
