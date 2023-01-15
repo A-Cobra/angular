@@ -45,27 +45,20 @@ export class MultipleSelectionComponent implements OnInit {
   multipleSelectionChange: EventEmitter<MultipleSelectionEvent> =
     new EventEmitter<MultipleSelectionEvent>();
   form!: FormGroup;
-  // = new FormGroup({
-  //   selectedOptionsFormArray!: FormArray,
-  // });
-  // selectedOptionsFormArray!: FormArray;
   constructor() {}
+
   ngOnInit(): void {
-    // this.selectedOptions = new FormArray(['']);
     this.generateControls();
-    console.log('this.selectedOptionsFormArray');
-    // console.log(this.selectedOptionsFormArray);
-    console.log('this.form.value');
-    console.log(this.form.value);
   }
 
   onCheckboxChange(): void {
-    console.log('Checkbox changed');
     this.alterParentComponentsSelections();
   }
+
   generateControls(): void {
     const options = this.customizableOption.options?.map(
-      option => new FormControl<boolean>(false, { nonNullable: true })
+      (option: OptionDetails) =>
+        new FormControl<boolean>(false, { nonNullable: true })
     );
     const selectedOptionsFormArray = new FormArray(
       options as FormControl<boolean>[]
@@ -73,9 +66,6 @@ export class MultipleSelectionComponent implements OnInit {
     this.form = new FormGroup({
       selectedOptionsArray: selectedOptionsFormArray,
     });
-    console.log('After GENERATING');
-    console.log('this.getFormArray().value');
-    console.log(this.getFormArrayValue());
   }
 
   getFormArrayControl(): AbstractControl {
