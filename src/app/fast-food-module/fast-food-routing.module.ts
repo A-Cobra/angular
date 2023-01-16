@@ -7,6 +7,7 @@ import { FastFoodAppComponent } from './containers/fast-food-app/fast-food-app.c
 import { ItemDetailsComponent } from './containers/item-details/item-details.component';
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
 import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
+import { CartPreviewMenuComponent } from './containers/cart-preview-menu/cart-preview-menu.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
         path: 'desserts',
         outlet: 'menu-selection',
         component: DessertsComponent,
+      },
+      {
+        path: 'cart',
+        outlet: 'menu-selection',
+        component: CartPreviewMenuComponent,
       },
       // Secondary Outlet
       {

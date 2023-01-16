@@ -1,0 +1,12 @@
+<p>cart-preview-menu works!</p>
+<p>{{ cartMenu.length }}</p>
+<div *ngFor="let cartMenuItem of cartMenu; index as i">
+  <app-my-card-details [collapsed]="false">
+    <app-menu-selection-header
+      [menuItem]="cartMenuItem"></app-menu-selection-header>
+    <app-cart-selection-content
+      [customizableOptions]="
+        cartMenuItem.customizableOptions
+      "></app-cart-selection-content>
+  </app-my-card-details>
+</div>

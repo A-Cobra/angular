@@ -16,7 +16,7 @@ export class CartService {
       `${environment.dataBaseBaseUrl}/${this.cartPath}`
     );
   }
-  private postItemToCart(item: MenuItem): Observable<MenuItem> {
+  private postItemToCartDatabase(item: MenuItem): Observable<MenuItem> {
     return this.http.post<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`,
       item
@@ -27,7 +27,7 @@ export class CartService {
     return getId$.pipe(
       switchMap((newId: number) => {
         item.id = newId;
-        return this.postItemToCart(item);
+        return this.postItemToCartDatabase(item);
       })
     );
   }
