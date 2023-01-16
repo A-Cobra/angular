@@ -2097,7 +2097,7 @@
           "options": [
             {
               "name": "Extra cheese",
-              "selected": false,
+              "selected": true,
               "extraPrice": 1.5
             },
             {
@@ -2122,12 +2122,12 @@
             },
             {
               "name": "Tea",
-              "selected": false,
+              "selected": true,
               "extraPrice": 1.5
             },
             {
               "name": "Juice",
-              "selected": true,
+              "selected": false,
               "extraPrice": 1
             }
           ],
@@ -2136,7 +2136,8 @@
         {
           "name": "Enter special indications",
           "type": "text",
-          "required": false
+          "required": false,
+          "value": "Please include more tomato instead of lettuce."
         }
       ]
     },
@@ -2158,7 +2159,7 @@
             },
             {
               "name": "Sausage",
-              "selected": true
+              "selected": false
             },
             {
               "name": "Mushrooms",
@@ -2166,7 +2167,7 @@
             },
             {
               "name": "All",
-              "selected": false,
+              "selected": true,
               "extraPrice": 2
             }
           ],
@@ -2230,11 +2231,11 @@
             },
             {
               "name": "Mushrooms",
-              "selected": true
+              "selected": false
             },
             {
               "name": "All",
-              "selected": false,
+              "selected": true,
               "extraPrice": 2
             }
           ],
@@ -2271,11 +2272,11 @@
           "options": [
             {
               "name": "Soda",
-              "selected": true
+              "selected": false
             },
             {
               "name": "Tea",
-              "selected": false
+              "selected": true
             },
             {
               "name": "Water",
@@ -2363,301 +2364,6 @@
             }
           ],
           "required": false
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Burger for 2",
-      "image": "https://www.meatpoultry.com/ext/resources/images/2/f/o/r/1/l/a/e/e/m/05/2for10WhopperMeal.jpg",
-      "categoryId": 1,
-      "description": "Don't want to share? This combo includes 2 burgers, 2 sides and 2 beverages. You can customize your burgers.",
-      "basePrice": 15.99,
-      "customizableOptions": [
-        {
-          "name": "Select the type of bread for the Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": false
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": true,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select type of meat for the Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Meat",
-              "selected": false
-            },
-            {
-              "name": "Began Meat",
-              "selected": true,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger #1",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Double meat",
-              "selected": false,
-              "extraPrice": 3
-            },
-            {
-              "name": "Extra cheese",
-              "selected": false,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Bacon",
-              "selected": false,
-              "extraPrice": 2
-            },
-            {
-              "name": "Extra sauce",
-              "selected": true,
-              "extraPrice": 0.5
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Enter special indications for Burger #1",
-          "type": "text",
-          "required": false
-        },
-        {
-          "name": "Select beverage for Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": true
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select the type of bread for the Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": false
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": true,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select type of meat for the Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Meat",
-              "selected": true
-            },
-            {
-              "name": "Began Meat",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger #2",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Double meat",
-              "selected": true,
-              "extraPrice": 3
-            },
-            {
-              "name": "Extra cheese",
-              "selected": false,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Bacon",
-              "selected": false,
-              "extraPrice": 2
-            },
-            {
-              "name": "Extra sauce",
-              "selected": false,
-              "extraPrice": 0.5
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Enter special indications for Burger #2",
-          "type": "text",
-          "required": false,
-          "value": "Don't add pickles to the burger."
-        },
-        {
-          "name": "Select beverage for Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": true
-            }
-          ],
-          "required": true
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Bourbon Bacon Cheeseburger Combo",
-      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1397_medium_US_en.png",
-      "categoryId": 1,
-      "description": "A quarter-pound* of fresh, never-frozen beef topped with Applewood smoked bacon, American cheese, crispy onions, and a sweet, smoky bourbon bacon sauce that is, essentially, a sauce made with real bourbon and real bacon. Read that part about the sauce again, and we’ll see you soon.",
-      "basePrice": 10.99,
-      "customizableOptions": [
-        {
-          "name": "Select the type of bread",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": true
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": false,
-              "extraPrice": 1
-            },
-            {
-              "name": "Pretzel Bun",
-              "selected": false,
-              "extraPrice": 1.5
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select type of meat",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Meat",
-              "selected": true
-            },
-            {
-              "name": "Began Meat",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Double meat",
-              "selected": true,
-              "extraPrice": 3
-            },
-            {
-              "name": "Extra cheese",
-              "selected": true,
-              "extraPrice": 1
-            },
-            {
-              "name": "Bacon",
-              "selected": true,
-              "extraPrice": 2
-            },
-            {
-              "name": "Extra sauce",
-              "selected": false,
-              "extraPrice": 1.5
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Select your side dish",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Fries",
-              "selected": true
-            },
-            {
-              "name": "Loaded Fries",
-              "selected": false,
-              "extraPrice": 3.5
-            },
-            {
-              "name": "Salad",
-              "selected": false,
-              "extraPrice": 1.5
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your drink",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": false
-            },
-            {
-              "name": "Tea",
-              "selected": false,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Juice",
-              "selected": false,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Enter special indications",
-          "type": "text",
-          "required": false,
-          "value": "Please don't add pickles or raddish."
         }
       ]
     }

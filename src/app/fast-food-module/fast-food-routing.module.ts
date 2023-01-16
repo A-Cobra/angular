@@ -8,6 +8,8 @@ import { ItemDetailsComponent } from './containers/item-details/item-details.com
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
 import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
 import { CartPreviewMenuComponent } from './containers/cart-preview-menu/cart-preview-menu.component';
+import { CartItemDetailsComponent } from './containers/cart-item-details/cart-item-details.component';
+import { CartDetailsPlaceholderComponent } from './components/cart-details-placeholder/cart-details-placeholder.component';
 
 const routes: Routes = [
   {
@@ -52,9 +54,19 @@ const routes: Routes = [
         component: ItemDetailsComponent,
       },
       {
+        path: 'cart-item/:id',
+        outlet: 'menu-details',
+        component: CartItemDetailsComponent,
+      },
+      {
         path: 'selection',
         outlet: 'menu-details',
         component: MenuDetailsPlaceholderComponent,
+      },
+      {
+        path: 'cart-selection',
+        outlet: 'menu-details',
+        component: CartDetailsPlaceholderComponent,
       },
     ],
   },

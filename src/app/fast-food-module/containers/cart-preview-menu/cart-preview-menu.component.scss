@@ -1,5 +1,10 @@
 .cart-preview-menu-container{
   position: relative;
+  div{
+    &.active{
+      background-color: rgba(#000000, 0.3);
+    }
+  }
   header{
     padding: 18px 30px;
     display: flex;

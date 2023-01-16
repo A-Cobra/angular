@@ -16,6 +16,11 @@ export class CartService {
       `${environment.dataBaseBaseUrl}/${this.cartPath}`
     );
   }
+  getCartItem(id: number): Observable<MenuItem> {
+    return this.http.get<MenuItem>(
+      `${environment.dataBaseBaseUrl}/${this.cartPath}/${id}`
+    );
+  }
   private postItemToCartDatabase(item: MenuItem): Observable<MenuItem> {
     return this.http.post<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`,
@@ -43,5 +48,16 @@ export class CartService {
           return 1;
         })
       );
+  }
+  removeItemFormTheCart(id: number): Observable<MenuItem> {
+    return this.http.delete<MenuItem>(
+      `${environment.dataBaseBaseUrl}/${this.cartPath}/${id}`
+    );
+  }
+  updateCartItem(item: MenuItem): Observable<MenuItem> {
+    return this.http.put<MenuItem>(
+      `${environment.dataBaseBaseUrl}/${this.cartPath}/${item.id}`,
+      item
+    );
   }
 }

@@ -54,7 +54,7 @@ import { Router } from '@angular/router';
               {
                 outlets: {
                   'menu-selection': ['cart'],
-                  'menu-details': ['selection']
+                  'menu-details': ['cart-selection']
                 }
               }
             ]"

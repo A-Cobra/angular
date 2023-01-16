@@ -1,27 +1,23 @@
 import {
   Component,
-  OnDestroy,
+  Input,
   OnInit,
   ViewChild,
   ViewContainerRef,
-  AfterViewChecked,
-  ElementRef,
-  Input,
 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { defaultMenuSelection } from 'src/app/utils/default-menu-selection';
 import { MenuItem } from '../../models/menu-item.interface';
-import { MenuService } from '../../services/menu/menu.service';
+import { CartService } from '../../services/cart/cart.service';
 import { OrderFormComponent } from '../order-form/order-form.component';
 
 @Component({
-  selector: 'app-hamburger-details',
-  templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss'],
+  selector: 'app-cart-item-details',
+  templateUrl: './cart-item-details.component.html',
+  styleUrls: ['./cart-item-details.component.scss'],
 })
-// implements OnInit, OnDestroy, AfterViewInit
-export class ItemDetailsComponent implements OnInit, AfterViewChecked {
+export class CartItemDetailsComponent implements OnInit {
   selectedId!: number;
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
   endAllSubscriptions$: Subject<string> = new Subject<string>();
@@ -29,22 +25,11 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
   detailsDiv!: ViewContainerRef;
   @Input()
   cartForm: boolean = false;
-  // @ViewChild('detailsContent') detailsDiv!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
-    private menuService: MenuService
+    private cartService: CartService
   ) {}
-  ngAfterViewChecked(): void {
-    // const component = this.detailsDiv.createComponent(OrderFormComponent);
-    // component.instance.id = this.selectedId;
-    console.log('this.detailsDiv');
-    // console.log(this.detailsDiv);
-  }
-  // ngOnDestroy(): void {
-  //   this.endAllSubscriptions$.next('');
-  //   this.endAllSubscriptions$.unsubscribe();
-  // }
 
   ngOnInit(): void {
     this.route.params
@@ -52,7 +37,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
       .subscribe((urlData: Params) => {
         console.log(urlData);
         this.selectedId = parseInt(urlData?.['id']);
-        this.menuService.getMenuItem(urlData?.['id']).subscribe({
+        this.cartService.getCartItem(urlData?.['id']).subscribe({
           next: (menuSelection: MenuItem) => {
             this.currentMenuSelection = menuSelection;
             console.log('this.currentMenuSelection');
@@ -69,6 +54,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
             formComponent.instance.id = this.selectedId;
             formComponent.instance.currentMenuSelection =
               this.currentMenuSelection;
+            formComponent.instance.cartForm = true;
             console.log('formComponent.instance');
             console.log(formComponent.instance);
             console.log('COMPLETED');

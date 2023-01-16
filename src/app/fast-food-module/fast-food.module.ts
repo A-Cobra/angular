@@ -21,6 +21,8 @@ import { MenuDetailsPlaceholderComponent } from './components/menu-details-place
 import { MenuSelectionContentComponent } from './components/menu-selection-content/menu-selection-content.component';
 import { CartPreviewMenuComponent } from './containers/cart-preview-menu/cart-preview-menu.component';
 import { CartSelectionDetailsComponent } from './components/cart-selection-content/cart-selection-content.component';
+import { CartItemDetailsComponent } from './containers/cart-item-details/cart-item-details.component';
+import { CartDetailsPlaceholderComponent } from './components/cart-details-placeholder/cart-details-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CartSelectionDetailsComponent } from './components/cart-selection-conte
     MenuSelectionContentComponent,
     CartPreviewMenuComponent,
     CartSelectionDetailsComponent,
+    CartItemDetailsComponent,
+    CartDetailsPlaceholderComponent,
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,7 @@ import {
 import { defaultSingleSelection } from 'src/app/utils/default-single-selection';
 import { CustomizableOption } from '../../models/customizable-option.interface';
 import { OptionDetails } from '../../models/option-details.interface';
-import { SingleSelectionEvent } from '../../models/sigle-selection-event.type';
+import { SingleSelectionEvent } from '../../models/single-selection-event.type';
 
 @Component({
   selector: 'app-single-selection',

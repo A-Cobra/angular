@@ -9,7 +9,10 @@
     <button (click)="onCompleteOrder()">Complete Order</button>
   </header>
   <div
-    (click)="onCardClick()"
+    [ngClass]="{
+      active: carItemsSelectedStatus[i]
+    }"
+    (click)="onCardClick(i, cartMenuItem)"
     *ngFor="let cartMenuItem of cartMenu; index as i">
     <app-my-card-details [collapsed]="false">
       <app-menu-selection-header

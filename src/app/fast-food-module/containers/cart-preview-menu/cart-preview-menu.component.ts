@@ -10,10 +10,12 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class CartPreviewMenuComponent implements OnInit {
   previouslySelectedItemId = -1;
+  carItemsSelectedStatus: boolean[] = [];
   cartMenu: MenuItem[] = [];
-  constructor(private cartService: CartService, private router: Router) {}
   totalItemsPrice: number[] = [];
   totalCartPrice: number = 0;
+
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe({
@@ -28,6 +30,9 @@ export class CartPreviewMenuComponent implements OnInit {
           (item1, item2) => item1 + item2,
           0
         );
+        this.cartMenu.forEach((cartItem: MenuItem, index) => {
+          this.carItemsSelectedStatus.unshift(false);
+        });
       },
     });
   }
@@ -49,11 +54,57 @@ export class CartPreviewMenuComponent implements OnInit {
     return recalculatedPrice;
   }
 
-  onCardClick() {
-    console.log('Creating form');
-  }
-
   onCompleteOrder() {
     console.log('Completing order');
+  }
+
+  onCardClick(id: number, menuItem: MenuItem): void {
+    if (this.previouslySelectedItemId === -1) {
+      this.previouslySelectedItemId = id;
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    } else if (
+      this.previouslySelectedItemId === id &&
+      this.carItemsSelectedStatus[id]
+    ) {
+      this.router.navigate([
+        'fast-food',
+        {
+          outlets: {
+            'menu-selection': ['cart'],
+            'menu-details': ['selection'],
+          },
+        },
+      ]);
+    } else if (this.previouslySelectedItemId === id) {
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    } else {
+      this.carItemsSelectedStatus[this.previouslySelectedItemId] = false;
+      this.previouslySelectedItemId = id;
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    }
+    this.carItemsSelectedStatus[id] = !this.carItemsSelectedStatus[id];
+  }
+
+  simulateRedirectionToItemDetails(id: number) {
+    this.router.navigate([
+      'fast-food',
+      {
+        outlets: {
+          'menu-selection': ['cart'],
+          'menu-details': ['selection'],
+        },
+      },
+    ]);
+    setTimeout(() => {
+      this.router.navigate([
+        'fast-food',
+        {
+          outlets: {
+            'menu-selection': ['cart'],
+            'menu-details': ['cart-item', id],
+          },
+        },
+      ]);
+    });
   }
 }
