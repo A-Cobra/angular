@@ -64,6 +64,8 @@ export class CartPreviewMenuComponent implements OnInit {
 
   onCompleteOrder() {
     console.log('Completing order');
+
+    console.log('Completing order');
     const newOrder: Order = {
       id: 0,
       orderItems: this.cartMenu,
@@ -75,11 +77,19 @@ export class CartPreviewMenuComponent implements OnInit {
       next: (order: Order) => {
         console.log('Added ORDER');
         console.log(order);
-        this.router.navigate(['']);
+        this.router.navigate([
+          'fast-food',
+          {
+            outlets: {
+              'menu-selection': ['order'],
+              'menu-details': ['selection'],
+            },
+          },
+        ]);
       },
     });
-    // Redirect to burger;
-    // emptyCart();
+
+    this.cartService.emptyCart();
   }
 
   onCardClick(id: number, menuItem: MenuItem): void {

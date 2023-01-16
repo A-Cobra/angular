@@ -2066,308 +2066,7 @@
       ]
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "name": "Classic Chicken Sandwich Combo",
-      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1211_medium_US_en.png",
-      "categoryId": 1,
-      "description": "A juicy, lightly breaded crispy chicken breast with crunchy lettuce, tomato, mayo, and the perfect pickles, all on a toasted bun. It’s a flawless blend of nostalgia and excitement—kinda like your all-time favorite song, only better ‘cause you can eat it.",
-      "basePrice": 8.99,
-      "customizableOptions": [
-        {
-          "name": "Select the type of bread",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": false
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": true,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Extra cheese",
-              "selected": true,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Bacon",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Select your drink",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": false
-            },
-            {
-              "name": "Tea",
-              "selected": true,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Juice",
-              "selected": false,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Enter special indications",
-          "type": "text",
-          "required": false,
-          "value": "Please include more tomato instead of lettuce."
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Pizza for 2",
-      "image": "https://www.littlerome.mx/wp-content/uploads/2020/10/2-arma-tu-pizza.jpg",
-      "categoryId": 2,
-      "description": "2 personal size pizzas, 2 side dishes and 2 drinks",
-      "basePrice": 9.99,
-      "customizableOptions": [
-        {
-          "name": "Select the topping for your pizza #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Pepperoni",
-              "selected": false
-            },
-            {
-              "name": "Sausage",
-              "selected": false
-            },
-            {
-              "name": "Mushrooms",
-              "selected": false
-            },
-            {
-              "name": "All",
-              "selected": true,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your side dish #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Garlic Knots",
-              "selected": false
-            },
-            {
-              "name": "Breadsticks",
-              "selected": false
-            },
-            {
-              "name": "Cheesesticks",
-              "selected": true,
-              "extraPrice": 1
-            },
-            {
-              "name": "Bacon Cheesesticks",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your drink #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Tea",
-              "selected": true
-            },
-            {
-              "name": "Water",
-              "selected": false
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select the topping for your pizza #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Pepperoni",
-              "selected": false
-            },
-            {
-              "name": "Sausage",
-              "selected": false
-            },
-            {
-              "name": "Mushrooms",
-              "selected": false
-            },
-            {
-              "name": "All",
-              "selected": true,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your side dish #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Garlic Knots",
-              "selected": false
-            },
-            {
-              "name": "Breadsticks",
-              "selected": false
-            },
-            {
-              "name": "Cheesesticks",
-              "selected": true,
-              "extraPrice": 1
-            },
-            {
-              "name": "Bacon Cheesesticks",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your drink #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Tea",
-              "selected": true
-            },
-            {
-              "name": "Water",
-              "selected": false
-            }
-          ],
-          "required": true
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Brownie",
-      "categoryId": 3,
-      "description": "",
-      "basePrice": 2.5,
-      "customizableOptions": [
-        {
-          "name": "Select a drink",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Coffee",
-              "selected": false
-            },
-            {
-              "name": "Orange Juice",
-              "selected": true
-            },
-            {
-              "name": "Water",
-              "selected": false
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Enter special indications",
-          "type": "text",
-          "required": false,
-          "value": "Please don't add sugar to the orange juice!"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Red Velvet Cake",
-      "image": "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/red-v_kvUtb7ixJqMHo63e5OnXWyjZsfV2zP.png",
-      "categoryId": 3,
-      "description": "Popular in the southern U.S., red velvet cake is a vanilla cake with a few tablespoons of cocoa powder and red food coloring mixed in.",
-      "basePrice": 3,
-      "customizableOptions": [
-        {
-          "name": "Select a drink",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Coffee",
-              "selected": false
-            },
-            {
-              "name": "Orange Juice",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": true
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select toppings",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Ice cream ball",
-              "selected": true,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Caramel Sauce",
-              "selected": false,
-              "extraPrice": 1
-            }
-          ],
-          "required": false
-        }
-      ]
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "totalPrice": 35.98,
@@ -2675,6 +2374,533 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "orderItems": [
+        {
+          "id": 2,
+          "name": "Pizza for 2",
+          "image": "https://www.littlerome.mx/wp-content/uploads/2020/10/2-arma-tu-pizza.jpg",
+          "categoryId": 2,
+          "description": "2 personal size pizzas, 2 side dishes and 2 drinks",
+          "basePrice": 9.99,
+          "customizableOptions": [
+            {
+              "name": "Select the topping for your pizza #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Pepperoni",
+                  "selected": false
+                },
+                {
+                  "name": "Sausage",
+                  "selected": true
+                },
+                {
+                  "name": "Mushrooms",
+                  "selected": false
+                },
+                {
+                  "name": "All",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Garlic Knots",
+                  "selected": false
+                },
+                {
+                  "name": "Breadsticks",
+                  "selected": false
+                },
+                {
+                  "name": "Cheesesticks",
+                  "selected": true,
+                  "extraPrice": 1
+                },
+                {
+                  "name": "Bacon Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your drink #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select the topping for your pizza #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Pepperoni",
+                  "selected": true
+                },
+                {
+                  "name": "Sausage",
+                  "selected": false
+                },
+                {
+                  "name": "Mushrooms",
+                  "selected": false
+                },
+                {
+                  "name": "All",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Garlic Knots",
+                  "selected": false
+                },
+                {
+                  "name": "Breadsticks",
+                  "selected": false
+                },
+                {
+                  "name": "Cheesesticks",
+                  "selected": true,
+                  "extraPrice": 1
+                },
+                {
+                  "name": "Bacon Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your drink #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Brownie",
+          "categoryId": 3,
+          "description": "",
+          "basePrice": 2.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Please don't add sugar to the orange juice!"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Red Velvet Cake",
+          "image": "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/red-v_kvUtb7ixJqMHo63e5OnXWyjZsfV2zP.png",
+          "categoryId": 3,
+          "description": "Popular in the southern U.S., red velvet cake is a vanilla cake with a few tablespoons of cocoa powder and red food coloring mixed in.",
+          "basePrice": 3,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": true
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select toppings",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Ice cream ball",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Caramel Sauce",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Pretzel Bacon Pub Chicken Sandwich Combo",
+          "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1319_medium_US_en.png",
+          "categoryId": 1,
+          "description": "A juicy, lightly breaded chicken breast, warm beer cheese sauce, Applewood smoked bacon, smoky honey mustard, crispy fried onions, pickles, and a slice of muenster cheese all on an extra soft pretzel bun. More than just a pretzel bun even though it does not have to be.",
+          "basePrice": 12.99,
+          "customizableOptions": [
+            {
+              "name": "Select extra ingredients for the Burger",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Extra cheese",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Bacon",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": false
+            },
+            {
+              "name": "Select your drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Juice",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Fries",
+                  "selected": true
+                },
+                {
+                  "name": "Loaded Fries",
+                  "selected": false,
+                  "extraPrice": 3.5
+                },
+                {
+                  "name": "Salad",
+                  "selected": false,
+                  "extraPrice": 1.5
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Add a bag of mustard please."
+            }
+          ]
+        }
+      ],
+      "date": "2023-01-16T18:22:35Z",
+      "totalPrice": 33.480000000000004
+    },
+    {
+      "id": 3,
+      "orderItems": [
+        {
+          "id": 1,
+          "name": "Italian Mozzarella Cheeseburger Combo",
+          "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1597_medium_US_en.png",
+          "categoryId": 1,
+          "description": "A quarter-pound* of fresh, never-frozen beef topped with deep-fried melty mozzarella, Asiago cheese and rich marinara sauce all on a garlic knot bun. If your favorite appetizers were somehow also a burger it would be this.",
+          "basePrice": 8.99,
+          "customizableOptions": [
+            {
+              "name": "Select type of meat",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Meat",
+                  "selected": false
+                },
+                {
+                  "name": "Began Meat",
+                  "selected": true,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select extra ingredients for the Burger",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Extra cheese",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Bacon",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": false
+            },
+            {
+              "name": "Select your drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Juice",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Fries",
+                  "selected": false
+                },
+                {
+                  "name": "Loaded Fries",
+                  "selected": false,
+                  "extraPrice": 3.5
+                },
+                {
+                  "name": "Salad",
+                  "selected": true,
+                  "extraPrice": 1.5
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Please replace lettuce with carrots"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Chocolate Cake",
+          "image": "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg",
+          "categoryId": 3,
+          "description": "A delicious chocolate cake with a drink. You can add toppings.",
+          "basePrice": 3.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select toppings",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Ice cream ball",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Caramel Sauce",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Brownie",
+          "categoryId": 3,
+          "description": "",
+          "basePrice": 2.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Chocolate Cookie",
+          "image": "https://www.snixykitchen.com/wp-content/uploads/2020/02/Gluten-Free-Chocolate-Cookies-9-720x540.jpg",
+          "description": "",
+          "categoryId": 3,
+          "basePrice": 1,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "date": "2023-01-16T18:27:05Z",
+      "totalPrice": 20.990000000000002
     }
   ]
 }

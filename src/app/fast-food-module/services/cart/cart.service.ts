@@ -60,4 +60,30 @@ export class CartService {
       item
     );
   }
+  emptyCart(): void {
+    const cartItems$ = this.getCartItems();
+    // const getId$ = this.getNumberOfCartItems();
+    let availableIds!: number[];
+    cartItems$
+      .pipe(
+        map((items: MenuItem[]) => {
+          return items.map((item: MenuItem) => item.id);
+        })
+      )
+      .subscribe({
+        next: (data: number[]) => {
+          availableIds = data;
+          availableIds.forEach((id: number) => {
+            this.removeItemFormTheCart(id).subscribe({
+              next: (menuItem: MenuItem) => {
+                console.log(`${menuItem.id} removed`);
+              },
+            });
+          });
+        },
+      });
+    console.log(availableIds);
+    // const getId$ = this.getNumberOfCartItems();
+    // getId$.pipe(switchMap((newId: number) => {}));
+  }
 }
