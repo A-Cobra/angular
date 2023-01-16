@@ -36,6 +36,7 @@ import { MultipleSelectionEvent } from '../../models/multiple-selection-event.ty
 // implements OnInit, AfterContentInit, AfterViewInit
 export class OrderFormComponent implements AfterViewInit {
   id: number = 0;
+  totalPrice: number = 0;
   @Input()
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
   @ViewChild('formControlsDisplay', { read: ViewContainerRef })
@@ -53,6 +54,8 @@ export class OrderFormComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
+    this.totalPrice = this.currentMenuSelection.basePrice;
+    // this.recalculatePrice();
     this.fillFormControls();
     this.changeDetector.detectChanges();
   }
@@ -79,6 +82,9 @@ export class OrderFormComponent implements AfterViewInit {
       singleSelectionComponent.instance.singleSelectionChange.subscribe({
         next: (singleSelectionEvent: SingleSelectionEvent) => {
           // this.onTextareaChanges(textareaEvent);
+          console.log('SINGLE SELECTION EVENT INSIDE MAIN FORM');
+          this.onSingleSelectionChange(singleSelectionEvent);
+          this.recalculatePrice();
         },
       });
     }
@@ -89,7 +95,11 @@ export class OrderFormComponent implements AfterViewInit {
       multipleSelectionComponent.instance.id = id;
       multipleSelectionComponent.instance.customizableOption =
         customizableOption;
-      multipleSelectionComponent.instance.multipleSelectionChange.subscribe();
+      multipleSelectionComponent.instance.multipleSelectionChange.subscribe({
+        next: () => {
+          this.recalculatePrice();
+        },
+      });
       // Attributes not set yet
     } else if (customizableOption.type === 'text') {
       const textComponent =
@@ -99,6 +109,7 @@ export class OrderFormComponent implements AfterViewInit {
       textComponent.instance.textareaChange.subscribe({
         next: (textareaEvent: TextareaEvent) => {
           this.onTextareaChanges(textareaEvent);
+          this.recalculatePrice();
         },
       });
     }
@@ -118,5 +129,26 @@ export class OrderFormComponent implements AfterViewInit {
     this.currentMenuSelection.customizableOptions[
       multipleSelectionChange.id
     ].options = multipleSelectionChange.options;
+  }
+
+  onAddClick() {
+    console.log('Adding to the cart');
+    console.log(this.currentMenuSelection);
+  }
+
+  recalculatePrice() {
+    console.log('Recalculating price');
+    let recalculatedPrice = this.currentMenuSelection.basePrice;
+    for (const customizableOption of this.currentMenuSelection
+      .customizableOptions) {
+      if (customizableOption?.options) {
+        for (const option of customizableOption?.options) {
+          if (option.selected) {
+            recalculatedPrice += option.extraPrice ?? 0;
+          }
+        }
+      }
+    }
+    this.totalPrice = recalculatedPrice;
   }
 }

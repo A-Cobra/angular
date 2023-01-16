@@ -93,16 +93,18 @@ export class SingleSelectionComponent implements OnInit {
     console.log('INPUT CHANGED SINGLE SELECTIONS');
     console.log(this.getSelectedValue());
     const selectedValue = this.getSelectedValue();
-    const customizableOption = { ...this.customizableOption };
-    customizableOption?.options?.forEach((option: OptionDetails, index) => {
-      if (selectedValue === index) {
-        option.selected = true;
-      } else {
-        option.selected = false;
+    const customizableOption = JSON.parse(
+      JSON.stringify(this.customizableOption)
+    );
+    customizableOption?.options?.forEach(
+      (option: OptionDetails, index: number) => {
+        if (selectedValue === index) {
+          option.selected = true;
+        } else {
+          option.selected = false;
+        }
       }
-    });
-    console.log('customizableOption on input change');
-    console.log(customizableOption);
+    );
     this.singleSelectionChange.emit({
       customizableOption: customizableOption,
       id: this.id,

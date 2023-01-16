@@ -1,11 +1,20 @@
-<p>order-form works!</p>
-<p>{{ id }}</p>
-<h1>Form values</h1>
-<p>{{ form.value | json }}</p>
-<h1>Current Menu Selection</h1>
-<p>{{ currentMenuSelection | json }}</p>
-<!-- <div *ngFor="let control of controls"></div>
-<div *ngFor="let control of form.controls">{{ control.value | json }}</div>
-<div *ngFor="let control of form.controls">{{ control.value }}</div> -->
+<div class="order-form-container">
+  <p>order-form works!</p>
+  <p>{{ id }}</p>
+  <h1>Form values</h1>
+  <p>{{ form.value | json }}</p>
+  <h1>Current Menu Selection</h1>
+  <header class="flex">
+    <h3>
+      Total Price:
+      <span>{{ totalPrice | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
+    </h3>
+    <button (click)="onAddClick()">Add to cart</button>
+  </header>
+  <p>{{ currentMenuSelection | json }}</p>
+  <!-- <div *ngFor="let control of controls"></div>
+  <div *ngFor="let control of form.controls">{{ control.value | json }}</div>
+  <div *ngFor="let control of form.controls">{{ control.value }}</div> -->
 
-<div #formControlsDisplay></div>
+  <div #formControlsDisplay></div>
+</div>
