@@ -8,7 +8,7 @@ import { FastFoodAppComponent } from './containers/fast-food-app/fast-food-app.c
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { MyCardDetailsComponent } from './components/my-card-details/my-card-details.component';
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
-import { HamburgerDetailsComponent } from './containers/hamburger-details/hamburger-details.component';
+import { ItemDetailsComponent } from './containers/item-details/item-details.component';
 import { OrderFormComponent } from './containers/order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleSelectionComponent } from './components/single-selection/single-selection.component';
@@ -26,7 +26,7 @@ import { MenuSelectionContentComponent } from './components/menu-selection-conte
     NavigationBarComponent,
     MyCardDetailsComponent,
     HamburgerMenuComponent,
-    HamburgerDetailsComponent,
+    ItemDetailsComponent,
     OrderFormComponent,
     SingleSelectionComponent,
     MultipleSelectionComponent,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from '../../models/menu-item.interface';
 import { MenuService } from '../../services/menu/menu.service';
 
@@ -8,18 +9,76 @@ import { MenuService } from '../../services/menu/menu.service';
   styleUrls: ['./pizza-menu.component.scss'],
 })
 export class PizzaMenuComponent implements OnInit {
+  previouslySelectedItemId = -1;
+  collapsedCards: boolean[] = [];
   pizzaMenu: MenuItem[] = [];
   category = 2;
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
-    this.menuService
-      .getMenuByCategory(this.category)
-      .subscribe((menu: MenuItem[]) => {
+    this.menuService.getMenuByCategory(this.category).subscribe({
+      next: (menu: MenuItem[]) => {
         this.pizzaMenu = menu;
         console.log(this.pizzaMenu);
-      });
+      },
+      complete: () => {
+        this.pizzaMenu.forEach((burger: MenuItem, index) => {
+          this.collapsedCards.unshift(true);
+        });
+      },
+    });
     console.log('object');
     console.log(this.menuService.menuPath);
+  }
+
+  onCardClick(id: number, menuItem: MenuItem): void {
+    console.log('CARDCLICKED');
+    if (this.previouslySelectedItemId === -1) {
+      this.previouslySelectedItemId = id;
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    } else if (
+      this.previouslySelectedItemId === id &&
+      !this.collapsedCards[id]
+    ) {
+      this.router.navigate([
+        'fast-food',
+        {
+          outlets: {
+            'menu-selection': ['pizza-combos'],
+            'menu-details': ['selection'],
+          },
+        },
+      ]);
+    } else if (this.previouslySelectedItemId === id) {
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    } else {
+      this.collapsedCards[this.previouslySelectedItemId] = true;
+      this.previouslySelectedItemId = id;
+      this.simulateRedirectionToItemDetails(menuItem.id);
+    }
+    this.collapsedCards[id] = !this.collapsedCards[id];
+  }
+
+  simulateRedirectionToItemDetails(id: number) {
+    this.router.navigate([
+      'fast-food',
+      {
+        outlets: {
+          'menu-selection': ['pizza-combos'],
+          'menu-details': ['selection'],
+        },
+      },
+    ]);
+    setTimeout(() => {
+      this.router.navigate([
+        'fast-food',
+        {
+          outlets: {
+            'menu-selection': ['pizza-combos'],
+            'menu-details': ['pizza-combo', id],
+          },
+        },
+      ]);
+    });
   }
 }

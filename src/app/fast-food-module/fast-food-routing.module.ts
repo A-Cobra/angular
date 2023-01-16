@@ -4,7 +4,7 @@ import { MenuDetailsPlaceholderComponent } from './components/menu-details-place
 import { MyCardDetailsComponent } from './components/my-card-details/my-card-details.component';
 import { DessertsComponent } from './containers/desserts/desserts.component';
 import { FastFoodAppComponent } from './containers/fast-food-app/fast-food-app.component';
-import { HamburgerDetailsComponent } from './containers/hamburger-details/hamburger-details.component';
+import { ItemDetailsComponent } from './containers/item-details/item-details.component';
 import { HamburgerMenuComponent } from './containers/hamburger-menu/hamburger-menu.component';
 import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component';
 
@@ -33,7 +33,17 @@ const routes: Routes = [
       {
         path: 'burger-combo/:id',
         outlet: 'menu-details',
-        component: HamburgerDetailsComponent,
+        component: ItemDetailsComponent,
+      },
+      {
+        path: 'pizza-combo/:id',
+        outlet: 'menu-details',
+        component: ItemDetailsComponent,
+      },
+      {
+        path: 'dessert/:id',
+        outlet: 'menu-details',
+        component: ItemDetailsComponent,
       },
       {
         path: 'selection',

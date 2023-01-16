@@ -16,11 +16,11 @@ import { OrderFormComponent } from '../order-form/order-form.component';
 
 @Component({
   selector: 'app-hamburger-details',
-  templateUrl: './hamburger-details.component.html',
-  styleUrls: ['./hamburger-details.component.scss'],
+  templateUrl: './item-details.component.html',
+  styleUrls: ['./item-details.component.scss'],
 })
 // implements OnInit, OnDestroy, AfterViewInit
-export class HamburgerDetailsComponent implements OnInit, AfterViewChecked {
+export class ItemDetailsComponent implements OnInit, AfterViewChecked {
   selectedId!: number;
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
   endAllSubscriptions$: Subject<string> = new Subject<string>();
