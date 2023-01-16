@@ -27,6 +27,7 @@ import { FormTextComponent } from '../../components/form-text/form-text.componen
 import { TextareaEvent } from '../../models/textarea-event.type';
 import { SingleSelectionEvent } from '../../models/sigle-selection-event.type';
 import { MultipleSelectionEvent } from '../../models/multiple-selection-event.type';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-order-form',
@@ -50,6 +51,7 @@ export class OrderFormComponent implements AfterViewInit {
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
+    private cartService: CartService,
     private changeDetector: ChangeDetectorRef
   ) {}
 
@@ -134,6 +136,12 @@ export class OrderFormComponent implements AfterViewInit {
   onAddClick() {
     console.log('Adding to the cart');
     console.log(this.currentMenuSelection);
+    this.cartService.addItemToTheCart(this.currentMenuSelection).subscribe({
+      next: (menuItem: MenuItem) => {
+        console.log('Added');
+        console.log(menuItem);
+      },
+    });
   }
 
   recalculatePrice() {

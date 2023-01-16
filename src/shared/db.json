@@ -188,7 +188,7 @@
       "image": "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg",
       "categoryId": 3,
       "description": "A delicious chocolate cake with a drink. You can add toppings.",
-      "basePrice": 3.50,
+      "basePrice": 3.5,
       "customizableOptions": [
         {
           "name": "Select a drink",
@@ -2066,6 +2066,101 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 7,
+      "name": "Italian Mozzarella Cheeseburger Combo",
+      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1597_medium_US_en.png",
+      "categoryId": 1,
+      "description": "A quarter-pound* of fresh, never-frozen beef topped with deep-fried melty mozzarella, Asiago cheese and rich marinara sauce all on a garlic knot bun. If your favorite appetizers were somehow also a burger it would be this.",
+      "basePrice": 8.99,
+      "customizableOptions": [
+        {
+          "name": "Select type of meat",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": false
+            },
+            {
+              "name": "Began Meat",
+              "selected": true,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Select your drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": true,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Juice",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Fries",
+              "selected": true
+            },
+            {
+              "name": "Loaded Fries",
+              "selected": false,
+              "extraPrice": 3.5
+            },
+            {
+              "name": "Salad",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false
+        }
+      ]
+    }
+  ],
   "orders": []
 }

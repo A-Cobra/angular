@@ -30,7 +30,14 @@ import { OptionDetails } from '../../models/option-details.interface';
             [id]="'select' + id + i"
             type="checkbox"
             [checked]="option.selected" />
-          <label [for]="'select' + id + i">{{ option.name }}</label>
+          <label [for]="'select' + id + i"
+            >{{ option.name
+            }}<span *ngIf="option.extraPrice">
+              ({{
+                option.extraPrice | currency : 'USD' : 'symbol' : '1.2-2'
+              }})</span
+            ></label
+          >
         </div>
       </div>
     </form>

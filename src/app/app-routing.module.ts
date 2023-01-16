@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'fast-food',
+    redirectTo:
+      '/fast-food/(menu-selection:hamburger-combos//menu-details:selection)',
     pathMatch: 'full',
   },
   {
