@@ -1,7 +1,9 @@
 <p>desserts works!</p>
 <p>{{ dessertsMenu.length }}</p>
-<div *ngFor="let dessertMenuItem of dessertsMenu">
-  <app-my-card-details>
+<div *ngFor="let dessertMenuItem of dessertsMenu; index as i">
+  <app-my-card-details
+    (click)="onCardClick(i, dessertMenuItem)"
+    [collapsed]="collapsedCards[i]">
     <app-menu-selection-header
       [menuItem]="dessertMenuItem"></app-menu-selection-header>
     <app-menu-selection-content
