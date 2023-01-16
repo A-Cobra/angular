@@ -2285,6 +2285,255 @@
           "required": true
         }
       ]
+    },
+    {
+      "id": 3,
+      "name": "Brownie",
+      "categoryId": 3,
+      "description": "",
+      "basePrice": 2.5,
+      "customizableOptions": [
+        {
+          "name": "Select a drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Coffee",
+              "selected": false
+            },
+            {
+              "name": "Orange Juice",
+              "selected": true
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false,
+          "value": "Please don't add sugar to the orange juice!"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Red Velvet Cake",
+      "image": "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/red-v_kvUtb7ixJqMHo63e5OnXWyjZsfV2zP.png",
+      "categoryId": 3,
+      "description": "Popular in the southern U.S., red velvet cake is a vanilla cake with a few tablespoons of cocoa powder and red food coloring mixed in.",
+      "basePrice": 3,
+      "customizableOptions": [
+        {
+          "name": "Select a drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Coffee",
+              "selected": false
+            },
+            {
+              "name": "Orange Juice",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": true
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select toppings",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Ice cream ball",
+              "selected": true,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Caramel Sauce",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Burger for 2",
+      "image": "https://www.meatpoultry.com/ext/resources/images/2/f/o/r/1/l/a/e/e/m/05/2for10WhopperMeal.jpg",
+      "categoryId": 1,
+      "description": "Don't want to share? This combo includes 2 burgers, 2 sides and 2 beverages. You can customize your burgers.",
+      "basePrice": 15.99,
+      "customizableOptions": [
+        {
+          "name": "Select the type of bread for the Burger #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Bun",
+              "selected": false
+            },
+            {
+              "name": "Whole Wheat Bun",
+              "selected": true,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select type of meat for the Burger #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": false
+            },
+            {
+              "name": "Began Meat",
+              "selected": true,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger #1",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Double meat",
+              "selected": false,
+              "extraPrice": 3
+            },
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": false,
+              "extraPrice": 2
+            },
+            {
+              "name": "Extra sauce",
+              "selected": true,
+              "extraPrice": 0.5
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Enter special indications for Burger #1",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "Select beverage for Burger #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": true
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select the type of bread for the Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Bun",
+              "selected": false
+            },
+            {
+              "name": "Whole Wheat Bun",
+              "selected": true,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select type of meat for the Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": true
+            },
+            {
+              "name": "Began Meat",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger #2",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Double meat",
+              "selected": true,
+              "extraPrice": 3
+            },
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": false,
+              "extraPrice": 2
+            },
+            {
+              "name": "Extra sauce",
+              "selected": false,
+              "extraPrice": 0.5
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Enter special indications for Burger #2",
+          "type": "text",
+          "required": false,
+          "value": "Don't add pickles to the burger."
+        },
+        {
+          "name": "Select beverage for Burger #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": true
+            }
+          ],
+          "required": true
+        }
+      ]
     }
   ],
   "orders": []

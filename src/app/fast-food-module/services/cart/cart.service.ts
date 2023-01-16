@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MenuItem } from '../../models/menu-item.interface';
 
@@ -10,15 +10,25 @@ import { MenuItem } from '../../models/menu-item.interface';
 export class CartService {
   constructor(private http: HttpClient) {}
   cartPath = 'cart';
+  currentItemId!: number;
   getCartItems(): Observable<MenuItem[]> {
     return this.http.get<MenuItem[]>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`
     );
   }
-  addItemToTheCart(item: MenuItem): Observable<MenuItem> {
+  private postItemToCart(item: MenuItem): Observable<MenuItem> {
     return this.http.post<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`,
       item
+    );
+  }
+  addItemToTheCart(item: MenuItem): Observable<MenuItem> {
+    const getId$ = this.getNumberOfCartItems();
+    return getId$.pipe(
+      switchMap((newId: number) => {
+        item.id = newId;
+        return this.postItemToCart(item);
+      })
     );
   }
   getNumberOfCartItems() {
