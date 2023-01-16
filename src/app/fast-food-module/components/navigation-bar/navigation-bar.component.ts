@@ -60,6 +60,19 @@ import { Router } from '@angular/router';
             ]"
             >Cart</a
           >
+          <a
+            routerLinkActive="active"
+            [routerLink]="[
+              '/fast-food',
+              {
+                outlets: {
+                  'menu-selection': ['order'],
+                  'menu-details': ['order-selection']
+                }
+              }
+            ]"
+            >Orders</a
+          >
         </li>
       </ul>
     </nav>

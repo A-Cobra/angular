@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { getUtcStringifiedDate } from 'src/app/utils/get-utc-strigified-date';
 import { MenuItem } from '../../models/menu-item.interface';
 import { Order } from '../../models/order.type';
 import { CartService } from '../../services/cart/cart.service';
@@ -66,6 +67,8 @@ export class CartPreviewMenuComponent implements OnInit {
     const newOrder: Order = {
       id: 0,
       orderItems: this.cartMenu,
+      date: getUtcStringifiedDate(),
+      totalPrice: this.totalCartPrice,
     };
     console.log(newOrder);
     this.orderService.addOrder(newOrder).subscribe({

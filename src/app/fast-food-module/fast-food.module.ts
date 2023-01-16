@@ -23,6 +23,10 @@ import { CartPreviewMenuComponent } from './containers/cart-preview-menu/cart-pr
 import { CartSelectionDetailsComponent } from './components/cart-selection-content/cart-selection-content.component';
 import { CartItemDetailsComponent } from './containers/cart-item-details/cart-item-details.component';
 import { CartDetailsPlaceholderComponent } from './components/cart-details-placeholder/cart-details-placeholder.component';
+import { OrderMenuComponent } from './containers/order-menu/order-menu.component';
+import { OrderDetailsPlaceholderComponent } from './components/order-details-placeholder/order-details-placeholder.component';
+import { OrderSelectionOrderComponent } from './components/order-selection-header/order-selection-header.component';
+import { OrderSelectionContentComponent } from './components/order-selection-content/order-selection-content.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { CartDetailsPlaceholderComponent } from './components/cart-details-place
     CartSelectionDetailsComponent,
     CartItemDetailsComponent,
     CartDetailsPlaceholderComponent,
+    OrderMenuComponent,
+    OrderDetailsPlaceholderComponent,
+    OrderSelectionOrderComponent,
+    OrderSelectionContentComponent,
   ],
   imports: [
     CommonModule,

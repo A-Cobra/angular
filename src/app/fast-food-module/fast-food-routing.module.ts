@@ -10,6 +10,8 @@ import { PizzaMenuComponent } from './containers/pizza-menu/pizza-menu.component
 import { CartPreviewMenuComponent } from './containers/cart-preview-menu/cart-preview-menu.component';
 import { CartItemDetailsComponent } from './containers/cart-item-details/cart-item-details.component';
 import { CartDetailsPlaceholderComponent } from './components/cart-details-placeholder/cart-details-placeholder.component';
+import { OrderMenuComponent } from './containers/order-menu/order-menu.component';
+import { OrderDetailsPlaceholderComponent } from './components/order-details-placeholder/order-details-placeholder.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,11 @@ const routes: Routes = [
         path: 'cart',
         outlet: 'menu-selection',
         component: CartPreviewMenuComponent,
+      },
+      {
+        path: 'order',
+        outlet: 'menu-selection',
+        component: OrderMenuComponent,
       },
       // Secondary Outlet
       {
@@ -67,6 +74,11 @@ const routes: Routes = [
         path: 'cart-selection',
         outlet: 'menu-details',
         component: CartDetailsPlaceholderComponent,
+      },
+      {
+        path: 'order-selection',
+        outlet: 'menu-details',
+        component: OrderDetailsPlaceholderComponent,
       },
     ],
   },
