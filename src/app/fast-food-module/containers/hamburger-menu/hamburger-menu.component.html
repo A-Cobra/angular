@@ -1,7 +1,9 @@
 <p>hamburger-menu works!</p>
 <p>{{ burgerMenu.length }}</p>
-<div *ngFor="let burgerMenuItem of burgerMenu">
-  <app-my-card-details>
+<div *ngFor="let burgerMenuItem of burgerMenu; index as i">
+  <app-my-card-details
+    (click)="onCardClick(i, burgerMenuItem)"
+    [collapsed]="collapsedCards[i]">
     <app-menu-selection-header
       [menuItem]="burgerMenuItem"></app-menu-selection-header>
     <app-menu-selection-content

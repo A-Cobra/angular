@@ -52,7 +52,9 @@ export class HamburgerDetailsComponent implements OnInit, AfterViewChecked {
         this.menuService.getMenuItem(urlData?.['id']).subscribe({
           next: (menuSelection: MenuItem) => {
             this.currentMenuSelection = menuSelection;
+            console.log('this.currentMenuSelection');
             console.log(this.currentMenuSelection);
+            console.log('CHANGING ROUTES FORM TEH HAMBURGER DETAILS');
           },
           error: err => {
             console.log(err);
@@ -64,6 +66,9 @@ export class HamburgerDetailsComponent implements OnInit, AfterViewChecked {
             formComponent.instance.id = this.selectedId;
             formComponent.instance.currentMenuSelection =
               this.currentMenuSelection;
+            console.log('formComponent.instance');
+            console.log(formComponent.instance);
+            console.log('COMPLETED');
             console.log('this.detailsDiv');
             console.log(this.detailsDiv);
           },

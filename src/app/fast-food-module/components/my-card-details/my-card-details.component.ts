@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-card-details',
   styleUrls: ['./my-card-details.component.scss'],
   template: `
-    <div class="card" (click)="onChangeCollapsedStatus()">
+    <div class="card">
       <div class="card-header">
         <ng-content select="app-menu-selection-header"></ng-content>
       </div>
@@ -22,7 +22,4 @@ export class MyCardDetailsComponent {
   @Input()
   collapsed: boolean = true;
   constructor() {}
-  onChangeCollapsedStatus() {
-    this.collapsed = !this.collapsed;
-  }
 }
