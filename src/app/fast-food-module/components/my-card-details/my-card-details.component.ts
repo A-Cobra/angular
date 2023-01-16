@@ -11,10 +11,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
       <div [hidden]="collapsed" class="card-content">
         <ng-content select="app-menu-selection-content"></ng-content>
         <ng-content select="app-cart-selection-content"></ng-content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nihil sed
-        eaque, officia exercitationem quisquam necessitatibus. Esse doloremque,
-        deserunt vero ratione laborum doloribus, recusandae sed numquam corrupti
-        quae iste atque?
       </div>
     </div>
   `,

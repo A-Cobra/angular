@@ -2534,6 +2534,132 @@
           "required": true
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "Bourbon Bacon Cheeseburger Combo",
+      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1397_medium_US_en.png",
+      "categoryId": 1,
+      "description": "A quarter-pound* of fresh, never-frozen beef topped with Applewood smoked bacon, American cheese, crispy onions, and a sweet, smoky bourbon bacon sauce that is, essentially, a sauce made with real bourbon and real bacon. Read that part about the sauce again, and we’ll see you soon.",
+      "basePrice": 10.99,
+      "customizableOptions": [
+        {
+          "name": "Select the type of bread",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Bun",
+              "selected": true
+            },
+            {
+              "name": "Whole Wheat Bun",
+              "selected": false,
+              "extraPrice": 1
+            },
+            {
+              "name": "Pretzel Bun",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select type of meat",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": true
+            },
+            {
+              "name": "Began Meat",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Double meat",
+              "selected": true,
+              "extraPrice": 3
+            },
+            {
+              "name": "Extra cheese",
+              "selected": true,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon",
+              "selected": true,
+              "extraPrice": 2
+            },
+            {
+              "name": "Extra sauce",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Select your side dish",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Fries",
+              "selected": true
+            },
+            {
+              "name": "Loaded Fries",
+              "selected": false,
+              "extraPrice": 3.5
+            },
+            {
+              "name": "Salad",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Juice",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false,
+          "value": "Please don't add pickles or raddish."
+        }
+      ]
     }
   ],
   "orders": []

@@ -12,7 +12,7 @@ import { OptionNameSelectionPair } from '../../models/option-name-selection-pair
       <div>
         <h3>Your Selections:</h3>
         <p *ngFor="let chosenOption of chosenOptions">
-          - {{ chosenOption.name }}
+          - {{ chosenOption.name }}: <span>{{ chosenOption.value }}</span>
         </p>
       </div>
     </div>
@@ -36,20 +36,38 @@ export class CartSelectionDetailsComponent implements OnInit {
         this.chosenOptions.push({ name: customizableOption.name, value: '' });
       }
     );
-    // this.customizableOptions.forEach(
-    //   (customizableOption: CustomizableOption) => {
-    //     if (
-    //       customizableOption.type === 'multi-select' &&
-    //       customizableOption.options
-    //     ) {
-    //       customizableOption.options.forEach(
-    //         (option: OptionDetails, index: number) => {
-    //           if (index === customizableOption.options?.length ?? 0 - 1) {
-    //           }
-    //         }
-    //       );
-    //     }
-    //   }
-    // );
+    this.customizableOptions.forEach(
+      (customizableOption: CustomizableOption, customOptionIndex: number) => {
+        if (
+          (customizableOption.type === 'multi-select' ||
+            customizableOption.type === 'single-select') &&
+          customizableOption.options
+        ) {
+          const multipleSelectionOptions: string[] = [];
+          customizableOption.options.forEach(
+            (option: OptionDetails, index: number) => {
+              if (option.selected) {
+                multipleSelectionOptions.push(option.name);
+              }
+            }
+          );
+          console.log('Multiple Selection Options');
+          console.log(multipleSelectionOptions);
+          this.chosenOptions[customOptionIndex].value =
+            multipleSelectionOptions.length === 0
+              ? '-'
+              : multipleSelectionOptions.join(', ');
+          //     : multipleSelectionOptions.join(', ');
+        } else if (customizableOption.type === 'text') {
+          console.log('TEXT');
+          console.log('customizableOption.name');
+          console.log(customizableOption.name);
+          this.chosenOptions[customOptionIndex].value =
+            customizableOption.value ?? '-';
+        }
+      }
+    );
+    console.log('this.chosenOptions');
+    console.log(this.chosenOptions);
   }
 }
