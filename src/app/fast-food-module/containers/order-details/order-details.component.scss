@@ -1,0 +1,11 @@
+.order-details-container{
+  position: relative;
+  header{
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    background-color: pink;
+    position: sticky;
+    top: 0;
+  }
+}

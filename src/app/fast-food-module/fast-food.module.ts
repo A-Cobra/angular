@@ -27,6 +27,7 @@ import { OrderMenuComponent } from './containers/order-menu/order-menu.component
 import { OrderDetailsPlaceholderComponent } from './components/order-details-placeholder/order-details-placeholder.component';
 import { OrderSelectionOrderComponent } from './components/order-selection-header/order-selection-header.component';
 import { OrderSelectionContentComponent } from './components/order-selection-content/order-selection-content.component';
+import { OrderDetailsComponent } from './containers/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { OrderSelectionContentComponent } from './components/order-selection-con
     OrderDetailsPlaceholderComponent,
     OrderSelectionOrderComponent,
     OrderSelectionContentComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     CommonModule,

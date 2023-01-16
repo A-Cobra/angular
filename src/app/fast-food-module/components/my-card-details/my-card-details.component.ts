@@ -7,10 +7,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     <div class="card">
       <div class="card-header">
         <ng-content select="app-menu-selection-header"></ng-content>
+        <ng-content select="app-order-selection-header"></ng-content>
       </div>
       <div [hidden]="collapsed" class="card-content">
         <ng-content select="app-menu-selection-content"></ng-content>
         <ng-content select="app-cart-selection-content"></ng-content>
+        <ng-content select="app-order-selection-content"></ng-content>
       </div>
     </div>
   `,

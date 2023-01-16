@@ -71,7 +71,7 @@ export class OrderMenuComponent implements OnInit {
         {
           outlets: {
             'menu-selection': ['order'],
-            // 'menu-details': ['cart-item', id],
+            // 'menu-details': ['order-item', id],
           },
         },
       ]);

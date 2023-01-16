@@ -27,9 +27,6 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
   endAllSubscriptions$: Subject<string> = new Subject<string>();
   @ViewChild('detailsContent', { read: ViewContainerRef })
   detailsDiv!: ViewContainerRef;
-  @Input()
-  cartForm: boolean = false;
-  // @ViewChild('detailsContent') detailsDiv!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,

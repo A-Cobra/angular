@@ -1,0 +1,28 @@
+<p>order-details works!</p>
+<!-- <div #detailsContent></div> -->
+<!-- [ngClass]="{
+  active: cartItemsSelectedStatus[i]
+}" -->
+<div class="order-details-container">
+  <header class="flex">
+    <h3>
+      Total Price:
+      <span>{{
+        selectedOrder.totalPrice | currency : 'USD' : 'symbol' : '1.2-2'
+      }}</span>
+    </h3>
+    <button (click)="onMakeSameOrder()">Add the same order to the cart</button>
+  </header>
+  <div *ngFor="let cartMenuItem of selectedOrder.orderItems; index as i">
+    <app-my-card-details [collapsed]="false">
+      <app-menu-selection-header
+        [totalPrice]="totalItemsPrice[i]"
+        [cartHeader]="true"
+        [menuItem]="cartMenuItem"></app-menu-selection-header>
+      <app-cart-selection-content
+        [customizableOptions]="
+          cartMenuItem.customizableOptions
+        "></app-cart-selection-content>
+    </app-my-card-details>
+  </div>
+</div>

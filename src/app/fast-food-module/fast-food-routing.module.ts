@@ -12,6 +12,7 @@ import { CartItemDetailsComponent } from './containers/cart-item-details/cart-it
 import { CartDetailsPlaceholderComponent } from './components/cart-details-placeholder/cart-details-placeholder.component';
 import { OrderMenuComponent } from './containers/order-menu/order-menu.component';
 import { OrderDetailsPlaceholderComponent } from './components/order-details-placeholder/order-details-placeholder.component';
+import { OrderDetailsComponent } from './containers/order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,11 @@ const routes: Routes = [
         path: 'cart-item/:id',
         outlet: 'menu-details',
         component: CartItemDetailsComponent,
+      },
+      {
+        path: 'order-item/:id',
+        outlet: 'menu-details',
+        component: OrderDetailsComponent,
       },
       {
         path: 'selection',
