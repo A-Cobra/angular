@@ -28,6 +28,7 @@ import { TextareaEvent } from '../../models/textarea-event.type';
 import { SingleSelectionEvent } from '../../models/sigle-selection-event.type';
 import { MultipleSelectionEvent } from '../../models/multiple-selection-event.type';
 import { CartService } from '../../services/cart/cart.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-order-form',
@@ -35,7 +36,7 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./order-form.component.scss'],
 })
 // implements OnInit, AfterContentInit, AfterViewInit
-export class OrderFormComponent implements AfterViewInit {
+export class OrderFormComponent implements AfterViewInit, OnInit {
   id: number = 0;
   totalPrice: number = 0;
   @Input()
@@ -54,6 +55,10 @@ export class OrderFormComponent implements AfterViewInit {
     private cartService: CartService,
     private changeDetector: ChangeDetectorRef
   ) {}
+
+  ngOnInit(): void {
+    this.setCreationId();
+  }
 
   ngAfterViewInit(): void {
     this.totalPrice = this.currentMenuSelection.basePrice;
@@ -136,6 +141,7 @@ export class OrderFormComponent implements AfterViewInit {
   onAddClick() {
     console.log('Adding to the cart');
     console.log(this.currentMenuSelection);
+    // this.currentMenuSelection.id = -1;
     this.cartService.addItemToTheCart(this.currentMenuSelection).subscribe({
       next: (menuItem: MenuItem) => {
         console.log('Added');
@@ -158,5 +164,12 @@ export class OrderFormComponent implements AfterViewInit {
       }
     }
     this.totalPrice = recalculatedPrice;
+  }
+
+  setCreationId(): void {
+    this.cartService
+      .getNumberOfCartItems()
+      .pipe(take(1))
+      .subscribe(newId => (this.currentMenuSelection.id = newId));
   }
 }

@@ -2068,25 +2068,25 @@
   ],
   "cart": [
     {
-      "id": 7,
-      "name": "Italian Mozzarella Cheeseburger Combo",
-      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1597_medium_US_en.png",
+      "id": 1,
+      "name": "Classic Chicken Sandwich Combo",
+      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1211_medium_US_en.png",
       "categoryId": 1,
-      "description": "A quarter-pound* of fresh, never-frozen beef topped with deep-fried melty mozzarella, Asiago cheese and rich marinara sauce all on a garlic knot bun. If your favorite appetizers were somehow also a burger it would be this.",
+      "description": "A juicy, lightly breaded crispy chicken breast with crunchy lettuce, tomato, mayo, and the perfect pickles, all on a toasted bun. It’s a flawless blend of nostalgia and excitement—kinda like your all-time favorite song, only better ‘cause you can eat it.",
       "basePrice": 8.99,
       "customizableOptions": [
         {
-          "name": "Select type of meat",
+          "name": "Select the type of bread",
           "type": "single-select",
           "options": [
             {
-              "name": "Regular Meat",
+              "name": "Regular Bun",
               "selected": false
             },
             {
-              "name": "Began Meat",
+              "name": "Whole Wheat Bun",
               "selected": true,
-              "extraPrice": 2
+              "extraPrice": 1
             }
           ],
           "required": true
@@ -2122,34 +2122,13 @@
             },
             {
               "name": "Tea",
-              "selected": true,
+              "selected": false,
               "extraPrice": 1.5
             },
             {
               "name": "Juice",
-              "selected": false,
+              "selected": true,
               "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select your side dish",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Fries",
-              "selected": true
-            },
-            {
-              "name": "Loaded Fries",
-              "selected": false,
-              "extraPrice": 3.5
-            },
-            {
-              "name": "Salad",
-              "selected": false,
-              "extraPrice": 1.5
             }
           ],
           "required": true
@@ -2158,6 +2137,152 @@
           "name": "Enter special indications",
           "type": "text",
           "required": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Pizza for 2",
+      "image": "https://www.littlerome.mx/wp-content/uploads/2020/10/2-arma-tu-pizza.jpg",
+      "categoryId": 2,
+      "description": "2 personal size pizzas, 2 side dishes and 2 drinks",
+      "basePrice": 9.99,
+      "customizableOptions": [
+        {
+          "name": "Select the topping for your pizza #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Pepperoni",
+              "selected": false
+            },
+            {
+              "name": "Sausage",
+              "selected": true
+            },
+            {
+              "name": "Mushrooms",
+              "selected": false
+            },
+            {
+              "name": "All",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Garlic Knots",
+              "selected": false
+            },
+            {
+              "name": "Breadsticks",
+              "selected": false
+            },
+            {
+              "name": "Cheesesticks",
+              "selected": true,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon Cheesesticks",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": true
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select the topping for your pizza #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Pepperoni",
+              "selected": false
+            },
+            {
+              "name": "Sausage",
+              "selected": false
+            },
+            {
+              "name": "Mushrooms",
+              "selected": true
+            },
+            {
+              "name": "All",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Garlic Knots",
+              "selected": false
+            },
+            {
+              "name": "Breadsticks",
+              "selected": false
+            },
+            {
+              "name": "Cheesesticks",
+              "selected": true,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon Cheesesticks",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": true
+            },
+            {
+              "name": "Tea",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
         }
       ]
     }
