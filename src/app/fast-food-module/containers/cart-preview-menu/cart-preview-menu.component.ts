@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from '../../models/menu-item.interface';
+import { Order } from '../../models/order.type';
 import { CartService } from '../../services/cart/cart.service';
+import { OrderService } from '../../services/order/order.service';
 
 @Component({
   selector: 'app-cart-preview-menu',
@@ -9,13 +11,18 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./cart-preview-menu.component.scss'],
 })
 export class CartPreviewMenuComponent implements OnInit {
+  cartEditingStatus: boolean = false;
   previouslySelectedItemId = -1;
-  carItemsSelectedStatus: boolean[] = [];
+  cartItemsSelectedStatus: boolean[] = [];
   cartMenu: MenuItem[] = [];
   totalItemsPrice: number[] = [];
   totalCartPrice: number = 0;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe({
@@ -31,7 +38,7 @@ export class CartPreviewMenuComponent implements OnInit {
           0
         );
         this.cartMenu.forEach((cartItem: MenuItem, index) => {
-          this.carItemsSelectedStatus.unshift(false);
+          this.cartItemsSelectedStatus.unshift(false);
         });
       },
     });
@@ -56,16 +63,32 @@ export class CartPreviewMenuComponent implements OnInit {
 
   onCompleteOrder() {
     console.log('Completing order');
+    const newOrder: Order = {
+      id: 0,
+      orderItems: this.cartMenu,
+    };
+    console.log(newOrder);
+    this.orderService.addOrder(newOrder).subscribe({
+      next: (order: Order) => {
+        console.log('Added ORDER');
+        console.log(order);
+        this.router.navigate(['']);
+      },
+    });
+    // Redirect to burger;
+    // emptyCart();
   }
 
   onCardClick(id: number, menuItem: MenuItem): void {
     if (this.previouslySelectedItemId === -1) {
+      this.cartEditingStatus = true;
       this.previouslySelectedItemId = id;
       this.simulateRedirectionToItemDetails(menuItem.id);
     } else if (
       this.previouslySelectedItemId === id &&
-      this.carItemsSelectedStatus[id]
+      this.cartItemsSelectedStatus[id]
     ) {
+      this.cartEditingStatus = false;
       this.router.navigate([
         'fast-food',
         {
@@ -76,13 +99,15 @@ export class CartPreviewMenuComponent implements OnInit {
         },
       ]);
     } else if (this.previouslySelectedItemId === id) {
+      this.cartEditingStatus = true;
       this.simulateRedirectionToItemDetails(menuItem.id);
     } else {
-      this.carItemsSelectedStatus[this.previouslySelectedItemId] = false;
+      this.cartEditingStatus = true;
+      this.cartItemsSelectedStatus[this.previouslySelectedItemId] = false;
       this.previouslySelectedItemId = id;
       this.simulateRedirectionToItemDetails(menuItem.id);
     }
-    this.carItemsSelectedStatus[id] = !this.carItemsSelectedStatus[id];
+    this.cartItemsSelectedStatus[id] = !this.cartItemsSelectedStatus[id];
   }
 
   simulateRedirectionToItemDetails(id: number) {

@@ -2368,5 +2368,311 @@
       ]
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": 1,
+      "orderItems": [
+        {
+          "id": 1,
+          "name": "Classic Chicken Sandwich Combo",
+          "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1211_medium_US_en.png",
+          "categoryId": 1,
+          "description": "A juicy, lightly breaded crispy chicken breast with crunchy lettuce, tomato, mayo, and the perfect pickles, all on a toasted bun. It’s a flawless blend of nostalgia and excitement—kinda like your all-time favorite song, only better ‘cause you can eat it.",
+          "basePrice": 8.99,
+          "customizableOptions": [
+            {
+              "name": "Select the type of bread",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Bun",
+                  "selected": false
+                },
+                {
+                  "name": "Whole Wheat Bun",
+                  "selected": true,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select extra ingredients for the Burger",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Extra cheese",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Bacon",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": false
+            },
+            {
+              "name": "Select your drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Juice",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Please include more tomato instead of lettuce."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Pizza for 2",
+          "image": "https://www.littlerome.mx/wp-content/uploads/2020/10/2-arma-tu-pizza.jpg",
+          "categoryId": 2,
+          "description": "2 personal size pizzas, 2 side dishes and 2 drinks",
+          "basePrice": 9.99,
+          "customizableOptions": [
+            {
+              "name": "Select the topping for your pizza #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Pepperoni",
+                  "selected": false
+                },
+                {
+                  "name": "Sausage",
+                  "selected": false
+                },
+                {
+                  "name": "Mushrooms",
+                  "selected": false
+                },
+                {
+                  "name": "All",
+                  "selected": true,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Garlic Knots",
+                  "selected": false
+                },
+                {
+                  "name": "Breadsticks",
+                  "selected": false
+                },
+                {
+                  "name": "Cheesesticks",
+                  "selected": true,
+                  "extraPrice": 1
+                },
+                {
+                  "name": "Bacon Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your drink #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select the topping for your pizza #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Pepperoni",
+                  "selected": false
+                },
+                {
+                  "name": "Sausage",
+                  "selected": false
+                },
+                {
+                  "name": "Mushrooms",
+                  "selected": false
+                },
+                {
+                  "name": "All",
+                  "selected": true,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Garlic Knots",
+                  "selected": false
+                },
+                {
+                  "name": "Breadsticks",
+                  "selected": false
+                },
+                {
+                  "name": "Cheesesticks",
+                  "selected": true,
+                  "extraPrice": 1
+                },
+                {
+                  "name": "Bacon Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your drink #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Brownie",
+          "categoryId": 3,
+          "description": "",
+          "basePrice": 2.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Please don't add sugar to the orange juice!"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Red Velvet Cake",
+          "image": "https://d320djwtwnl5uo.cloudfront.net/recetas/cover/red-v_kvUtb7ixJqMHo63e5OnXWyjZsfV2zP.png",
+          "categoryId": 3,
+          "description": "Popular in the southern U.S., red velvet cake is a vanilla cake with a few tablespoons of cocoa powder and red food coloring mixed in.",
+          "basePrice": 3,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": true
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select toppings",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Ice cream ball",
+                  "selected": true,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Caramel Sauce",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

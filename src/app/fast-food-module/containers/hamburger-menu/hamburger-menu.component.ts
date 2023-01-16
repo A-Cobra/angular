@@ -32,7 +32,7 @@ export class HamburgerMenuComponent implements OnInit {
   onCardClick(id: number, menuItem: MenuItem): void {
     if (this.previouslySelectedItemId === -1) {
       this.previouslySelectedItemId = id;
-      this.simulateRedirectionToItemDetails(menuItem.id);
+      this.navigateToItemWithId(menuItem.id);
     } else if (
       this.previouslySelectedItemId === id &&
       !this.collapsedCards[id]
@@ -47,35 +47,24 @@ export class HamburgerMenuComponent implements OnInit {
         },
       ]);
     } else if (this.previouslySelectedItemId === id) {
-      this.simulateRedirectionToItemDetails(menuItem.id);
+      this.navigateToItemWithId(menuItem.id);
     } else {
       this.collapsedCards[this.previouslySelectedItemId] = true;
       this.previouslySelectedItemId = id;
-      this.simulateRedirectionToItemDetails(menuItem.id);
+      this.navigateToItemWithId(menuItem.id);
     }
     this.collapsedCards[id] = !this.collapsedCards[id];
   }
 
-  simulateRedirectionToItemDetails(id: number) {
+  navigateToItemWithId(id: number) {
     this.router.navigate([
       'fast-food',
       {
         outlets: {
           'menu-selection': ['hamburger-combos'],
-          'menu-details': ['selection'],
+          'menu-details': ['burger-combo', id],
         },
       },
     ]);
-    setTimeout(() => {
-      this.router.navigate([
-        'fast-food',
-        {
-          outlets: {
-            'menu-selection': ['hamburger-combos'],
-            'menu-details': ['burger-combo', id],
-          },
-        },
-      ]);
-    });
   }
 }

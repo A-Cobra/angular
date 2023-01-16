@@ -64,6 +64,7 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
           },
           complete: () => {
             // PUT IT HERE
+            this.detailsDiv.clear();
             const formComponent =
               this.detailsDiv.createComponent(OrderFormComponent);
             formComponent.instance.id = this.selectedId;

@@ -36,7 +36,7 @@ export class CartService {
       })
     );
   }
-  getNumberOfCartItems() {
+  getNumberOfCartItems(): Observable<number> {
     return this.http
       .get<MenuItem[]>(`${environment.dataBaseBaseUrl}/${this.cartPath}`)
       .pipe(
