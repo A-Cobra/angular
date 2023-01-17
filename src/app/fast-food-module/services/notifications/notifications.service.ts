@@ -16,4 +16,13 @@ export class NotificationsService {
   notifyItemAddedToCart() {
     alert('The item was successfully added to the cart!');
   }
+  notifyItemRemovedFromTheCart() {
+    alert('The item was successfully removed to the cart!');
+  }
+  notifyItemUpdatedCorrectly() {
+    alert('The item was successfully updated in the cart!');
+  }
+  notifyEmptyCart() {
+    alert('There are no items in the cart. Please ad some!');
+  }
 }

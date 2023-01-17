@@ -13,6 +13,7 @@ import { CartDetailsPlaceholderComponent } from './components/cart-details-place
 import { OrderMenuComponent } from './containers/order-menu/order-menu.component';
 import { OrderDetailsPlaceholderComponent } from './components/order-details-placeholder/order-details-placeholder.component';
 import { OrderDetailsComponent } from './containers/order-details/order-details.component';
+import { CartGuardService } from './guards/cart-guard.service';
 
 const routes: Routes = [
   {
@@ -39,6 +40,7 @@ const routes: Routes = [
         path: 'cart',
         outlet: 'menu-selection',
         component: CartPreviewMenuComponent,
+        canActivate: [CartGuardService],
       },
       {
         path: 'order',

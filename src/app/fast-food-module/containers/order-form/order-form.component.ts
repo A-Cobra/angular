@@ -164,8 +164,8 @@ export class OrderFormComponent implements AfterViewInit {
       .removeItemFormTheCart(this.currentMenuSelection.id)
       .subscribe({
         next: (menuItem: MenuItem) => {
-          console.log('Item removed successfully');
           this.simulateRedirectionToCart();
+          this.notificationsService.notifyItemRemovedFromTheCart();
         },
       });
   }
@@ -173,8 +173,8 @@ export class OrderFormComponent implements AfterViewInit {
   onSaveChanges() {
     this.cartService.updateCartItem(this.currentMenuSelection).subscribe({
       next: (menuItem: MenuItem) => {
-        console.log('Item updated successfully');
         this.simulateRedirectionToCart();
+        this.notificationsService.notifyItemUpdatedCorrectly();
       },
     });
   }
