@@ -9,17 +9,21 @@ import { MenuItem } from '../../models/menu-item.interface';
 })
 export class MenuService {
   menuPath = 'menu';
+
   constructor(private http: HttpClient) {}
+
   getMenu(): Observable<MenuItem[]> {
     return this.http.get<MenuItem[]>(
       `${environment.dataBaseBaseUrl}/${this.menuPath}`
     );
   }
+
   getMenuItem(id: string): Observable<MenuItem> {
     return this.http.get<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.menuPath}/${id}`
     );
   }
+
   getMenuByCategory(id: number): Observable<MenuItem[]> {
     return this.http
       .get<MenuItem[]>(`${environment.dataBaseBaseUrl}/${this.menuPath}`)

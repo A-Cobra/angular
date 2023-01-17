@@ -29,7 +29,6 @@ export class CartSelectionDetailsComponent implements OnInit {
   }
 
   generateChosenOptions(): void {
-    // const chosenOptions: OptionNameSelectionPair[] = [];
     this.customizableOptions.forEach(
       (customizableOption: CustomizableOption) => {
         this.chosenOptions.push({ name: customizableOption.name, value: '' });
@@ -50,23 +49,16 @@ export class CartSelectionDetailsComponent implements OnInit {
               }
             }
           );
-          console.log('Multiple Selection Options');
-          console.log(multipleSelectionOptions);
           this.chosenOptions[customOptionIndex].value =
             multipleSelectionOptions.length === 0
               ? '-'
               : multipleSelectionOptions.join(', ');
           //     : multipleSelectionOptions.join(', ');
         } else if (customizableOption.type === 'text') {
-          console.log('TEXT');
-          console.log('customizableOption.name');
-          console.log(customizableOption.name);
           this.chosenOptions[customOptionIndex].value =
             customizableOption.value ?? '-';
         }
       }
     );
-    console.log('this.chosenOptions');
-    console.log(this.chosenOptions);
   }
 }

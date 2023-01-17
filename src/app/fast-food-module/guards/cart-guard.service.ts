@@ -17,6 +17,7 @@ export class CartGuardService implements CanActivate {
     private cartService: CartService,
     private notificationsService: NotificationsService
   ) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -31,7 +32,6 @@ export class CartGuardService implements CanActivate {
           this.notificationsService.notifyEmptyCart();
         }
         return of(number === 1 ? false : true);
-        // return number === 1 ? false : true;
       })
     );
   }

@@ -12,6 +12,7 @@ export class OrderMenuComponent implements OnInit {
   previouslySelectedItemId = -1;
   orders: Order[] = [];
   orderItemsSelectedStatus: boolean[] = [];
+
   constructor(private orderService: OrderService, private router: Router) {}
 
   ngOnInit(): void {

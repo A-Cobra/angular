@@ -29,7 +29,6 @@ export class OrderDetailsComponent implements OnInit {
     this.route.params
       .pipe(takeUntil(this.endAllSubscriptions$))
       .subscribe((urlData: Params) => {
-        console.log(urlData);
         this.selectedId = parseInt(urlData?.['id']);
         this.orderService.getOrderById(urlData?.['id']).subscribe({
           next: (order: Order) => {
@@ -70,10 +69,7 @@ export class OrderDetailsComponent implements OnInit {
         })
       )
       .subscribe({
-        next: (menuItem: MenuItem) => {
-          console.log('Added');
-          console.log(menuItem);
-        },
+        next: (menuItem: MenuItem) => {},
       });
   }
 }

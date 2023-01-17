@@ -18,5 +18,6 @@ import { Order } from '../../models/order.type';
 export class OrderSelectionContentComponent {
   @Input()
   order!: Order;
+
   constructor() {}
 }

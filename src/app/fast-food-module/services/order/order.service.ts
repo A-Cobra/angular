@@ -10,17 +10,21 @@ import { Order } from '../../models/order.type';
 export class OrderService {
   orderPath = 'orders';
   currentItemId!: number;
+
   constructor(private http: HttpClient) {}
+
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(
       `${environment.dataBaseBaseUrl}/${this.orderPath}`
     );
   }
+
   getOrderById(id: number): Observable<Order> {
     return this.http.get<Order>(
       `${environment.dataBaseBaseUrl}/${this.orderPath}/${id}`
     );
   }
+
   getNextOrderId(): Observable<number> {
     return this.getOrders().pipe(
       catchError(error => of([])),
@@ -32,12 +36,14 @@ export class OrderService {
       })
     );
   }
+
   private postOrderToDatabase(order: Order): Observable<Order> {
     return this.http.post<Order>(
       `${environment.dataBaseBaseUrl}/${this.orderPath}`,
       order
     );
   }
+
   addOrder(order: Order): Observable<Order> {
     const getId$ = this.getNextOrderId();
     return getId$.pipe(

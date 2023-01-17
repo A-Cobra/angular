@@ -20,5 +20,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class MyCardDetailsComponent {
   @Input()
   collapsed: boolean = true;
+
   constructor() {}
 }

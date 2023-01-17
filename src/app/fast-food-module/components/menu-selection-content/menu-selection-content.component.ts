@@ -20,5 +20,6 @@ export class MenuSelectionContentComponent {
   notAppliedOptions = true;
   @Input()
   customizableOptions!: CustomizableOption[];
+
   constructor() {}
 }

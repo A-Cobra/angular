@@ -13,6 +13,7 @@ export class PizzaMenuComponent implements OnInit {
   collapsedCards: boolean[] = [];
   pizzaMenu: MenuItem[] = [];
   category = 2;
+
   constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {

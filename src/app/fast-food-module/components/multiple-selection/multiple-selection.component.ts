@@ -55,6 +55,7 @@ export class MultipleSelectionComponent implements OnInit {
   multipleSelectionChange: EventEmitter<MultipleSelectionEvent> =
     new EventEmitter<MultipleSelectionEvent>();
   form!: FormGroup;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -91,12 +92,8 @@ export class MultipleSelectionComponent implements OnInit {
       this.getFormArrayValue().map((controlSelection: boolean) => {
         return { selected: controlSelection };
       });
-    console.log('selectedOptions');
-    console.log(selectedOptions);
     const optionsCopy: OptionDetails[] =
       this.customizableOption.options?.slice() ?? [];
-    console.log('optionsCopy');
-    console.log(optionsCopy);
     selectedOptions.forEach((option, index) => {
       Object.assign(optionsCopy[index], option);
     });

@@ -53,18 +53,11 @@ export class MenuSelectionHeaderComponent {
   cartHeader: boolean = false;
   @Input()
   menuItem: MenuItem = { ...defaultMenuSelection };
+
   constructor(private changeDetector: ChangeDetectorRef) {}
 
-  // ngAfterViewInit(): void {
-  //   this.calculatePrice();
-  //   this.changeDetector.detectChanges();
-  // }
-
   calculatePrice() {
-    console.log('Recalculating price');
     let recalculatedPrice = this.menuItem.basePrice;
-    console.log('recalculatedPrice base price');
-    console.log(recalculatedPrice);
     for (const customizableOption of this.menuItem.customizableOptions) {
       if (customizableOption?.options) {
         for (const option of customizableOption?.options) {
@@ -75,9 +68,5 @@ export class MenuSelectionHeaderComponent {
       }
     }
     this.totalPrice = recalculatedPrice;
-  }
-
-  onCompleteOrder() {
-    console.log('Order added');
   }
 }

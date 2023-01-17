@@ -8,25 +8,30 @@ import { MenuItem } from '../../models/menu-item.interface';
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private http: HttpClient) {}
   cartPath = 'cart';
   currentItemId!: number;
+
+  constructor(private http: HttpClient) {}
+
   getCartItems(): Observable<MenuItem[]> {
     return this.http.get<MenuItem[]>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`
     );
   }
+
   getCartItem(id: number): Observable<MenuItem> {
     return this.http.get<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}/${id}`
     );
   }
+
   private postItemToCartDatabase(item: MenuItem): Observable<MenuItem> {
     return this.http.post<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}`,
       item
     );
   }
+
   addItemToTheCart(item: MenuItem): Observable<MenuItem> {
     const getId$ = this.getNumberOfCartItems();
     return getId$.pipe(
@@ -36,9 +41,7 @@ export class CartService {
       })
     );
   }
-  // emptyCart(){
 
-  // }
   getNumberOfCartItems(): Observable<number> {
     return this.http
       .get<MenuItem[]>(`${environment.dataBaseBaseUrl}/${this.cartPath}`)
@@ -52,20 +55,22 @@ export class CartService {
         })
       );
   }
+
   removeItemFormTheCart(id: number): Observable<MenuItem> {
     return this.http.delete<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}/${id}`
     );
   }
+
   updateCartItem(item: MenuItem): Observable<MenuItem> {
     return this.http.put<MenuItem>(
       `${environment.dataBaseBaseUrl}/${this.cartPath}/${item.id}`,
       item
     );
   }
+
   emptyCart(): void {
     const cartItems$ = this.getCartItems();
-    // const getId$ = this.getNumberOfCartItems();
     let availableIds!: number[];
     cartItems$
       .pipe(
@@ -75,18 +80,12 @@ export class CartService {
       )
       .subscribe({
         next: (data: number[]) => {
-          availableIds = data;
-          availableIds.forEach((id: number) => {
+          data.forEach((id: number) => {
             this.removeItemFormTheCart(id).subscribe({
-              next: (menuItem: MenuItem) => {
-                console.log(`${menuItem.id} removed`);
-              },
+              next: (menuItem: MenuItem) => {},
             });
           });
         },
       });
-    console.log(availableIds);
-    // const getId$ = this.getNumberOfCartItems();
-    // getId$.pipe(switchMap((newId: number) => {}));
   }
 }

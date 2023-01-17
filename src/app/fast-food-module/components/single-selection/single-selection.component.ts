@@ -31,7 +31,6 @@ import { SingleSelectionEvent } from '../../models/single-selection-event.type';
           <div *ngFor="let option of customizableOption.options; index as i">
             <input
               (change)="onInputChange()"
-              (click)="displayEvent($event)"
               formControlName="selectedOption"
               [id]="'select' + id + i"
               type="radio"
@@ -71,7 +70,6 @@ export class SingleSelectionComponent implements OnInit {
     let selectedId = -1;
     this.customizableOption?.options?.forEach(
       (option: OptionDetails, index) => {
-        console.log(option);
         if (option.selected) {
           selectedId = index;
         }
@@ -86,11 +84,6 @@ export class SingleSelectionComponent implements OnInit {
 
   getSelectedValue(): number {
     return this.form.controls['selectedOption'].value;
-  }
-
-  displayEvent($event: any): void {
-    console.log('Event After radio press');
-    console.log($event);
   }
 
   onInputChange(): void {

@@ -2066,176 +2066,7 @@
       ]
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "name": "Burger for 2",
-      "image": "https://www.meatpoultry.com/ext/resources/images/2/f/o/r/1/l/a/e/e/m/05/2for10WhopperMeal.jpg",
-      "categoryId": 1,
-      "description": "Don't want to share? This combo includes 2 burgers, 2 sides and 2 beverages. You can customize your burgers.",
-      "basePrice": 15.99,
-      "customizableOptions": [
-        {
-          "name": "Select the type of bread for the Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": true
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": false,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select type of meat for the Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Meat",
-              "selected": true
-            },
-            {
-              "name": "Began Meat",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger #1",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Double meat",
-              "selected": false,
-              "extraPrice": 3
-            },
-            {
-              "name": "Extra cheese",
-              "selected": false,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Bacon",
-              "selected": false,
-              "extraPrice": 2
-            },
-            {
-              "name": "Extra sauce",
-              "selected": false,
-              "extraPrice": 0.5
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Enter special indications for Burger #1",
-          "type": "text",
-          "required": false
-        },
-        {
-          "name": "Select beverage for Burger #1",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": false
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select the type of bread for the Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Bun",
-              "selected": true
-            },
-            {
-              "name": "Whole Wheat Bun",
-              "selected": false,
-              "extraPrice": 1
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select type of meat for the Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Regular Meat",
-              "selected": true
-            },
-            {
-              "name": "Began Meat",
-              "selected": false,
-              "extraPrice": 2
-            }
-          ],
-          "required": true
-        },
-        {
-          "name": "Select extra ingredients for the Burger #2",
-          "type": "multi-select",
-          "options": [
-            {
-              "name": "Double meat",
-              "selected": false,
-              "extraPrice": 3
-            },
-            {
-              "name": "Extra cheese",
-              "selected": false,
-              "extraPrice": 1.5
-            },
-            {
-              "name": "Bacon",
-              "selected": false,
-              "extraPrice": 2
-            },
-            {
-              "name": "Extra sauce",
-              "selected": false,
-              "extraPrice": 0.5
-            }
-          ],
-          "required": false
-        },
-        {
-          "name": "Enter special indications for Burger #2",
-          "type": "text",
-          "required": false
-        },
-        {
-          "name": "Select beverage for Burger #2",
-          "type": "single-select",
-          "options": [
-            {
-              "name": "Soda",
-              "selected": false
-            },
-            {
-              "name": "Water",
-              "selected": false
-            }
-          ],
-          "required": true
-        }
-      ]
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "totalPrice": 35.98,
@@ -4303,6 +4134,258 @@
       ],
       "date": "2023-01-16T19:40:45Z",
       "totalPrice": 7
+    },
+    {
+      "id": 12,
+      "orderItems": [
+        {
+          "id": 1,
+          "name": "Burger for 2",
+          "image": "https://www.meatpoultry.com/ext/resources/images/2/f/o/r/1/l/a/e/e/m/05/2for10WhopperMeal.jpg",
+          "categoryId": 1,
+          "description": "Don't want to share? This combo includes 2 burgers, 2 sides and 2 beverages. You can customize your burgers.",
+          "basePrice": 15.99,
+          "customizableOptions": [
+            {
+              "name": "Select the type of bread for the Burger #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Bun",
+                  "selected": true
+                },
+                {
+                  "name": "Whole Wheat Bun",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select type of meat for the Burger #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Meat",
+                  "selected": true
+                },
+                {
+                  "name": "Began Meat",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select extra ingredients for the Burger #1",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Double meat",
+                  "selected": false,
+                  "extraPrice": 3
+                },
+                {
+                  "name": "Extra cheese",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Bacon",
+                  "selected": false,
+                  "extraPrice": 2
+                },
+                {
+                  "name": "Extra sauce",
+                  "selected": false,
+                  "extraPrice": 0.5
+                }
+              ],
+              "required": false
+            },
+            {
+              "name": "Enter special indications for Burger #1",
+              "type": "text",
+              "required": false
+            },
+            {
+              "name": "Select beverage for Burger #1",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select the type of bread for the Burger #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Bun",
+                  "selected": true
+                },
+                {
+                  "name": "Whole Wheat Bun",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select type of meat for the Burger #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Regular Meat",
+                  "selected": true
+                },
+                {
+                  "name": "Began Meat",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select extra ingredients for the Burger #2",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Double meat",
+                  "selected": false,
+                  "extraPrice": 3
+                },
+                {
+                  "name": "Extra cheese",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Bacon",
+                  "selected": false,
+                  "extraPrice": 2
+                },
+                {
+                  "name": "Extra sauce",
+                  "selected": false,
+                  "extraPrice": 0.5
+                }
+              ],
+              "required": false
+            },
+            {
+              "name": "Enter special indications for Burger #2",
+              "type": "text",
+              "required": false
+            },
+            {
+              "name": "Select beverage for Burger #2",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Medium Pizza",
+          "categoryId": 2,
+          "description": "A medium size pizza with one side dish and a drink",
+          "basePrice": 8.99,
+          "customizableOptions": [
+            {
+              "name": "Select the topping for your pizza",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Pepperoni",
+                  "selected": false
+                },
+                {
+                  "name": "Sausage",
+                  "selected": false
+                },
+                {
+                  "name": "Mushrooms",
+                  "selected": false
+                },
+                {
+                  "name": "All",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your side dish",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Garlic Knots",
+                  "selected": false
+                },
+                {
+                  "name": "Breadsticks",
+                  "selected": false
+                },
+                {
+                  "name": "Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 1
+                },
+                {
+                  "name": "Bacon Cheesesticks",
+                  "selected": false,
+                  "extraPrice": 2
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select your drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Soda",
+                  "selected": false
+                },
+                {
+                  "name": "Tea",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            }
+          ]
+        }
+      ],
+      "date": "2023-01-16T22:18:34Z",
+      "totalPrice": 24.98
     }
   ]
 }

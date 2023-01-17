@@ -3,7 +3,6 @@ import {
   AfterViewInit,
   Component,
   Input,
-  OnInit,
   ViewChild,
   ViewContainerRef,
   ChangeDetectorRef,
@@ -21,7 +20,6 @@ import {
   AbstractControl,
   NonNullableFormBuilder,
 } from '@angular/forms';
-import { formatWithCursor } from 'prettier';
 import { SingleSelectionComponent } from '../../components/single-selection/single-selection.component';
 import { CustomizableOption } from '../../models/customizable-option.interface';
 import { MultipleSelectionComponent } from '../../components/multiple-selection/multiple-selection.component';
@@ -144,7 +142,6 @@ export class OrderFormComponent implements AfterViewInit {
   }
 
   recalculatePrice() {
-    console.log('Recalculating price');
     let recalculatedPrice = this.currentMenuSelection.basePrice;
     for (const customizableOption of this.currentMenuSelection
       .customizableOptions) {

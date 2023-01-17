@@ -48,10 +48,7 @@ export class CartPreviewMenuComponent implements OnInit {
   }
 
   calculatePrice(menuItem: MenuItem) {
-    console.log('Recalculating price');
     let recalculatedPrice = menuItem.basePrice;
-    console.log('recalculatedPrice base price');
-    console.log(recalculatedPrice);
     for (const customizableOption of menuItem.customizableOptions) {
       if (customizableOption?.options) {
         for (const option of customizableOption?.options) {

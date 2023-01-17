@@ -13,6 +13,7 @@ export class DessertsComponent implements OnInit {
   collapsedCards: boolean[] = [];
   dessertsMenu: MenuItem[] = [];
   category = 3;
+
   constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
