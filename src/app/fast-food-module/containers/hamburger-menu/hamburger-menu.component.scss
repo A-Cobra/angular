@@ -1,5 +1,13 @@
+@import "../../../../colors";
+
 .hamburger-menu-container{
   &.active{
-    border: 2px solid red;
+    border: 2px solid $navy-blue;
+    background-color: $light-sky-blue;
+    box-shadow: 3px 6px 10px $twilight-shadow;
   }
+}
+.grid-wrapper{
+  display: grid;
+  gap: 15px;
 }

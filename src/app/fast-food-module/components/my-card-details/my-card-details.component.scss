@@ -1,3 +1,15 @@
+@import "../../../../colors";
+
 .card{
   cursor: pointer;
+  .card-header{
+    // background-color: red;
+    padding: 10px;
+    border: 2px solid $light-gray;
+  }
+  .card-content{
+    padding: 10px;
+    border: 2px solid $light-gray;
+    border-top: none;
+  }
 }
