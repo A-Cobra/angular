@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./fast-food-module/fast-food.module').then(m => m.FastFoodModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./not-found-module/not-found.module').then(m => m.NotFoundModule),
+  },
 ];
 
 @NgModule({
