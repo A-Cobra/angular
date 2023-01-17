@@ -1,16 +1,45 @@
+@import "../../../../colors";
+
 .cart-preview-menu-container{
+  display: grid;
+  gap: 20px;
   position: relative;
   div{
     &.active{
-      background-color: rgba(#000000, 0.3);
+      border: 2px solid $navy-blue;
+      background-color: $light-sky-blue;
+      box-shadow: 3px 6px 10px $twilight-shadow;
     }
   }
   header{
+    z-index: 100;
     padding: 18px 30px;
+    gap: 15px;
     display: flex;
-    justify-content: space-between;
-    background-color: pink;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $light-sky-blue;
+    box-shadow: 3px 6px 10px $main-color-shadow;
     position: sticky;
     top: 0;
+    button {
+      cursor: pointer;
+      text-align: center;
+      padding: 8px 14px;
+      font-size: 18px;
+      border-radius: 5px;
+      color: $light-purple;
+      background-color: $navy-blue;
+      box-shadow: 3px 6px 6px $main-color-shadow;
+      &:disabled{
+        background-color: $light-gray;
+        cursor: not-allowed;
+      }
+      &:hover{
+        background-color: $twilight;
+        box-shadow: 3px 6px 6px $main-color-shadow;
+      }
+    }
   }
 }

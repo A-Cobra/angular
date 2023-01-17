@@ -7,7 +7,6 @@ import { OptionNameSelectionPair } from '../../models/option-name-selection-pair
   selector: 'app-cart-selection-content',
   styleUrls: ['./cart-selection-content.component.scss'],
   template: `
-    <h2>App CART SELECTION COMPONENT</h2>
     <div *ngIf="chosenOptions.length > 0">
       <div>
         <h3>Your Selections:</h3>

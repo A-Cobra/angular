@@ -13,13 +13,6 @@ import { MenuItem } from '../../models/menu-item.interface';
   styleUrls: ['./menu-selection-header.component.scss'],
   template: `
     <div class="menu-selection-header-container">
-      <!-- <header *ngIf="cartHeader" class="flex">
-        <h3>
-          Total Price:
-          <span>{{ totalPrice | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
-        </h3>
-        <button (click)="onCompleteOrder()">Add to cart</button>
-      </header> -->
       <section class="flex-container">
         <div *ngIf="menuItem.image" class="img-container">
           <img [src]="menuItem.image" [alt]="menuItem.name" />

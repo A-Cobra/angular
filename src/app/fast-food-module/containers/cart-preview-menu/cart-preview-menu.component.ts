@@ -78,7 +78,7 @@ export class CartPreviewMenuComponent implements OnInit {
           {
             outlets: {
               'menu-selection': ['order'],
-              'menu-details': ['selection'],
+              'menu-details': ['cart-selection'],
             },
           },
         ]);
@@ -103,7 +103,7 @@ export class CartPreviewMenuComponent implements OnInit {
         {
           outlets: {
             'menu-selection': ['cart'],
-            'menu-details': ['selection'],
+            'menu-details': ['cart-selection'],
           },
         },
       ]);
@@ -125,7 +125,7 @@ export class CartPreviewMenuComponent implements OnInit {
       {
         outlets: {
           'menu-selection': ['cart'],
-          'menu-details': ['selection'],
+          'menu-details': ['cart-selection'],
         },
       },
     ]);

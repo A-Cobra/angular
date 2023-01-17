@@ -15,6 +15,11 @@
     box-shadow: 3px 6px 10px $main-color-shadow;
     position: sticky;
     top: 0;
+    .btn-container{
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
     button {
       cursor: pointer;
       text-align: center;

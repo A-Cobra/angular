@@ -1,15 +1,14 @@
-<p>order-menu works!</p>
-<div
-  (click)="onCardClick(i, order)"
-  [ngClass]="{
-    active: orderItemsSelectedStatus[i]
-  }"
-  *ngFor="let order of orders; index as i">
-  <!-- <app-order-selection-header [order]="order"></app-order-selection-header>
-  <app-order-selection-content [order]="order"></app-order-selection-content> -->
-
-  <app-my-card-details [collapsed]="false">
-    <app-order-selection-header [order]="order"></app-order-selection-header>
-    <app-order-selection-content [order]="order"></app-order-selection-content>
-  </app-my-card-details>
+<div class="grid-wrapper">
+  <div
+    (click)="onCardClick(i, order)"
+    [ngClass]="{
+      active: orderItemsSelectedStatus[i]
+    }"
+    *ngFor="let order of orders; index as i">
+    <app-my-card-details [collapsed]="false">
+      <app-order-selection-header [order]="order"></app-order-selection-header>
+      <app-order-selection-content
+        [order]="order"></app-order-selection-content>
+    </app-my-card-details>
+  </div>
 </div>

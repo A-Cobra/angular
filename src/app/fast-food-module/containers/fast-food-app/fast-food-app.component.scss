@@ -1,4 +1,7 @@
+
+@import "../../../../colors";
 .flex{
+  border-top: 2px solid $light-gray;
   display: flex;
   flex-wrap: wrap;
   .left-side,

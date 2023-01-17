@@ -23,10 +23,6 @@ import { TextareaEvent } from '../../models/textarea-event.type';
           {{ customizableOption.name }}
         </h3>
       </div>
-      <!-- <textarea
-        #textArea
-        (input)="onInputChange()"
-        [id]="'text-area' + id"></textarea> -->
       <input
         #textInput
         (input)="onInputChange()"
