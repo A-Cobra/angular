@@ -4,6 +4,7 @@ import { getUtcStringifiedDate } from 'src/app/utils/get-utc-strigified-date';
 import { MenuItem } from '../../models/menu-item.interface';
 import { Order } from '../../models/order.type';
 import { CartService } from '../../services/cart/cart.service';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 import { OrderService } from '../../services/order/order.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class CartPreviewMenuComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private notificationsService: NotificationsService
   ) {}
 
   ngOnInit(): void {
@@ -63,22 +65,14 @@ export class CartPreviewMenuComponent implements OnInit {
   }
 
   onCompleteOrder() {
-    console.log('Completing order');
-
-    console.log('Completing order');
     const newOrder: Order = {
       id: 0,
       orderItems: this.cartMenu,
       date: getUtcStringifiedDate(),
       totalPrice: this.totalCartPrice,
     };
-    console.log(newOrder);
-
-    // GOES WELL SO FAR
     this.orderService.addOrder(newOrder).subscribe({
       next: (order: Order) => {
-        console.log('Added ORDER');
-        console.log(order);
         this.router.navigate([
           'fast-food',
           {
@@ -90,7 +84,7 @@ export class CartPreviewMenuComponent implements OnInit {
         ]);
       },
     });
-
+    this.notificationsService.notifyOrderCreationSuccess();
     this.cartService.emptyCart();
   }
 

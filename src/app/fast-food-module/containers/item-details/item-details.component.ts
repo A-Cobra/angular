@@ -21,7 +21,7 @@ import { OrderFormComponent } from '../order-form/order-form.component';
   styleUrls: ['./item-details.component.scss'],
 })
 // implements OnInit, OnDestroy, AfterViewInit
-export class ItemDetailsComponent implements OnInit, AfterViewChecked {
+export class ItemDetailsComponent implements OnInit {
   selectedId!: number;
   currentMenuSelection: MenuItem = { ...defaultMenuSelection };
   endAllSubscriptions$: Subject<string> = new Subject<string>();
@@ -32,16 +32,6 @@ export class ItemDetailsComponent implements OnInit, AfterViewChecked {
     private route: ActivatedRoute,
     private menuService: MenuService
   ) {}
-  ngAfterViewChecked(): void {
-    // const component = this.detailsDiv.createComponent(OrderFormComponent);
-    // component.instance.id = this.selectedId;
-    console.log('this.detailsDiv');
-    // console.log(this.detailsDiv);
-  }
-  // ngOnDestroy(): void {
-  //   this.endAllSubscriptions$.next('');
-  //   this.endAllSubscriptions$.unsubscribe();
-  // }
 
   ngOnInit(): void {
     this.route.params

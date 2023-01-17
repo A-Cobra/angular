@@ -31,14 +31,14 @@ import { SingleSelectionEvent } from '../../models/single-selection-event.type';
 import { MultipleSelectionEvent } from '../../models/multiple-selection-event.type';
 import { CartService } from '../../services/cart/cart.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-order-form',
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss'],
 })
-// implements OnInit, AfterContentInit, AfterViewInit
-export class OrderFormComponent implements AfterViewInit, OnInit {
+export class OrderFormComponent implements AfterViewInit {
   @Input()
   cartForm: boolean = false;
   id: number = 0;
@@ -62,13 +62,9 @@ export class OrderFormComponent implements AfterViewInit, OnInit {
     private formBuilder: NonNullableFormBuilder,
     private cartService: CartService,
     private changeDetector: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private notificationsService: NotificationsService
   ) {}
-
-  ngOnInit(): void {
-    // this.setCreationId();
-    console.log('OK');
-  }
 
   ngAfterViewInit(): void {
     this.recalculatePrice();
@@ -77,7 +73,6 @@ export class OrderFormComponent implements AfterViewInit, OnInit {
   }
 
   fillFormControls(): void {
-    console.log('Creating components');
     this.currentMenuSelection.customizableOptions.forEach(
       (customizableOption: CustomizableOption, index: number) => {
         this.addDynamicControl(customizableOption, index);
@@ -141,13 +136,9 @@ export class OrderFormComponent implements AfterViewInit, OnInit {
   }
 
   onAddClick() {
-    console.log('Adding to the cart');
-    console.log(this.currentMenuSelection);
-    // this.currentMenuSelection.id = -1;
     this.cartService.addItemToTheCart(this.currentMenuSelection).subscribe({
       next: (menuItem: MenuItem) => {
-        console.log('Added');
-        console.log(menuItem);
+        this.notificationsService.notifyItemAddedToCart();
       },
     });
   }

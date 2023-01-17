@@ -19,7 +19,6 @@ export class PizzaMenuComponent implements OnInit {
     this.menuService.getMenuByCategory(this.category).subscribe({
       next: (menu: MenuItem[]) => {
         this.pizzaMenu = menu;
-        console.log(this.pizzaMenu);
       },
       complete: () => {
         this.pizzaMenu.forEach((burger: MenuItem, index) => {
@@ -27,12 +26,9 @@ export class PizzaMenuComponent implements OnInit {
         });
       },
     });
-    console.log('object');
-    console.log(this.menuService.menuPath);
   }
 
   onCardClick(id: number, menuItem: MenuItem): void {
-    console.log('CARDCLICKED');
     if (this.previouslySelectedItemId === -1) {
       this.previouslySelectedItemId = id;
       this.simulateRedirectionToItemDetails(menuItem.id);

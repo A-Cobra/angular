@@ -23,7 +23,6 @@ export class OrderMenuComponent implements OnInit {
         this.orders.forEach((order: Order, index) => {
           this.orderItemsSelectedStatus.unshift(false);
         });
-        console.log(this.orderItemsSelectedStatus);
       },
     });
   }

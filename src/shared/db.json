@@ -2066,7 +2066,181 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 1,
+      "name": "Carrot Cake",
+      "categoryId": 3,
+      "description": "Carrot cake is a sweet and moist spice cake, full of cut carrots and toasted nuts, and covered in cream cheese icing.",
+      "basePrice": 4.5,
+      "customizableOptions": [
+        {
+          "name": "Select a drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Coffee",
+              "selected": false
+            },
+            {
+              "name": "Orange Juice",
+              "selected": true
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select toppings",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Ice cream ball",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Caramel Sauce",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Brownie",
+      "categoryId": 3,
+      "description": "",
+      "basePrice": 2.5,
+      "customizableOptions": [
+        {
+          "name": "Select a drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Coffee",
+              "selected": false
+            },
+            {
+              "name": "Orange Juice",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": true
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false,
+          "value": "Please let it be a crunchy one!"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Italian Mozzarella Cheeseburger Combo",
+      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1597_medium_US_en.png",
+      "categoryId": 1,
+      "description": "A quarter-pound* of fresh, never-frozen beef topped with deep-fried melty mozzarella, Asiago cheese and rich marinara sauce all on a garlic knot bun. If your favorite appetizers were somehow also a burger it would be this.",
+      "basePrice": 8.99,
+      "customizableOptions": [
+        {
+          "name": "Select type of meat",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": true
+            },
+            {
+              "name": "Began Meat",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Select your drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Juice",
+              "selected": false,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Fries",
+              "selected": true
+            },
+            {
+              "name": "Loaded Fries",
+              "selected": false,
+              "extraPrice": 3.5
+            },
+            {
+              "name": "Salad",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false
+        }
+      ]
+    }
+  ],
   "orders": [
     {
       "totalPrice": 35.98,
@@ -4048,6 +4222,92 @@
       ],
       "date": "2023-01-16T19:14:33Z",
       "totalPrice": 33.480000000000004
+    },
+    {
+      "id": 11,
+      "orderItems": [
+        {
+          "id": 1,
+          "name": "Carrot Cake",
+          "categoryId": 3,
+          "description": "Carrot cake is a sweet and moist spice cake, full of cut carrots and toasted nuts, and covered in cream cheese icing.",
+          "basePrice": 4.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": true
+                },
+                {
+                  "name": "Water",
+                  "selected": false
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Select toppings",
+              "type": "multi-select",
+              "options": [
+                {
+                  "name": "Ice cream ball",
+                  "selected": false,
+                  "extraPrice": 1.5
+                },
+                {
+                  "name": "Caramel Sauce",
+                  "selected": false,
+                  "extraPrice": 1
+                }
+              ],
+              "required": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Brownie",
+          "categoryId": 3,
+          "description": "",
+          "basePrice": 2.5,
+          "customizableOptions": [
+            {
+              "name": "Select a drink",
+              "type": "single-select",
+              "options": [
+                {
+                  "name": "Coffee",
+                  "selected": false
+                },
+                {
+                  "name": "Orange Juice",
+                  "selected": false
+                },
+                {
+                  "name": "Water",
+                  "selected": true
+                }
+              ],
+              "required": true
+            },
+            {
+              "name": "Enter special indications",
+              "type": "text",
+              "required": false,
+              "value": "Please let it be a crunchy one!"
+            }
+          ]
+        }
+      ],
+      "date": "2023-01-16T19:40:45Z",
+      "totalPrice": 7
     }
   ]
 }
