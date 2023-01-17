@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { concatMap, of, Subject, takeUntil } from 'rxjs';
 import { MenuItem } from '../../models/menu-item.interface';
 import { Order } from '../../models/order.type';
+import { CartService } from '../../services/cart/cart.service';
 import { OrderService } from '../../services/order/order.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class OrderDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -74,7 +76,29 @@ export class OrderDetailsComponent implements OnInit {
     return recalculatedPrice;
   }
 
-  onMakeSameOrder() {
+  onAddSameItemsToCart(): void {
     console.log('Making the same order');
+    console.log(this.selectedOrder);
+    // this.selectedOrder.orderItems.forEach((menuItem: MenuItem) => {
+    //   this.cartService.addItemToTheCart(menuItem).subscribe({
+    //     next: (menuItem: MenuItem) => {
+    //       console.log('AddedItem');
+    //       console.log(menuItem);
+    //     },
+    //   });
+    // });
+    const orders$ = of(...this.selectedOrder.orderItems);
+    orders$
+      .pipe(
+        concatMap((menuItem: MenuItem) => {
+          return this.cartService.addItemToTheCart(menuItem);
+        })
+      )
+      .subscribe({
+        next: (menuItem: MenuItem) => {
+          console.log('Added');
+          console.log(menuItem);
+        },
+      });
   }
 }

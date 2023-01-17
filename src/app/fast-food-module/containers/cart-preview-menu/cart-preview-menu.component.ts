@@ -73,6 +73,8 @@ export class CartPreviewMenuComponent implements OnInit {
       totalPrice: this.totalCartPrice,
     };
     console.log(newOrder);
+
+    // GOES WELL SO FAR
     this.orderService.addOrder(newOrder).subscribe({
       next: (order: Order) => {
         console.log('Added ORDER');
