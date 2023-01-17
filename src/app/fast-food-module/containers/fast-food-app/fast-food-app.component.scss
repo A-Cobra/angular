@@ -3,17 +3,10 @@
   flex-wrap: wrap;
   .left-side,
   .right-side{
+    padding: 30px;
     flex: 1 1 550px;
     height: 90vh;
     overflow-y: hidden;
-    background-color: pink;
     overflow: auto;
-  } 
-  .right-side{
-    background-color: gray;
-    // This might be a problem
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
   } 
 }

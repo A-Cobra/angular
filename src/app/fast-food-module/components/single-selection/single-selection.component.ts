@@ -18,10 +18,14 @@ import { SingleSelectionEvent } from '../../models/single-selection-event.type';
   styleUrls: ['./single-selection.component.scss'],
   template: `
     <div *ngIf="customizableOption">
-      <h3>{{ customizableOption.name }}</h3>
-      <h2>FORM VALUE</h2>
-      <pre>{{ form.value | json }}</pre>
-
+      <div class="flex-wrapper">
+        <h3
+          [ngClass]="{
+            required: customizableOption.required
+          }">
+          {{ customizableOption.name }}
+        </h3>
+      </div>
       <form [formGroup]="form">
         <div class="container">
           <div *ngFor="let option of customizableOption.options; index as i">
@@ -90,8 +94,6 @@ export class SingleSelectionComponent implements OnInit {
   }
 
   onInputChange(): void {
-    console.log('INPUT CHANGED SINGLE SELECTIONS');
-    console.log(this.getSelectedValue());
     const selectedValue = this.getSelectedValue();
     const customizableOption = JSON.parse(
       JSON.stringify(this.customizableOption)

@@ -1,9 +1,5 @@
 <div class="order-form-container">
-  <p>order-form works!</p>
-  <p>{{ id }}</p>
-  <h1>Form values</h1>
-  <p>{{ form.value | json }}</p>
-  <h1>Current Menu Selection</h1>
+  <h2>{{ currentMenuSelection.name }}</h2>
   <ng-template #menuSelectionForm>
     <header class="flex">
       <h3>
@@ -23,10 +19,5 @@
       <button (click)="onSaveChanges()">Save changes</button>
     </div>
   </header>
-  <p>{{ currentMenuSelection | json }}</p>
-  <!-- <div *ngFor="let control of controls"></div>
-  <div *ngFor="let control of form.controls">{{ control.value | json }}</div>
-  <div *ngFor="let control of form.controls">{{ control.value }}</div> -->
-
   <div #formControlsDisplay></div>
 </div>

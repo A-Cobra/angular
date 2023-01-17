@@ -1,3 +1,13 @@
-.container {
-  background-color: red;
+.flex-wrapper{
+  display: flex;
+  h3{
+    position: relative;
+    &.required::after{
+      position: absolute;
+      content: "*";
+      color: red;
+      top: 0;
+      right: -15px;
+    }
+  }
 }

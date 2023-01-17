@@ -3,7 +3,6 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -16,18 +15,23 @@ import { TextareaEvent } from '../../models/textarea-event.type';
   styleUrls: ['./form-text.component.scss'],
   template: `
     <div>
-      <label
-        [for]="'text-area' + id"
-        [ngClass]="{
-          required: customizableOption.required
-        }"
-        >{{ customizableOption.name }}</label
-      >
-      <textarea
+      <div class="flex-wrapper">
+        <h3
+          [ngClass]="{
+            required: customizableOption.required
+          }">
+          {{ customizableOption.name }}
+        </h3>
+      </div>
+      <!-- <textarea
         #textArea
         (input)="onInputChange()"
-        [id]="'text-area' + id"></textarea>
-      <!-- Enhance the id  -->
+        [id]="'text-area' + id"></textarea> -->
+      <input
+        #textInput
+        (input)="onInputChange()"
+        [id]="'text-input' + id"
+        type="text" />
     </div>
   `,
 })
@@ -36,15 +40,16 @@ export class FormTextComponent {
   id: number = 0;
   @Input()
   customizableOption: CustomizableOption = { ...defaultFormText };
-  @ViewChild('textArea') textArea!: ElementRef;
+  @ViewChild('textInput') textInput!: ElementRef;
   @Output()
   textareaChange: EventEmitter<TextareaEvent> =
     new EventEmitter<TextareaEvent>();
 
   constructor() {}
+
   onInputChange() {
     this.textareaChange.emit({
-      value: this.textArea.nativeElement.value,
+      value: this.textInput.nativeElement.value,
       id: this.id,
     });
   }

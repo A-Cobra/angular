@@ -15,11 +15,14 @@ import { OptionDetails } from '../../models/option-details.interface';
   styleUrls: ['./multiple-selection.component.scss'],
   template: `
     <div class="container">
-      <h2>Multiple selection</h2>
-      <h3>Customizable Options</h3>
-      <pre>{{ customizableOption | json }}</pre>
-      <h3>Form</h3>
-      <pre>{{ form.value | json }}</pre>
+      <div class="flex-wrapper">
+        <h3
+          [ngClass]="{
+            required: customizableOption.required
+          }">
+          {{ customizableOption.name }}
+        </h3>
+      </div>
     </div>
     <form [formGroup]="form">
       <div class="container" formArrayName="selectedOptionsArray">
