@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   applaudoApiBaseUrl:
     'https://trainee-program-api-staging.applaudostudios.com/api/v1',
+  bearerToken:
+    'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6NCwiZXhwIjoxNjc0NDI3NjU0fQ.Bxsjd2a5Xmk8-ESCchELequLa6yWpzraxNBiKheV7Es',
 };
 
 /*
