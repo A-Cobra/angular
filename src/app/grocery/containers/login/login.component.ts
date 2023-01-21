@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginToken } from 'src/app/models/login-token.type';
 import { LoginService } from '../../services/login.service';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +20,39 @@ export class LoginComponent {
       password: 'Trainee$2',
     },
   };
-  // constructor() {
-  constructor(private loginService: LoginService) {
-    this.loginService
-      .checkLogin(this.loginToken)
-      .subscribe((loginResponse: boolean) => {
-        console.log(loginResponse);
-      });
+  loginForm = new FormGroup({
+    data: new FormGroup({
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    }),
+  });
+
+  constructor(private loginService: LoginService) {}
+
+  onFormSubmit(): void {
+    console.log('Submitting form');
+    if (this.loginForm.valid) {
+      console.log('Valid Form');
+      console.log(this.loginForm.value);
+      this.loginService
+        .checkLogin(this.loginForm.value as LoginToken)
+        .subscribe({
+          next: loginSuccess => {
+            console.log(loginSuccess ? 'Logged In' : 'Log in failure');
+          },
+        });
+    } else {
+      alert('Please enter a valid email and password');
+    }
+  }
+
+  getControl(controlName: string): AbstractControl {
+    return this.loginForm.get(controlName) as AbstractControl;
   }
 }

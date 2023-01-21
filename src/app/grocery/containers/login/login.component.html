@@ -1,1 +1,32 @@
 <p>login works!</p>
+<pre>{{ loginForm.value | json }}</pre>
+<pre>{{ loginForm.errors | json }}</pre>
+<form (ngSubmit)="onFormSubmit()" [formGroup]="loginForm">
+  <div class="form-group" formGroupName="data">
+    <div class="form-control">
+      <label for="email">Please enter your mail</label>
+      <input
+        id="email"
+        type="text"
+        formControlName="email"
+        placeholder="name@domain.domainsuffix" />
+      <div class="error" *ngIf="getControl('data.email').touched">
+        <p *ngIf="getControl('data.email').hasError('required')">
+          This field is required
+        </p>
+        <p *ngIf="getControl('data.email').hasError('email')">
+          This field requires the following pattern --> name@domain.domainsuffix
+        </p>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="password">Please enter your password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="password" />
+    </div>
+  </div>
+  <button>Log In</button>
+</form>
