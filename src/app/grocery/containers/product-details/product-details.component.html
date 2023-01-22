@@ -1,6 +1,6 @@
-<p>product-details works!</p>
 <div *ngIf="currentSlug">
   <app-product-visualizer
     [product]="currentProduct"
-    [shortenedContent]="false"></app-product-visualizer>
+    [shortenedContent]="false"
+    (cartAddition)="onCartAddition($event)"></app-product-visualizer>
 </div>

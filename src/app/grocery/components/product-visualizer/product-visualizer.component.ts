@@ -22,10 +22,11 @@ import { Product } from 'src/app/models/product/product.interface';
       <h3>
         Name: <span>{{ product.name }}</span>
       </h3>
-      <div *ngIf="!shortenedContent">
+      <div class="shortened-content" *ngIf="!shortenedContent">
         <div>
-          <h3>Description:</h3>
-          <p>{{ product.description }}</p>
+          <h3>
+            Description: <span>{{ product.description }}</span>
+          </h3>
         </div>
         <h3 *ngIf="product.category">
           Category: <span>{{ product.category.name }}</span>

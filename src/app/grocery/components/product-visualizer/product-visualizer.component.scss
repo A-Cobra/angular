@@ -25,6 +25,7 @@ h3 {
     justify-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 500px;
     input,
     button{
       flex: 1 1 50px;
@@ -45,5 +46,9 @@ h3 {
         box-shadow: 3px 6px 6px $main-color-shadow;
       }
     }
+  }
+  .shortened-content{
+    display: grid;
+    gap: 10px;
   }
 }
