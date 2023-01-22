@@ -17,19 +17,7 @@ import { Component, OnInit } from '@angular/core';
             [routerLink]="['/grocery-store/home/cart']"
             >Cart</a
           >
-          <a
-            routerLinkActive="active"
-            [routerLink]="[
-              '/fast-food',
-              {
-                outlets: {
-                  'menu-selection': ['desserts'],
-                  'menu-details': ['selection']
-                }
-              }
-            ]"
-            >Log Out</a
-          >
+          <a>Log Out</a>
         </li>
       </ul>
     </nav>

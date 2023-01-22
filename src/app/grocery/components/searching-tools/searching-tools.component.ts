@@ -15,22 +15,31 @@ import { debounce } from 'src/app/utils/debounce';
   selector: 'app-searching-tools',
   styleUrls: ['./searching-tools.component.scss'],
   template: `
-    <div>
-      <select
-        #category
-        (change)="onSearchToolsUsage()"
-        name="category-selector"
-        id="category-selector">
-        <option value="">All</option>
-        <option *ngFor="let category of categories" [value]="category.slug">
-          {{ category.name }}
-        </option>
-      </select>
-      <input
-        #productNameInput
-        (input)="debounceInput()"
-        type="text"
-        placeholder="search by name" />
+    <div class="grid-wrap">
+      <div class="form-control flex-container">
+        <label class="description" for="category-selector"
+          >Search by Category</label
+        >
+        <select
+          #category
+          (change)="onSearchToolsUsage()"
+          name="category-selector"
+          id="category-selector">
+          <option value="">All</option>
+          <option *ngFor="let category of categories" [value]="category.slug">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-control flex-container">
+        <label class="description" for="searchInput">Search by Name</label>
+        <input
+          #productNameInput
+          (input)="debounceInput()"
+          type="text"
+          id="searchInput"
+          placeholder="search by name" />
+      </div>
     </div>
   `,
 })
