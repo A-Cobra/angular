@@ -16,11 +16,17 @@ import { Product } from 'src/app/models/product.interface';
       <div *ngIf="!shortenedContent">
         <div>
           <h3>Description:</h3>
-          <p>product.description</p>
+          <p>{{ product.description }}</p>
         </div>
+        <h3 *ngIf="product.category">
+          Category: <span>{{ product.category.name }}</span>
+        </h3>
       </div>
       <h3 *ngIf="product.master">
-        Price: <span>{{ product.master.price | number : '1.2-2' }}</span>
+        Price:
+        <span>{{
+          product.master.price | currency : 'USD' : 'symbol' : '1.2-2'
+        }}</span>
       </h3>
       <div class="like-dislike-display">
         <div class="likes">

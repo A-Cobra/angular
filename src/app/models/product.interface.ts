@@ -1,4 +1,5 @@
 import { MasterData } from './master-data.interface';
+import { ProductCategory } from './product-category.interface';
 import { ProductImage } from './product-image.type';
 
 export interface Product {
@@ -13,4 +14,5 @@ export interface Product {
   published_at: string;
   master?: MasterData;
   image?: ProductImage;
+  category?: ProductCategory;
 }

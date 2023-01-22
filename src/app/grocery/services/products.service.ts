@@ -10,7 +10,7 @@ import { SingleProductResponse } from 'src/app/models/single-product-response.ty
   providedIn: 'root',
 })
 export class ProductsService {
-  queryParams: string = '?include=master,image_attachment.blob';
+  queryParams: string = '?include=master,image_attachment.blob,category';
 
   constructor(private http: HttpClient) {}
 
