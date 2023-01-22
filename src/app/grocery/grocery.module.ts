@@ -8,6 +8,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { ProductVisualizerComponent } from './components/product-visualizer/product-visualizer.component';
 import { AllProductsComponent } from './containers/all-products/all-products.component';
+import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AllProductsComponent } from './containers/all-products/all-products.com
     NavigationBarComponent,
     ProductVisualizerComponent,
     AllProductsComponent,
+    ProductDetailsComponent,
   ],
   imports: [CommonModule, GroceryRoutingModule, ReactiveFormsModule],
   providers: [],

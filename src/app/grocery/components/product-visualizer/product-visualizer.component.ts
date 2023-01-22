@@ -8,12 +8,19 @@ import { Product } from 'src/app/models/product.interface';
     <div *ngIf="product">
       <div *ngIf="product.image" class="img-container">
         <img [src]="product.image.url" alt="" />
+        <!-- <img [src]="imgUrl(product.image.url)" alt="" /> -->
       </div>
       <h3>
         Name: <span>{{ product.name }}</span>
       </h3>
+      <div *ngIf="!shortenedContent">
+        <div>
+          <h3>Description:</h3>
+          <p>product.description</p>
+        </div>
+      </div>
       <h3 *ngIf="product.master">
-        Price: <span>{{ product.master.price }}</span>
+        Price: <span>{{ product.master.price | number : '1.2-2' }}</span>
       </h3>
       <div class="like-dislike-display">
         <div class="likes">
@@ -25,18 +32,12 @@ import { Product } from 'src/app/models/product.interface';
           <span>{{ product.likes_down_count }}</span>
         </div>
       </div>
-      <div *ngIf="!shortenedContent && product.master">
-        <div>
-          <h3>Description:</h3>
-          <p>product.description</p>
-        </div>
-        <h3>
-          Stock: <span>{{ product.master.stock }}</span>
-        </h3>
-        <div class="buying-tools">
-          <input type="number" placeholder="Number of Items" />
-          <button>Add to cart</button>
-        </div>
+      <h3 *ngIf="product.master">
+        Stock: <span>{{ product.master.stock }}</span>
+      </h3>
+      <div class="buying-tools">
+        <input type="number" placeholder="Number of Items" />
+        <button>Add to cart</button>
       </div>
     </div>
   `,
@@ -46,5 +47,10 @@ export class ProductVisualizerComponent {
   product!: Product;
   @Input()
   shortenedContent: boolean = true;
+
   constructor() {}
+
+  imgUrl(blobUrl: Blob): string {
+    return URL.createObjectURL(blobUrl);
+  }
 }
