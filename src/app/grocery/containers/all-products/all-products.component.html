@@ -1,6 +1,8 @@
 <p>all-products works!</p>
 <!-- <app-searching-tools></app-searching-tools> -->
-<app-searching-tools [categories]="categories"></app-searching-tools>
+<app-searching-tools
+  [categories]="categories"
+  (searchingToolsUsage)="onSearchingToolsUsage($event)"></app-searching-tools>
 <div *ngFor="let product of products">
   <app-product-visualizer [product]="product"></app-product-visualizer>
 </div>

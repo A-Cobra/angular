@@ -25,9 +25,4 @@ export class CategoriesService {
         })
       );
   }
-  // getCategories(): void {
-  //   this.http.get<ProductCategory[]>(
-  //     `${environment.applaudoApiBaseUrl}/${this.categoriesPath}${this.queryParams}`
-  //   );
-  // }
 }

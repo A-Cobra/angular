@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductCategory } from 'src/app/models/product-category.interface';
 import { Product } from 'src/app/models/product.interface';
+import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
 import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
 
@@ -32,5 +33,18 @@ export class AllProductsComponent implements OnInit {
       },
     });
     console.log('Products COMPONENT');
+  }
+
+  onSearchingToolsUsage(searchToolsEvent: SearchToolsEvent) {
+    console.log('searchToolsEvent');
+    console.log(searchToolsEvent);
+    this.productsService
+      .getProductsWithSearchingTools(searchToolsEvent)
+      .subscribe({
+        next: (productsArray: Product[]) => {
+          console.log(productsArray);
+          this.products = productsArray;
+        },
+      });
   }
 }
