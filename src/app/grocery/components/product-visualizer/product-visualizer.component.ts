@@ -1,4 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { CartPayloadForCreationOrUpdate } from 'src/app/models/cart/cart-payload-for-creation-or-update.typ';
 import { Product } from 'src/app/models/product/product.interface';
 
 @Component({
@@ -57,6 +66,9 @@ export class ProductVisualizerComponent {
   product!: Product;
   @Input()
   shortenedContent: boolean = true;
+  @Output()
+  cartAddition: EventEmitter<CartPayloadForCreationOrUpdate> =
+    new EventEmitter<CartPayloadForCreationOrUpdate>();
   @ViewChild('quantity') quantity!: ElementRef;
 
   constructor() {}
@@ -76,6 +88,16 @@ export class ProductVisualizerComponent {
     } else {
       if (this.quantity.nativeElement.value && this.product?.master) {
         if (this.quantity.nativeElement.value <= this.product.master.stock) {
+          this.cartAddition.emit({
+            data: {
+              items: [
+                {
+                  product_variant_id: this.product.id,
+                  quantity: parseInt(this.quantity.nativeElement.value),
+                },
+              ],
+            },
+          });
           console.log('Adding to cart');
         } else {
           console.log('Please add a quantity smaller or equal to the stock');

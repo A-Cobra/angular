@@ -28,15 +28,5 @@ export class LoginService {
           return of(false);
         })
       );
-    // .subscribe({
-    //   next: data => {
-    //     console.log('data from next');
-    //     console.log(data);
-    //   },
-    //   // error: (error: Response) => {
-    //   //   console.log('error from error');
-    //   //   console.log(error);
-    //   // },
-    // });
   }
 }

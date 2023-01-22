@@ -4,5 +4,7 @@
   [categories]="categories"
   (searchingToolsUsage)="onSearchingToolsUsage($event)"></app-searching-tools>
 <div *ngFor="let product of products">
-  <app-product-visualizer [product]="product"></app-product-visualizer>
+  <app-product-visualizer
+    [product]="product"
+    (cartAddition)="onCartAddition($event)"></app-product-visualizer>
 </div>

@@ -1,6 +1,6 @@
 export type LoginSuccessfulResponse = {
   data: {
-    toke: string;
+    token: string;
     user: {
       id: number;
       email: string;

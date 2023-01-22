@@ -14,11 +14,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ok on cart');
-    // this.cartService.getCartData().subscribe({
-    //   next: (cartData: CartData) => {
-    //     this.cartData = cartData;
-    //     console.log(this.cartData);
-    //   },
-    // });
+    this.cartService.getCartData().subscribe({
+      next: (cartData: CartData) => {
+        this.cartData = cartData;
+        console.log(this.cartData);
+      },
+      error: (error: Response) => {
+        console.log('ERROR');
+        console.log(error);
+      },
+    });
   }
 }
