@@ -11,6 +11,7 @@ import { AllProductsComponent } from './containers/all-products/all-products.com
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 import { SearchingToolsComponent } from './components/searching-tools/searching-tools.component';
 import { CartComponent } from './containers/cart/cart.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CartComponent } from './containers/cart/cart.component';
     ProductDetailsComponent,
     SearchingToolsComponent,
     CartComponent,
+    CartItemComponent,
   ],
   imports: [CommonModule, GroceryRoutingModule, ReactiveFormsModule],
   providers: [],

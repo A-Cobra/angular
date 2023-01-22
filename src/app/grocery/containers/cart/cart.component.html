@@ -1,1 +1,9 @@
 <p>cart works!</p>
+<div *ngIf="cartData">
+  <h3>
+    Total Price: <span>{{ cartData.total }}</span>
+  </h3>
+  <div *ngFor="let cartItem of cartData.items">
+    <app-cart-item [cartItem]="cartItem"></app-cart-item>
+  </div>
+</div>
