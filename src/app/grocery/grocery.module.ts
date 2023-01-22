@@ -10,6 +10,7 @@ import { ProductVisualizerComponent } from './components/product-visualizer/prod
 import { AllProductsComponent } from './containers/all-products/all-products.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 import { SearchingToolsComponent } from './components/searching-tools/searching-tools.component';
+import { CartComponent } from './containers/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SearchingToolsComponent } from './components/searching-tools/searching-
     AllProductsComponent,
     ProductDetailsComponent,
     SearchingToolsComponent,
+    CartComponent,
   ],
   imports: [CommonModule, GroceryRoutingModule, ReactiveFormsModule],
   providers: [],

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { catchError, Subject, takeUntil, throwError } from 'rxjs';
-import { Product } from 'src/app/models/product.interface';
+import { Product } from 'src/app/models/product/product.interface';
 import { ProductsService } from '../../services/products.service';
 
 @Component({

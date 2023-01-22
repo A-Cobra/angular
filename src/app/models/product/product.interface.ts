@@ -1,4 +1,4 @@
-import { MasterData } from './master-data.interface';
+import { MasterData } from '../master-data.interface';
 import { ProductCategory } from './product-category.interface';
 import { ProductImage } from './product-image.type';
 

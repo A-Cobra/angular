@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductCategory } from 'src/app/models/product-category.interface';
-import { Product } from 'src/app/models/product.interface';
+import { ProductCategory } from 'src/app/models/product/product-category.interface';
+import { Product } from 'src/app/models/product/product.interface';
 import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
 import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';

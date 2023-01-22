@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ProductCategory } from 'src/app/models/product-category.interface';
+import { ProductCategory } from 'src/app/models/product/product-category.interface';
 import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
 import { debounce } from 'src/app/utils/debounce';
 

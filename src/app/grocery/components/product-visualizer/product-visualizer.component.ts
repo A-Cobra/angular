@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/app/models/product.interface';
+import { Product } from 'src/app/models/product/product.interface';
 
 @Component({
   selector: 'app-product-visualizer',

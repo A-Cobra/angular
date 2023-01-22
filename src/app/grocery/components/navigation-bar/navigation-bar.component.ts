@@ -14,15 +14,7 @@ import { Component, OnInit } from '@angular/core';
           >
           <a
             routerLinkActive="active"
-            [routerLink]="[
-              '/fast-food',
-              {
-                outlets: {
-                  'menu-selection': ['pizza-combos'],
-                  'menu-details': ['selection']
-                }
-              }
-            ]"
+            [routerLink]="['/grocery-store/home/cart']"
             >Cart</a
           >
           <a

@@ -1,4 +1,4 @@
-import { MetaData } from './meta-data.interface';
+import { MetaData } from '../meta-data.interface';
 import { Product } from './product.interface';
 
 export type SingleProductResponse = {

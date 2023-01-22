@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap } from 'rxjs';
-import { ProductsResponse } from 'src/app/models/products-response.interface';
-import { Product } from 'src/app/models/product.interface';
+import { ProductsResponse } from 'src/app/models/product/products-response.interface';
+import { Product } from 'src/app/models/product/product.interface';
 import { environment } from 'src/environments/environment';
-import { SingleProductResponse } from 'src/app/models/single-product-response.type';
+import { SingleProductResponse } from 'src/app/models/product/single-product-response.type';
 import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
 
 @Injectable({

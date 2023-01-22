@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
-import { CategoriesResponse } from 'src/app/models/categories-response.type';
-import { ProductCategory } from 'src/app/models/product-category.interface';
+import { CategoriesResponse } from 'src/app/models/product/categories-response.type';
+import { ProductCategory } from 'src/app/models/product/product-category.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
