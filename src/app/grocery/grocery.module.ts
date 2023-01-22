@@ -9,6 +9,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { ProductVisualizerComponent } from './components/product-visualizer/product-visualizer.component';
 import { AllProductsComponent } from './containers/all-products/all-products.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
+import { SearchingToolsComponent } from './components/searching-tools/searching-tools.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductDetailsComponent } from './containers/product-details/product-de
     ProductVisualizerComponent,
     AllProductsComponent,
     ProductDetailsComponent,
+    SearchingToolsComponent,
   ],
   imports: [CommonModule, GroceryRoutingModule, ReactiveFormsModule],
   providers: [],

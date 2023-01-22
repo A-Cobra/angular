@@ -23,7 +23,7 @@ import { Component, OnInit } from '@angular/core';
                 }
               }
             ]"
-            >Categories</a
+            >Cart</a
           >
           <a
             routerLinkActive="active"
