@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
     <nav>
       <ul>
         <li>
-          <a routerLinkActive="active" [routerLink]="['/grocery-store/home']"
+          <a
+            routerLinkActive="active"
+            [routerLink]="['/grocery-store/home/all-products']"
             >All products</a
           >
           <a
