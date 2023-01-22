@@ -14,7 +14,7 @@ import { Product } from 'src/app/models/product/product.interface';
   selector: 'app-product-visualizer',
   styleUrls: ['./product-visualizer.component.scss'],
   template: `
-    <div *ngIf="product">
+    <div class="grid-wrapper" *ngIf="product">
       <div *ngIf="product.image" class="img-container">
         <img [src]="product.image.url" alt="" />
         <!-- <img [src]="imgUrl(product.image.url)" alt="" /> -->
@@ -47,11 +47,17 @@ import { Product } from 'src/app/models/product/product.interface';
           <span>{{ product.likes_down_count }}</span>
         </div>
       </div>
-      <h3 *ngIf="product.master">
+      <h3
+        [ngClass]="{
+          'empty-stock': product.master.stock === 0,
+          'negative-stock': negativeStock
+        }"
+        *ngIf="product.master">
         Stock: <span>{{ product.master.stock }}</span>
       </h3>
       <div class="buying-tools">
         <input
+          (change)="updateStockClass()"
           #quantity
           type="number"
           placeholder="Number of Items"
@@ -70,6 +76,7 @@ export class ProductVisualizerComponent {
   cartAddition: EventEmitter<CartPayloadForCreation> =
     new EventEmitter<CartPayloadForCreation>();
   @ViewChild('quantity') quantity!: ElementRef;
+  negativeStock: boolean = false;
 
   constructor() {}
 
@@ -105,6 +112,13 @@ export class ProductVisualizerComponent {
       } else {
         console.log('Please ADD A QUANTITY');
       }
+    }
+  }
+
+  updateStockClass() {
+    if (this.product?.master) {
+      this.negativeStock =
+        this.product.master.stock < this.quantity.nativeElement.value;
     }
   }
 }
