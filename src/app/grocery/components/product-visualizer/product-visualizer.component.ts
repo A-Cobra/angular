@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/models/product.interface';
 
 @Component({
@@ -42,8 +42,12 @@ import { Product } from 'src/app/models/product.interface';
         Stock: <span>{{ product.master.stock }}</span>
       </h3>
       <div class="buying-tools">
-        <input type="number" placeholder="Number of Items" />
-        <button>Add to cart</button>
+        <input
+          #quantity
+          type="number"
+          placeholder="Number of Items"
+          value="1" />
+        <button (click)="onCartAddition()">Add to cart</button>
       </div>
     </div>
   `,
@@ -53,10 +57,32 @@ export class ProductVisualizerComponent {
   product!: Product;
   @Input()
   shortenedContent: boolean = true;
+  @ViewChild('quantity') quantity!: ElementRef;
 
   constructor() {}
 
   imgUrl(blobUrl: Blob): string {
     return URL.createObjectURL(blobUrl);
+  }
+
+  onCartAddition() {
+    // WE NEED A SERVICE TO INFORM THE USER
+    console.log('this.quantity.nativeElement.value');
+    console.log(this.quantity.nativeElement.value);
+    console.log('this.product.master?.stock');
+    console.log(this.product.master?.stock);
+    if (this.quantity.nativeElement.value <= 0) {
+      console.log('You can not add 0 or less elements of a certain product');
+    } else {
+      if (this.quantity.nativeElement.value && this.product?.master) {
+        if (this.quantity.nativeElement.value <= this.product.master.stock) {
+          console.log('Adding to cart');
+        } else {
+          console.log('Please add a quantity smaller or equal to the stock');
+        }
+      } else {
+        console.log('Please ADD A QUANTITY');
+      }
+    }
   }
 }
