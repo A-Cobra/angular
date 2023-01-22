@@ -4,6 +4,9 @@
     Total Price: <span>{{ cartData.total }}</span>
   </h3>
   <div *ngFor="let cartItem of cartData.items">
-    <app-cart-item [cartItem]="cartItem"></app-cart-item>
+    <app-cart-item
+      [cartItem]="cartItem"
+      (cartItemRemoval)="onCartItemRemoval($event)"
+      (cartItemUpdate)="onCartItemUpdate($event)"></app-cart-item>
   </div>
 </div>

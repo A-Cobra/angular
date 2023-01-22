@@ -5,13 +5,15 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap } from 'rxjs';
-import { CartAdditionOrUpdateResponse } from 'src/app/models/cart/cart-addition-response.type';
+import { CartResponse } from 'src/app/models/cart/cart-response.type';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
 import { CartFailureResponse } from 'src/app/models/cart/cart-failure-response.type';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartItemsResponse } from 'src/app/models/cart/cart-items-response.type';
-import { CartPayloadForCreationOrUpdate } from 'src/app/models/cart/cart-payload-for-creation-or-update.typ';
+import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { environment } from 'src/environments/environment';
+import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
+import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
 
 @Injectable({
   providedIn: 'root',
@@ -55,11 +57,9 @@ export class CartService {
       );
   }
 
-  addItemToCart(
-    payload: CartPayloadForCreationOrUpdate
-  ): Observable<CartItem[]> {
+  addItemToCart(payload: CartPayloadForCreation): Observable<CartItem[]> {
     return this.http
-      .post<CartAdditionOrUpdateResponse>(
+      .post<CartResponse>(
         `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
         payload,
         { headers: this.headers }
@@ -70,11 +70,47 @@ export class CartService {
           console.log(error);
           throw Error(error.error.errors[0].code);
         }),
-        switchMap(
-          (cartAdditionOrUpdateResponse: CartAdditionOrUpdateResponse) => {
-            return of(cartAdditionOrUpdateResponse.data.items);
-          }
-        )
+        switchMap((cartAdditionOrUpdateResponse: CartResponse) => {
+          return of(cartAdditionOrUpdateResponse.data.items);
+        })
+      );
+  }
+
+  removeItemFromCart(payload: CartPayloadForRemoval): Observable<CartData> {
+    return this.http
+      .put<CartItemsResponse>(
+        `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
+        payload,
+        { headers: this.headers }
+      )
+      .pipe(
+        catchError((error: CartFailureResponse) => {
+          console.log('error in service');
+          console.log(error);
+          throw Error(error.error.errors[0].code);
+        }),
+        switchMap((cartItemsResponse: CartItemsResponse) => {
+          return of(cartItemsResponse.data);
+        })
+      );
+  }
+
+  updateItemQuantity(payload: CartPayloadForUpdate): Observable<CartData> {
+    return this.http
+      .put<CartItemsResponse>(
+        `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
+        payload,
+        { headers: this.headers }
+      )
+      .pipe(
+        catchError((error: CartFailureResponse) => {
+          console.log('error in service');
+          console.log(error);
+          throw Error(error.error.errors[0].code);
+        }),
+        switchMap((cartItemsResponse: CartItemsResponse) => {
+          return of(cartItemsResponse.data);
+        })
       );
   }
 }

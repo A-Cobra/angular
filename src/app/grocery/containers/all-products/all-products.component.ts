@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
-import { CartPayloadForCreationOrUpdate } from 'src/app/models/cart/cart-payload-for-creation-or-update.typ';
+import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { ProductCategory } from 'src/app/models/product/product-category.interface';
 import { Product } from 'src/app/models/product/product.interface';
 import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
@@ -53,7 +53,7 @@ export class AllProductsComponent implements OnInit {
       });
   }
 
-  onCartAddition(cartAdditionEvent: CartPayloadForCreationOrUpdate) {
+  onCartAddition(cartAdditionEvent: CartPayloadForCreation) {
     console.log('Adding an item to the cart');
     console.log('cartAdditionEvent');
     console.log(cartAdditionEvent);

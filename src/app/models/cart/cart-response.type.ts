@@ -1,6 +1,6 @@
 import { CartItem } from './cart-item.interface';
 
-export type CartAdditionOrUpdateResponse = {
+export type CartResponse = {
   data: Data;
 };
 

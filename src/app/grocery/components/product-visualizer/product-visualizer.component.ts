@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { CartPayloadForCreationOrUpdate } from 'src/app/models/cart/cart-payload-for-creation-or-update.typ';
+import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
 
 @Component({
@@ -67,8 +67,8 @@ export class ProductVisualizerComponent {
   @Input()
   shortenedContent: boolean = true;
   @Output()
-  cartAddition: EventEmitter<CartPayloadForCreationOrUpdate> =
-    new EventEmitter<CartPayloadForCreationOrUpdate>();
+  cartAddition: EventEmitter<CartPayloadForCreation> =
+    new EventEmitter<CartPayloadForCreation>();
   @ViewChild('quantity') quantity!: ElementRef;
 
   constructor() {}

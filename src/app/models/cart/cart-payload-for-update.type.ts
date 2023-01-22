@@ -1,4 +1,4 @@
-export type CartPayloadForCreationOrUpdate = {
+export type CartPayloadForUpdate = {
   data: Data;
 };
 
@@ -7,6 +7,6 @@ interface Data {
 }
 
 interface Item {
-  product_variant_id: number;
+  id: number;
   quantity: number;
 }
