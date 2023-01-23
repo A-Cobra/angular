@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { NotificationsService } from '../../services/notifications.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent {
 
   constructor(
     private loginService: LoginService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private router: Router
   ) {}
 
   onFormSubmit(): void {
@@ -39,9 +41,12 @@ export class LoginComponent {
         .checkLogin(this.loginForm.value as LoginToken)
         .subscribe({
           next: loginSuccess => {
-            loginSuccess
-              ? this.notificationsService.notifyLoginSuccess()
-              : this.notificationsService.notifyLoginFailure();
+            if (loginSuccess) {
+              this.notificationsService.notifyLoginSuccess();
+              this.router.navigate(['grocery-store', 'home', 'all-products']);
+            } else {
+              this.notificationsService.notifyLoginFailure();
+            }
           },
         });
     } else {

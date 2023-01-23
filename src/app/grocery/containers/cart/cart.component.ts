@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
-import { CartItem } from 'src/app/models/cart/cart-item.interface';
-import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
 import { CartService } from '../../services/cart.service';
@@ -17,7 +16,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
       },
       error: (error: Response) => {
         this.notificationsService.notifyQueryError();
+        this.router.navigate(['grocery-store', 'home', 'all-products']);
       },
     });
   }

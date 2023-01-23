@@ -17,6 +17,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { StoreModule } from '@ngrx/store';
 
 import { reducers } from './store';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,6 @@ import { reducers } from './store';
     ReactiveFormsModule,
     StoreModule.forFeature('state-store', reducers),
   ],
-  providers: [],
+  providers: [AuthGuard],
 })
 export class GroceryModule {}

@@ -7,7 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
-import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
 import { NotificationsService } from '../../services/notifications.service';

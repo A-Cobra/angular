@@ -5,12 +5,14 @@ import { CartComponent } from './containers/cart/cart.component';
 import { HomeComponent } from './containers/home/home.component';
 import { LoginComponent } from './containers/login/login.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'home',
     component: HomeComponent,
+    // canActivate: [AuthGuard],
     children: [
       { path: 'all-products', component: AllProductsComponent },
       { path: 'all-products/:productSlug', component: ProductDetailsComponent },

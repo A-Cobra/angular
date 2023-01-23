@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { catchError, Subject, takeUntil, throwError } from 'rxjs';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
@@ -22,7 +22,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private productsService: ProductsService,
     private cartService: CartService,
     private notificationsService: NotificationsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
           },
           error: (error: Response) => {
             this.notificationsService.notifyQueryError();
-            // redirect to home page
+            this.router.navigate(['grocery-store', 'home', 'all-products']);
           },
         });
       });
