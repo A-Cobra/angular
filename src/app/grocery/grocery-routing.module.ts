@@ -6,13 +6,18 @@ import { HomeComponent } from './containers/home/home.component';
 import { LoginComponent } from './containers/login/login.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 import { AuthGuard } from './guards/auth.guard';
+import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  {
+    path: '',
+    component: LoginComponent,
+    canActivate: [NotLoggedInGuard],
+  },
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: 'all-products', component: AllProductsComponent },
       { path: 'all-products/:productSlug', component: ProductDetailsComponent },

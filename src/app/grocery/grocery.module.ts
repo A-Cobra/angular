@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { reducers } from './store';
 import { AuthGuard } from './guards/auth.guard';
+import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,6 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule,
     StoreModule.forFeature('state-store', reducers),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, NotLoggedInGuard],
 })
 export class GroceryModule {}

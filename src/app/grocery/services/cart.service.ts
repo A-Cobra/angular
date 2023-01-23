@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap } from 'rxjs';
 import { CartResponse } from 'src/app/models/cart/cart-response.type';
@@ -21,19 +17,13 @@ import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-updat
 export class CartService {
   queryParams: string = '?include=image_attachment.blob';
   cartPath: string = 'cart';
-  headers: HttpHeaders = new HttpHeaders({
-    Authorization: `Bearer ${environment.bearerToken}`,
-  });
 
   constructor(private http: HttpClient) {}
 
   getCartData(): Observable<CartData> {
     return this.http
       .get<CartItemsResponse>(
-        `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
-        {
-          headers: this.headers,
-        }
+        `${environment.applaudoApiBaseUrl}/${this.cartPath}`
       )
       .pipe(
         switchMap((cartItemsResponse: CartItemsResponse) => {
@@ -45,10 +35,7 @@ export class CartService {
   getCartItems(): Observable<CartItem[]> {
     return this.http
       .get<CartItemsResponse>(
-        `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
-        {
-          headers: this.headers,
-        }
+        `${environment.applaudoApiBaseUrl}/${this.cartPath}`
       )
       .pipe(
         switchMap((cartItemsResponse: CartItemsResponse) => {
@@ -61,8 +48,7 @@ export class CartService {
     return this.http
       .post<CartResponse>(
         `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
-        payload,
-        { headers: this.headers }
+        payload
       )
       .pipe(
         catchError((error: CartFailureResponse) => {
@@ -80,8 +66,7 @@ export class CartService {
     return this.http
       .put<CartItemsResponse>(
         `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
-        payload,
-        { headers: this.headers }
+        payload
       )
       .pipe(
         catchError((error: CartFailureResponse) => {
@@ -99,8 +84,7 @@ export class CartService {
     return this.http
       .put<CartItemsResponse>(
         `${environment.applaudoApiBaseUrl}/${this.cartPath}`,
-        payload,
-        { headers: this.headers }
+        payload
       )
       .pipe(
         catchError((error: CartFailureResponse) => {

@@ -5,6 +5,7 @@ import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
 import { CartService } from '../../services/cart.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
 
@@ -23,7 +24,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private notificationsService: NotificationsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private localStorage: LocalStorageService
   ) {}
 
   ngOnInit(): void {
