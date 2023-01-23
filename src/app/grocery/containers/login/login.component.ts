@@ -15,12 +15,6 @@ import { NotificationsService } from '../../services/notifications.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginToken: LoginToken = {
-    data: {
-      email: 'trainee2@example.com',
-      password: 'Trainee$2',
-    },
-  };
   loginForm = new FormGroup({
     data: new FormGroup({
       email: new FormControl('', {
@@ -40,22 +34,18 @@ export class LoginComponent {
   ) {}
 
   onFormSubmit(): void {
-    console.log('Submitting form');
     if (this.loginForm.valid) {
-      console.log('Valid Form');
-      console.log(this.loginForm.value);
       this.loginService
         .checkLogin(this.loginForm.value as LoginToken)
         .subscribe({
           next: loginSuccess => {
-            console.log(loginSuccess ? 'Logged In' : 'Log in failure');
             loginSuccess
               ? this.notificationsService.notifyLoginSuccess()
               : this.notificationsService.notifyLoginFailure();
           },
         });
     } else {
-      alert('Please enter a valid email and password');
+      this, this.notificationsService.notifyWrongFormData();
     }
   }
 

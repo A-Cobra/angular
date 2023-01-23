@@ -5,6 +5,7 @@ import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-cre
 import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
 import { CartService } from '../../services/cart.service';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,19 +15,19 @@ import { CartService } from '../../services/cart.service';
 export class CartComponent implements OnInit {
   cartData!: CartData;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private notificationsService: NotificationsService
+  ) {}
 
   ngOnInit(): void {
     console.log('ok on cart');
     this.cartService.getCartData().subscribe({
       next: (cartData: CartData) => {
         this.cartData = cartData;
-        console.log(this.cartData);
-        console.log('ITEM REMOVED SUCCESSFULLY');
       },
       error: (error: Response) => {
-        console.log('ERROR');
-        console.log(error);
+        this.notificationsService.notifyQueryError();
       },
     });
   }
@@ -35,11 +36,10 @@ export class CartComponent implements OnInit {
     this.cartService.removeItemFromCart(removalPayload).subscribe({
       next: (cartData: CartData) => {
         this.cartData = cartData;
-        console.log(this.cartData);
+        this.notificationsService.notifyItemRemovedSuccessfully();
       },
       error: (error: Response) => {
-        console.log('ERROR');
-        console.log(error);
+        this.notificationsService.notifyQueryError();
       },
     });
   }

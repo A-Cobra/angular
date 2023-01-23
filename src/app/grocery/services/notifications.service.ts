@@ -6,25 +6,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NotificationsService {
   private possibleNotifications: string[] = [
+    'Login Success',
+    'Login Failure',
+    'Please enter a valid email and password',
+    'Something went wrong with the petition, please try it again or refresh the window',
     'Item added to the cart correctly',
     'Item already in the cart, if you want to update the quantity, please go there',
     'Not enough stock for the selected item and quantity, please reduce the quantity or add another item to the cart',
-    'Something went wrong with the petition, please try it again or refresh the window',
-    'Login Success',
-    'Login Failure',
+    'Item Removed Successfully',
   ];
 
   constructor(private matSnackBar: MatSnackBar) {}
 
-  notifySuccessfulCartAddition() {
+  notifyLoginSuccess() {
     this.useSnackBar(0, true);
   }
 
-  notifyItemAlreadyInCart() {
+  notifyLoginFailure() {
     this.useSnackBar(1, false);
   }
 
-  notifyNotEnoughStock() {
+  notifyWrongFormData() {
     this.useSnackBar(2, false);
   }
 
@@ -32,12 +34,20 @@ export class NotificationsService {
     this.useSnackBar(3, false);
   }
 
-  notifyLoginSuccess() {
+  notifySuccessfulCartAddition() {
     this.useSnackBar(4, true);
   }
 
-  notifyLoginFailure() {
+  notifyItemAlreadyInCart() {
     this.useSnackBar(5, false);
+  }
+
+  notifyNotEnoughStock() {
+    this.useSnackBar(6, false);
+  }
+
+  notifyItemRemovedSuccessfully() {
+    this.useSnackBar(7, true);
   }
 
   private useSnackBar(
