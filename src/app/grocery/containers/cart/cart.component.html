@@ -1,11 +1,12 @@
-<div class="main">
+<div class="main" *ngIf="cartData">
   <h1>Cart</h1>
   <h2 *ngIf="cartData.items.length === 0">
     There are no items in the cart, please navigate our products and add some
   </h2>
   <div class="cart-data" *ngIf="cartData">
     <h3>
-      Total Price: <span>{{ cartData.total }}</span>
+      Total Price:
+      <span>{{ cartData.total | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
     </h3>
     <div class="cart-item-card" *ngFor="let cartItem of cartData.items">
       <app-cart-item

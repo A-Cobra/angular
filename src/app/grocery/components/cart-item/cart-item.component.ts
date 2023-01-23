@@ -29,7 +29,10 @@ import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-updat
         Quantity: <span>{{ cartItem.quantity }}</span>
       </h3>
       <h3>
-        Partial price: <span>{{ cartItem.total }}</span>
+        Partial price:
+        <span>{{
+          cartItem.total | currency : 'USD' : 'symbol' : '1.2-2'
+        }}</span>
       </h3>
       <div>
         <i class="fa-solid fa-trash" (click)="onDelete(cartItem.id)"></i>

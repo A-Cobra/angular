@@ -5,6 +5,7 @@ import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
 import { CartService } from '../../services/cart.service';
+import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -19,11 +20,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private productsService: ProductsService,
-    private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private notificationsService: NotificationsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.notificationsService.notifySuccessfulCartAddition();
     // this.productsService.getProduct('justins');
     console.log('Product Details');
     this.route.params
@@ -57,6 +60,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         console.log('Item Added correctly');
         console.log('cartItems');
         console.log(cartItems);
+        this.notificationsService.notifySuccessfulCartAddition();
       },
       error: (errorCode: Error) => {
         // console.log('Error in all products');

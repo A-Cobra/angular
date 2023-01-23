@@ -13,6 +13,8 @@ import { SearchingToolsComponent } from './components/searching-tools/searching-
 import { CartComponent } from './containers/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 
+//AngularMaterial
+
 @NgModule({
   declarations: [
     LoginComponent,

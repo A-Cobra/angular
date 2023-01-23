@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./colors";
+
 *{
   padding: 0;
   margin: 0;
@@ -10,4 +12,16 @@ a{
 }
 li{
   list-style: none;
+}
+html, body { height: 100%; }
+
+//Angular Material
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.blue-snackbar {
+  background: $navy-blue;
+  color: white;
+}
+.red-snackbar {
+  background: #F44336;
+  color: white;
 }
