@@ -61,16 +61,18 @@ export class CartItemComponent {
   onDelete(cartItemId: number) {
     console.log('Deleting item');
     console.log(cartItemId);
-    this.cartItemRemoval.emit({
-      data: {
-        items: [
-          {
-            id: cartItemId,
-            _destroy: true,
-          },
-        ],
-      },
-    });
+    if (confirm('Are you sure you want to delete the product?')) {
+      this.cartItemRemoval.emit({
+        data: {
+          items: [
+            {
+              id: cartItemId,
+              _destroy: true,
+            },
+          ],
+        },
+      });
+    }
   }
 
   onQuantityUpdate() {
