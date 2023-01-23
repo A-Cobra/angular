@@ -26,9 +26,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.notificationsService.notifySuccessfulCartAddition();
-    // this.productsService.getProduct('justins');
-    console.log('Product Details');
     this.route.params
       .pipe(takeUntil(this.endAllSubscriptions$))
       .subscribe((urlData: Params) => {
@@ -38,8 +35,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
             this.currentProduct = product;
           },
           error: (error: Response) => {
-            console.log('Error');
-            console.log(error);
+            this.notificationsService.notifyQueryError();
             // redirect to home page
           },
         });
@@ -52,38 +48,18 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   onCartAddition(cartAdditionEvent: CartPayloadForCreation) {
-    console.log('Adding an item to the cart');
-    console.log('cartAdditionEvent');
-    console.log(cartAdditionEvent);
     this.cartService.addItemToCart(cartAdditionEvent).subscribe({
-      next: (cartItems: CartItem[]) => {
-        console.log('Item Added correctly');
-        console.log('cartItems');
-        console.log(cartItems);
+      next: () => {
         this.notificationsService.notifySuccessfulCartAddition();
       },
       error: (errorCode: Error) => {
-        // console.log('Error in all products');
-        // console.log('errorCode');
-        // console.log(errorCode);
-        // console.log('errorCode.name');
-        // console.log(errorCode.name);
-        // console.log('errorCode.message');
-        // console.log(errorCode.message);
-        // console.log('errorCode.stack');
-        // console.log(errorCode.stack);
-
         if (
           errorCode.message ===
           '4974656d2070726f647563745f76617269616e745f6964206973206e6f7420756e6971756520706572206f72646572'
         ) {
-          console.log(
-            'Item already in the cart, if you want to update the quantity, go there'
-          );
+          this.notificationsService.notifyItemAlreadyInCart();
         } else if (errorCode.message === '4e6f7420656e6f7567682073746f636b') {
-          console.log(
-            'Not enough stock for the selected item and quantity, please try it again'
-          );
+          this.notificationsService.notifyNotEnoughStock();
         }
       },
     });

@@ -7,26 +7,43 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NotificationsService {
   private possibleNotifications: string[] = [
     'Item added to the cart correctly',
-    'Item already in the cart, if you want to update the quantity, go there',
-    'Not enough stock for the selected item and quantity, please try it again',
+    'Item already in the cart, if you want to update the quantity, please go there',
+    'Not enough stock for the selected item and quantity, please reduce the quantity or add another item to the cart',
+    'Something went wrong with the petition, please try it again or refresh the window',
+    'Login Success',
+    'Login Failure',
   ];
 
   constructor(private matSnackBar: MatSnackBar) {}
 
-  anyFunc() {
-    console.log('ANYFUNC');
+  notifySuccessfulCartAddition() {
+    this.useSnackBar(0, true);
   }
 
-  notifySuccessfulCartAddition() {
-    console.log('NOTIFYING SUCCESSFUL CREATION');
-    // this.matSnackBar.open('Cart successful addition', '', { duration: 1500 });
-    this.useSnackBar(2, 1500, true);
+  notifyItemAlreadyInCart() {
+    this.useSnackBar(1, false);
+  }
+
+  notifyNotEnoughStock() {
+    this.useSnackBar(2, false);
+  }
+
+  notifyQueryError() {
+    this.useSnackBar(3, false);
+  }
+
+  notifyLoginSuccess() {
+    this.useSnackBar(4, true);
+  }
+
+  notifyLoginFailure() {
+    this.useSnackBar(5, false);
   }
 
   private useSnackBar(
     notificationId: number,
-    duration: number = 1500,
-    success: boolean
+    success: boolean,
+    duration: number = 2000
   ) {
     const panelClass = success ? ['blue-snackbar'] : ['red-snackbar'];
     this.matSnackBar.open(this.possibleNotifications[notificationId], '', {

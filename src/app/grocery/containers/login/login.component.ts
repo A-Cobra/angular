@@ -7,6 +7,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,10 @@ export class LoginComponent {
     }),
   });
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private notificationsService: NotificationsService
+  ) {}
 
   onFormSubmit(): void {
     console.log('Submitting form');
@@ -45,6 +49,9 @@ export class LoginComponent {
         .subscribe({
           next: loginSuccess => {
             console.log(loginSuccess ? 'Logged In' : 'Log in failure');
+            loginSuccess
+              ? this.notificationsService.notifyLoginSuccess()
+              : this.notificationsService.notifyLoginFailure();
           },
         });
     } else {

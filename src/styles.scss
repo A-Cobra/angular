@@ -20,8 +20,10 @@ html, body { height: 100%; }
 .blue-snackbar {
   background: $navy-blue;
   color: white;
+  box-shadow: 3px 6px 10px $main-color-shadow;
 }
 .red-snackbar {
   background: #F44336;
   color: white;
+  box-shadow: 3px 6px 10px $burgundy-shadow;
 }

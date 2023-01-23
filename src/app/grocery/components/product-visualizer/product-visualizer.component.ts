@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-product-visualizer',
@@ -79,18 +80,13 @@ export class ProductVisualizerComponent {
   @ViewChild('quantity') quantity!: ElementRef;
   negativeStock: boolean = false;
 
-  constructor() {}
+  constructor(private notificationsService: NotificationsService) {}
 
   imgUrl(blobUrl: Blob): string {
     return URL.createObjectURL(blobUrl);
   }
 
   onCartAddition() {
-    // WE NEED A SERVICE TO INFORM THE USER
-    console.log('this.quantity.nativeElement.value');
-    console.log(this.quantity.nativeElement.value);
-    console.log('this.product.master?.stock');
-    console.log(this.product.master?.stock);
     if (this.quantity.nativeElement.value <= 0) {
       console.log('You can not add 0 or less elements of a certain product');
     } else {
@@ -109,6 +105,7 @@ export class ProductVisualizerComponent {
           console.log('Adding to cart');
         } else {
           console.log('Please add a quantity smaller or equal to the stock');
+          this.notificationsService.notifyNotEnoughStock();
         }
       } else {
         console.log('Please ADD A QUANTITY');
