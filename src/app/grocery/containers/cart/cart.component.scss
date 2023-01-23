@@ -18,6 +18,21 @@
         box-shadow: 3px 6px 10px $twilight-shadow;
       }
     }
+    button{
+      cursor: pointer;
+      text-align: center;
+      padding: 8px 14px;
+      font-size: 18px;
+      color: $secondary-blue;
+      border-radius: 5px;
+      max-width: 230px;
+      color: white;
+      background-color: red;
+      &:hover{
+        background-color: $burgundy;
+        box-shadow: 3px 6px 6px $burgundy-shadow;
+      }
+    }
   }
   h3{
     color: $burgundy;

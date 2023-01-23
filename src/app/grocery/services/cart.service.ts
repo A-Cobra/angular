@@ -97,4 +97,17 @@ export class CartService {
         })
       );
   }
+
+  removeAllCartItems(): Observable<boolean> {
+    return this.http
+      .delete(`${environment.applaudoApiBaseUrl}/${this.cartPath}`)
+      .pipe(
+        catchError(() => {
+          return of(false);
+        }),
+        switchMap(() => {
+          return of(true);
+        })
+      );
+  }
 }

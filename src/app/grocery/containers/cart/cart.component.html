@@ -8,6 +8,7 @@
       Total Price:
       <span>{{ cartData.total | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
     </h3>
+    <button (click)="onAllItemsRemoval()">Remove All Items</button>
     <div class="cart-item-card" *ngFor="let cartItem of cartData.items">
       <app-cart-item
         [cartItem]="cartItem"

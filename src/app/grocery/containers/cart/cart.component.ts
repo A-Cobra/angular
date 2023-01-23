@@ -26,7 +26,12 @@ export class CartComponent implements OnInit {
         this.cartData = cartData;
       },
       error: (error: Response) => {
-        this.notificationsService.notifyQueryError();
+        if (error.status === 404) {
+          console.log('Cart is empty');
+          this.notificationsService.notifyCartEmpty();
+        } else {
+          this.notificationsService.notifyQueryError();
+        }
         this.router.navigate(['grocery-store', 'home', 'all-products']);
       },
     });
@@ -56,6 +61,24 @@ export class CartComponent implements OnInit {
         if (errorCode.message === '4e6f7420656e6f7567682073746f636b') {
           this.notificationsService.notifyNotEnoughStock();
         }
+      },
+    });
+  }
+
+  onAllItemsRemoval() {
+    console.log('REMOVING ALL ITEMS');
+    this.cartService.removeAllCartItems().subscribe({
+      next: (success: boolean) => {
+        if (success) {
+          this.notificationsService.notifyCartEmptiedSuccess();
+          console.log('Items removed correctly');
+        } else {
+          this.notificationsService.notifyCartEmptiedFailure();
+          console.log('Items NOT removed correctly');
+        }
+      },
+      complete: () => {
+        this.router.navigate(['grocery-store', 'home', 'all-products']);
       },
     });
   }

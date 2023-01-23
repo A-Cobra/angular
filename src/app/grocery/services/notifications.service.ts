@@ -17,6 +17,9 @@ export class NotificationsService {
     'Item Updated "Successfully"',
     'You can not add 0 or less units of a certain product',
     'You can not update to the same quantity',
+    'All cart items removed successfully',
+    "All cart items weren't removed successfully",
+    'The cart is empty, try adding some products',
   ];
 
   constructor(private matSnackBar: MatSnackBar) {}
@@ -63,6 +66,18 @@ export class NotificationsService {
 
   notifyNonEqualUpdate() {
     this.useSnackBar(10, false);
+  }
+
+  notifyCartEmptiedSuccess() {
+    this.useSnackBar(11, true);
+  }
+
+  notifyCartEmptiedFailure() {
+    this.useSnackBar(12, false);
+  }
+
+  notifyCartEmpty() {
+    this.useSnackBar(13, false);
   }
 
   private useSnackBar(
