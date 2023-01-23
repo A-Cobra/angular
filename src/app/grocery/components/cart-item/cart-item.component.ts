@@ -15,8 +15,7 @@ import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-updat
   selector: 'app-cart-item',
   styleUrls: ['./cart-item.component.scss'],
   template: `
-    <div *ngIf="cartItem">
-      <!-- <div *ngIf="cartItem.image"></div> -->
+    <div class="grid-wrapper" *ngIf="cartItem">
       <h3>
         Name: <span>{{ cartItem.name }}</span>
       </h3>
@@ -35,7 +34,7 @@ import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-updat
       <div>
         <i class="fa-solid fa-trash" (click)="onDelete(cartItem.id)"></i>
       </div>
-      <div>
+      <div class="tools">
         <input
           #quantity
           type="number"

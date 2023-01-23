@@ -1,0 +1,28 @@
+@import "../../../../colors";
+
+.main{
+  display: grid;
+  gap: 15px;
+  h1{
+    color: $navy-blue;
+  }
+  .cart-data{
+    display: grid;
+    gap: 15px;
+    .cart-item-card{
+      padding: 20px;
+      border: 2px solid $light-gray;
+      &:hover{
+        border: 2px solid $navy-blue;
+        background-color: $light-sky-blue;
+        box-shadow: 3px 6px 10px $twilight-shadow;
+      }
+    }
+  }
+  h3{
+    color: $burgundy;
+    span{
+      font-weight: 300;
+    }
+  }
+}
