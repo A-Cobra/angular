@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  development: true,
   production: false,
   applaudoApiBaseUrl:
     'https://trainee-program-api-staging.applaudostudios.com/api/v1',

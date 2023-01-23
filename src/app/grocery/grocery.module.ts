@@ -13,7 +13,10 @@ import { SearchingToolsComponent } from './components/searching-tools/searching-
 import { CartComponent } from './containers/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 
-//AngularMaterial
+//AngularNGRX
+import { StoreModule } from '@ngrx/store';
+
+import { reducers } from './store';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,12 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     CartComponent,
     CartItemComponent,
   ],
-  imports: [CommonModule, GroceryRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    GroceryRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('state-store', reducers),
+  ],
   providers: [],
 })
 export class GroceryModule {}

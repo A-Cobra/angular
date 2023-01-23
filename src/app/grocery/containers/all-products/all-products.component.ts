@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { catchError } from 'rxjs';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
@@ -9,6 +10,8 @@ import { CartService } from '../../services/cart.service';
 import { CategoriesService } from '../../services/categories.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
+import { AppState } from '../../store/models/store-state.interface';
+import { selectProducts } from '../../store/selectors/products.selector';
 
 @Component({
   selector: 'app-all-products',
@@ -23,10 +26,12 @@ export class AllProductsComponent implements OnInit {
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private cartService: CartService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
+    console.log(this.store);
     this.productsService.getProducts().subscribe({
       next: (productsArray: Product[]) => {
         this.products = productsArray;
