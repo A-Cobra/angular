@@ -17,6 +17,14 @@ html, body { height: 100%; }
 
 //Angular Material
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+  position: relative;
+}
+.mat-snack-bar-container{
+  position: absolute;  
+  top: 33%;
+  left: 25%;
+}
 .blue-snackbar {
   background: $navy-blue;
   color: white;

@@ -21,7 +21,6 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('ok on cart');
     this.cartService.getCartData().subscribe({
       next: (cartData: CartData) => {
         this.cartData = cartData;
@@ -50,21 +49,11 @@ export class CartComponent implements OnInit {
     this.cartService.updateItemQuantity(updatePayload).subscribe({
       next: (cartData: CartData) => {
         this.cartData = cartData;
-        console.log(this.cartData);
+        this.notificationsService.notifyItemUpdatedSuccessfully();
       },
       error: (errorCode: Error) => {
-        // if (
-        //   errorCode.message ===
-        //   '4974656d2070726f647563745f76617269616e745f6964206973206e6f7420756e6971756520706572206f72646572'
-        // ) {
-        //   console.log(
-        //     'Item already in the cart, if you want to update the quantity, go there'
-        //   );
-        // } else
         if (errorCode.message === '4e6f7420656e6f7567682073746f636b') {
-          console.log(
-            'Not enough stock for the selected item and quantity, please try it again'
-          );
+          this.notificationsService.notifyNotEnoughStock();
         }
       },
     });

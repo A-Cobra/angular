@@ -14,6 +14,9 @@ export class NotificationsService {
     'Item already in the cart, if you want to update the quantity, please go there',
     'Not enough stock for the selected item and quantity, please reduce the quantity or add another item to the cart',
     'Item Removed Successfully',
+    'Item Updated "Successfully"',
+    'You can not add 0 or less units of a certain product',
+    'You can not update to the same quantity',
   ];
 
   constructor(private matSnackBar: MatSnackBar) {}
@@ -50,6 +53,18 @@ export class NotificationsService {
     this.useSnackBar(7, true);
   }
 
+  notifyItemUpdatedSuccessfully() {
+    this.useSnackBar(8, true);
+  }
+
+  notifyNonNegativeQuantity() {
+    this.useSnackBar(9, false);
+  }
+
+  notifyNonEqualUpdate() {
+    this.useSnackBar(10, false);
+  }
+
   private useSnackBar(
     notificationId: number,
     success: boolean,
@@ -59,6 +74,8 @@ export class NotificationsService {
     this.matSnackBar.open(this.possibleNotifications[notificationId], '', {
       duration: duration,
       panelClass,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
     });
   }
 }

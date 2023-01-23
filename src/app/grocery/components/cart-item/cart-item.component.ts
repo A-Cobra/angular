@@ -10,6 +10,7 @@ import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -59,11 +60,9 @@ export class CartItemComponent {
     new EventEmitter<CartPayloadForUpdate>();
   @ViewChild('quantity') quantity!: ElementRef;
 
-  constructor() {}
+  constructor(private notificationsService: NotificationsService) {}
 
   onDelete(cartItemId: number) {
-    console.log('Deleting item');
-    console.log(cartItemId);
     if (confirm('Are you sure you want to delete the product?')) {
       this.cartItemRemoval.emit({
         data: {
@@ -82,26 +81,23 @@ export class CartItemComponent {
     if (
       parseInt(this.quantity.nativeElement.value) === this.cartItem.quantity
     ) {
-      console.log('YOu can not update TO THE SAME QUANTITY');
-    }
-
-    if (this.quantity.nativeElement.value <= 0) {
-      console.log('You can not add 0 or less elements of a certain product');
+      this.notificationsService.notifyNonEqualUpdate();
     } else {
-      if (this.quantity.nativeElement.value) {
-        this.cartItemUpdate.emit({
-          data: {
-            items: [
-              {
-                id: this.cartItem.id,
-                quantity: parseInt(this.quantity.nativeElement.value),
-              },
-            ],
-          },
-        });
-        console.log('UPDATING cart');
+      if (this.quantity.nativeElement.value <= 0) {
+        this.notificationsService.notifyNonNegativeQuantity();
       } else {
-        console.log('Please ADD A QUANTITY');
+        if (this.quantity.nativeElement.value) {
+          this.cartItemUpdate.emit({
+            data: {
+              items: [
+                {
+                  id: this.cartItem.id,
+                  quantity: parseInt(this.quantity.nativeElement.value),
+                },
+              ],
+            },
+          });
+        }
       }
     }
   }

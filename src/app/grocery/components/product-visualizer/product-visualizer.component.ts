@@ -88,7 +88,7 @@ export class ProductVisualizerComponent {
 
   onCartAddition() {
     if (this.quantity.nativeElement.value <= 0) {
-      console.log('You can not add 0 or less elements of a certain product');
+      this.notificationsService.notifyNonNegativeQuantity();
     } else {
       if (this.quantity.nativeElement.value && this.product?.master) {
         if (this.quantity.nativeElement.value <= this.product.master.stock) {
@@ -102,13 +102,9 @@ export class ProductVisualizerComponent {
               ],
             },
           });
-          console.log('Adding to cart');
         } else {
-          console.log('Please add a quantity smaller or equal to the stock');
           this.notificationsService.notifyNotEnoughStock();
         }
-      } else {
-        console.log('Please ADD A QUANTITY');
       }
     }
   }

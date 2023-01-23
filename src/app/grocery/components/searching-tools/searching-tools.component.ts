@@ -55,10 +55,6 @@ export class SearchingToolsComponent {
   constructor() {}
 
   onSearchToolsUsage() {
-    console.log('this.categorySelector.nativeElement.value');
-    console.log(this.categorySelector.nativeElement.value);
-    console.log('this.productNameInput.nativeElement.value');
-    console.log(this.productNameInput.nativeElement.value);
     this.searchingToolsUsage.emit({
       category: this.categorySelector.nativeElement.value,
       nameQuery: this.productNameInput.nativeElement.value,
