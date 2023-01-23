@@ -27,7 +27,6 @@ export class CartComponent implements OnInit {
       },
       error: (error: Response) => {
         if (error.status === 404) {
-          console.log('Cart is empty');
           this.notificationsService.notifyCartEmpty();
         } else {
           this.notificationsService.notifyQueryError();
