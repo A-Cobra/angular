@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from 'src/environments/environment';
 import { TokenInterceptorService } from './grocery/interceptors/token-interceptor.service';
+import { reducers } from './grocery/store';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -30,7 +31,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    StoreModule.forRoot({}, { metaReducers }),
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : [],
   ],

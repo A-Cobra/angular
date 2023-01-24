@@ -10,8 +10,16 @@ import { CartService } from '../../services/cart.service';
 import { CategoriesService } from '../../services/categories.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
-import { AppState } from '../../store/models/store-state.interface';
-import { selectProducts } from '../../store/selectors/products.selector';
+import { ProductsPageActions } from '../../store/actions/products.action';
+import {
+  // selectProducts,
+  // selectProducts2,
+  // selectProductsArray,
+  selectFeatureProducts,
+  selectProducts,
+  selectProductsArray,
+  selectStore,
+} from '../../store/selectors/products.selector';
 
 @Component({
   selector: 'app-all-products',
@@ -19,6 +27,7 @@ import { selectProducts } from '../../store/selectors/products.selector';
   styleUrls: ['./all-products.component.scss'],
 })
 export class AllProductsComponent implements OnInit {
+  state$: any;
   categories: ProductCategory[] = [];
   products: Product[] = [];
 
@@ -32,6 +41,15 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.store);
+    this.store.dispatch(ProductsPageActions.loadProducts());
+    this.state$ = this.store.select(selectProducts);
+    // .subscribe({
+    //   next: data => {
+    //     console.log(data);
+    //   },
+    // });
+    console.log('this.state$');
+    console.log(this.state$);
     this.productsService.getProducts().subscribe({
       next: (productsArray: Product[]) => {
         this.products = productsArray;
