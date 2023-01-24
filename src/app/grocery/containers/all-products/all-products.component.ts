@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { catchError } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { ProductCategory } from 'src/app/models/product/product-category.interface';
@@ -10,16 +10,6 @@ import { CartService } from '../../services/cart.service';
 import { CategoriesService } from '../../services/categories.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
-import { ProductsPageActions } from '../../store/actions/products.action';
-import {
-  // selectProducts,
-  // selectProducts2,
-  // selectProductsArray,
-  selectFeatureProducts,
-  selectProducts,
-  selectProductsArray,
-  selectStore,
-} from '../../store/selectors/products.selector';
 
 @Component({
   selector: 'app-all-products',
@@ -27,7 +17,8 @@ import {
   styleUrls: ['./all-products.component.scss'],
 })
 export class AllProductsComponent implements OnInit {
-  state$: any;
+  state$: Observable<boolean> = new Observable();
+  items$: Observable<Product[]> = new Observable<Product[]>();
   categories: ProductCategory[] = [];
   products: Product[] = [];
 
@@ -40,16 +31,6 @@ export class AllProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.store);
-    this.store.dispatch(ProductsPageActions.loadProducts());
-    this.state$ = this.store.select(selectProducts);
-    // .subscribe({
-    //   next: data => {
-    //     console.log(data);
-    //   },
-    // });
-    console.log('this.state$');
-    console.log(this.state$);
     this.productsService.getProducts().subscribe({
       next: (productsArray: Product[]) => {
         this.products = productsArray;
