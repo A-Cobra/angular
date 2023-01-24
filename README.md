@@ -16,3 +16,5 @@ Project that includes authentication and interaction with an API
 
 The API's cart quantity update wasn't working at the time of project upload
 
+The purpose of the project was to use Ngrx, at the end I didn't use it but I was learning (thworically)
+
