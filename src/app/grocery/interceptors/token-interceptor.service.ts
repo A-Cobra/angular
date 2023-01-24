@@ -24,6 +24,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       this.router.navigate(['grocery-store']);
     }
     this.headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': 'origin-list',
       Authorization: `Bearer ${token}`,
     });
   }
