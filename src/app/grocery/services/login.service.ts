@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { LoginToken } from 'src/app/models/login-token.type';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { LoginSuccessfulResponse } from 'src/app/models/login-successful-response.type';
 import { LocalStorageService } from './local-storage.service';
-import { parseJwt } from '../utils/parse-jwt';
 import { checkTokenDuration } from '../utils/check-token-duration';
 @Injectable({
   providedIn: 'root',
