@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
 describe('LoginComponent Tests', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let debugElement: DebugElement;
   let mockLoginService!: // : any;
   {
     checkLogin: () => Observable<boolean>;
@@ -30,6 +29,8 @@ describe('LoginComponent Tests', () => {
   let mockRouter!: {
     navigate: () => void;
   };
+
+  let debugElement: DebugElement;
 
   beforeEach(async () => {
     mockLoginService = {
@@ -44,6 +45,7 @@ describe('LoginComponent Tests', () => {
     mockRouter = {
       navigate: jest.fn(),
     };
+
     await TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
@@ -55,6 +57,7 @@ describe('LoginComponent Tests', () => {
         { provide: LoginService, useValue: mockLoginService },
         { provide: NotificationsService, useValue: mockNotificationsService },
         { provide: Router, useValue: mockRouter },
+
         // { provide: NotificationsService, provider: NotificationsService },
       ],
     }).compileComponents();
@@ -108,10 +111,9 @@ describe('LoginComponent Tests', () => {
 
     //API_CALL
     test('API gets called if form is valid', () => {
-      jest.spyOn(mockLoginService, 'checkLogin');
-      // .mockImplementation(() => {
-      //   return of(false);
-      // });
+      jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
+        return of(false);
+      });
       const loginButton = debugElement.query(By.css('.login-button'));
       const email = component.getControl('data.email');
       email.setValue('myEmail@applaudo.com');
@@ -156,6 +158,7 @@ describe('LoginComponent Tests', () => {
       );
     });
     test('show redirection to be true because the navigate method was called once', () => {
+      jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
       jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
         return of(true);
       });
@@ -165,7 +168,13 @@ describe('LoginComponent Tests', () => {
       const password = component.getControl('data.password');
       password.setValue('Trainee 2');
       loginButton.nativeElement.click();
+      // const inputsArray = debugElement.queryAll(By.css('input'));
+      // expect(inputsArray.length).toBe(2);
+      // fixture.whenStable().then(() => {
+      //   expect(inputsArray.length).toBe(0);
+      // });
       expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('UI or HTML Tests', () => {
