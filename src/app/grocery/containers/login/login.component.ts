@@ -42,16 +42,16 @@ export class LoginComponent {
         .subscribe({
           next: loginSuccess => {
             if (loginSuccess) {
-              // this.notificationsService.notifyLoginSuccess();
+              console.log('SUCCESS INSIDE COMPONENT');
+              this.notificationsService.notifyLoginSuccess();
               this.router.navigate(['grocery-store', 'home', 'all-products']);
             } else {
-              // this.notificationsService.notifyLoginFailure();
+              this.notificationsService.notifyLoginFailure();
             }
           },
         });
     } else {
-      // this.notificationsService.notifyWrongFormData();
-      console.log('OKE');
+      this.notificationsService.notifyWrongFormData();
     }
   }
 
