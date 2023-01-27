@@ -42,7 +42,6 @@ export class LoginComponent {
         .subscribe({
           next: loginSuccess => {
             if (loginSuccess) {
-              console.log('SUCCESS INSIDE COMPONENT');
               this.notificationsService.notifyLoginSuccess();
               this.router.navigate(['grocery-store', 'home', 'all-products']);
             } else {
