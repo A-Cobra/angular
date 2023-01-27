@@ -21,6 +21,7 @@ export class LoginService {
   ) {}
 
   checkLogin(loginToken: LoginToken): Observable<boolean> {
+    console.log('Called');
     return this.http
       .post<LoginSuccessfulResponse>(
         `${environment.applaudoApiBaseUrl}/${this.loginUrl}`,
