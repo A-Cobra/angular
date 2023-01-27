@@ -63,89 +63,89 @@ describe('LoginComponent Tests', () => {
     });
 
     //FORM Validations
-    // describe('Form validations', () => {
-    //   test('form email is required', () => {
-    //     const loginForm = component.loginForm;
-    //     const email = component.getControl('data.email');
-    //     email.setValue('');
-    //     expect(loginForm.invalid).toBe(true);
-    //     expect(email.hasError('required')).toBe(true);
-    //   });
-    //   test('form email has email validations', () => {
-    //     const loginForm = component.loginForm;
-    //     const email = component.getControl('data.email');
-    //     email.setValue('myEmail.com');
-    //     expect(loginForm.invalid).toBe(true);
-    //     expect(email.hasError('email')).toBe(true);
-    //   });
-    //   test('form password is required', () => {
-    //     const loginForm = component.loginForm;
-    //     const password = component.getControl('data.password');
-    //     password.setValue('');
-    //     expect(loginForm.invalid).toBe(true);
-    //     expect(password.hasError('required')).toBe(true);
-    //   });
-    //   test("if email and password aren't provided with validations, show wrong form data", () => {
-    //     const loginButton = debugElement.query(By.css('.login-button'));
-    //     const email = component.getControl('data.email');
-    //     email.setValue('emailApplaudo.com');
-    //     const password = component.getControl('data.password');
-    //     password.setValue('password');
-    //     loginButton.nativeElement.click();
-    //     expect(
-    //       mockNotificationsService.notifyWrongFormData
-    //     ).toHaveBeenCalledTimes(1);
-    //   });
-    // });
+    describe('Form validations', () => {
+      test('form email is required', () => {
+        const loginForm = component.loginForm;
+        const email = component.getControl('data.email');
+        email.setValue('');
+        expect(loginForm.invalid).toBe(true);
+        expect(email.hasError('required')).toBe(true);
+      });
+      test('form email has email validations', () => {
+        const loginForm = component.loginForm;
+        const email = component.getControl('data.email');
+        email.setValue('myEmail.com');
+        expect(loginForm.invalid).toBe(true);
+        expect(email.hasError('email')).toBe(true);
+      });
+      test('form password is required', () => {
+        const loginForm = component.loginForm;
+        const password = component.getControl('data.password');
+        password.setValue('');
+        expect(loginForm.invalid).toBe(true);
+        expect(password.hasError('required')).toBe(true);
+      });
+      test("if email and password aren't provided with validations, show wrong form data", () => {
+        const loginButton = debugElement.query(By.css('.login-button'));
+        const email = component.getControl('data.email');
+        email.setValue('emailApplaudo.com');
+        const password = component.getControl('data.password');
+        password.setValue('password');
+        loginButton.nativeElement.click();
+        expect(
+          mockNotificationsService.notifyWrongFormData
+        ).toHaveBeenCalledTimes(1);
+      });
+    });
 
-    // //API_CALL
-    // test('API gets called if form is valid', () => {
-    //   jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
-    //     return of(false);
-    //   });
-    //   const loginButton = debugElement.query(By.css('.login-button'));
-    //   const email = component.getControl('data.email');
-    //   email.setValue('myEmail@applaudo.com');
-    //   const password = component.getControl('data.password');
-    //   password.setValue('password');
-    //   loginButton.nativeElement.click();
-    //   expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
-    //   // IT IS MISSING THE IMPLEMENTATION OF ANGULAR MATERIAL
-    // });
-    // test('show error when api call returns false', () => {
-    //   // // We set the return value to be false, thus meaning that the login was a failure
-    //   jest.spyOn(mockNotificationsService, 'notifyLoginFailure');
-    //   jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
-    //     return of(false);
-    //   });
-    //   const loginButton = debugElement.query(By.css('.login-button'));
-    //   const email = component.getControl('data.email');
-    //   email.setValue('email@example.com');
-    //   const password = component.getControl('data.password');
-    //   password.setValue('pass1');
-    //   loginButton.nativeElement.click();
-    //   expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
-    //   expect(mockNotificationsService.notifyLoginFailure).toHaveBeenCalledTimes(
-    //     1
-    //   );
-    // });
-    // test('show success when api call returns true', () => {
-    //   // // We set the return value to be true, thus meaning that the login was a success
-    //   jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
-    //   jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
-    //     return of(true);
-    //   });
-    //   const loginButton = debugElement.query(By.css('.login-button'));
-    //   const email = component.getControl('data.email');
-    //   email.setValue('trainee2@example.com');
-    //   const password = component.getControl('data.password');
-    //   password.setValue('Trainee 2');
-    //   loginButton.nativeElement.click();
-    //   expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
-    //   expect(mockNotificationsService.notifyLoginSuccess).toHaveBeenCalledTimes(
-    //     1
-    //   );
-    // });
+    //API_CALL
+    test('API gets called if form is valid', () => {
+      jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
+        return of(false);
+      });
+      const loginButton = debugElement.query(By.css('.login-button'));
+      const email = component.getControl('data.email');
+      email.setValue('myEmail@applaudo.com');
+      const password = component.getControl('data.password');
+      password.setValue('password');
+      loginButton.nativeElement.click();
+      expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
+      // IT IS MISSING THE IMPLEMENTATION OF ANGULAR MATERIAL
+    });
+    test('show error when api call returns false', () => {
+      // // We set the return value to be false, thus meaning that the login was a failure
+      jest.spyOn(mockNotificationsService, 'notifyLoginFailure');
+      jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
+        return of(false);
+      });
+      const loginButton = debugElement.query(By.css('.login-button'));
+      const email = component.getControl('data.email');
+      email.setValue('email@example.com');
+      const password = component.getControl('data.password');
+      password.setValue('pass1');
+      loginButton.nativeElement.click();
+      expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
+      expect(mockNotificationsService.notifyLoginFailure).toHaveBeenCalledTimes(
+        1
+      );
+    });
+    test('show success when api call returns true', () => {
+      // // We set the return value to be true, thus meaning that the login was a success
+      jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
+      jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
+        return of(true);
+      });
+      const loginButton = debugElement.query(By.css('.login-button'));
+      const email = component.getControl('data.email');
+      email.setValue('trainee2@example.com');
+      const password = component.getControl('data.password');
+      password.setValue('Trainee 2');
+      loginButton.nativeElement.click();
+      expect(mockLoginService.checkLogin).toHaveBeenCalledTimes(1);
+      expect(mockNotificationsService.notifyLoginSuccess).toHaveBeenCalledTimes(
+        1
+      );
+    });
     test('show redirection to be true because the component has been destroyed', () => {
       jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
       jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
@@ -165,21 +165,21 @@ describe('LoginComponent Tests', () => {
     });
   });
 
-  // describe('UI or HTML Tests', () => {
-  //   test('component should have 2 inputs', () => {
-  //     const inputsArray = debugElement.queryAll(By.css('input'));
-  //     expect(inputsArray.length).toBe(2);
-  //   });
-  //   test('login button must work by triggering onFormSubmit', () => {
-  //     jest.spyOn(component, 'onFormSubmit');
-  //     let button = debugElement.nativeElement.querySelector('.login-button');
-  //     button.click();
-  //     // fixture.whenStable().then(() => {
-  //     //   expect(component.onFormSubmit).toHaveBeenCalled();
-  //     // });
-  //     expect(component.onFormSubmit).toHaveBeenCalled();
-  //   });
-  // });
+  describe('UI or HTML Tests', () => {
+    test('component should have 2 inputs', () => {
+      const inputsArray = debugElement.queryAll(By.css('input'));
+      expect(inputsArray.length).toBe(2);
+    });
+    test('login button must work by triggering onFormSubmit', () => {
+      jest.spyOn(component, 'onFormSubmit');
+      let button = debugElement.nativeElement.querySelector('.login-button');
+      button.click();
+      // fixture.whenStable().then(() => {
+      //   expect(component.onFormSubmit).toHaveBeenCalled();
+      // });
+      expect(component.onFormSubmit).toHaveBeenCalled();
+    });
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
