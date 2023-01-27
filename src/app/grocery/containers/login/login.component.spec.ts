@@ -12,10 +12,12 @@ import { of, Observable } from 'rxjs';
 import { SuccessfulResponse } from './test-models/successful-response';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationsService } from '../../services/notifications.service';
+import { Router } from '@angular/router';
 
 describe('LoginComponent Tests', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let debugElement: DebugElement;
   let mockLoginService!: // : any;
   {
     checkLogin: () => Observable<boolean>;
@@ -25,7 +27,9 @@ describe('LoginComponent Tests', () => {
     notifyLoginFailure: () => void;
     notifyWrongFormData: () => void;
   };
-  let debugElement: DebugElement;
+  let mockRouter!: {
+    navigate: () => void;
+  };
 
   beforeEach(async () => {
     mockLoginService = {
@@ -37,6 +41,9 @@ describe('LoginComponent Tests', () => {
       notifyLoginFailure: jest.fn(),
       notifyWrongFormData: jest.fn(),
     };
+    mockRouter = {
+      navigate: jest.fn(),
+    };
     await TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
@@ -47,6 +54,7 @@ describe('LoginComponent Tests', () => {
       providers: [
         { provide: LoginService, useValue: mockLoginService },
         { provide: NotificationsService, useValue: mockNotificationsService },
+        { provide: Router, useValue: mockRouter },
         // { provide: NotificationsService, provider: NotificationsService },
       ],
     }).compileComponents();
@@ -100,9 +108,10 @@ describe('LoginComponent Tests', () => {
 
     //API_CALL
     test('API gets called if form is valid', () => {
-      jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
-        return of(false);
-      });
+      jest.spyOn(mockLoginService, 'checkLogin');
+      // .mockImplementation(() => {
+      //   return of(false);
+      // });
       const loginButton = debugElement.query(By.css('.login-button'));
       const email = component.getControl('data.email');
       email.setValue('myEmail@applaudo.com');
@@ -146,8 +155,7 @@ describe('LoginComponent Tests', () => {
         1
       );
     });
-    test('show redirection to be true because the component has been destroyed', () => {
-      jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
+    test('show redirection to be true because the navigate method was called once', () => {
       jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
         return of(true);
       });
@@ -157,12 +165,7 @@ describe('LoginComponent Tests', () => {
       const password = component.getControl('data.password');
       password.setValue('Trainee 2');
       loginButton.nativeElement.click();
-      const inputsArray = debugElement.queryAll(By.css('input'));
-      expect(inputsArray.length).toBe(2);
-      fixture.whenStable().then(() => {
-        expect(inputsArray.length).toBe(0);
-      });
-    });
+      expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
   });
 
   describe('UI or HTML Tests', () => {
