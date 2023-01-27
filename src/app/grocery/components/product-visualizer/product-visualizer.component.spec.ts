@@ -27,25 +27,14 @@ describe('ProductVisualizerComponent ', () => {
   };
 
   beforeEach(async () => {
-    // mockLoginService = {
-    //   checkLogin: jest.fn(),
-    //   // checkLogin: () => of(false),
-    // };
     mockNotificationsService = {
       notifyNonNegativeQuantity: jest.fn(),
       notifyNotEnoughStock: jest.fn(),
     };
     await TestBed.configureTestingModule({
-      imports: [
-        // ReactiveFormsModule,
-        // MatSnackBarModule,
-        // BrowserAnimationsModule,
-      ],
       declarations: [ProductVisualizerComponent],
       providers: [
-        // { provide: LoginService, useValue: mockLoginService },
         { provide: NotificationsService, useValue: mockNotificationsService },
-        // { provide: NotificationsService, provider: NotificationsService },
       ],
     }).compileComponents();
 
@@ -93,20 +82,11 @@ describe('ProductVisualizerComponent ', () => {
       ).toHaveBeenCalledTimes(1);
     });
     test('that the updateStockClass function gets called on input change', () => {
-      const cartQuantityInput = debugElement.query(
-        By.css('.cart-quantity-input')
-      ).nativeElement;
+      const cartQuantityInput = debugElement.query(By.css('input'));
       jest.spyOn(component, 'updateStockClass');
-      // We simulate an input
-      // component.updateStockClass();
-      cartQuantityInput.value = 15;
-      cartQuantityInput.click();
-      cartQuantityInput.nativeElement.triggerEventHandler('input', 1);
-      // cartQuantityInput.nativeElement.keyup('5');
-      // component.quantity.nativeElement.value;
+      // We simulate an input change
+      cartQuantityInput.triggerEventHandler('change', 12);
       expect(component.updateStockClass).toHaveBeenCalledTimes(1);
-      console.log('component.quantity.nativeElement.value');
-      console.log(component.quantity.nativeElement.value);
     });
   });
 
@@ -114,22 +94,48 @@ describe('ProductVisualizerComponent ', () => {
     test('the main container must not be empty', () => {
       expect(debugElement.query(By.css('.grid-wrapper'))).not.toBe(null);
     });
-    test('the information for name, description, category, like, dislike, price is displayed', () => {
-      //We want to see if all the content gets rendered when the content isn't shortened
-      // component.shortenedContent = false;
-      const gridWrapper = debugElement.query(
-        By.css('.grid-wrapper')
-      ).nativeElement;
-      const h3Array = gridWrapper.querySelectorAll('h3');
-      const gridWrapperContent = gridWrapper.textContent;
-      // Checks That Name is rendered
-      expect(gridWrapperContent).toMatch(/(name)/i);
-      console.log('gridWrapperContent');
-      console.log(gridWrapperContent);
-      console.log('h3Array');
-      console.log(h3Array.length);
-      console.log('gridWrapper');
-      console.log(gridWrapper);
+    test('the keywords for name, description, category, price, and stock are displayed', () => {
+      const tests: RegExp[] = [
+        /name/i,
+        /description/i,
+        /category/i,
+        /price/i,
+        /stock/i,
+      ];
+      //We want to see if all the keywords get rendered when the content isn't shortened
+      const gridWrapper = debugElement.query(By.css('.grid-wrapper'));
+      const gridWrapperContent = gridWrapper.nativeElement.textContent;
+      const testsResult: boolean = tests.every((regexPattern: RegExp) => {
+        return regexPattern.test(gridWrapperContent);
+      });
+      expect(testsResult).toBe(true);
+    });
+    test('the actual values for name, description, category, price, and stock are displayed', () => {
+      const notFound = '-.1235,sdasfqhr{+v*´';
+      const tests: (string | number)[] = [
+        component.product.name,
+        component.product.description,
+        component.product.category?.name ?? notFound,
+        component.product.master?.price ?? notFound,
+        component.product.master?.stock ?? 0,
+      ];
+      const gridWrapper = debugElement.query(By.css('.grid-wrapper'));
+      const gridWrapperContent = gridWrapper.nativeElement.textContent;
+      const testsResult = tests.every(
+        (value: string | number, index: number) => {
+          if (typeof value === 'number') {
+            return gridWrapperContent.match(new RegExp(value.toFixed(0), 'i'));
+          }
+          if (index === 3) {
+            const [integer, decimal] = value.split('.');
+            const trimmedNumber = `${integer}.${decimal.slice(0, 2)}`;
+            return gridWrapperContent.match(new RegExp(trimmedNumber, 'i'));
+          }
+          return gridWrapperContent.match(new RegExp(value, 'i'));
+        }
+      );
+
+      expect(testsResult).toBe(true);
     });
     test('that the eventEmitter gets called', () => {
       // Setting a normal quantity

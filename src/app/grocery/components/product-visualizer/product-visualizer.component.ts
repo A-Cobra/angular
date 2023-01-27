@@ -29,10 +29,6 @@ export class ProductVisualizerComponent {
 
   constructor(private notificationsService: NotificationsService) {}
 
-  imgUrl(blobUrl: Blob): string {
-    return URL.createObjectURL(blobUrl);
-  }
-
   onCartAddition() {
     if (this.quantity.nativeElement.value <= 0) {
       this.notificationsService.notifyNonNegativeQuantity();

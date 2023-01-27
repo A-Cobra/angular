@@ -1,7 +1,6 @@
 <div class="grid-wrapper" *ngIf="product">
   <div *ngIf="product.image" class="img-container">
     <img [src]="product.image.url" alt="" />
-    <!-- <img [src]="imgUrl(product.image.url)" alt="" /> -->
   </div>
   <h3>
     Name: <span>{{ product.name }}</span>
