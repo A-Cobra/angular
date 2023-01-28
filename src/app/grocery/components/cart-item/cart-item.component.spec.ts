@@ -60,20 +60,38 @@ describe('CartItemComponent Tests', () => {
       expect(component.onQuantityUpdate).toHaveBeenCalledTimes(1);
     });
     test('that the notifications service notifies that the quantity can not be negative or null', () => {
-      // const updateQuantityInput = debugElement.query(
-      //   By.css('.update-quantity-input')
-      // );
-      // // We simulate to introduce a letter
-      // updateQuantityInput.triggerEventHandler('click', null);
-      // updateQuantityInput.triggerEventHandler('change', 'a');
+      // We simulate to introduce a letter
       component.quantity.nativeElement.value = 'a';
       const updateQuantityButton = debugElement.query(
         By.css('.update-quantity-button')
       );
       updateQuantityButton.triggerEventHandler('click', null);
+      // We simulate to introduce a negative number
+      component.quantity.nativeElement.value = -6;
+      updateQuantityButton.triggerEventHandler('click', null);
       expect(
         mockNotificationsService.notifyNonNegativeQuantity
-      ).toHaveBeenCalledTimes(1);
+      ).toHaveBeenCalledTimes(2);
+    });
+    test('that the event is emitted if the quantity is a positive integer', () => {
+      // We simulate to introduce a positive integer
+      jest.spyOn(component.cartItemUpdate, 'emit');
+      component.quantity.nativeElement.value = 5;
+      const updateQuantityButton = debugElement.query(
+        By.css('.update-quantity-button')
+      );
+      updateQuantityButton.triggerEventHandler('click', null);
+      expect(component.cartItemUpdate.emit).toHaveBeenCalledTimes(1);
+      expect(component.cartItemUpdate.emit).toHaveBeenCalledWith({
+        data: {
+          items: [
+            {
+              id: component.cartItem.id,
+              quantity: parseInt(component.quantity.nativeElement.value),
+            },
+          ],
+        },
+      });
     });
   });
 });
