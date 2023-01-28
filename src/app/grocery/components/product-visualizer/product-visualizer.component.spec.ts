@@ -6,6 +6,8 @@ import { defaultProduct } from './test-models/default-product';
 import { NotificationsService } from '../../services/notifications.service';
 import { By } from '@angular/platform-browser';
 
+import { DecimalPipe } from '@angular/common';
+
 describe('ProductVisualizerComponent ', () => {
   let component: ProductVisualizerComponent;
   let fixture: ComponentFixture<ProductVisualizerComponent>;
@@ -100,6 +102,7 @@ describe('ProductVisualizerComponent ', () => {
       expect(testsResult).toBe(true);
     });
     test('the actual values for name, description, category, price, and stock are displayed', () => {
+      const decimalPipe = new DecimalPipe('en-US');
       const notFound = '-.1235,sdasfqhr{+v*´';
       const tests: (string | number)[] = [
         component.product.name,
@@ -116,8 +119,7 @@ describe('ProductVisualizerComponent ', () => {
             return gridWrapperContent.match(new RegExp(value.toFixed(0), 'i'));
           }
           if (index === 3) {
-            const [integer, decimal] = value.split('.');
-            const trimmedNumber = `${integer}.${decimal.slice(0, 2)}`;
+            const trimmedNumber = decimalPipe.transform(value, '1.2-2') ?? '';
             return gridWrapperContent.match(new RegExp(trimmedNumber, 'i'));
           }
           return gridWrapperContent.match(new RegExp(value, 'i'));
