@@ -157,7 +157,8 @@ describe('LoginComponent Tests', () => {
         1
       );
     });
-    test('show redirection to be true because the navigate method was called once', () => {
+    //Router
+    test('show redirection to be true because the navigate method was called once with certain arguments', () => {
       jest.spyOn(mockNotificationsService, 'notifyLoginSuccess');
       jest.spyOn(mockLoginService, 'checkLogin').mockImplementation(() => {
         return of(true);
@@ -174,6 +175,11 @@ describe('LoginComponent Tests', () => {
       //   expect(inputsArray.length).toBe(0);
       // });
       expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
+      expect(mockRouter.navigate).toHaveBeenCalledWith([
+        'grocery-store',
+        'home',
+        'all-products',
+      ]);
     });
   });
 
