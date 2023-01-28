@@ -2,8 +2,6 @@ import { ProductVisualizerComponent } from './product-visualizer.component';
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core/';
-import { ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
 import { defaultProduct } from './test-models/default-product';
 import { NotificationsService } from '../../services/notifications.service';
 import { By } from '@angular/platform-browser';
@@ -12,15 +10,6 @@ describe('ProductVisualizerComponent ', () => {
   let component: ProductVisualizerComponent;
   let fixture: ComponentFixture<ProductVisualizerComponent>;
   let debugElement: DebugElement;
-  // let mockLoginService!: // : any;
-  // {
-  //   checkLogin: () => Observable<boolean>;
-  // };
-  // let mockNotificationsService!: {
-  //   notifyLoginSuccess: () => void;
-  //   notifyLoginFailure: () => void;
-  //   notifyWrongFormData: () => void;
-  // };
   let mockNotificationsService!: {
     notifyNonNegativeQuantity: () => void;
     notifyNotEnoughStock: () => void;

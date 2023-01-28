@@ -43,7 +43,9 @@ import { NotificationsService } from '../../services/notifications.service';
           type="number"
           [value]="cartItem.quantity"
           placeholder="Number of Items" />
-        <button (click)="onQuantityUpdate()">Update Quantity</button>
+        <button class="update-quantity-button" (click)="onQuantityUpdate()">
+          Update Quantity
+        </button>
       </div>
     </div>
   `,
