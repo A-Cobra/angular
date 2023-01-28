@@ -93,5 +93,25 @@ describe('CartItemComponent Tests', () => {
         },
       });
     });
+    test('that when the user presses yes in the confirmation dialog, the event is emitted', () => {
+      jest.spyOn(window, 'confirm').mockImplementation(() => true);
+      const removeButton = debugElement.query(By.css('.fa-solid'));
+      jest.spyOn(component, 'onDelete');
+      jest.spyOn(component.cartItemRemoval, 'emit');
+      removeButton.triggerEventHandler('click', null);
+      expect(component.onDelete).toHaveBeenCalledTimes(1);
+      expect(component.onDelete).toHaveBeenCalledWith(component.cartItem.id);
+      expect(component.cartItemRemoval.emit).toHaveBeenCalledTimes(1);
+      expect(component.cartItemRemoval.emit).toHaveBeenCalledWith({
+        data: {
+          items: [
+            {
+              id: component.cartItem.id,
+              _destroy: true,
+            },
+          ],
+        },
+      });
+    });
   });
 });
