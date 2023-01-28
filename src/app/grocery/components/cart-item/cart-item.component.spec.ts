@@ -59,5 +59,21 @@ describe('CartItemComponent Tests', () => {
       updateQuantityButton.triggerEventHandler('click', null);
       expect(component.onQuantityUpdate).toHaveBeenCalledTimes(1);
     });
+    test('that the notifications service notifies that the quantity can not be negative or null', () => {
+      // const updateQuantityInput = debugElement.query(
+      //   By.css('.update-quantity-input')
+      // );
+      // // We simulate to introduce a letter
+      // updateQuantityInput.triggerEventHandler('click', null);
+      // updateQuantityInput.triggerEventHandler('change', 'a');
+      component.quantity.nativeElement.value = 'a';
+      const updateQuantityButton = debugElement.query(
+        By.css('.update-quantity-button')
+      );
+      updateQuantityButton.triggerEventHandler('click', null);
+      expect(
+        mockNotificationsService.notifyNonNegativeQuantity
+      ).toHaveBeenCalledTimes(1);
+    });
   });
 });

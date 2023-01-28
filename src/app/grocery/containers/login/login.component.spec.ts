@@ -2,15 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core/';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-import { environment } from 'src/environments/environment';
 
 import { LoginComponent } from './login.component';
 import { By } from '@angular/platform-browser';
 import { of, Observable } from 'rxjs';
-import { SuccessfulResponse } from './test-models/successful-response';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationsService } from '../../services/notifications.service';
 import { Router } from '@angular/router';
 
@@ -35,7 +30,6 @@ describe('LoginComponent Tests', () => {
   beforeEach(async () => {
     mockLoginService = {
       checkLogin: jest.fn(),
-      // checkLogin: () => of(false),
     };
     mockNotificationsService = {
       notifyLoginSuccess: jest.fn(),
@@ -47,11 +41,7 @@ describe('LoginComponent Tests', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule,
-        // MatSnackBarModule,
-        // BrowserAnimationsModule,
-      ],
+      imports: [ReactiveFormsModule],
       declarations: [LoginComponent],
       providers: [
         { provide: LoginService, useValue: mockLoginService },

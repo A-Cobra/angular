@@ -39,6 +39,7 @@ import { NotificationsService } from '../../services/notifications.service';
       </div>
       <div class="tools">
         <input
+          class="update-quantity-input"
           #quantity
           type="number"
           [value]="cartItem.quantity"
