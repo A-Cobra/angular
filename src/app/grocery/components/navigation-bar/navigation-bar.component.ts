@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
 
@@ -10,6 +10,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
       <ul>
         <li>
           <a
+            class="log-in"
             routerLinkActive="active"
             [routerLink]="['/grocery-store']"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -25,7 +26,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
             [routerLink]="['/grocery-store/home/cart']"
             >Cart</a
           >
-          <a (click)="logOut()">Log Out</a>
+          <a class="log-out" (click)="logOut()">Log Out</a>
         </li>
       </ul>
     </nav>
@@ -37,7 +38,6 @@ export class NavigationBarComponent {
     private router: Router
   ) {}
   logOut() {
-    console.log('Removing token');
     this.localStorageService.removeLoginToken();
     this.router.navigate(['grocery-store']);
   }
