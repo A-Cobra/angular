@@ -58,6 +58,9 @@
     "typescript": "~4.7.2"
   },
   "jest": {
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "preset":"jest-preset-angular",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setup.jest.ts"
@@ -68,7 +71,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "tsconfig": "<rootDir>/tsconfig.spec.json",
         "stringifyContentPathRegex": "\\.html$"
       }
     }
