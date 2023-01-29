@@ -17,6 +17,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
             >Log In</a
           >
           <a
+            class="all-products"
             routerLinkActive="active"
             [routerLink]="['/grocery-store/home/all-products']"
             >All products</a
