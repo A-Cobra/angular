@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
 import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartPayloadForUpdate } from 'src/app/models/cart/cart-payload-for-update.type';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
