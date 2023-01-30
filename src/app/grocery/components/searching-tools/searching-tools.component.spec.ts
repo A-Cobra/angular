@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { debounce } from '../../../utils/debounce';
 
 import { SearchingToolsComponent } from './searching-tools.component';
 import { defaultCategoriesArray } from './test-utils/default-categories-array';
@@ -47,6 +46,21 @@ describe('SearchingToolsComponent Tests', () => {
       jest.spyOn(component.searchingToolsUsage, 'emit');
       const productNameInput = debugElement.query(By.css('#searchInput'));
       productNameInput.nativeElement.value = 'justin';
+      productNameInput.triggerEventHandler('input');
+      expect(component.searchingToolsUsage.emit).toHaveBeenCalledTimes(0);
+      jest.advanceTimersByTime(1000);
+      expect(component.searchingToolsUsage.emit).toHaveBeenCalledTimes(1);
+    });
+    test('that making an input an waiting for less than 1, making an input again, trigger the searching tools EventEmitter', () => {
+      jest.useFakeTimers();
+      jest.spyOn(component.searchingToolsUsage, 'emit');
+      const productNameInput = debugElement.query(By.css('#searchInput'));
+      productNameInput.nativeElement.value = 'justin';
+      productNameInput.triggerEventHandler('input');
+      // Simulate a 200 delay before typing again
+      expect(component.searchingToolsUsage.emit).toHaveBeenCalledTimes(0);
+      jest.advanceTimersByTime(200);
+      productNameInput.nativeElement.value = 'just';
       productNameInput.triggerEventHandler('input');
       expect(component.searchingToolsUsage.emit).toHaveBeenCalledTimes(0);
       jest.advanceTimersByTime(1000);
