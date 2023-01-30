@@ -2,8 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
+import { CartPayloadForRemoval } from 'src/app/models/cart/cart-payload-for-removal.type';
 import { CartService } from '../../services/cart/cart.service';
 import { NotificationsService } from '../../services/notifications.service';
+import { defaultCartPayloadForRemoval } from '../../services/test-utils/cart/cart-payload-for-removal';
 import { defaultCartDataResponse } from '../../services/test-utils/cart/default-cart-data-response';
 import { defaultCartFailureResponse } from '../../services/test-utils/cart/default-cart-failure-response';
 
@@ -24,7 +26,9 @@ describe('CartComponent', () => {
   };
   let mockCartService!: {
     getCartData: () => Observable<CartData>;
-    removeItemFromCart: () => Observable<CartData>;
+    removeItemFromCart: (
+      payload: CartPayloadForRemoval
+    ) => Observable<CartData>;
     updateItemQuantity: () => Observable<CartData>;
     removeAllCartItems: () => Observable<boolean>;
   };
@@ -109,7 +113,7 @@ describe('CartComponent', () => {
       // RESPONSE has a 404 status by default
       jest.spyOn(mockNotificationsService, 'notifyQueryError');
       mockCartService.getCartData().subscribe({
-        error: (error: Response) => {
+        error: () => {
           expect(
             mockNotificationsService.notifyQueryError
           ).toHaveBeenCalledTimes(1);
@@ -125,7 +129,7 @@ describe('CartComponent', () => {
       jest.spyOn(mockRouter, 'navigate');
       jest.spyOn(mockNotificationsService, 'notifyQueryError');
       mockCartService.getCartData().subscribe({
-        error: (error: Response) => {
+        error: () => {
           expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
           expect(mockRouter.navigate).toHaveBeenCalledWith([
             'grocery-store',
@@ -134,6 +138,43 @@ describe('CartComponent', () => {
           ]);
         },
       });
+    });
+    // onCartItemRemoval
+    test('that onCartItemRemoval triggers the cartService', () => {
+      jest
+        .spyOn(mockCartService, 'removeItemFromCart')
+        .mockReturnValue(of(defaultCartDataResponse));
+      component.onCartItemRemoval(defaultCartPayloadForRemoval);
+      expect(mockCartService.removeItemFromCart).toHaveBeenCalledTimes(1);
+    });
+    test('that the method updateItemQuantity from the cartService returns a successful response', () => {
+      jest
+        .spyOn(mockCartService, 'removeItemFromCart')
+        .mockReturnValue(of(defaultCartDataResponse));
+      mockCartService
+        .removeItemFromCart(defaultCartPayloadForRemoval)
+        .subscribe({
+          next: (cartData: CartData) => {
+            expect(component.cartData).toBe(cartData);
+            expect(
+              mockNotificationsService.notifyItemRemovedSuccessfully
+            ).toHaveBeenCalledTimes(1);
+          },
+        });
+    });
+    test('that the method updateItemQuantity from the cartService returns a failure response', () => {
+      jest
+        .spyOn(mockCartService, 'removeItemFromCart')
+        .mockReturnValue(throwError(() => defaultCartFailureResponse));
+      mockCartService
+        .removeItemFromCart(defaultCartPayloadForRemoval)
+        .subscribe({
+          error: () => {
+            expect(
+              mockNotificationsService.notifyQueryError
+            ).toHaveBeenCalledTimes(1);
+          },
+        });
     });
   });
 });

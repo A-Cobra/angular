@@ -42,15 +42,13 @@ export class CartComponent implements OnInit {
         this.cartData = cartData;
         this.notificationsService.notifyItemRemovedSuccessfully();
       },
-      error: (error: Response) => {
+      error: () => {
         this.notificationsService.notifyQueryError();
       },
     });
   }
 
   onCartItemUpdate(updatePayload: CartPayloadForUpdate) {
-    console.log('updatePayload');
-    console.log(updatePayload);
     this.cartService.updateItemQuantity(updatePayload).subscribe({
       next: (cartData: CartData) => {
         this.cartData = cartData;
@@ -65,15 +63,12 @@ export class CartComponent implements OnInit {
   }
 
   onAllItemsRemoval() {
-    console.log('REMOVING ALL ITEMS');
     this.cartService.removeAllCartItems().subscribe({
       next: (success: boolean) => {
         if (success) {
           this.notificationsService.notifyCartEmptiedSuccess();
-          console.log('Items removed correctly');
         } else {
           this.notificationsService.notifyCartEmptiedFailure();
-          console.log('Items NOT removed correctly');
         }
       },
       complete: () => {
