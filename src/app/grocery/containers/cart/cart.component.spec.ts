@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
 import { CartService } from '../../services/cart/cart.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { defaultCartDataResponse } from '../../services/test-utils/cart/default-cart-data-response';
+import { defaultCartFailureResponse } from '../../services/test-utils/cart/default-cart-failure-response';
 
 import { CartComponent } from './cart.component';
 
@@ -72,6 +73,7 @@ describe('CartComponent', () => {
       fixture.detectChanges();
       expect(component).toBeTruthy();
     });
+    //ngOnInit
     test('that ngOnInit triggers cartService getCartData method', () => {
       fixture.detectChanges();
       expect(mockCartService.getCartData).toHaveBeenCalledTimes(1);
@@ -80,6 +82,56 @@ describe('CartComponent', () => {
       mockCartService.getCartData().subscribe({
         next: (cartData: CartData) => {
           expect(cartData).toBe(defaultCartDataResponse);
+        },
+      });
+    });
+    test('that cartService getCartData method was unsuccessfully called with Error 404', () => {
+      const response = defaultCartFailureResponse;
+      jest
+        .spyOn(mockCartService, 'getCartData')
+        .mockReturnValue(throwError(() => response));
+      // RESPONSE has a 404 status by default
+      jest.spyOn(mockNotificationsService, 'notifyCartEmpty');
+      mockCartService.getCartData().subscribe({
+        error: (error: Response) => {
+          expect(
+            mockNotificationsService.notifyCartEmpty
+          ).toHaveBeenCalledTimes(1);
+        },
+      });
+    });
+    test('that cartService getCartData method was unsuccessfully called with another error', () => {
+      const response = { ...defaultCartFailureResponse };
+      response.status = 303;
+      jest
+        .spyOn(mockCartService, 'getCartData')
+        .mockReturnValue(throwError(() => response));
+      // RESPONSE has a 404 status by default
+      jest.spyOn(mockNotificationsService, 'notifyQueryError');
+      mockCartService.getCartData().subscribe({
+        error: (error: Response) => {
+          expect(
+            mockNotificationsService.notifyQueryError
+          ).toHaveBeenCalledTimes(1);
+        },
+      });
+    });
+    test('to be redirected once there was an error with the cartComponent', () => {
+      const response = { ...defaultCartFailureResponse };
+      response.status = 303;
+      jest
+        .spyOn(mockCartService, 'getCartData')
+        .mockReturnValue(throwError(() => response));
+      jest.spyOn(mockRouter, 'navigate');
+      jest.spyOn(mockNotificationsService, 'notifyQueryError');
+      mockCartService.getCartData().subscribe({
+        error: (error: Response) => {
+          expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
+          expect(mockRouter.navigate).toHaveBeenCalledWith([
+            'grocery-store',
+            'home',
+            'all-products',
+          ]);
         },
       });
     });
