@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
 import { HomeComponent } from './home.component';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent Tests', () => {
   let component: HomeComponent;
@@ -18,8 +19,15 @@ describe('HomeComponent Tests', () => {
     debugElement = fixture.debugElement;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Typescript Tests', () => {
+    test('should create HomeComponent', () => {
+      expect(component).toBeTruthy();
+    });
+  });
+  describe('HTML or UI Tests', () => {
+    test('should display a div', () => {
+      const divElement = debugElement.query(By.css('.main'));
+      expect(divElement).not.toBe(null);
+    });
   });
 });

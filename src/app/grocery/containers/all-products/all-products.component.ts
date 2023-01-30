@@ -6,7 +6,7 @@ import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-cre
 import { ProductCategory } from 'src/app/models/product/product-category.interface';
 import { Product } from 'src/app/models/product/product.interface';
 import { SearchToolsEvent } from 'src/app/models/search-tools-event.type';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 import { CategoriesService } from '../../services/categories.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
@@ -26,8 +26,7 @@ export class AllProductsComponent implements OnInit {
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private cartService: CartService,
-    private notificationsService: NotificationsService,
-    private store: Store
+    private notificationsService: NotificationsService // private store: Store
   ) {}
 
   ngOnInit(): void {

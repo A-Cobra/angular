@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { catchError, Subject, takeUntil, throwError } from 'rxjs';
-import { CartItem } from 'src/app/models/cart/cart-item.interface';
+import { CartService } from '../../services/cart/cart.service';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
-import { CartService } from '../../services/cart.service';
+import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';

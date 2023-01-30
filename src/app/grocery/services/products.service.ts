@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap } from 'rxjs';
 import { ProductsResponse } from 'src/app/models/product/products-response.interface';
@@ -32,14 +32,8 @@ export class ProductsService {
     category,
     nameQuery,
   }: SearchToolsEvent): Observable<Product[]> {
-    const filters = {
-      filter: {
-        name_cont: nameQuery,
-      },
-    };
     const nameFilter = `&[filter][slug_cont]=${nameQuery}`;
     const categoryFilter = `&[filter][category_slug_eq]=${category}`;
-    const headers = new HttpHeaders({});
     return this.http
       .get<ProductsResponse>(
         `${environment.applaudoApiBaseUrl}/${this.productsPath}/${this.queryParams}${nameFilter}${categoryFilter}`
@@ -52,11 +46,6 @@ export class ProductsService {
           throw Error(error);
         })
       );
-    // .subscribe({
-    //   next: (productsResponse: ProductsResponse) => {
-    //     console.log(productsResponse.data);
-    //   },
-    // });
   }
 
   getProduct(productSlug: string): Observable<Product> {

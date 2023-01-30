@@ -9,8 +9,9 @@ import { DebugElement } from '@angular/core';
 import { ProductCategory } from 'src/app/models/product/product-category.interface';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CategoriesService } from '../../services/categories.service';
-import { CartService } from '../../services/cart.service';
 import { NotificationsService } from '../../services/notifications.service';
+// import { CartService } from '../../services/cart/cart.service';
+import { CartService } from 'src/app/grocery/services/cart/cart.service';
 
 describe('AllProductsComponent', () => {
   // let http: HTTPTESTINGCONTROLLER.
@@ -34,6 +35,8 @@ describe('AllProductsComponent', () => {
     notifyNotEnoughStock: () => void;
   };
 
+  console.log('TESTING 1');
+
   beforeEach(async () => {
     mockProductsService = {
       getProducts: jest.fn(),
@@ -53,12 +56,6 @@ describe('AllProductsComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [
-        ProductsService,
-        CategoriesService,
-        CartService,
-        NotificationsService,
-      ],
       declarations: [AllProductsComponent],
       providers: [
         { provide: ProductsService, useValue: mockProductsService },
@@ -68,17 +65,21 @@ describe('AllProductsComponent', () => {
       ],
     }).compileComponents();
 
+    console.log('TESTING2');
+
     fixture = TestBed.createComponent(AllProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     debugElement = fixture.debugElement;
+    console.log('TESTING3');
   });
 
   // it('should create', () => {
   //   expect(component).toBeTruthy();
   // });
 
-  it('should create', () => {
+  it('should create ADDITION', () => {
+    fixture.detectChanges();
     expect(2 + 2).toBe(4);
   });
 
