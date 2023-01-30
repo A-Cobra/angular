@@ -1,5 +1,5 @@
 export type CartFailureResponse = {
-  error: Error;
+  error: ErrorContainer;
   headers: string;
   message: string;
   name: string;
@@ -9,7 +9,7 @@ export type CartFailureResponse = {
   url: string;
 };
 
-type Error = {
+export type ErrorContainer = {
   errors: CartError[];
 };
 
