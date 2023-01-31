@@ -99,7 +99,7 @@ describe('CartComponent', () => {
       // RESPONSE has a 404 status by default
       jest.spyOn(mockNotificationsService, 'notifyCartEmpty');
       mockCartService.getCartData().subscribe({
-        error: (error: Response) => {
+        error: () => {
           expect(
             mockNotificationsService.notifyCartEmpty
           ).toHaveBeenCalledTimes(1);

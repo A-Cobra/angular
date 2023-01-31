@@ -159,11 +159,6 @@ describe('LoginComponent Tests', () => {
       const password = component.getControl('data.password');
       password.setValue('Trainee 2');
       loginButton.nativeElement.click();
-      // const inputsArray = debugElement.queryAll(By.css('input'));
-      // expect(inputsArray.length).toBe(2);
-      // fixture.whenStable().then(() => {
-      //   expect(inputsArray.length).toBe(0);
-      // });
       expect(mockRouter.navigate).toHaveBeenCalledTimes(1);
       expect(mockRouter.navigate).toHaveBeenCalledWith([
         'grocery-store',
@@ -182,9 +177,6 @@ describe('LoginComponent Tests', () => {
       jest.spyOn(component, 'onFormSubmit');
       let button = debugElement.nativeElement.querySelector('.login-button');
       button.click();
-      // fixture.whenStable().then(() => {
-      //   expect(component.onFormSubmit).toHaveBeenCalled();
-      // });
       expect(component.onFormSubmit).toHaveBeenCalled();
     });
   });

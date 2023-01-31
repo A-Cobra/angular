@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginToken } from 'src/app/models/login-token.type';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 import { Observable, of } from 'rxjs';
@@ -35,7 +35,7 @@ export class LoginService {
           this.isLoggedIn = true;
           return of(true);
         }),
-        catchError((error: Response) => {
+        catchError(() => {
           return of(false);
         })
       );
@@ -56,6 +56,7 @@ export class LoginService {
     // ADD THE LOCAL STORAGE and check date
     return of(this.isLoggedIn);
   }
+
   get isLoggedOut$(): Observable<boolean> {
     const loginToken = this.localStorageService.getLoginToken();
     if (loginToken === '') {

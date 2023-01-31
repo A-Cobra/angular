@@ -14,7 +14,6 @@ import { NotificationsService } from '../../services/notifications.service';
 import { CartService } from 'src/app/grocery/services/cart/cart.service';
 
 describe('AllProductsComponent', () => {
-  // let http: HTTPTESTINGCONTROLLER.
   let component: AllProductsComponent;
   let fixture: ComponentFixture<AllProductsComponent>;
   let debugElement: DebugElement;
@@ -34,8 +33,6 @@ describe('AllProductsComponent', () => {
     notifyItemAlreadyInCart: () => void;
     notifyNotEnoughStock: () => void;
   };
-
-  console.log('TESTING 1');
 
   beforeEach(async () => {
     mockProductsService = {
@@ -65,22 +62,11 @@ describe('AllProductsComponent', () => {
       ],
     }).compileComponents();
 
-    console.log('TESTING2');
-
     fixture = TestBed.createComponent(AllProductsComponent);
     component = fixture.componentInstance;
+    // jest.spyOn(mockProductsService, "getProducts").mockReturnValue();
     fixture.detectChanges();
     debugElement = fixture.debugElement;
-    console.log('TESTING3');
-  });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-
-  it('should create ADDITION', () => {
-    fixture.detectChanges();
-    expect(2 + 2).toBe(4);
   });
 
   afterEach(() => {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { catchError, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { ProductCategory } from 'src/app/models/product/product-category.interface';
@@ -63,7 +62,7 @@ export class AllProductsComponent implements OnInit {
 
   onCartAddition(cartAdditionEvent: CartPayloadForCreation) {
     this.cartService.addItemToCart(cartAdditionEvent).subscribe({
-      next: (cartItems: CartItem[]) => {
+      next: () => {
         this.notificationsService.notifySuccessfulCartAddition();
       },
       error: (errorCode: Error) => {

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { LoginToken } from 'src/app/models/login-token.type';
 
 @Injectable({
   providedIn: 'root',

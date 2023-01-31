@@ -1,4 +1,4 @@
-import { Observable, of, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { CartData } from 'src/app/models/cart/cart-data.interface';
 import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';

@@ -10,6 +10,3 @@ export const ProductsPageActions = createActionGroup({
     'Load Products Success': props<{ products: Product[] }>(),
   },
 });
-
-//Action types
-// export type ProductsPageActionsType = ProductsPageActions

@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { CartService } from '../../services/cart/cart.service';
 import { CartPayloadForCreation } from 'src/app/models/cart/cart-payload-for-creation.type';
 import { Product } from 'src/app/models/product/product.interface';
-import { CartItem } from 'src/app/models/cart/cart-item.interface';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ProductsService } from '../../services/products.service';
@@ -37,7 +36,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
           next: (product: Product) => {
             this.currentProduct = product;
           },
-          error: (error: Response) => {
+          error: () => {
             this.notificationsService.notifyQueryError();
             this.router.navigate(['grocery-store', 'home', 'all-products']);
           },
