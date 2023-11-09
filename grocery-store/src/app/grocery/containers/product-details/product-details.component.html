@@ -1,0 +1,6 @@
+<div *ngIf="currentSlug">
+  <app-product-visualizer
+    [product]="currentProduct"
+    [shortenedContent]="false"
+    (cartAddition)="onCartAddition($event)"></app-product-visualizer>
+</div>

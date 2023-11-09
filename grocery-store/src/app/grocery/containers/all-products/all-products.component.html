@@ -1,0 +1,13 @@
+<app-searching-tools
+  [categories]="categories"
+  (searchingToolsUsage)="onSearchingToolsUsage($event)"></app-searching-tools>
+<div *ngIf="products.length === 0">
+  <h2>Sorry, no available items</h2>
+</div>
+<div class="cards-container">
+  <div class="card" *ngFor="let product of products">
+    <app-product-visualizer
+      [product]="product"
+      (cartAddition)="onCartAddition($event)"></app-product-visualizer>
+  </div>
+</div>
