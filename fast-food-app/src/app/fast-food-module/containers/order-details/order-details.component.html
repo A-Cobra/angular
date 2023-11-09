@@ -1,0 +1,27 @@
+<div class="order-details-container">
+  <div *ngIf="selectedOrder">
+    <header class="flex">
+      <h3>
+        Total Price:
+        <span>{{
+          selectedOrder.totalPrice | currency : 'USD' : 'symbol' : '1.2-2'
+        }}</span>
+      </h3>
+      <button (click)="onAddSameItemsToCart()">
+        Add these items to the cart
+      </button>
+    </header>
+    <div *ngFor="let cartMenuItem of selectedOrder.orderItems; index as i">
+      <app-my-card-details [collapsed]="false">
+        <app-menu-selection-header
+          [totalPrice]="totalItemsPrice[i]"
+          [cartHeader]="true"
+          [menuItem]="cartMenuItem"></app-menu-selection-header>
+        <app-cart-selection-content
+          [customizableOptions]="
+            cartMenuItem.customizableOptions
+          "></app-cart-selection-content>
+      </app-my-card-details>
+    </div>
+  </div>
+</div>

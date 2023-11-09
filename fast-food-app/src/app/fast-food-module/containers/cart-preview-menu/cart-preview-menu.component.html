@@ -1,0 +1,31 @@
+<div class="cart-preview-menu-container">
+  <div *ngIf="cartMenu.length === 0">
+    <h2>Sorry, no items in the cart!</h2>
+  </div>
+  <header *ngIf="cartMenu.length > 0" class="flex">
+    <h3>
+      Total Price:
+      <span>{{ totalCartPrice | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
+    </h3>
+    <button [disabled]="cartEditingStatus" (click)="onCompleteOrder()">
+      Complete Order
+    </button>
+  </header>
+  <div
+    [ngClass]="{
+      active: cartItemsSelectedStatus[i]
+    }"
+    (click)="onCardClick(i, cartMenuItem)"
+    *ngFor="let cartMenuItem of cartMenu; index as i">
+    <app-my-card-details [collapsed]="false">
+      <app-menu-selection-header
+        [totalPrice]="totalItemsPrice[i]"
+        [cartHeader]="true"
+        [menuItem]="cartMenuItem"></app-menu-selection-header>
+      <app-cart-selection-content
+        [customizableOptions]="
+          cartMenuItem.customizableOptions
+        "></app-cart-selection-content>
+    </app-my-card-details>
+  </div>
+</div>

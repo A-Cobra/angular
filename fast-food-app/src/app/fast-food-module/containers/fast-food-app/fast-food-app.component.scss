@@ -1,0 +1,15 @@
+
+@import "../../../../colors";
+.flex{
+  border-top: 2px solid $light-gray;
+  display: flex;
+  flex-wrap: wrap;
+  .left-side,
+  .right-side{
+    padding: 30px;
+    flex: 1 1 550px;
+    height: 90vh;
+    overflow-y: hidden;
+    overflow: auto;
+  } 
+}

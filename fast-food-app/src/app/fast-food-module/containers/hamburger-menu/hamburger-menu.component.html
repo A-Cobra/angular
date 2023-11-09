@@ -1,0 +1,19 @@
+<div class="grid-wrapper">
+  <div
+    class="hamburger-menu-container"
+    [ngClass]="{
+      active: !collapsedCards[i]
+    }"
+    *ngFor="let burgerMenuItem of burgerMenu; index as i">
+    <app-my-card-details
+      (click)="onCardClick(i, burgerMenuItem)"
+      [collapsed]="collapsedCards[i]">
+      <app-menu-selection-header
+        [menuItem]="burgerMenuItem"></app-menu-selection-header>
+      <app-menu-selection-content
+        [customizableOptions]="
+          burgerMenuItem.customizableOptions
+        "></app-menu-selection-content>
+    </app-my-card-details>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="order-form-container">
+  <h2>{{ currentMenuSelection.name }}</h2>
+  <ng-template #menuSelectionForm>
+    <header class="flex">
+      <h3>
+        Total Price:
+        <span>{{ totalPrice | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
+      </h3>
+      <button (click)="onAddClick()">Add to cart</button>
+    </header>
+  </ng-template>
+  <header *ngIf="cartForm; else menuSelectionForm" class="flex">
+    <h3>
+      Partial Price:
+      <span>{{ totalPrice | currency : 'USD' : 'symbol' : '1.2-2' }}</span>
+    </h3>
+    <div class="btn-container">
+      <button (click)="onRemoveFromCart()">Remove from Cart</button>
+      <button (click)="onSaveChanges()">Save changes</button>
+    </div>
+  </header>
+  <div #formControlsDisplay></div>
+</div>
