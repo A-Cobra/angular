@@ -1,0 +1,3 @@
+[submodule "tmdb-movies-explorer"]
+	path = tmdb-movies-explorer
+	url = https://gitlab.com/conradbravina/tmdb-movies-explorer
