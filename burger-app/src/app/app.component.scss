@@ -1,0 +1,13 @@
+$main-color-shadow: rgba(40,72,198,0.2);
+$navy-blue:rgba(31,62,114,1);
+.main{
+  display: grid;
+  gap: 20px;
+}
+header{
+  text-align: center;
+  color: $navy-blue;
+  background-color: $main-color-shadow;
+  padding: 30px;
+  font-size: 28px;
+}

@@ -1,0 +1,62 @@
+<div class="all-tools-container">
+  <div class="info">
+    <select name="currency" id="currency" (change)="updateCurrency($event)">
+      <option
+        *ngFor="let currency of currencies | keyvalue"
+        [selected]="currency.key === 'us dollar'"
+        [value]="currency.key">
+        {{ currency.key | titlecase }}
+      </option>
+    </select>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Units</th>
+        <th>Total</th>
+      </tr>
+      <tr *ngFor="let ingredient of ingredientsController">
+        <td>{{ ingredient.type | titlecase }}</td>
+        <td>{{ ingredient.units }}</td>
+        <td>
+          {{
+            ingredientsPricing.get(ingredient.type)
+              | conversionRate : currencyConversionRate
+              | units : ingredient.units
+              | currency : currencyCode : 'symbol' : '1.2-2'
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td>{{ totalIngredientsControl.type | titlecase }}</td>
+        <td>{{ totalIngredientsControl.units }}</td>
+        <td>
+          {{
+            totalIngredientsControl.price + basePrice
+              | conversionRate : currencyConversionRate
+              | currency : currencyCode : 'symbol' : '1.2-2'
+          }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="interactive-buttons-container">
+    <div class="ingredients-buttons-container">
+      <div
+        class="ingredient-buttons-container"
+        *ngFor="let ingredient of ingredientsKeys">
+        <button
+          class="remove"
+          *ngIf="hasAtLeastOne(ingredient)"
+          (click)="removeEventEmit(ingredient)">
+          Remove 1 {{ ingredient }}
+        </button>
+        <button class="add" (click)="addEventEmit(ingredient)">
+          Add 1 {{ ingredient }}
+        </button>
+      </div>
+    </div>
+    <div class="order-btn-container">
+      <button class="order-btn" (click)="orderEventEmit()">Order</button>
+    </div>
+  </div>
+</div>

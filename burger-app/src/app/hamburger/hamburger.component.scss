@@ -1,0 +1,108 @@
+$light-sky-blue:rgba(238,243,255,1);
+$navy-blue:rgba(31,62,114,1);
+$bright-blue: rgba(40,72,198,1);
+$main-color-shadow: rgba(40,72,198,0.2);
+$secondary-blue: #4f517d;
+$light-purple: #dccfec;
+$mid-purple: #a997df;
+$burgundy: rgb(128,0,32);
+$light-red: rgb(252, 168, 168);
+
+
+.grid-container{
+  display: grid;
+  gap: 25px;
+}
+.current-hamburger-interaction{
+  padding: 0 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  .burger-canvas{
+    flex: 1 1 450px;
+    max-width: 550px;
+  }
+  h1{
+    text-align: center;
+  }
+  .burger-tools-container{ 
+    .reset-btn-container{
+      display: flex;
+      justify-content: center;
+    }
+    button{
+      max-width: 200px;
+      background-color: red;
+      &:hover{
+        background-color: $burgundy;
+        box-shadow: 2px 5px 5px rgba(255, 0, 0, 0.2);
+      }
+    }
+  }
+}
+button{
+  border: none;
+  border-radius: 3px;
+  padding: 8px 18px;
+  color: rgba(255,255,255,1);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+.burger-history{
+  display: grid;
+  gap: 25px;
+  h1{
+    text-align: center;
+    color: $bright-blue;
+  }
+  h2{
+    text-align: center;
+  }
+}
+.burger-history-cards-container{
+  padding: 0 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 20px;
+  .burger-card{
+    flex: 1 1 300px;
+    max-width: 550px;
+    background-color: $light-sky-blue;
+    padding: 30px;
+    border-radius: 5px;
+    display: grid;
+    gap: 15px;
+    &:hover{
+      box-shadow: 5px 5px 20px $main-color-shadow;
+      border: solid 2px $navy-blue;
+      background-color: white;
+    }
+  }
+  button{
+    max-width: 180px;
+    max-height: 45px;
+    background-color: $mid-purple;
+    &:hover{
+      background-color: $secondary-blue;
+      box-shadow: 2px 5px 5px rgba(109, 77, 173, 0.2);
+    }
+  }
+}
+.card-info-interaction{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+  .burger-history-cards-container,
+  .current-hamburger-interaction{
+    padding: 0 30px;
+  }
+}
