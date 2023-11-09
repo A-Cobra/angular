@@ -1,0 +1,18 @@
+@import "../../../../colors";
+.cards-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  .card {
+    padding: 20px;
+    flex: 1 1 250px;
+    max-width: 350px;
+    border: 2px solid $light-gray;
+    &:hover{
+      border: 2px solid $navy-blue;
+      background-color: $light-sky-blue;
+      box-shadow: 3px 6px 10px $twilight-shadow;
+    }
+  }
+}

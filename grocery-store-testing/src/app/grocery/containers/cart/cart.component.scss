@@ -1,0 +1,43 @@
+@import "../../../../colors";
+
+.main{
+  display: grid;
+  gap: 15px;
+  h1{
+    color: $navy-blue;
+  }
+  .cart-data{
+    display: grid;
+    gap: 15px;
+    .cart-item-card{
+      padding: 20px;
+      border: 2px solid $light-gray;
+      &:hover{
+        border: 2px solid $navy-blue;
+        background-color: $light-sky-blue;
+        box-shadow: 3px 6px 10px $twilight-shadow;
+      }
+    }
+    button{
+      cursor: pointer;
+      text-align: center;
+      padding: 8px 14px;
+      font-size: 18px;
+      color: $secondary-blue;
+      border-radius: 5px;
+      max-width: 230px;
+      color: white;
+      background-color: red;
+      &:hover{
+        background-color: $burgundy;
+        box-shadow: 3px 6px 6px $burgundy-shadow;
+      }
+    }
+  }
+  h3{
+    color: $burgundy;
+    span{
+      font-weight: 300;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<div class="form-wrapper">
+  <h1>Login Form</h1>
+  <form (ngSubmit)="onFormSubmit()" [formGroup]="loginForm">
+    <div class="form-group" formGroupName="data">
+      <div class="wrapper">
+        <div class="form-control flex-container">
+          <label class="description" for="email">Please enter your mail</label>
+          <input
+            id="email"
+            type="text"
+            formControlName="email"
+            placeholder="name@domain.domainsuffix" />
+        </div>
+        <div class="error" *ngIf="getControl('data.email').touched">
+          <p *ngIf="getControl('data.email').hasError('required')">
+            This field is required
+          </p>
+          <p *ngIf="getControl('data.email').hasError('email')">
+            This field requires the following pattern -->
+            name@domain.domainsuffix
+          </p>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="form-control flex-container">
+          <label class="description" for="password"
+            >Please enter your password</label
+          >
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="password" />
+        </div>
+        <div class="error" *ngIf="getControl('data.password').touched">
+          <p *ngIf="getControl('data.password').hasError('required')">
+            This field is required
+          </p>
+        </div>
+      </div>
+    </div>
+    <button class="login-button">Log In</button>
+  </form>
+</div>
