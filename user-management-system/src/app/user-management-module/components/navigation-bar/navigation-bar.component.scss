@@ -1,0 +1,34 @@
+$navy-blue:rgba(31,62,114,1);
+$bright-blue: rgba(40,72,198,1);
+$main-color-shadow: rgba(40,72,198,0.2);
+$secondary-blue: #4f517d;
+$light-purple: #dccfec;
+$light-sky-blue:rgba(238,243,255,1);
+$twilight: rgb(95,0,160);
+nav{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 110px;
+  border-bottom: 2px solid rgba(1,1,1,0.2);
+  flex-wrap: wrap;
+  box-shadow: 0 6px 6px $light-sky-blue;
+  a{
+    text-align: center;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-size: 18px;
+    color: $secondary-blue;
+    border-radius: 5px;
+    &.active {
+      color: $light-purple;
+      background-color: $navy-blue;
+      box-shadow: 3px 6px 6px $main-color-shadow;
+    }
+    &:hover{
+      color: $twilight;
+      background-color: $light-sky-blue;
+      box-shadow: 3px 6px 6px $main-color-shadow;
+    }
+  }
+}

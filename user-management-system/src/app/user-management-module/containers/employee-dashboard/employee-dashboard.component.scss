@@ -1,0 +1,33 @@
+$navy-blue:rgba(31,62,114,1);
+$bright-blue: rgba(40,72,198,1);
+$main-color-shadow: rgba(40,72,198,0.2);
+$secondary-blue: #4f517d;
+$light-purple: #dccfec;
+$light-sky-blue:rgba(238,243,255,1);
+$twilight: rgb(95,0,160);
+.employees-container{
+  padding: 30px 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  column-gap: 50px;
+  row-gap: 50px;
+  .employee-card{
+    cursor: pointer;
+    padding: 30px;
+    flex: 1 1 250px;
+    max-width: 400px;
+    background-color: $light-sky-blue;
+    border-radius: 5px;
+    &:hover{
+      border: 3px white solid;
+      box-shadow: 5px 6px 10px $main-color-shadow;
+    }
+  }
+}
+@media screen and (max-width:720px) {
+  .employees-container{
+    padding: 30px 30px;
+  }
+}

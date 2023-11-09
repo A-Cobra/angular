@@ -1,0 +1,11 @@
+.error{
+  color: red;
+}
+.form-wrapper{
+  padding: 20px 110px;
+}
+@media screen and (max-width: 720px) {
+  .form-wrapper{
+    padding: 20px 30px;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="employees-container">
+  <div *ngFor="let employee of employeeList" class="employee-card">
+    <app-employee-viewer
+      [shortenedContent]="true"
+      [currentEmployee]="employee"
+      (click)="onClickHandle(employee)"></app-employee-viewer>
+  </div>
+</div>

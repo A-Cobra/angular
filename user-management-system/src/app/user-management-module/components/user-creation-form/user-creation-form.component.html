@@ -1,0 +1,344 @@
+<ng-template #createEmployee>
+  <h1 class="title">Create a new Employee</h1>
+</ng-template>
+<h1 class="title" *ngIf="editing; else createEmployee">Edit a Employee</h1>
+<form id="employee-form" #employeeCreationForm="ngForm">
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="firstName"
+        >Introduce your first name</label
+      >
+      <input
+        #firstName="ngModel"
+        type="text"
+        id="firstName"
+        name="firstName"
+        required=""
+        minlength="4"
+        maxlength="15"
+        placeholder="Introduce your first name"
+        [(ngModel)]="currentEmployee.firstName" />
+    </div>
+    <div class="error">
+      <div *ngIf="!firstName.pristine && firstName.value.length < 4">
+        Please type at least 4 characters
+      </div>
+      <div *ngIf="!firstName.pristine && firstName.value.length > 15">
+        Please type at most 15 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="lastName"
+        >Introduce your last name</label
+      >
+      <input
+        #lastName="ngModel"
+        type="text"
+        id="lastName"
+        name="lastName"
+        required=""
+        minlength="4"
+        maxlength="15"
+        placeholder="Introduce your last name"
+        [(ngModel)]="currentEmployee.lastName" />
+    </div>
+    <div class="error">
+      <div *ngIf="!lastName.pristine && lastName.value.length < 4">
+        Please type at least 4 characters
+      </div>
+      <div *ngIf="!lastName.pristine && lastName.value.length > 15">
+        Please type at most 15 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="email"
+        >Introduce your email</label
+      >
+      <input
+        #email="ngModel"
+        email
+        type="email"
+        id="email"
+        name="email"
+        required=""
+        placeholder="name@domain.com"
+        [(ngModel)]="currentEmployee.email" />
+    </div>
+    <div class="error">
+      <div
+        *ngIf="email.dirty && !containsCertainChar(currentEmployee.email, '.')">
+        The email needs at least one dot
+      </div>
+      <div
+        *ngIf="email.dirty && !containsCertainChar(currentEmployee.email, '@')">
+        The email needs at least one '@' symbol
+      </div>
+      <div *ngIf="email.dirty && lastCharIsADot(currentEmployee.email)">
+        The email can not end with a dot
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="password"
+        >Introduce your password</label
+      >
+      <input
+        #password="ngModel"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required=""
+        [(ngModel)]="currentEmployee.password" />
+    </div>
+    <div class="error">
+      <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
+        The password must contain at least 12 characters, have a special
+        character and a number
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="passwordConfirmation"
+        >Confirm your password</label
+      >
+      <input
+        #passwordConfirmationInput="ngModel"
+        type="password"
+        id="passwordConfirmation"
+        name="passwordConfirmation"
+        placeholder="Confirm your Password"
+        required=""
+        [(ngModel)]="passwordConfirmation" />
+    </div>
+    <div class="error">
+      <div
+        *ngIf="
+          passwordConfirmation !== currentEmployee.password &&
+          passwordConfirmationInput.dirty
+        ">
+        Passwords don't match
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="profileImage"
+        >Profile Image Link (Optional)</label
+      >
+      <input
+        type="text"
+        id="profileImage"
+        name="profileImage"
+        placeholder="Profile Image Url(Optional)"
+        [(ngModel)]="currentEmployee.profileImage" />
+    </div>
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="birthDate">Birth Date</label>
+      <input
+        #date="ngModel"
+        type="date"
+        id="birthDate"
+        name="birthDate"
+        required=""
+        [(ngModel)]="currentEmployee.birthDate" />
+    </div>
+    <div class="error">
+      <div *ngIf="currentEmployee.birthDate === '' && date.touched">
+        Please select a date
+      </div>
+      <div *ngIf="currentEmployee.birthDate > getCurrentDate()">
+        Please select a date previous to today
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="phone"
+        >Phone number (5 digits as minimum)</label
+      >
+      <input
+        #phone="ngModel"
+        type="number"
+        id="phone"
+        name="phone"
+        required=""
+        min="0"
+        [(ngModel)]="currentEmployee.phone" />
+    </div>
+    <div class="error">
+      <div *ngIf="currentEmployee.phone === null">
+        Please enter at least a number and don't enter letters
+      </div>
+      <div *ngIf="currentEmployee.phone < 0">Don't enter negative numbers</div>
+      <div *ngIf="getNumberOfDigits(currentEmployee.phone) < 5 && phone.dirty">
+        Please enter at least 5 digits
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="personalSiteUrl"
+        >Personal Site Url (Optional)</label
+      >
+      <input
+        type="url"
+        id="personalSiteUrl"
+        name="personalSiteUrl"
+        placeholder="Personal Site Url (Optional)"
+        [(ngModel)]="currentEmployee.personalSiteUrl" />
+    </div>
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="about">About (Optional)</label>
+      <input
+        type="text"
+        id="about"
+        name="about"
+        placeholder="About (Optional)"
+        [(ngModel)]="currentEmployee.about" />
+    </div>
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container gender-selector">
+      <label
+        ><input
+          type="radio"
+          value="male"
+          checked=""
+          name="gender"
+          [(ngModel)]="currentEmployee.gender" />Male
+      </label>
+      <label class="required"
+        ><input
+          type="radio"
+          value="female"
+          name="gender"
+          [(ngModel)]="currentEmployee.gender" />Female
+      </label>
+    </div>
+  </div>
+  <div>
+    <div class="select-container">
+      <div class="select-wrapper">
+        <select
+          (change)="changeStateList(currentEmployee.address.country)"
+          #country="ngModel"
+          name="country"
+          id="country"
+          required=""
+          [(ngModel)]="currentEmployee.address.country">
+          <option value="none" selected="true">Select a Country</option>
+          <option [value]="country" *ngFor="let country of countryList">
+            {{ country | titlecase }}
+          </option>
+        </select>
+        <select
+          *ngIf="country.value !== 'none' && stateList.length > 0"
+          #state="ngModel"
+          name="state"
+          id="state"
+          required=""
+          [(ngModel)]="currentEmployee.address.state">
+          <option value="none" [selected]="true && country.value === 'none'">
+            Select a State
+          </option>
+          <option [value]="state" *ngFor="let state of stateList">
+            {{ state | titlecase }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="error">
+    <div *ngIf="country.value === 'none' && country.touched">
+      Please select a Country
+    </div>
+  </div>
+  <div class="error">
+    <div
+      *ngIf="
+        currentEmployee.address.state === 'none' && country.value !== 'none'
+      ">
+      Please select a state
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container agree-terms">
+      <input required #agree id="terms" name="terms" type="checkbox" />
+      <label class="required" for="terms">Agree Terms and Conditions</label>
+    </div>
+    <div class="error">
+      <!-- <div *ngIf="!agree.checked">Please agree the terms and conditions</div> -->
+    </div>
+  </div>
+  <div class="btn-container">
+    <ng-template #createEmployeeButton>
+      <button
+        class="create-btn"
+        [disabled]="
+          employeeCreationForm.invalid ||
+          currentEmployee.password !== passwordConfirmation ||
+          !agree.checked ||
+          getNumberOfDigits(currentEmployee.phone) < 5 ||
+          firstName.value.length < 4 ||
+          firstName.value.length > 15 ||
+          lastName.value.length < 4 ||
+          lastName.value.length > 15 ||
+          !containsCertainChar(currentEmployee.email, '.') ||
+          currentEmployee.password.length < 12 ||
+          currentEmployee.birthDate > getCurrentDate() ||
+          (email.dirty && !containsCertainChar(currentEmployee.email, '.')) ||
+          (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
+          (passwordConfirmation !== currentEmployee.password &&
+            passwordConfirmationInput.dirty) ||
+          (country.value === 'none' && country.touched) ||
+          (currentEmployee.address.state === 'none' &&
+            country.value !== 'none') ||
+          lastCharIsADot(currentEmployee.email)
+        "
+        (click)="emitCreationNotification()">
+        Create User
+      </button>
+    </ng-template>
+    <button
+      class="update-btn"
+      [disabled]="
+        employeeCreationForm.invalid ||
+        currentEmployee.password !== passwordConfirmation ||
+        !agree.checked ||
+        getNumberOfDigits(currentEmployee.phone) < 5 ||
+        firstName.value.length < 4 ||
+        firstName.value.length > 15 ||
+        lastName.value.length < 4 ||
+        lastName.value.length > 15 ||
+        !containsCertainChar(currentEmployee.email, '.') ||
+        currentEmployee.password.length < 12 ||
+        currentEmployee.birthDate > getCurrentDate() ||
+        (email.dirty && !containsCertainChar(currentEmployee.email, '.')) ||
+        (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
+        (passwordConfirmation !== currentEmployee.password &&
+          passwordConfirmationInput.dirty) ||
+        (country.value === 'none' && country.touched) ||
+        (currentEmployee.address.state === 'none' &&
+          country.value !== 'none') ||
+        lastCharIsADot(currentEmployee.email)
+      "
+      *ngIf="editing; else createEmployeeButton"
+      (click)="emitUpdateNotification()">
+      Update User
+    </button>
+  </div>
+</form>
