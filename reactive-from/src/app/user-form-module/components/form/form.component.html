@@ -1,0 +1,278 @@
+<h1 class="title">Create a new User</h1>
+<!-- <pre>{{ userForm.value | json }}</pre> -->
+<form id="user-form" [formGroup]="userForm">
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="firstName"
+        >Introduce your first name</label
+      >
+      <input
+        formControlName="firstName"
+        type="text"
+        id="firstName"
+        placeholder="Introduce your first name" />
+    </div>
+    <div class="error" *ngIf="getControl('firstName')?.touched">
+      <div *ngIf="getControl('firstName')?.errors?.['required']">
+        The first name input is required
+      </div>
+      <div *ngIf="getControl('firstName')?.errors?.['minlength']">
+        The first name requires at least 4 characters
+      </div>
+      <div *ngIf="getControl('firstName')?.errors?.['maxlength']">
+        The first name requires at most 15 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="lastName"
+        >Introduce your last name</label
+      >
+      <input
+        formControlName="lastName"
+        type="text"
+        id="lastName"
+        placeholder="Introduce your last name" />
+    </div>
+    <div class="error" *ngIf="getControl('lastName')?.touched">
+      <div *ngIf="getControl('lastName')?.errors?.['required']">
+        The last name input is required
+      </div>
+      <div *ngIf="getControl('lastName')?.errors?.['minlength']">
+        The last name requires at least 4 characters
+      </div>
+      <div *ngIf="getControl('lastName')?.errors?.['maxlength']">
+        The last name requires at most 15 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="email"
+        >Introduce your email</label
+      >
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        placeholder="name@domain.com" />
+    </div>
+    <div class="error">
+      <div
+        *ngIf="getControl('email')?.errors?.['required'] &&
+        getControl('email')?.dirty">
+        This field can not be empty
+      </div>
+      <div
+        *ngIf="getControl('email')?.errors?.['email'] &&
+        getControl('email')?.dirty &&
+        !getControl('email')?.errors?.['required']">
+        Please type an email with the following structure --> name@domain.suffix
+      </div>
+    </div>
+  </div>
+  <div class="password-group" formGroupName="password">
+    <div class="form-group">
+      <div class="flex-container">
+        <label class="description required" for="password"
+          >Introduce your password</label
+        >
+        <input
+          formControlName="value"
+          type="password"
+          id="password"
+          placeholder="Password"
+          required="" />
+      </div>
+      <div
+        *ngIf="
+          getControl('password.value')?.touched ||
+          getControl('password.value')?.dirty
+        "
+        class="error">
+        <div *ngIf="getControl('password.value')?.errors?.['noNumbers']">
+          The field requires at least one number
+        </div>
+        <div
+          *ngIf="getControl('password.value')?.errors?.['noSpecialCharacters']">
+          The field requires at least one special character
+        </div>
+        <div *ngIf="getControl('password.value')?.errors?.['notLongEnough']">
+          The field requires at least {{ minNumberOfPasswordChars }} of
+          characters
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="flex-container">
+        <label class="description required" for="passwordConfirmation"
+          >Confirm your password</label
+        >
+        <input
+          formControlName="confirmation"
+          type="password"
+          id="passwordConfirmation"
+          placeholder="Confirm your Password"
+          required="" />
+      </div>
+      <div class="error">
+        <div
+          *ngIf="getControl('password.confirmation')?.dirty && userForm.errors?.['differentPasswords']">
+          Passwords don't match
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="profileImage"
+        >Profile Image Link (Optional)</label
+      >
+      <input
+        formControlName="profileImage"
+        type="text"
+        id="profileImage"
+        placeholder="Profile Image Url(Optional)" />
+    </div>
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="birthDate">Birth Date</label>
+      <input
+        formControlName="birthDate"
+        type="date"
+        id="birthDate"
+        required="" />
+    </div>
+    <div class="error">
+      <div
+        *ngIf="getControl('birthDate')?.errors?.['required'] && getControl('birthDate')?.touched">
+        Please select a date
+      </div>
+      <div *ngIf="getControl('birthDate')?.errors?.['afterToday']">
+        Please select a date equal or previous to today
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description required" for="phone"
+        >Phone number (5 digits as minimum)</label
+      >
+      <input
+        [appNumberFormat]="3"
+        [originalFormControl]="userForm"
+        formControlName="phone"
+        type="text"
+        id="phone" />
+    </div>
+    <div class="error">
+      <div *ngIf="getControl('phone')?.errors?.['required']">
+        This field can not be empty or contain letters
+      </div>
+      <div
+        *ngIf="getControl('phone')?.errors?.['minDigits'] && 
+        !getControl('phone')?.errors?.['required']">
+        The phone number has to have at least 5 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="personalSiteUrl"
+        >Personal Site Url (Optional)</label
+      >
+      <input
+        formControlName="personalSiteUrl"
+        type="url"
+        id="personalSiteUrl"
+        placeholder="Personal Site Url (Optional)" />
+    </div>
+    <div class="error"></div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container">
+      <label class="description" for="about">About (Optional)</label>
+      <input
+        formControlName="about"
+        type="text"
+        id="about"
+        placeholder="About (Optional)" />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container gender-selector">
+      <label
+        ><input
+          formControlName="gender"
+          type="radio"
+          value="male"
+          checked=""
+          name="gender" />Male
+      </label>
+      <label class="required"
+        ><input
+          formControlName="gender"
+          type="radio"
+          value="female"
+          name="gender" />Female
+      </label>
+    </div>
+  </div>
+  <div>
+    <div class="select-container">
+      <div class="select-wrapper" formGroupName="address">
+        <select (change)="changeStateList()" formControlName="country">
+          <option value="none" selected="true">Select a Country</option>
+          <option [value]="country" *ngFor="let country of countryList">
+            {{ country | titlecase }}
+          </option>
+        </select>
+        <select
+          *ngIf="userForm.get('address')?.get('country')?.value !== 'none'"
+          formControlName="state">
+          <option value="none" [selected]="true">Select a State</option>
+          <option [value]="state" *ngFor="let state of stateList">
+            {{ state | titlecase }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="error">
+    <div
+      *ngIf="getControl('address.country')?.errors?.['noneValue'] && 
+      getControl('address.country')?.touched">
+      Please select a Country
+    </div>
+    <div
+      *ngIf="getControl('address.state')?.errors?.['noneValue'] && 
+      getControl('address.state')?.touched">
+      Please select a State
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="flex-container agree-terms">
+      <input formControlName="agreement" id="terms" type="checkbox" />
+      <label class="required" for="terms">Agree Terms and Conditions</label>
+    </div>
+    <div class="error">
+      <div
+        *ngIf="
+          getControl('agreement')?.errors && getControl('agreement')?.touched
+        ">
+        Please agree the terms and conditions
+      </div>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button
+      [disabled]="userForm.invalid"
+      class="create-btn"
+      (click)="emitCreationNotification()">
+      Create User
+    </button>
+  </div>
+</form>
