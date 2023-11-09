@@ -1,0 +1,75 @@
+$radius: 5px;
+$really-light-gray: rgb(237, 237, 237);
+$strong-pink : rgb(233,30,99);
+.category-title{
+  cursor: pointer;
+  font-weight: 700;
+  padding: 15px 20px;
+  background-color: $really-light-gray;
+  border-radius: $radius;
+  position: relative;
+  &::after{
+    color: $strong-pink;
+    font-weight: 700;
+    font-size: 30px;
+    content: "+";
+    position: absolute;
+    right: 15px;
+    top: 15px
+  }
+  &.active{
+    border-radius: $radius $radius 0 0;
+    position: relative;
+    &::after{
+      color: $strong-pink;
+      font-weight: 700;
+      font-size: 50px;
+      content: "-";
+      position: absolute;
+      right: 15px;
+      top: 15px
+    }
+  }
+}
+.car-cards-container.active{
+  background-color: $really-light-gray;
+  border-radius: 0 0 $radius $radius;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  .car-card{
+    flex: 1 1 250px;
+    max-width: 500px;
+    img{
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      margin-bottom: 14px;
+      h3{
+        margin: 0;
+        padding: 0;
+      }
+      img{
+        width: 30px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: white;
+      }
+    }
+  }
+}
+.car-cards-container.active .car-card h3{
+  font-weight: 900;
+}
+.car-cards-container.active .car-card h3 span{
+  font-weight: 200;
+}
