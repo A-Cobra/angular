@@ -1,4 +1,4 @@
-# Burger App
+# Burger Store
 
 This Angular application offers a delightful burger customization experience, allowing users to personalize their burgers by adding or removing ingredients such as tomatoes, lettuce, meat, and cheese.
 
@@ -21,7 +21,7 @@ Once the user has created their perfect burger, they can proceed to "order" it. 
 
 ## Requirements
 
-Before running the application, make sure you have [Node.js](https://nodejs.org) (minimum version 12.0.0) and [Angular CLI](https://angular.io/cli) installed on your machine.
+Before running the application, make sure you have [Node.js](https://nodejs.org) (minimum version 12.0.0), git, and [Angular CLI](https://angular.io/cli) installed on your machine.
 
 Use the package manager [npm](https://www.npmjs.com/) to install the dependencies and run the application.
 
@@ -59,6 +59,12 @@ After sufficing the requirements for the app, follow the steps in order to run t
 
     ```
     ng serve
+    ```
+
+7.  If the website has not been automatically opened yet, please visit the following link:
+
+    ```
+    localhost:4200
     ```
 
 ## Technologies:
