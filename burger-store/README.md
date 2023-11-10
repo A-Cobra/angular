@@ -61,6 +61,16 @@ After sufficing the requirements for the app, follow the steps in order to run t
     ng serve
     ```
 
+## Technologies:
+
+- **Angular 14**: Angular is a popular and powerful JavaScript framework for building web applications. Angular provides a comprehensive set of tools and libraries for developing dynamic and scalable applications. It follows the component-based architecture, allowing developers to create reusable components that encapsulate specific functionality.
+
+- **SCSS**: SCSS (Sass) is a CSS preprocessor that extends the capabilities of traditional CSS. By utilizing SCSS in my project, I was able to "draw" the ingredients of the burger with enhanced flexibility and maintainability.
+
+- **Local Storage**: Local Storage is a web browser API that allows to store data persistently on the user's device. This allowed to save the orders in the user's browser.
+
+- **ESLint**: SLint is a popular JavaScript linter that helps ensure code correctness and adherence to best practices. ESLint enforces a set of configurable rules that catch potential issues, enforce coding standards, and promote consistent code style across Angular applications. It helps identify problematic patterns, potential bugs, and code smells, allowing engineers to address them early in the development process and maintain a high level of code quality.
+
 ## License
 
 This project is licensed under the [Apache License 2.0](../LICENSE).
