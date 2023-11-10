@@ -2066,7 +2066,351 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 1,
+      "name": "Italian Mozzarella Cheeseburger Combo",
+      "image": "https://app.wendys.com/unified/assets/menu/pg-cropped/1597_medium_US_en.png",
+      "categoryId": 1,
+      "description": "A quarter-pound* of fresh, never-frozen beef topped with deep-fried melty mozzarella, Asiago cheese and rich marinara sauce all on a garlic knot bun. If your favorite appetizers were somehow also a burger it would be this.",
+      "basePrice": 8.99,
+      "customizableOptions": [
+        {
+          "name": "Select type of meat",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Meat",
+              "selected": true
+            },
+            {
+              "name": "Began Meat",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select extra ingredients for the Burger",
+          "type": "multi-select",
+          "options": [
+            {
+              "name": "Extra cheese",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Bacon",
+              "selected": true,
+              "extraPrice": 2
+            }
+          ],
+          "required": false
+        },
+        {
+          "name": "Select your drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": false,
+              "extraPrice": 1.5
+            },
+            {
+              "name": "Juice",
+              "selected": true,
+              "extraPrice": 1
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Regular Fries",
+              "selected": true
+            },
+            {
+              "name": "Loaded Fries",
+              "selected": false,
+              "extraPrice": 3.5
+            },
+            {
+              "name": "Salad",
+              "selected": false,
+              "extraPrice": 1.5
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false,
+          "value": "Do not include onions"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chocolate Cookie",
+      "image": "https://www.snixykitchen.com/wp-content/uploads/2020/02/Gluten-Free-Chocolate-Cookies-9-720x540.jpg",
+      "description": "",
+      "categoryId": 3,
+      "basePrice": 1,
+      "customizableOptions": [
+        {
+          "name": "Select a drink",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Coffee",
+              "selected": true
+            },
+            {
+              "name": "Orange Juice",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Enter special indications",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pizza for 3",
+      "image": "https://i-ticketing.iwos.com/1000x1000-th/products/220/products_220_2.png",
+      "categoryId": 2,
+      "description": "3 personal size pizzas, 3 side dishes and 3 drinks",
+      "basePrice": 14.99,
+      "customizableOptions": [
+        {
+          "name": "Select the topping for your pizza #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Pepperoni",
+              "selected": false
+            },
+            {
+              "name": "Sausage",
+              "selected": false
+            },
+            {
+              "name": "Mushrooms",
+              "selected": true
+            },
+            {
+              "name": "All",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Garlic Knots",
+              "selected": false
+            },
+            {
+              "name": "Breadsticks",
+              "selected": false
+            },
+            {
+              "name": "Cheesesticks",
+              "selected": false,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon Cheesesticks",
+              "selected": true,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink #1",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select the topping for your pizza #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Pepperoni",
+              "selected": false
+            },
+            {
+              "name": "Sausage",
+              "selected": false
+            },
+            {
+              "name": "Mushrooms",
+              "selected": false
+            },
+            {
+              "name": "All",
+              "selected": true,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Garlic Knots",
+              "selected": false
+            },
+            {
+              "name": "Breadsticks",
+              "selected": false
+            },
+            {
+              "name": "Cheesesticks",
+              "selected": true,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon Cheesesticks",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink #2",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": true
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select the topping for your pizza #3",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Pepperoni",
+              "selected": false
+            },
+            {
+              "name": "Sausage",
+              "selected": false
+            },
+            {
+              "name": "Mushrooms",
+              "selected": false
+            },
+            {
+              "name": "All",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your side dish #3",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Garlic Knots",
+              "selected": false
+            },
+            {
+              "name": "Breadsticks",
+              "selected": true
+            },
+            {
+              "name": "Cheesesticks",
+              "selected": false,
+              "extraPrice": 1
+            },
+            {
+              "name": "Bacon Cheesesticks",
+              "selected": false,
+              "extraPrice": 2
+            }
+          ],
+          "required": true
+        },
+        {
+          "name": "Select your drink #3",
+          "type": "single-select",
+          "options": [
+            {
+              "name": "Soda",
+              "selected": false
+            },
+            {
+              "name": "Tea",
+              "selected": false
+            },
+            {
+              "name": "Water",
+              "selected": false
+            }
+          ],
+          "required": true
+        }
+      ]
+    }
+  ],
   "orders": [
     {
       "totalPrice": 35.98,
