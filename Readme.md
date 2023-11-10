@@ -35,7 +35,7 @@ Each project in this repository is organized within its own directory and can be
 1. Clone this repository
 
 ```
-git clone https://github.com/A-Cobra/angular
+git clone https://github.com/A-Cobra/angular.git
 ```
 
 2. Move to the develop branch

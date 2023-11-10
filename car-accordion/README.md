@@ -32,7 +32,7 @@ After sufficing the requirements for the app, follow the steps in order to run t
 1.  Clone the repository by using the following command
 
     ```
-    git clone `https:github.com/A-Cobra/angular`
+    git clone https://github.com/A-Cobra/angular.git
     ```
 
 2.  Use the git command
