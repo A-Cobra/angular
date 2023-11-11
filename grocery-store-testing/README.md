@@ -1,51 +1,32 @@
-# Grocery Store (DEPRECATED)
+# Grocery Store Testing
 
-Project that includes the testing of an authentication and interaction with an API App
-
-The Angular Github Profile Fetcher
-project is a simple yet effective application that allows users to fetch data and search for GitHub users. The application provides basic information about the user, including their name, avatar, repositories, and followers.
-
-## Important Information
-
-I regretfully cannot share the credentials to the application due to nondisclosure agreements with `Applaudo`.
-
-As of the current date (2023/11/10), the API supports login functionality. However, I must inform you that certain features, such as adding items to the cart or retrieving items from it, are currently restricted and not accessible.
+The Grocery Store Testing project aimed to ensure the reliability and correctness of the "grocery-store" Angular app through comprehensive unit testing. The primary focus was to test various aspects of the application, including components, guards, HTTP services, and other critical functionalities. The goal was to establish a robust testing suite that would validate the behavior and performance of the codebase.
 
 ## Key Features
 
-1. **REST API integration**: The use of a renowned and well-built API like GitHub's ensures the availability of comprehensive and reliable user data. The GitHub API offers a rich set of endpoints and features, enabling the application to access a wide range of user information, repositories, and other relevant data points.
-
-2. **Styling**: The styling of the project has been meticulously designed to closely resemble GitHub's user interface. The goal was to create a visual experience that aligns as much as possible with GitHub's aesthetics. By adopting a minimalist approach, the project prioritizes simplicity and readability, ensuring that users can easily navigate and interact with the application.
-
-3. **Error handling**: The project also incorporates error handling to gracefully handle scenarios where the API request fails, encounters an error, or returns empty arrays. By implementing appropriate error handling mechanisms, the application ensures a smooth user experience and provides informative feedback in case of any issues during data retrieval.
+1. **Application Unit Testing**: It is a software development practice that involves testing individual units or components of an application in isolation to ensure their proper functionality. These units can include functions, methods, classes, components, services, and other discrete parts of the software. The primary goal of Application Unit Testing is to validate the behavior and correctness of each unit of code. By writing test cases that cover various scenarios and expected outcomes, developers can verify that the individual units perform as intended and meet the project's requirements.
 
 ## Screenshots
 
-Search
+Running tests on the console
 
-<img src="./src/assets/images/screenshots/search.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/tests.PNG" width="650px;">
 
-Not found
+Console report
 
-<img src="./src/assets/images/screenshots/not_found.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/report.PNG" width="650px;">
 
-Repositories
+Website report
 
-<img src="./src/assets/images/screenshots/repositories.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/website_report.PNG" width="650px;">
 
-Followers
+How to find the file
 
-<img src="./src/assets/images/screenshots/followers.PNG" width="650px;">
-
-Mobile
-
-<img src="./src/assets/images/screenshots/mobile.PNG" width="330px;">
+<img src="./src/assets/images/screenshots/tests_report_location.PNG" width="450px;">
 
 ## Requirements
 
-To utilize the application, users need to generate a GitHub token by visiting the following link: `https://github.com/settings/tokens`. This token enables the application to securely authenticate and access GitHub's REST API to fetch user data.
-
-Additionally, make sure you have [Node.js](https://nodejs.org) (minimum version 12.0.0), git, and [Angular CLI](https://angular.io/cli) installed on your machine.
+Before running the application, make sure you have [Node.js](https://nodejs.org) (minimum version 12.0.0), git, and [Angular CLI](https://angular.io/cli) installed on your machine.
 
 Use the package manager [npm](https://www.npmjs.com/) to install the dependencies and run the application.
 
@@ -59,65 +40,43 @@ After sufficing the requirements for the app, follow the steps in order to run t
     git clone https://github.com/A-Cobra/angular.git
     ```
 
-2.  Use the git command
+2.  Use the Git command to switch to the develop branch:
 
     ```
     git checkout develop
     ```
 
-3.  Open the `github-profile-fetcher` folder with your favorite ide
+3.  Open the `grocery-store-testing` folder with your favorite ide
 
-4.  Use the following command
+4.  Install the necessary dependencies by running the following command:
 
     ```
     npm install
     ```
 
-5.  Search for the environment file under the following path:
+5.  To generate the test coverage report, execute the following command. The report will appear in your project directory:
 
     ```
-    /src/environments/environment.ts
+    npm run test:coverage
     ```
 
-6.  Replace the `authToken` variable's content with your GitHub token. For example, if your token was my_token, the code inside the environments.ts file would be
+6.  In the console, you will see the tests being executed in real-time.
 
-    ```
-    export const environment = {
-      production: false,
-      githubEndpoint: 'https://api.github.com/users',
-      followersUrlParams: '?page=1&per_page=10',
-      repositoriesUrlParams: '?page=1&per_page=20',
-      authToken: 'my_token',
-    };
-    ```
+7.  Once all the tests are completed, a folder named `coverage` will be generated.
 
-7.  Finally, run the app by using the command
+8.  Navigate into the `coverage` folder and locate the `lcov-report` subfolder.
 
-    ```
-    npm run sto
-    ```
-
-8.  Alternatively, you could run the following command
-
-    ```
-    ng serve
-    ```
-
-9.  If the website has not been automatically opened yet, please visit the following link:
-
-    ```
-    localhost:4200
-    ```
+9.  Finally, open the `index.html` file in your preferred browser to view the test coverage report.
 
 ## Technologies:
 
-- **Angular 14**: Angular is a popular and powerful JavaScript framework for building web applications. Angular provides a comprehensive set of tools and libraries for developing dynamic and scalable applications. It follows the component-based architecture, allowing developers to create reusable components that encapsulate specific functionality.
+- **Jest Testing Framework**: Jest is a widely-used testing framework for JavaScript applications, including Angular projects. It offers a robust and intuitive testing solution that helps ensure the reliability and correctness of the codebase. Jest provides a seamless testing experience with its rich set of features, making it a preferred choice for many developers.
 
-- **SCSS**: SCSS (Sass) is a CSS preprocessor that extends the capabilities of traditional CSS. By utilizing SCSS in my project, I was able to "draw" the ingredients of the burger with enhanced flexibility and maintainability.
+## Additional Information
 
-- **ESLint**: ESLint is a popular JavaScript linter that helps ensure code correctness and adherence to best practices. ESLint enforces a set of configurable rules that catch potential issues, enforce coding standards, and promote consistent code style across Angular applications. It helps identify problematic patterns, potential bugs, and code smells, allowing engineers to address them early in the development process and maintain a high level of code quality.
+Initially, the project utilized the Karmin and Jasmine testing frameworks. However, to align with industry standards and leverage a more widely adopted solution, the decision was made to transition to the Jest testing framework. Jest offers a rich set of features, a user-friendly interface, and extensive community support, making it a popular choice for testing Angular applications.
 
-- **REST API**: REST (Representational State Transfer) is an architectural style for designing networked applications. REST APIs (Application Programming Interfaces) are a set of rules and conventions that enable communication and data exchange between systems over the internet. REST APIs are based on the principles of using HTTP methods (such as GET, POST, PUT, DELETE) to perform operations on resources identified by URLs (Uniform Resource Locators).
+It is also important to note that due to time constraints during the project development, there might be some tests that do not pass as certain code sections were left untested using the testing framework. However, it should be emphasized that these untested portions of code were manually tested to ensure their functionality.
 
 ## License
 
@@ -125,23 +84,6 @@ This project is licensed under the [Apache License 2.0](../LICENSE).
 
 ## Conclusions
 
-Overall, the Angular GitHub User Search project offers a straightforward yet functional approach to fetching and displaying GitHub user data. By utilizing a REST API, Angular observables, error handling, and CSS styling, the application provides users with an efficient and visually pleasing way to search for and view basic information about GitHub users.
+In conclusion, the Angular project for the "grocery-store" app prioritized the implementation of comprehensive unit tests to validate the functionality of components, guards, HTTP services, and other critical aspects. The project made the strategic decision to switch from the Karmin and Jasmine testing frameworks to Jest, primarily due to the widespread adoption and extensive features offered by Jest.
 
-## Running steps
-
--First clone the repo or download it
-
-- Run the following command
-  ```
-  npm install
-  ```
-
--Then, use `npm run test:coverage` to access the test coverage file, that will appear in your project directory.
-
--It will appear under the name `coverage`.
-
--Open the folder coverage and the folder `lcov-report`.
-
--Open the index.html file in any browser of your reference.
-
--ENJOY!
+By embracing Jest as the testing framework, the project aimed to improve the testing experience, leverage a more intuitive syntax, and benefit from the extensive community support available. The transition to Jest was undertaken to ensure that the unit tests were written in a maintainable and effective manner, ultimately leading to a more reliable and stable "grocery-store" app.
