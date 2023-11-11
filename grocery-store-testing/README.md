@@ -6,13 +6,18 @@ Project that includes the testing of an authentication and interaction with an A
 
 -First clone the repo or download it
 
+- Run the following command 
+  ```
+  npm install
+  ```
+
 -Then, use `npm run test:coverage` to access the test coverage file, that will appear in your project directory.
 
 -It will appear under the name `coverage`.
 
 -Open the folder coverage and the folder `lcov-report`.
 
--Open the index.html file in any broser of your reference.
+-Open the index.html file in any browser of your reference.
 
 -ENJOY!
 
