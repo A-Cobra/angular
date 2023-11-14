@@ -20,7 +20,7 @@
         [(ngModel)]="currentEmployee.firstName" />
     </div>
     <div class="error">
-      <div *ngIf="!firstName.pristine && firstName.value.length < 4">
+      <div *ngIf="firstName.touched && firstName.value.length < 4">
         Please type at least 4 characters
       </div>
       <div *ngIf="!firstName.pristine && firstName.value.length > 15">
@@ -45,10 +45,10 @@
         [(ngModel)]="currentEmployee.lastName" />
     </div>
     <div class="error">
-      <div *ngIf="!lastName.pristine && lastName.value.length < 4">
+      <div *ngIf="lastName.touched && lastName.value.length < 4">
         Please type at least 4 characters
       </div>
-      <div *ngIf="!lastName.pristine && lastName.value.length > 15">
+      <div *ngIf="lastName.touched && lastName.value.length > 15">
         Please type at most 15 characters
       </div>
     </div>
@@ -97,7 +97,7 @@
         [(ngModel)]="currentEmployee.password" />
     </div>
     <div class="error">
-      <div *ngIf="currentEmployee.password.length < 12 && password.dirty">
+      <div *ngIf="currentEmployee.password.length < 12 && password.touched">
         The password must contain at least 12 characters, have a special
         character and a number
       </div>
@@ -230,7 +230,7 @@
       </label>
     </div>
   </div>
-  <div>
+  <!-- <div>
     <div class="select-container">
       <div class="select-wrapper">
         <select
@@ -274,7 +274,7 @@
       ">
       Please select a state
     </div>
-  </div>
+  </div> -->
   <div class="form-group">
     <div class="flex-container agree-terms">
       <input required #agree id="terms" name="terms" type="checkbox" />
@@ -304,9 +304,6 @@
           (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
           (passwordConfirmation !== currentEmployee.password &&
             passwordConfirmationInput.dirty) ||
-          (country.value === 'none' && country.touched) ||
-          (currentEmployee.address.state === 'none' &&
-            country.value !== 'none') ||
           lastCharIsADot(currentEmployee.email)
         "
         (click)="emitCreationNotification()">
@@ -331,9 +328,6 @@
         (email.dirty && !containsCertainChar(currentEmployee.email, '@')) ||
         (passwordConfirmation !== currentEmployee.password &&
           passwordConfirmationInput.dirty) ||
-        (country.value === 'none' && country.touched) ||
-        (currentEmployee.address.state === 'none' &&
-          country.value !== 'none') ||
         lastCharIsADot(currentEmployee.email)
       "
       *ngIf="editing; else createEmployeeButton"

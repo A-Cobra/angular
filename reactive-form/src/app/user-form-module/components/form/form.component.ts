@@ -90,11 +90,11 @@ export class FormComponent implements OnInit {
         address: new FormGroup({
           country: new FormControl<string>('none', {
             nonNullable: true,
-            validators: [Validators.required, MyValidations.notNoneValue],
+            // validators: [Validators.required, MyValidations.notNoneValue],
           }),
           state: new FormControl<string>('none', {
             nonNullable: true,
-            validators: [Validators.required, MyValidations.notNoneValue],
+            // validators: [Validators.required, MyValidations.notNoneValue],
           }),
         }),
         agreement: new FormControl<boolean>(false, {

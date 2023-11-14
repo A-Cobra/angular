@@ -7,7 +7,7 @@ export const environment = {
   githubEndpoint: 'https://api.github.com/users',
   followersUrlParams: '?page=1&per_page=10',
   repositoriesUrlParams: '?page=1&per_page=20',
-  authToken: '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',
+  authToken: '{{  YOUR_GITHUB_AUTH_TOKEN  }}',
 };
 
 /*

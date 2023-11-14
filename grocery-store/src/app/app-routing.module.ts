@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./grocery/grocery.module').then(m => m.GroceryModule),
   },
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'grocery-store',
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('../app/not-found/not-found.module').then(m => m.NotFoundModule),
