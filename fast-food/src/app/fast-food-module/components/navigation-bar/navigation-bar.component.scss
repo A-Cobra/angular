@@ -1,10 +1,11 @@
-@import "../../../../colors";
+@import '../../../../colors';
 
-li{
+li {
   display: flex;
   gap: 15px;
   justify-content: center;
-  a{
+  flex-wrap: wrap;
+  a {
     text-align: center;
     padding: 8px 14px;
     // text-decoration: none;
@@ -16,13 +17,13 @@ li{
       background-color: $navy-blue;
       box-shadow: 3px 6px 6px $main-color-shadow;
     }
-    &:hover{
+    &:hover {
       color: $twilight;
       background-color: $light-sky-blue;
       box-shadow: 3px 6px 6px $main-color-shadow;
     }
   }
 }
-nav{
+nav {
   padding: 30px 110px;
 }

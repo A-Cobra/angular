@@ -1,10 +1,11 @@
-@import "../../../../colors";
+@import '../../../../colors';
 
-li{
+li {
   display: flex;
   gap: 15px;
   justify-content: center;
-  a{
+  flex-wrap: wrap;
+  a {
     cursor: pointer;
     text-align: center;
     padding: 8px 14px;
@@ -16,21 +17,21 @@ li{
       background-color: $navy-blue;
       box-shadow: 3px 6px 6px $main-color-shadow;
     }
-    &:hover{
+    &:hover {
       color: $twilight;
       background-color: $light-sky-blue;
       box-shadow: 3px 6px 6px $main-color-shadow;
     }
   }
 }
-nav{
+nav {
   padding: 30px 110px;
   border-bottom: 2px solid $light-gray;
   box-shadow: 3px 6px 6px $main-color-shadow;
 }
 
-@media screen and (max-width:720px){
-  nav{
+@media screen and (max-width: 720px) {
+  nav {
     padding: 30px;
   }
 }
