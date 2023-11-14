@@ -28,7 +28,7 @@ Single employee
 
 <img src="./src/assets/images/screenshots/single_employee_info.PNG" width="650px;">
 
-Validations
+Edit employee
 
 <img src="./src/assets/images/screenshots/edit_employee.PNG" width="650px;">
 
