@@ -52,8 +52,6 @@ export class CartService {
       )
       .pipe(
         catchError((error: CartFailureResponse) => {
-          console.log('error in service');
-          console.log(error);
           throw Error(error.error.errors[0].code);
         }),
         switchMap((cartAdditionOrUpdateResponse: CartResponse) => {
@@ -70,8 +68,6 @@ export class CartService {
       )
       .pipe(
         catchError((error: CartFailureResponse) => {
-          console.log('error in service');
-          console.log(error);
           throw Error(error.error.errors[0].code);
         }),
         switchMap((cartItemsResponse: CartItemsResponse) => {
@@ -88,8 +84,6 @@ export class CartService {
       )
       .pipe(
         catchError((error: CartFailureResponse) => {
-          console.log('error in service');
-          console.log(error);
           throw Error(error.error.errors[0].code);
         }),
         switchMap((cartItemsResponse: CartItemsResponse) => {
