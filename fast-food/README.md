@@ -62,7 +62,7 @@ After sufficing the requirements for the app, follow the steps in order to run t
     npm install
     ```
 
-5.  Run the following command to spin up the database:
+5.  Run the following command to spin up the JSON API:
 
     ```
     npm run db

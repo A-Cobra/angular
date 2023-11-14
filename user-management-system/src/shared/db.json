@@ -84,23 +84,6 @@
         "country": "Antigua And Barbuda",
         "state": "Saint Mary"
       }
-    },
-    {
-      "id": 6,
-      "firstName": "MyName",
-      "lastName": "MyLastName",
-      "email": "myName@gmail.com",
-      "password": "MySafePass123!",
-      "profileImage": "",
-      "birthDate": "2004-11-14",
-      "phone": 12345,
-      "personalSiteUrl": "",
-      "about": "",
-      "gender": "male",
-      "address": {
-        "country": "none",
-        "state": "none"
-      }
     }
   ]
 }
