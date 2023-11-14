@@ -1,18 +1,18 @@
 # User Management System
 
-It is a web application built using Angular framework that provides administrators with the ability to efficiently manage employee data. The application offers a user-friendly interface where administrators can perform essential CRUD (Create, Read, Update, Delete) operations on employee records.
+It is a web application built using Angular framework that provides administrators with the ability to efficiently manage user data. The application offers a user-friendly interface where administrators can perform essential CRUD (Create, Read, Update, Delete) operations on user records.
 
 ## Key Features
 
-1. **Employee Listing**: The application displays a list of existing employees, providing essential details such as name, email, and gender. This allows administrators to quickly access employee details at a glance.
+1. **user Listing**: The application displays a list of existing users, providing essential details such as name, email, and gender. This allows administrators to quickly access user details at a glance.
 
-2. **Employee Creation**: Administrators can create new employee records by filling in a form with relevant information.
+2. **user Creation**: Administrators can create new user records by filling in a form with relevant information.
 
-3. **Employee Editing**: The application allows administrators to edit employee information easily. It can be achieved by clicking on the "Edit this user" button.
+3. **user Editing**: The application allows administrators to edit user information easily. It can be achieved by clicking on the "Edit this user" button.
 
-4. **Employee Removal**: Administrators have the ability to remove employee records from the system when necessary. It can be achieved by clicking on the "Delete this user" button.
+4. **user Removal**: Administrators have the ability to remove user records from the system when necessary. It can be achieved by clicking on the "Delete this user" button.
 
-5. **User-Friendly Interface**: The Employee Management System prioritizes a clean and intuitive user interface, ensuring ease of use for administrators. Navigation menus, buttons, and forms are designed to be straightforward and self-explanatory, minimizing the learning curve for new users.
+5. **User-Friendly Interface**: The user Management System prioritizes a clean and intuitive user interface, ensuring ease of use for administrators. Navigation menus, buttons, and forms are designed to be straightforward and self-explanatory, minimizing the learning curve for new users.
 
 ## Screenshots
 
@@ -20,17 +20,17 @@ Main Page
 
 <img src="./src/assets/images/screenshots/main_page.PNG" width="650px;">
 
-Create Employee
+Create user
 
-<img src="./src/assets/images/screenshots/create_employee.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/create_user.PNG" width="650px;">
 
-Single employee
+Single user
 
-<img src="./src/assets/images/screenshots/single_employee_info.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/single_user_info.PNG" width="650px;">
 
-Edit employee
+Edit user
 
-<img src="./src/assets/images/screenshots/edit_employee.PNG" width="650px;">
+<img src="./src/assets/images/screenshots/edit_user.PNG" width="650px;">
 
 Validations
 
@@ -44,9 +44,9 @@ Mobile form
 
 <img src="./src/assets/images/screenshots/mobile_form.PNG" width="330px;">
 
-Mobile single employee
+Mobile single user
 
-<img src="./src/assets/images/screenshots/mobile_single_employee.PNG" width="330px;">
+<img src="./src/assets/images/screenshots/mobile_single_user.PNG" width="330px;">
 
 ## Requirements
 
@@ -116,11 +116,11 @@ After sufficing the requirements for the app, follow the steps in order to run t
 
    For your convenience, here is the link to access the API: `https://www.universal-tutorial.com/rest-apis/free-rest-api-for-country-state-city`.
 
-2. The Employee Management System, being one of my initial projects, may not exhibit the same level of polish and refinement as more experienced projects. However, it is important to recognize that this project has been a valuable learning experience for me, allowing me to gain proficiency in Angular and form development.
+2. The user Management System, being one of my initial projects, may not exhibit the same level of polish and refinement as more experienced projects. However, it is important to recognize that this project has been a valuable learning experience for me, allowing me to gain proficiency in Angular and form development.
 
-   While the application successfully fulfills its core functionalities of employee management and effectively utilizes Angular Template Driven Forms, I acknowledge that there is room for improvement in terms of code quality. Refactoring the code to provide better cohesion and reduce dependencies would be a beneficial step towards enhancing the application's overall structure and maintainability.
+   While the application successfully fulfills its core functionalities of user management and effectively utilizes Angular Template Driven Forms, I acknowledge that there is room for improvement in terms of code quality. Refactoring the code to provide better cohesion and reduce dependencies would be a beneficial step towards enhancing the application's overall structure and maintainability.
 
-   The Employee Management System serves as a testament to my growth and progress as a developer, showcasing my ability to implement key features and functionality within the Angular framework. As I continue to enhance my skills and undertake more projects, I am committed to applying the lessons learned from this project and striving for even greater refinement and sophistication in future applications.
+   The user Management System serves as a testament to my growth and progress as a developer, showcasing my ability to implement key features and functionality within the Angular framework. As I continue to enhance my skills and undertake more projects, I am committed to applying the lessons learned from this project and striving for even greater refinement and sophistication in future applications.
 
 ## License
 
@@ -128,4 +128,4 @@ This project is licensed under the [Apache License 2.0](../LICENSE).
 
 ## Conclusions
 
-Overall, the Employee Management System built with Angular provides a comprehensive solution for managing employee data. Its features, including template-driven forms and JSON API simulation, facilitate efficient employee record management, empowering administrators to create, view, edit, and remove employee information with ease.
+Overall, the user Management System built with Angular provides a comprehensive solution for managing user data. Its features, including template-driven forms and JSON API simulation, facilitate efficient user record management, empowering administrators to create, view, edit, and remove user information with ease.
