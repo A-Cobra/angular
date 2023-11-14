@@ -55,7 +55,7 @@ The Angular project is centered around the implementation of reactive forms to c
 
 The Angular app is designed to provide users with a seamless experience to browse, display, and add movies to their favorites. It leverages TMDB's systems, including the TMDB API for movie data retrieval and a login system for user authentication.
 
-<img src="./tmdb-movies-explorer/src/assets/images/screenshots/main.PNG" width= "500px">
+<img src="./user-management-system/src/assets/images/screenshots/main.PNG" width= "500px">
 
 ### [User Management System](./user-management-system/)
 
