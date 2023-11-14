@@ -1,27 +1,82 @@
-# NgBurguerApp
+# Burger Store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+This Angular application offers a delightful burger customization experience, allowing users to personalize their burgers by adding or removing ingredients such as tomatoes, lettuce, meat, and cheese.
 
-## Development server
+One of the standout features of the Burger Store is the ability to view and compare prices in multiple currencies. Users have the option to see the prices of their customized burgers in USD, Euros, and Mexican pesos, providing a convenient and flexible shopping experience for customers from different regions.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Once the user has created their perfect burger, they can proceed to "order" it. The order will be stored and displayed in a history section, allowing users to revisit their previous orders and easily reorder their favorite combinations. This feature adds convenience for customers who frequently order the same burger or want to keep track of their culinary experiments.
 
-## Code scaffolding
+## Key Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. User-Friendly Interface: The Burger Store features an intuitive and visually appealing interface that enhances the user experience. Customers can effortlessly navigate through the customization options, view prices, and manage their orders.
 
-## Build
+2. Responsive Design: The application is designed to be responsive and adaptable to different devices and screen sizes, ensuring a consistent and enjoyable experience for users on desktops, tablets, and mobile devices.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Screenshots
 
-## Running unit tests
+<img src="./src/assets/images/no_history.PNG" width="650px;">
+<img src="./src/assets/images/customizing.PNG" width="650px;">
+<img src="./src/assets/images/currencies.PNG" width="650px;">
+<img src="./src/assets/images/responsive.PNG" width="330px;">
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Requirements
 
-## Running end-to-end tests
+Before running the application, make sure you have [Node.js](https://nodejs.org) (minimum version 12.0.0), git, and [Angular CLI](https://angular.io/cli) installed on your machine.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Use the package manager [npm](https://www.npmjs.com/) to install the dependencies and run the application.
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+After sufficing the requirements for the app, follow the steps in order to run the program:
+
+1.  Clone the repository by using the following command
+
+    ```
+    git clone https://github.com/A-Cobra/angular.git
+    ```
+
+2.  Use the git command
+
+    ```
+    git checkout develop
+    ```
+
+3.  Open the `burger-store` folder with your favorite ide
+
+4.  Use the following command
+
+    ```
+    npm install
+    ```
+
+5.  Finally, run the app by using the command
+
+    ```
+    npm run sto
+    ```
+
+6.  Alternatively, you could run the following command
+
+    ```
+    ng serve
+    ```
+
+7.  If the website has not been automatically opened yet, please visit the following link:
+
+    ```
+    localhost:4200
+    ```
+
+## Technologies:
+
+- **Angular 14**: Angular is a popular and powerful JavaScript framework for building web applications. Angular provides a comprehensive set of tools and libraries for developing dynamic and scalable applications. It follows the component-based architecture, allowing developers to create reusable components that encapsulate specific functionality.
+
+- **SCSS**: SCSS (Sass) is a CSS preprocessor that extends the capabilities of traditional CSS. By utilizing SCSS in my project, I was able to "draw" the ingredients of the burger with enhanced flexibility and maintainability.
+
+- **Local Storage**: Local Storage is a web browser API that allows to store data persistently on the user's device. This allowed to save the orders in the user's browser.
+
+- **ESLint**: ESLint is a popular JavaScript linter that helps ensure code correctness and adherence to best practices. ESLint enforces a set of configurable rules that catch potential issues, enforce coding standards, and promote consistent code style across Angular applications. It helps identify problematic patterns, potential bugs, and code smells, allowing engineers to address them early in the development process and maintain a high level of code quality.
+
+## License
+
+This project is licensed under the [Apache License 2.0](../LICENSE).

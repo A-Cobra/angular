@@ -65,9 +65,9 @@ export class EmployeeService {
       employee.birthDate === '' ||
       employee.birthDate > new Date().toISOString().split('T')[0] ||
       (employee.phone < 0 && employee.phone.toString().length < 4) ||
-      employee.gender === 'none' ||
-      employee.address.country === 'none' ||
-      employee.address.state === 'none'
+      employee.gender === 'none'
+      // ||employee.address.country === 'none' ||
+      // employee.address.state === 'none'
     ) {
       return false;
     }

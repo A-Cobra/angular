@@ -15,17 +15,6 @@ export class CountryFetcherService {
 
   constructor(private http: HttpClient) {}
 
-  getToken() {
-    const header2 = new HttpHeaders({
-      Accept: 'application/json',
-      'api-token': environment.apiToken,
-      'user-email': 'conradbravina@gmail.com',
-    });
-    return this.http.get(this.baseUrl + 'getaccesstoken', {
-      headers: header2,
-    });
-  }
-
   getCountries() {
     return this.http
       .get(this.baseUrl + 'countries/', {
