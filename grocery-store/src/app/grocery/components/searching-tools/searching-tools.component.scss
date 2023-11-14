@@ -1,28 +1,29 @@
-@import "../../../../colors";
+@import '../../../../colors';
 
-.grid-wrap{
+.flex-wrap {
   padding: 20px 0;
   display: flex;
   gap: 20px;
   justify-content: center;
-  .form-control{
+  flex-wrap: wrap;
+  .form-control {
     flex: 1 1 450px;
     max-width: 600px;
   }
 }
 
-.flex-container{
+.flex-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   column-gap: 20px;
   row-gap: 10px;
   position: relative;
-  label.description{
+  label.description {
     flex: 0 1 150px;
   }
   input,
-  select{
+  select {
     border-radius: 5px;
     text-align: center;
     flex: 1 1 200px;
@@ -31,12 +32,12 @@
   }
 }
 
-select{
+select {
   padding: 4px 10px;
   color: $light-purple;
   background-color: $navy-blue;
   border: none;
-  &:focus{
+  &:focus {
     background-color: white;
     color: $twilight;
     box-shadow: 3px 5px 10px $main-color-shadow;

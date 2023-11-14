@@ -15,7 +15,7 @@ import { debounce } from 'src/app/utils/debounce';
   selector: 'app-searching-tools',
   styleUrls: ['./searching-tools.component.scss'],
   template: `
-    <div class="grid-wrap">
+    <div class="flex-wrap">
       <div class="form-control flex-container">
         <label class="description" for="category-selector"
           >Search by Category</label
